@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$DOGE1 Presale - doge1.me</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.umd.min.js"></script>
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>$DOGE1 Presale</h1>
+        <h2>The Jedi of Justice Awakens – Ruff and Uncut</h2>
+        <p>Tipping the Scales of Justice with Every Buy</p>
+    </header>
+    <main>
+        <section class="presale">
+            <img src="shiba-jedi-logo.png" alt="Shiba Jedi Logo" class="logo">
+            <p>A raw Shiba Jedi gem—500M $DOGE1 launching on Polygon!</p>
+            <div class="details">
+                <p>Total Supply: 500M $DOGE1</p>
+                <p>Presale: 200M available</p>
+                <p>Burned: 50M at launch</p>
+                <p>Pricing: 1 ETH = 500M | 1 SOL = 50M | 0.001 BTC = 30M | $10 USDT = 5M | 100 DOGE = 20M</p>
+            </div>
+            <div class="tracker">
+                <p>Raised: <span id="raised">0 ETH, 0 SOL, 0 BTC, $0 USDT, 0 DOGE</span></p>
+                <p>$DOGE1 Sold: <span id="sold">0 / 200M</span></p>
+            </div>
+            <div class="buy-section">
+                <button id="connectBtn">Connect Wallet</button>
+                <div id="walletInfo" style="display: none;">
+                    <p>Connected: <span id="walletAddress"></span></p>
+                    <select id="cryptoSelect">
+                        <option value="ETH">Ethereum (ETH)</option>
+                        <option value="SOL">Solana (SOL)</option>
+                        <option value="BTC">Bitcoin (BTC)</option>
+                        <option value="USDT">USDT (Polygon)</option>
+                        <option value="DOGE">Dogecoin (DOGE)</option>
+                    </select>
+                    <input type="number" id="amountInput" placeholder="Enter amount" step="0.001" min="0.001">
+                    <button id="buyBtn">Buy Now</button>
+                </div>
+            </div>
+            <div class="x-feed">
+                <a href="https://twitter.com/YourXHandle" target="_blank" class="button">DM @YourXHandle</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>$DOGE1 - Live Soon on Polygon | doge1.me</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
