@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Crypto to USD rates (approximate, Feb 27, 2025)
     const cryptoRates = {
-        ETH: 2000,  // Updated to your $2,000 per ETH
+        ETH: 2000,  // $2,000 per ETH
         SOL: 100,   // $100 per SOL
         BTC: 60000, // $60,000 per BTC
         USDT: 1,    // $1 per USDT
@@ -40,12 +40,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const doge1Price = 0.00050; // Starting presale price
     let provider, signer, walletAddress;
 
+    // Helper function to detect wallet availability with delay
+    const detectWallet = async (crypto) => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                if (crypto === "ETH" || crypto === "USDT") {
+                    resolve(typeof window.ethereum !== "undefined" ? window.ethereum : null);
+                } else if (crypto === "SOL") {
+                    resolve(window.solana ? window.solana : null);
+                } else {
+                    resolve(null); // BTC/DOGE don’t need wallet detection
+                }
+            }, 500); // 500ms delay to ensure wallet injection
+        });
+    };
+
     // Wallet connection logic for .buy-section
     connectBtn.addEventListener("click", async () => {
         const crypto = cryptoSelect.value;
         if (crypto === "ETH" || crypto === "USDT") {
-            if (typeof window.ethereum !== "undefined") {
-                provider = new ethers.providers.Web3Provider(window.ethereum);
+            const wallet = await detectWallet(crypto);
+            console.log("ETH/USDT Wallet Detection:", wallet);
+            if (wallet) {
+                provider = new ethers.providers.Web3Provider(wallet);
                 await provider.send("eth_requestAccounts", []);
                 signer = provider.getSigner();
                 walletAddress = await signer.getAddress();
@@ -54,9 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
         } else if (crypto === "SOL") {
-            if (window.solana) {
-                await window.solana.connect();
-                walletAddress = window.solana.publicKey.toString();
+            const wallet = await detectWallet(crypto);
+            console.log("SOL Wallet Detection:", wallet);
+            if (wallet) {
+                await wallet.connect();
+                walletAddress = wallet.publicKey.toString();
             } else {
                 alert("Please install a Solana wallet (e.g., Phantom) to connect for SOL!");
                 return;
@@ -207,9 +226,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const cryptoValue = usd / cryptoRates[crypto];
         const doge1Amount = usd / doge1Price;
 
+        if (crypto === "BTC" || crypto === "DOGE") {
+            // Manual payment for BTC and DOGE
+            alert(`Manual payment: Send ${cryptoValue.toFixed(6)} ${crypto} to ${wallets[crypto]}\nDM TX hash on X @YourXHandle to confirm your purchase of ${doge1Amount.toFixed(2)} $DOGE1!`);
+            purchaseConfirmModal.style.display = 'none';
+            buyModal.style.display = 'none';
+            usdInput.value = '';
+            cryptoAmount.textContent = 'Crypto Amount: 0';
+            return;
+        }
+
+        // Wallet connection for ETH, SOL, USDT
+        const wallet = await detectWallet(crypto);
+        console.log(`Wallet Detection for ${crypto}:`, wallet ? "Detected" : "Not Detected");
+
         if (crypto === "ETH" || crypto === "USDT") {
-            if (typeof window.ethereum !== "undefined") {
-                provider = new ethers.providers.Web3Provider(window.ethereum);
+            if (wallet) {
+                provider = new ethers.providers.Web3Provider(wallet);
                 await provider.send("eth_requestAccounts", []);
                 signer = provider.getSigner();
                 walletAddress = await signer.getAddress();
@@ -218,21 +251,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
         } else if (crypto === "SOL") {
-            if (window.solana) {
-                await window.solana.connect();
-                walletAddress = window.solana.publicKey.toString();
+            if (wallet) {
+                await wallet.connect();
+                walletAddress = wallet.publicKey.toString();
             } else {
                 alert("Please install a Solana wallet (e.g., Phantom) to proceed with SOL!");
                 return;
             }
-        } else {
-            // Manual payment for BTC and DOGE
-            alert(`Manual payment: Send ${cryptoValue.toFixed(6)} ${crypto} to ${wallets[crypto]}\nDM TX hash on X @YourXHandle to confirm your purchase of ${doge1Amount.toFixed(2)} $DOGE1!`);
-            purchaseConfirmModal.style.display = 'none';
-            buyModal.style.display = 'none';
-            usdInput.value = '';
-            cryptoAmount.textContent = 'Crypto Amount: 0';
-            return;
         }
 
         let txHash;
