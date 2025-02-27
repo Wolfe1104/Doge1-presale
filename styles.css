@@ -99,8 +99,8 @@ main {
     justify-content: center;
     max-width: 1200px;
     margin: 0 auto;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
-    gap: 20px; /* Space between logo and text */
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .shiba-logo {
@@ -113,23 +113,23 @@ main {
 .intro-text {
     text-align: left;
     flex-grow: 1;
-    min-width: 200px; /* Prevent collapse on small screens */
+    min-width: 200px;
 }
 
 .intro-text h1 {
     margin: 0;
-    font-size: 26px; /* Slightly smaller from 28px */
+    font-size: 22px; /* Reduced from 26px */
     text-transform: uppercase;
     color: #fff;
-    line-height: 1.5; /* Increased from 1.2 */
+    line-height: 1.5;
 }
 
 .intro-text p {
-    font-size: 12px; /* Down from 14px */
+    font-size: 12px;
     color: #ccc;
-    margin: 5px 0; /* Increased from 3px */
+    margin: 5px 0;
     text-align: center;
-    line-height: 1.6; /* Increased from 1.4 */
+    line-height: 1.6;
 }
 
 .presale-goal {
