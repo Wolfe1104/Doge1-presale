@@ -21,16 +21,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const purchaseCancelBtn = document.getElementById("purchaseCancelBtn");
 
     const wallets = {
-        ETH: "0xYourEthereumWalletHere",
-        SOL: "YourSolanaWalletHere",
-        BTC: "YourBitcoinWalletHere",
-        USDT: "0xYourPolygonWalletHere",
-        DOGE: "YourDogecoinWalletHere"
+        ETH: "0xD780c0B3a47c3FCA0090FC2153a80d15A4F286E3",
+        SOL: "7p2ypSRWV2iXxMxyVhFYLsXRcZNqDzfeJtq56nH2VcLN",
+        BTC: "bc1q84y0dcmfvfueyysug3u7w0hj3asl8dqlxql5sq",
+        USDT: "0xD780c0B3a47c3FCA0090FC2153a80d15A4F286E3",
+        DOGE: "DNgCHoNxAjH63nf2L7893qiqbu2TYp5CoX"
     };
 
     // Crypto to USD rates (approximate, Feb 27, 2025)
     const cryptoRates = {
-        ETH: 3000,  // $3,000 per ETH
+        ETH: 2000,  // $3,000 per ETH
         SOL: 100,   // $100 per SOL
         BTC: 60000, // $60,000 per BTC
         USDT: 1,    // $1 per USDT
