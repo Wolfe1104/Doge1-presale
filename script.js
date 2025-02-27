@@ -29,36 +29,30 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const doge1Price = 0.00050; // Starting presale price
-    let provider, signer, walletAddress;
+    let walletProvider, signer, walletAddress;
 
-    // Function to connect wallet (ETH via Trust Wallet or MetaMask)
+    // Initialize WalletConnect
+    const walletConnectProvider = new WalletConnectProvider({
+        infuraId: "YOUR_INFURA_ID", // Optional: Replace with your Infura ID for better reliability (get from infura.io)
+        rpc: {
+            1: "https://mainnet.infura.io/v3/YOUR_INFURA_ID" // Ethereum mainnet (optional, replace with your Infura ID)
+        },
+        chainId: 1 // Ethereum mainnet
+    });
+
+    // Function to connect wallet via WalletConnect
     async function connectWallet() {
-        console.log("Attempting to connect wallet for ETH...");
-        console.log("window.ethereum:", window.ethereum);
-
-        if (window.ethereum) {
-            provider = new ethers.providers.Web3Provider(window.ethereum);
-            try {
-                const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-                console.log("ETH accounts:", accounts);
-                if (accounts.length > 0) {
-                    signer = provider.getSigner();
-                    walletAddress = await signer.getAddress();
-                    console.log("Connected ETH wallet:", walletAddress);
-                    return true;
-                } else {
-                    console.log("No accounts returned from wallet.");
-                    alert("No accounts found. Please unlock Trust Wallet (or MetaMask) and ensure it’s set to Ethereum mainnet.");
-                    return false;
-                }
-            } catch (error) {
-                console.error("ETH connection error:", error);
-                alert("Failed to connect wallet: " + error.message + "\nEnsure Trust Wallet (or MetaMask) is unlocked and set to Ethereum mainnet.");
-                return false;
-            }
-        } else {
-            console.log("Ethereum provider (Trust Wallet/MetaMask) not detected.");
-            alert("Trust Wallet (or MetaMask) not detected!\n1. Ensure Trust Wallet is installed and active.\n2. Unlock it (enter password).\n3. Set to Ethereum mainnet.\n4. Refresh the page (F5).\nIf issues persist, send ETH manually to: " + wallets.ETH);
+        console.log("Attempting WalletConnect for ETH...");
+        try {
+            await walletConnectProvider.enable(); // This triggers the QR code popup
+            walletProvider = new ethers.providers.Web3Provider(walletConnectProvider);
+            signer = walletProvider.getSigner();
+            walletAddress = await signer.getAddress();
+            console.log("Connected ETH wallet via WalletConnect:", walletAddress);
+            return true;
+        } catch (error) {
+            console.error("WalletConnect error:", error);
+            alert("Failed to connect wallet: " + error.message + "\nScan the QR code with Trust Wallet or MetaMask and try again.");
             return false;
         }
     }
@@ -201,7 +195,6 @@ document.addEventListener("DOMContentLoaded", () => {
             usdInput.value = '';
             cryptoAmount.textContent = 'Crypto Amount: 0';
         } else {
-            // Manual fallback for ETH if wallet connect fails
             alert(`Manual payment fallback: Send ${cryptoValue.toFixed(6)} ETH to ${wallets.ETH}\nDM TX hash on X @YourXHandle to confirm your purchase of ${doge1Amount.toFixed(2)} $DOGE1!`);
             purchaseConfirmModal.style.display = 'none';
             buyModal.style.display = 'none';
@@ -217,15 +210,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Detect wallet changes
-    if (window.ethereum) {
-        window.ethereum.on('accountsChanged', (accounts) => {
-            console.log("Accounts changed:", accounts);
-        });
-    }
+    walletConnectProvider.on("accountsChanged", (accounts) => {
+        console.log("WalletConnect accounts changed:", accounts);
+        if (accounts.length > 0) {
+            walletAddress = accounts[0];
+            walletAddressSpan.textContent = walletAddress.slice(0, 6) + "..." + walletAddress.slice(-4);
+        }
+    });
 
-    // Continuous wallet check
-    setInterval(() => {
-        console.log("Periodic wallet check:");
-        console.log("window.ethereum:", window.ethereum);
-    }, 2000);
+    walletConnectProvider.on("chainChanged", (chainId) => {
+        console.log("WalletConnect chain changed:", chainId);
+    });
+
+    walletConnectProvider.on("disconnect", (code, reason) => {
+        console.log("WalletConnect disconnected:", code, reason);
+        walletAddressSpan.textContent = "";
+        walletInfo.style.display = "none";
+        connectBtn.style.display = "block";
+    });
 });
