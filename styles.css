@@ -8,9 +8,10 @@
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
 }
 
-/* Phase window as a responsive container */
+/* Phase window with strict containment */
 .phase-window {
     max-width: 90%;
+    width: 100%; /* Ensure it takes full available width */
     height: 150px;
     overflow: hidden;
     margin: 20px auto;
@@ -21,11 +22,12 @@
     position: relative;
 }
 
-/* Slider with dynamic width */
+/* Slider with controlled width */
 .phase-slider {
     display: flex;
+    width: 100%; /* Fit within phase-window */
     height: 100%;
-    animation: slide 26s linear infinite; /* Adjusted timing for 13 boxes */
+    animation: slide 26s linear infinite;
 }
 
 /* Responsive phase boxes */
@@ -36,29 +38,37 @@
     padding: 10px;
     text-align: center;
     color: #fff;
-    flex: 0 0 33.33%; /* Default: 3 boxes visible */
+    flex: 0 0 33.33%; /* 3 boxes visible by default */
     min-width: 120px;
-    max-width: 200px; /* Cap width to prevent stretching */
+    max-width: 180px;
     box-sizing: border-box;
 }
 
-/* Animation for sliding */
+/* Animation */
 @keyframes slide {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); } /* Slides full width of content */
+    100% { transform: translateX(calc(-33.33% * 10)); } /* Slide 10 boxes to show all 13 */
 }
 
-/* Desktop: Show more boxes */
+/* Desktop adjustments */
 @media (min-width: 600px) {
     .phase-box {
         flex: 0 0 20%; /* 5 boxes visible */
     }
+    @keyframes slide {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-20% * 8)); } /* Slide 8 boxes to show all 13 */
+    }
 }
 
-/* Very small screens: Fewer boxes */
+/* Small screens */
 @media (max-width: 400px) {
     .phase-box {
         flex: 0 0 50%; /* 2 boxes visible */
         min-width: 100px;
+    }
+    @keyframes slide {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-50% * 11)); } /* Slide 11 boxes to show all 13 */
     }
 }
