@@ -33,9 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initialize WalletConnect
     const walletConnectProvider = new WalletConnectProvider({
-        infuraId: "YOUR_INFURA_ID", // Optional: Replace with your Infura ID for better reliability (get from infura.io)
         rpc: {
-            1: "https://mainnet.infura.io/v3/YOUR_INFURA_ID" // Ethereum mainnet (optional, replace with your Infura ID)
+            1: "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161" // Free Infura ID for Ethereum mainnet
         },
         chainId: 1 // Ethereum mainnet
     });
@@ -43,16 +42,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to connect wallet via WalletConnect
     async function connectWallet() {
         console.log("Attempting WalletConnect for ETH...");
+        console.log("WalletConnectProvider instance:", walletConnectProvider);
+
         try {
-            await walletConnectProvider.enable(); // This triggers the QR code popup
+            // Check if already connected
+            if (!walletConnectProvider.connected) {
+                await walletConnectProvider.enable(); // Triggers QR code popup
+            }
             walletProvider = new ethers.providers.Web3Provider(walletConnectProvider);
             signer = walletProvider.getSigner();
             walletAddress = await signer.getAddress();
             console.log("Connected ETH wallet via WalletConnect:", walletAddress);
             return true;
         } catch (error) {
-            console.error("WalletConnect error:", error);
-            alert("Failed to connect wallet: " + error.message + "\nScan the QR code with Trust Wallet or MetaMask and try again.");
+            console.error("WalletConnect connection error:", error);
+            alert("Failed to connect wallet: " + error.message + "\n1. Ensure Trust Wallet or MetaMask is installed.\n2. Scan the QR code.\n3. Try again.");
             return false;
         }
     }
@@ -205,11 +209,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Log wallet availability on load
     window.addEventListener('load', () => {
-        console.log("Page fully loaded - Checking wallets:");
-        console.log("window.ethereum:", window.ethereum);
+        console.log("Page fully loaded - Checking WalletConnect:");
+        console.log("WalletConnectProvider:", walletConnectProvider);
     });
 
-    // Detect wallet changes
+    // WalletConnect event listeners
     walletConnectProvider.on("accountsChanged", (accounts) => {
         console.log("WalletConnect accounts changed:", accounts);
         if (accounts.length > 0) {
@@ -220,6 +224,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     walletConnectProvider.on("chainChanged", (chainId) => {
         console.log("WalletConnect chain changed:", chainId);
+        if (chainId !== 1) {
+            alert("Please switch to Ethereum mainnet in your wallet!");
+        }
     });
 
     walletConnectProvider.on("disconnect", (code, reason) => {
@@ -228,4 +235,11 @@ document.addEventListener("DOMContentLoaded", () => {
         walletInfo.style.display = "none";
         connectBtn.style.display = "block";
     });
+
+    // Periodic check for WalletConnect
+    setInterval(() => {
+        console.log("Periodic WalletConnect check:");
+        console.log("Connected:", walletConnectProvider.connected);
+        console.log("Accounts:", walletConnectProvider.accounts);
+    }, 2000);
 });
