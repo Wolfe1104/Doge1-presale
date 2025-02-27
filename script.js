@@ -81,27 +81,36 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 50);
     });
 
-    // Tokenomics Pie Chart
-    const ctx = document.getElementById('tokenPieChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Presale (40%)', 'Burned (10%)', 'Liquidity (30%)', 'Team & Dev (20%)'],
-            datasets: [{
-                data: [200, 50, 150, 100], // In millions
-                backgroundColor: ['#00ffcc', '#ff3366', '#33ccff', '#ffcc33'],
-                borderColor: '#000',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: { color: '#fff', font: { size: 14 } }
+    // Tokenomics Pie Chart with Marketing and Development
+    const chartCanvas = document.getElementById('tokenPieChart');
+    if (chartCanvas) {
+        const ctx = chartCanvas.getContext('2d');
+        if (ctx) {
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Presale (40%)', 'Burned (10%)', 'Liquidity (24%)', 'Team (10%)', 'Development (10%)', 'Marketing (6%)'],
+                    datasets: [{
+                        data: [200, 50, 120, 50, 50, 30], // In millions
+                        backgroundColor: ['#00ffcc', '#ff3366', '#33ccff', '#ffcc33', '#9966ff', '#ff6699'],
+                        borderColor: '#000',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: '#fff', font: { size: 14 } }
+                        }
+                    }
                 }
-            }
+            });
+        } else {
+            console.error("Failed to get 2D context for pie chart canvas.");
         }
-    });
+    } else {
+        console.error("Pie chart canvas element not found.");
+    }
 });
