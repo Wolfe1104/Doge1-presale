@@ -40,42 +40,42 @@ document.addEventListener("DOMContentLoaded", () => {
     const doge1Price = 0.00050; // Starting presale price
     let provider, signer, walletAddress;
 
-    // Helper function to detect wallet availability with delay
-    const detectWallet = async (crypto) => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                if (crypto === "ETH" || crypto === "USDT") {
-                    resolve(typeof window.ethereum !== "undefined" ? window.ethereum : null);
-                } else if (crypto === "SOL") {
-                    resolve(window.solana ? window.solana : null);
-                } else {
-                    resolve(null); // BTC/DOGE don’t need wallet detection
-                }
-            }, 500); // 500ms delay to ensure wallet injection
-        });
-    };
-
     // Wallet connection logic for .buy-section
     connectBtn.addEventListener("click", async () => {
         const crypto = cryptoSelect.value;
+        console.log(`Connecting wallet for ${crypto}...`);
         if (crypto === "ETH" || crypto === "USDT") {
-            const wallet = await detectWallet(crypto);
-            console.log("ETH/USDT Wallet Detection:", wallet);
-            if (wallet) {
-                provider = new ethers.providers.Web3Provider(wallet);
-                await provider.send("eth_requestAccounts", []);
-                signer = provider.getSigner();
-                walletAddress = await signer.getAddress();
+            console.log("Checking window.ethereum:", window.ethereum);
+            if (window.ethereum) {
+                provider = new ethers.providers.Web3Provider(window.ethereum);
+                try {
+                    const accounts = await provider.send("eth_requestAccounts", []);
+                    console.log("ETH/USDT accounts:", accounts);
+                    signer = provider.getSigner();
+                    walletAddress = await signer.getAddress();
+                    console.log("Connected ETH/USDT wallet:", walletAddress);
+                } catch (error) {
+                    console.error("ETH/USDT connection error:", error);
+                    alert("Failed to connect wallet. Ensure MetaMask is unlocked and try again.");
+                    return;
+                }
             } else {
                 alert("Please install MetaMask or Trust Wallet to connect for ETH/USDT!");
                 return;
             }
         } else if (crypto === "SOL") {
-            const wallet = await detectWallet(crypto);
-            console.log("SOL Wallet Detection:", wallet);
-            if (wallet) {
-                await wallet.connect();
-                walletAddress = wallet.publicKey.toString();
+            console.log("Checking window.solana:", window.solana);
+            if (window.solana) {
+                try {
+                    const response = await window.solana.connect();
+                    console.log("SOL connect response:", response);
+                    walletAddress = window.solana.publicKey.toString();
+                    console.log("Connected SOL wallet:", walletAddress);
+                } catch (error) {
+                    console.error("SOL connection error:", error);
+                    alert("Failed to connect wallet. Ensure Phantom is unlocked and try again.");
+                    return;
+                }
             } else {
                 alert("Please install a Solana wallet (e.g., Phantom) to connect for SOL!");
                 return;
@@ -227,7 +227,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const doge1Amount = usd / doge1Price;
 
         if (crypto === "BTC" || crypto === "DOGE") {
-            // Manual payment for BTC and DOGE
             alert(`Manual payment: Send ${cryptoValue.toFixed(6)} ${crypto} to ${wallets[crypto]}\nDM TX hash on X @YourXHandle to confirm your purchase of ${doge1Amount.toFixed(2)} $DOGE1!`);
             purchaseConfirmModal.style.display = 'none';
             buyModal.style.display = 'none';
@@ -236,24 +235,45 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Wallet connection for ETH, SOL, USDT
-        const wallet = await detectWallet(crypto);
-        console.log(`Wallet Detection for ${crypto}:`, wallet ? "Detected" : "Not Detected");
+        console.log(`Attempting wallet connect for ${crypto}...`);
+        console.log("window.ethereum:", window.ethereum);
+        console.log("window.solana:", window.solana);
 
         if (crypto === "ETH" || crypto === "USDT") {
-            if (wallet) {
-                provider = new ethers.providers.Web3Provider(wallet);
-                await provider.send("eth_requestAccounts", []);
-                signer = provider.getSigner();
-                walletAddress = await signer.getAddress();
+            if (window.ethereum) {
+                provider = new ethers.providers.Web3Provider(window.ethereum);
+                try {
+                    const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+                    console.log("ETH/USDT accounts:", accounts);
+                    if (accounts.length > 0) {
+                        signer = provider.getSigner();
+                        walletAddress = await signer.getAddress();
+                        console.log("Connected ETH/USDT wallet:", walletAddress);
+                    } else {
+                        alert("No accounts found. Please unlock MetaMask and try again.");
+                        return;
+                    }
+                } catch (error) {
+                    console.error("ETH/USDT connection error:", error);
+                    alert("Failed to connect wallet. Ensure MetaMask is unlocked and try again.");
+                    return;
+                }
             } else {
                 alert("Please install MetaMask or Trust Wallet to proceed with ETH or USDT!");
                 return;
             }
         } else if (crypto === "SOL") {
-            if (wallet) {
-                await wallet.connect();
-                walletAddress = wallet.publicKey.toString();
+            if (window.solana) {
+                try {
+                    const response = await window.solana.connect();
+                    console.log("SOL connect response:", response);
+                    walletAddress = window.solana.publicKey.toString();
+                    console.log("Connected SOL wallet:", walletAddress);
+                } catch (error) {
+                    console.error("SOL connection error:", error);
+                    alert("Failed to connect wallet. Ensure Phantom is unlocked and try again.");
+                    return;
+                }
             } else {
                 alert("Please install a Solana wallet (e.g., Phantom) to proceed with SOL!");
                 return;
