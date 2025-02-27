@@ -1,11 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     // DOM Elements
-    const connectBtn = document.getElementById("connectBtn");
-    const buyBtn = document.getElementById("buyBtn");
-    const walletInfo = document.getElementById("walletInfo");
-    const walletAddressSpan = document.getElementById("walletAddress");
-    const cryptoSelect = document.getElementById("cryptoSelect");
-    const amountInput = document.getElementById("amountInput");
     const buyNowBtn = document.getElementById("buyNowBtn");
     const buyModal = document.getElementById("buyModal");
     const usdInput = document.getElementById("usdInput");
@@ -36,16 +30,31 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize WalletConnect
     const walletConnectProvider = new WalletConnectProvider({
         rpc: {
-            1: "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161" // Free Infura ID for Ethereum mainnet
+            1: "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161" // Free Infura ID
         },
         chainId: 1 // Ethereum mainnet
     });
 
+    // Log DOM elements
+    console.log("DOM Loaded - Checking elements:");
+    console.log("buyNowBtn:", buyNowBtn);
+    console.log("buyModal:", buyModal);
+    console.log("usdInput:", usdInput);
+    console.log("cryptoDropdown:", cryptoDropdown);
+    console.log("cryptoAmount:", cryptoAmount);
+    console.log("purchaseBtn:", purchaseBtn);
+    console.log("cancelBtn:", cancelBtn);
+    console.log("cancelConfirmModal:", cancelConfirmModal);
+    console.log("cancelYesBtn:", cancelYesBtn);
+    console.log("cancelNoBtn:", cancelNoBtn);
+    console.log("purchaseConfirmModal:", purchaseConfirmModal);
+    console.log("purchaseDetails:", purchaseDetails);
+    console.log("connectWalletBtn:", connectWalletBtn);
+    console.log("purchaseCancelBtn:", purchaseCancelBtn);
+
     // Function to connect wallet via WalletConnect
     async function connectWallet() {
         console.log("Attempting WalletConnect for ETH...");
-        console.log("WalletConnectProvider instance:", walletConnectProvider);
-        
         try {
             if (!walletConnectProvider.connected) {
                 console.log("Triggering WalletConnect enable...");
@@ -54,117 +63,27 @@ document.addEventListener("DOMContentLoaded", () => {
             walletProvider = new ethers.providers.Web3Provider(walletConnectProvider);
             signer = walletProvider.getSigner();
             walletAddress = await signer.getAddress();
-            console.log("Connected ETH wallet via WalletConnect:", walletAddress);
+            console.log("Connected ETH wallet:", walletAddress);
             return true;
         } catch (error) {
-            console.error("WalletConnect connection error:", error);
-            alert("Failed to connect wallet: " + error.message + "\n1. Ensure Trust Wallet or MetaMask is installed.\n2. Scan the QR code with your wallet app.\n3. Try again.");
+            console.error("WalletConnect error:", error);
+            alert("Failed to connect: " + error.message + "\nScan QR with Trust Wallet or MetaMask.");
             return false;
         }
-    }
-
-    // Verify DOM elements exist
-    console.log("Checking DOM elements:");
-    console.log("buyNowBtn:", buyNowBtn);
-    console.log("buyModal:", buyModal);
-    console.log("purchaseBtn:", purchaseBtn);
-    console.log("connectWalletBtn:", connectWalletBtn);
-
-    // Wallet connection for .buy-section
-    if (connectBtn) {
-        connectBtn.addEventListener("click", async () => {
-            console.log("Connect button clicked");
-            if (await connectWallet()) {
-                walletAddressSpan.textContent = walletAddress.slice(0, 6) + "..." + walletAddress.slice(-4);
-                walletInfo.style.display = "block";
-                connectBtn.style.display = "none";
-            }
-        });
-    } else {
-        console.error("connectBtn not found in DOM");
-    }
-
-    // Buy button in .buy-section
-    if (buyBtn) {
-        buyBtn.addEventListener("click", async () => {
-            console.log("Buy button clicked");
-            const amount = parseFloat(amountInput.value);
-            if (!amount || amount <= 0) { alert("Enter a valid amount!"); return; }
-
-            if (await connectWallet()) {
-                const tx = { to: wallets.ETH, value: ethers.utils.parseEther(amount.toString()) };
-                const txResponse = await signer.sendTransaction(tx);
-                const txHash = txResponse.hash;
-                alert(`Success! TX: ${txHash}\nDM TX hash + Polygon address on X @YourXHandle!`);
-            }
-        });
-    } else {
-        console.error("buyBtn not found in DOM");
-    }
-
-    // Slider Reset
-    const phaseSlider = document.querySelector('.phase-slider');
-    if (phaseSlider) {
-        phaseSlider.addEventListener('animationiteration', () => {
-            phaseSlider.style.transition = 'none';
-            phaseSlider.style.transform = 'translateX(0)';
-            setTimeout(() => {
-                phaseSlider.style.transition = 'transform 0s linear';
-            }, 50);
-        });
-    }
-
-    // Pie Chart
-    const chartCanvas = document.getElementById('tokenPieChart');
-    if (chartCanvas) {
-        const ctx = chartCanvas.getContext('2d');
-        if (ctx) {
-            new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: ['Presale (40%)', 'Burned (20%)', 'Liquidity (20%)', 'Team (10%)', 'Development (10%)', 'Marketing (10%)'],
-                    datasets: [{
-                        data: [200, 100, 100, 50, 50, 50],
-                        backgroundColor: ['#00ffcc', '#ff3366', '#33ccff', '#ffcc33', '#9966ff', '#ff6699'],
-                        borderColor: '#000',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: { color: '#fff', font: { size: 12 }, boxWidth: 20, padding: 10 }
-                        }
-                    }
-                }
-            });
-        }
-    }
-
-    // Hamburger Menu Toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const popupMenu = document.getElementById('popupMenu');
-    if (menuToggle && popupMenu) {
-        menuToggle.addEventListener('click', () => {
-            console.log("Hamburger menu clicked");
-            popupMenu.classList.toggle('active');
-        });
     }
 
     // Buy Now Button
     if (buyNowBtn) {
         buyNowBtn.addEventListener('click', () => {
-            console.log("Buy Now button clicked");
+            console.log("Buy Now clicked");
             if (buyModal) {
                 buyModal.style.display = 'block';
             } else {
-                console.error("buyModal not found in DOM");
+                console.error("buyModal not found");
             }
         });
     } else {
-        console.error("buyNowBtn not found in DOM");
+        console.error("buyNowBtn not found");
     }
 
     // USD Input
@@ -186,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Cancel Button
     if (cancelBtn) {
         cancelBtn.addEventListener('click', () => {
-            console.log("Cancel button clicked");
+            console.log("Cancel clicked");
             if (cancelConfirmModal) {
                 cancelConfirmModal.style.display = 'block';
             }
@@ -213,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Purchase Button
     if (purchaseBtn) {
         purchaseBtn.addEventListener('click', () => {
-            console.log("Purchase button clicked");
+            console.log("Purchase clicked");
             const usd = parseFloat(usdInput.value) || 0;
             if (usd <= 0) {
                 alert("Please enter a valid USD amount!");
@@ -237,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Connect Wallet Button in Modal
     if (connectWalletBtn) {
         connectWalletBtn.addEventListener('click', async () => {
-            console.log("Connect Wallet button clicked in modal");
+            console.log("Connect Wallet clicked");
             const usd = parseFloat(usdInput.value) || 0;
             const cryptoValue = usd / cryptoRates.ETH;
             const doge1Amount = usd / doge1Price;
@@ -247,7 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const txResponse = await signer.sendTransaction(tx);
                 const txHash = txResponse.hash;
 
-                // Save profile locally
                 const profile = {
                     wallet: walletAddress,
                     doge1Amount: doge1Amount,
@@ -262,48 +180,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 usdInput.value = '';
                 cryptoAmount.textContent = 'Crypto Amount: 0';
             } else {
-                alert(`Manual payment fallback: Send ${cryptoValue.toFixed(6)} ETH to ${wallets.ETH}\nDM TX hash on X @YourXHandle to confirm your purchase of ${doge1Amount.toFixed(2)} $DOGE1!`);
-                purchaseConfirmModal.style.display = 'none';
-                buyModal.style.display = 'none';
-                usdInput.value = '';
-                cryptoAmount.textContent = 'Crypto Amount: 0';
+                alert(`Manual payment: Send ${cryptoValue.toFixed(6)} ETH to ${wallets.ETH}\nDM TX hash on X @YourXHandle to confirm your purchase of ${doge1Amount.toFixed(2)} $DOGE1!`);
             }
         });
     }
-
-    // Log on load
-    window.addEventListener('load', () => {
-        console.log("Page fully loaded - Checking WalletConnect:");
-        console.log("WalletConnectProvider:", walletConnectProvider);
-    });
-
-    // WalletConnect event listeners
-    walletConnectProvider.on("accountsChanged", (accounts) => {
-        console.log("WalletConnect accounts changed:", accounts);
-        if (accounts.length > 0) {
-            walletAddress = accounts[0];
-            walletAddressSpan.textContent = walletAddress.slice(0, 6) + "..." + walletAddress.slice(-4);
-        }
-    });
-
-    walletConnectProvider.on("chainChanged", (chainId) => {
-        console.log("WalletConnect chain changed:", chainId);
-        if (chainId !== 1) {
-            alert("Please switch to Ethereum mainnet in your wallet!");
-        }
-    });
-
-    walletConnectProvider.on("disconnect", (code, reason) => {
-        console.log("WalletConnect disconnected:", code, reason);
-        walletAddressSpan.textContent = "";
-        walletInfo.style.display = "none";
-        connectBtn.style.display = "block";
-    });
-
-    // Periodic check
-    setInterval(() => {
-        console.log("Periodic WalletConnect check:");
-        console.log("Connected:", walletConnectProvider.connected);
-        console.log("Accounts:", walletConnectProvider.accounts);
-    }, 2000);
 });
