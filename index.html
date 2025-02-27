@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$DOGE1 Presale - doge1.me</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.ethers.io/lib/ethers-5.7.umd.min.js"></script>
-    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
 </head>
 <body>
     <header>
@@ -170,4 +168,56 @@
                 </ul>
             </div>
             <div class="roadmap" id="roadmap">
-                <h3>Roadmap - The Jedi Path t
+                <h3>Roadmap - The Jedi Path to 100x</h3>
+                <ul>
+                    <li><strong>Q1 2025:</strong> Presale Launch - 13 phases, $390K raised, price to $0.005. Hype begins.</li>
+                    <li><strong>Q2 2025:</strong> Polygon Launch - 100M burned, DEX listings, price to $0.010.</li>
+                    <li><strong>Q3 2025:</strong> Burn & NFT Hype - 50M burned, Shiba Jedi NFTs drop, price to $0.015.</li>
+                    <li><strong>Q4 2025:</strong> Staking & CEX Tease - Staking live, CEX rumors, price to $0.030.</li>
+                    <li><strong>Q1 2026:</strong> Galactic Boom - 25M burned, major CEX listing, price hits $0.050 (100x).</li>
+                </ul>
+            </div>
+        </section>
+        <!-- Buy Modal -->
+        <div class="modal" id="buyModal">
+            <div class="modal-content">
+                <h2>Buy $DOGE1</h2>
+                <input type="number" id="usdInput" placeholder="Amount in USD" step="1" min="1">
+                <select id="cryptoDropdown">
+                    <option value="ETH">Ethereum (ETH)</option>
+                    <option value="SOL">Solana (SOL)</option>
+                    <option value="BTC">Bitcoin (BTC)</option>
+                    <option value="USDT">USDT (Polygon)</option>
+                    <option value="DOGE">Dogecoin (DOGE)</option>
+                </select>
+                <p id="cryptoAmount">Crypto Amount: 0</p>
+                <button id="purchaseBtn">Purchase</button>
+                <button id="cancelBtn">Cancel</button>
+            </div>
+        </div>
+        <!-- Cancel Confirmation Modal -->
+        <div class="modal" id="cancelConfirmModal">
+            <div class="modal-content">
+                <h2>Cancel Transaction</h2>
+                <p>Do you want to cancel this transaction?</p>
+                <button id="cancelYesBtn">Yes</button>
+                <button id="cancelNoBtn">No</button>
+            </div>
+        </div>
+        <!-- Purchase Confirmation Modal -->
+        <div class="modal" id="purchaseConfirmModal">
+            <div class="modal-content">
+                <h2>Confirm Purchase</h2>
+                <p id="purchaseDetails">You are about to purchase X $DOGE1 for X [crypto].</p>
+                <button id="connectWalletBtn">Connect Wallet to Continue</button>
+                <button id="purchaseCancelBtn">Cancel</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>$DOGE1 - Live Soon on Polygon | doge1.me | <a href="https://wolfe1104.github.io/Doge1-presale/white%20paper.pdf" target="_blank" class="footer-link">White Paper</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
