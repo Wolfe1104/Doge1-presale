@@ -23,7 +23,7 @@ header {
     margin: 0 auto;
 }
 .shiba-logo {
-    width: 70px; /* Increased from 50px */
+    width: 70px;
     height: auto;
     margin: 0 15px 0 0;
     filter: drop-shadow(0 0 10px #00ffcc);
@@ -69,15 +69,16 @@ main {
     margin: 10px 0;
     font-size: 16px;
 }
+.phase-slider-container {
+    width: 100%;
+    max-width: 600px; /* Matches .presale */
+    margin: 20px auto;
+    overflow: hidden; /* Hides off-screen boxes */
+}
 .phase-slider {
     display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 15px;
-    padding: 20px 0;
-    justify-content: flex-start;
-    scrollbar-width: thin;
-    scrollbar-color: #00ffcc #1f1f1f;
+    transition: transform 0.5s ease; /* Smooth sliding */
+    width: calc(220px * 13); /* 13 boxes, 220px each (200px + 10px padding) */
 }
 .phase-box {
     background: #1f1f1f;
@@ -86,9 +87,8 @@ main {
     padding: 10px;
     text-align: center;
     color: #fff;
-    width: 200px; /* Smaller width for slider */
+    width: 200px;
     flex-shrink: 0;
-    scroll-snap-align: center;
     box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
 }
 .phase-box p {
