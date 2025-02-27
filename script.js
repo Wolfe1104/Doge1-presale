@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 50);
     });
 
-    // Tokenomics Pie Chart with Development and Marketing
+    // Tokenomics Pie Chart
     const chartCanvas = document.getElementById('tokenPieChart');
     if (!chartCanvas) {
         console.error("Pie chart canvas not found!");
@@ -98,14 +98,14 @@ document.addEventListener("DOMContentLoaded", () => {
         data: {
             labels: [
                 'Presale (40%)',
-                'Burned (10%)',
-                'Liquidity (24%)',
+                'Burned (20%)',
+                'Liquidity (20%)',
                 'Team (10%)',
                 'Development (10%)',
-                'Marketing (6%)'
+                'Marketing (10%)'
             ],
             datasets: [{
-                data: [200, 50, 120, 50, 50, 30], // Matches tokenomics list
+                data: [200, 100, 100, 50, 50, 50],
                 backgroundColor: ['#00ffcc', '#ff3366', '#33ccff', '#ffcc33', '#9966ff', '#ff6699'],
                 borderColor: '#000',
                 borderWidth: 1
@@ -115,21 +115,12 @@ document.addEventListener("DOMContentLoaded", () => {
             responsive: true,
             plugins: {
                 legend: {
-                    position: 'right', // Move to right for better visibility
+                    position: 'right',
                     labels: {
                         color: '#fff',
-                        font: { size: 12 }, // Smaller font to fit
-                        boxWidth: 20, // Smaller color boxes
-                        padding: 10, // Space between items
-                        generateLabels: (chart) => {
-                            const data = chart.data;
-                            return data.labels.map((label, i) => ({
-                                text: label,
-                                fillStyle: data.datasets[0].backgroundColor[i],
-                                hidden: !chart.getDataVisibility(i),
-                                index: i
-                            }));
-                        }
+                        font: { size: 12 },
+                        boxWidth: 20,
+                        padding: 10
                     }
                 }
             }
