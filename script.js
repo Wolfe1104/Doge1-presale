@@ -5,6 +5,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const walletAddressSpan = document.getElementById("walletAddress");
     const cryptoSelect = document.getElementById("cryptoSelect");
     const amountInput = document.getElementById("amountInput");
+    const buyNowBtn = document.getElementById("buyNowBtn");
+    const buyModal = document.getElementById("buyModal");
+    const usdInput = document.getElementById("usdInput");
+    const cryptoDropdown = document.getElementById("cryptoDropdown");
+    const cryptoAmount = document.getElementById("cryptoAmount");
+    const purchaseBtn = document.getElementById("purchaseBtn");
+    const cancelBtn = document.getElementById("cancelBtn");
+    const cancelConfirmModal = document.getElementById("cancelConfirmModal");
+    const cancelYesBtn = document.getElementById("cancelYesBtn");
+    const cancelNoBtn = document.getElementById("cancelNoBtn");
+    const purchaseConfirmModal = document.getElementById("purchaseConfirmModal");
+    const purchaseDetails = document.getElementById("purchaseDetails");
+    const connectWalletBtn = document.getElementById("connectWalletBtn");
+    const purchaseCancelBtn = document.getElementById("purchaseCancelBtn");
 
     const wallets = {
         ETH: "0xYourEthereumWalletHere",
@@ -14,8 +28,19 @@ document.addEventListener("DOMContentLoaded", () => {
         DOGE: "YourDogecoinWalletHere"
     };
 
+    // Crypto to USD rates (approximate, Feb 27, 2025)
+    const cryptoRates = {
+        ETH: 3000,  // $3,000 per ETH
+        SOL: 100,   // $100 per SOL
+        BTC: 60000, // $60,000 per BTC
+        USDT: 1,    // $1 per USDT
+        DOGE: 0.15  // $0.15 per DOGE
+    };
+
+    const doge1Price = 0.00050; // Starting presale price
     let provider, signer, walletAddress;
 
+    // Existing wallet connection logic
     connectBtn.addEventListener("click", async () => {
         const crypto = cryptoSelect.value;
         if (crypto === "ETH" || crypto === "USDT") {
@@ -71,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alert(`Success! TX: ${txHash}\nDM TX hash + Polygon address on X @YourXHandle!`);
     });
 
-    // Slider Reset for Seamless Loop
+    // Slider Reset
     const phaseSlider = document.querySelector('.phase-slider');
     phaseSlider.addEventListener('animationiteration', () => {
         phaseSlider.style.transition = 'none';
@@ -81,26 +106,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 50);
     });
 
-    // Tokenomics Pie Chart
+    // Pie Chart
     const chartCanvas = document.getElementById('tokenPieChart');
-    if (!chartCanvas) {
-        console.error("Pie chart canvas not found!");
-    } else {
+    if (chartCanvas) {
         const ctx = chartCanvas.getContext('2d');
-        if (!ctx) {
-            console.error("Failed to get 2D context for pie chart!");
-        } else {
-            const chart = new Chart(ctx, {
+        if (ctx) {
+            new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: [
-                        'Presale (40%)',
-                        'Burned (20%)',
-                        'Liquidity (20%)',
-                        'Team (10%)',
-                        'Development (10%)',
-                        'Marketing (10%)'
-                    ],
+                    labels: ['Presale (40%)', 'Burned (20%)', 'Liquidity (20%)', 'Team (10%)', 'Development (10%)', 'Marketing (10%)'],
                     datasets: [{
                         data: [200, 100, 100, 50, 50, 50],
                         backgroundColor: ['#00ffcc', '#ff3366', '#33ccff', '#ffcc33', '#9966ff', '#ff6699'],
@@ -113,12 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     plugins: {
                         legend: {
                             position: 'right',
-                            labels: {
-                                color: '#fff',
-                                font: { size: 12 },
-                                boxWidth: 20,
-                                padding: 10
-                            }
+                            labels: { color: '#fff', font: { size: 12 }, boxWidth: 20, padding: 10 }
                         }
                     }
                 }
@@ -131,5 +140,116 @@ document.addEventListener("DOMContentLoaded", () => {
     const popupMenu = document.getElementById('popupMenu');
     menuToggle.addEventListener('click', () => {
         popupMenu.classList.toggle('active');
+    });
+
+    // Buy Now Modal Logic
+    buyNowBtn.addEventListener('click', () => {
+        buyModal.style.display = 'block';
+    });
+
+    usdInput.addEventListener('input', () => {
+        const usd = parseFloat(usdInput.value) || 0;
+        const crypto = cryptoDropdown.value;
+        const cryptoValue = usd / cryptoRates[crypto];
+        cryptoAmount.textContent = `Crypto Amount: ${cryptoValue.toFixed(6)} ${crypto}`;
+    });
+
+    cryptoDropdown.addEventListener('change', () => {
+        const usd = parseFloat(usdInput.value) || 0;
+        const crypto = cryptoDropdown.value;
+        const cryptoValue = usd / cryptoRates[crypto];
+        cryptoAmount.textContent = `Crypto Amount: ${cryptoValue.toFixed(6)} ${crypto}`;
+    });
+
+    cancelBtn.addEventListener('click', () => {
+        cancelConfirmModal.style.display = 'block';
+    });
+
+    cancelYesBtn.addEventListener('click', () => {
+        cancelConfirmModal.style.display = 'none';
+        buyModal.style.display = 'none';
+        usdInput.value = '';
+        cryptoAmount.textContent = 'Crypto Amount: 0';
+    });
+
+    cancelNoBtn.addEventListener('click', () => {
+        cancelConfirmModal.style.display = 'none';
+    });
+
+    purchaseBtn.addEventListener('click', () => {
+        const usd = parseFloat(usdInput.value) || 0;
+        const crypto = cryptoDropdown.value;
+        const cryptoValue = usd / cryptoRates[crypto];
+        const doge1Amount = usd / doge1Price;
+        purchaseDetails.textContent = `You are about to purchase ${doge1Amount.toFixed(2)} $DOGE1 for ${cryptoValue.toFixed(6)} ${crypto}.`;
+        purchaseConfirmModal.style.display = 'block';
+    });
+
+    purchaseCancelBtn.addEventListener('click', () => {
+        purchaseConfirmModal.style.display = 'none';
+    });
+
+    connectWalletBtn.addEventListener('click', async () => {
+        const crypto = cryptoDropdown.value;
+        if (crypto === "ETH" || crypto === "USDT") {
+            if (typeof window.ethereum !== "undefined") {
+                provider = new ethers.providers.Web3Provider(window.ethereum);
+                await provider.send("eth_requestAccounts", []);
+                signer = provider.getSigner();
+                walletAddress = await signer.getAddress();
+            } else {
+                alert("Install MetaMask or Trust Wallet!");
+                return;
+            }
+        } else if (crypto === "SOL" && window.solana) {
+            await window.solana.connect();
+            walletAddress = window.solana.publicKey.toString();
+        } else {
+            walletAddress = "Manual_" + crypto;
+        }
+
+        const usd = parseFloat(usdInput.value) || 0;
+        const cryptoValue = usd / cryptoRates[crypto];
+        const doge1Amount = usd / doge1Price;
+
+        let txHash;
+        if (crypto === "ETH") {
+            const tx = { to: wallets.ETH, value: ethers.utils.parseEther(cryptoValue.toString()) };
+            const txResponse = await signer.sendTransaction(tx);
+            txHash = txResponse.hash;
+        } else if (crypto === "USDT") {
+            const usdtContract = new ethers.Contract("0xc2132D05D31c914a87C6611C10748AEb04B58e8F", ["function transfer(address to, uint256 value)"], signer);
+            const txResponse = await usdtContract.transfer(wallets.USDT, ethers.utils.parseUnits(cryptoValue.toString(), 6));
+            txHash = txResponse.hash;
+        } else if (crypto === "SOL") {
+            const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl("mainnet-beta"));
+            const transaction = new solanaWeb3.Transaction().add(
+                solanaWeb3.SystemProgram.transfer({
+                    fromPubkey: window.solana.publicKey,
+                    toPubkey: new solanaWeb3.PublicKey(wallets.SOL),
+                    lamports: Math.floor(cryptoValue * solanaWeb3.LAMPORTS_PER_SOL),
+                })
+            );
+            const signature = await window.solana.signAndSendTransaction(transaction);
+            txHash = signature;
+        } else {
+            alert(`Send ${cryptoValue} ${crypto} to: ${wallets[crypto]}\nDM TX hash on X @YourXHandle!`);
+            return;
+        }
+
+        // Save profile locally (simplified, using localStorage)
+        const profile = {
+            wallet: walletAddress,
+            doge1Amount: doge1Amount,
+            usdValue: usd,
+            timestamp: new Date().toISOString()
+        };
+        localStorage.setItem(`doge1_profile_${walletAddress}`, JSON.stringify(profile));
+
+        alert(`Purchase successful! TX: ${txHash}\nYou now own ${doge1Amount.toFixed(2)} $DOGE1 worth $${usd}.\nDM TX hash + Polygon address on X @YourXHandle!`);
+        purchaseConfirmModal.style.display = 'none';
+        buyModal.style.display = 'none';
+        usdInput.value = '';
+        cryptoAmount.textContent = 'Crypto Amount: 0';
     });
 });
