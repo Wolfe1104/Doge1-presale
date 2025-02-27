@@ -86,12 +86,12 @@ main {
     animation: slide 32s linear infinite;
 }
 .phase-box {
-    background: linear-gradient(135deg, #0a0a23 0%, #1a1a3b 70%, #00ffcc 100%); /* Bolder gradient with cyan */
-    border: 1px solid #00ffcc;
+    background: #00ffcc !important; /* Bright cyan to test visibility */
+    border: 1px solid #000; /* Black border for contrast */
     border-radius: 5px;
     padding: 10px;
     text-align: center;
-    color: #fff;
+    color: #000; /* Black text for readability */
     width: 180px;
     flex-shrink: 0;
     position: relative;
@@ -106,7 +106,7 @@ main {
     height: 100%;
     background: url('https://cdn.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616_1280.jpg') no-repeat center center;
     background-size: cover;
-    opacity: 0.3; /* Increased from 0.1 for visibility */
+    opacity: 0.5; /* Bumped up for visibility */
     z-index: 0;
 }
 .phase-box p {
@@ -161,4 +161,4 @@ footer {
     bottom: 0;
     width: 100%;
     border-top: 2px solid #00ffcc;
-    }
+}
