@@ -124,6 +124,18 @@ main {
     box-shadow: inset 0 0 5px rgba(0, 255, 204, 0.3);
 }
 
+.phase-box p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.phase-box .price {
+    color: #00ffcc;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(0, 255, 204, 0.7);
+    font-size: 16px;
+}
+
 @keyframes slide {
     0% { transform: translateX(0); }
     100% { transform: translateX(calc(-33.33% * 10)); }
@@ -171,7 +183,6 @@ main {
     width: 200px;
 }
 
-/* New Hype Section Styles */
 .hype {
     background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(0, 255, 204, 0.2));
     padding: 30px;
@@ -260,4 +271,4 @@ footer {
         0% { transform: translateX(0); }
         100% { transform: translateX(calc(-50% * 11)); }
     }
-    }
+}
