@@ -10,35 +10,39 @@ body {
 }
 header {
     background: #000;
-    padding: 30px;
+    padding: 20px; /* Reduced from 30px to tighten the header */
     border-bottom: 2px solid #00ffcc;
     box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+    position: relative; /* Helps with layout control */
 }
 .header-container {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    max-width: 1200px; /* Limits sprawl */
+    margin: 0 auto; /* Centers container */
 }
 .shiba-logo {
-    width: 80px; /* Adjusted from .logo’s 250px to fit header */
+    width: 50px; /* Smaller size for top-left corner */
     height: auto;
-    margin-right: 20px;
-    filter: drop-shadow(0 0 10px #00ffcc); /* Matches .logo */
+    margin: 0 15px 0 0; /* Tight margin: 0 top, 15px right, 0 bottom/left */
+    filter: drop-shadow(0 0 10px #00ffcc);
 }
 .header-text {
     text-align: left;
+    flex-grow: 1; /* Lets text take remaining space */
 }
 .header-text h1 {
     margin: 0;
-    font-size: 48px;
+    font-size: 36px; /* Slightly smaller than 48px to fit better */
     text-transform: uppercase;
-    color: #fff; /* Matches original h1 */
+    color: #fff;
 }
 .header-text p {
-    font-size: 18px;
-    color: #ccc; /* Matches header p */
-    margin: 5px 0;
-    text-align: center; /* Centers lines 2 and 3 under line 1 */
+    font-size: 16px; /* Slightly smaller than 18px for balance */
+    color: #ccc;
+    margin: 3px 0; /* Tighter spacing */
+    text-align: center;
 }
 .presale-goal {
     font-size: 18px;
