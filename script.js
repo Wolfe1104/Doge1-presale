@@ -85,45 +85,51 @@ document.addEventListener("DOMContentLoaded", () => {
     const chartCanvas = document.getElementById('tokenPieChart');
     if (!chartCanvas) {
         console.error("Pie chart canvas not found!");
-        return;
-    }
-    const ctx = chartCanvas.getContext('2d');
-    if (!ctx) {
-        console.error("Failed to get 2D context for pie chart!");
-        return;
-    }
-
-    const chart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: [
-                'Presale (40%)',
-                'Burned (20%)',
-                'Liquidity (20%)',
-                'Team (10%)',
-                'Development (10%)',
-                'Marketing (10%)'
-            ],
-            datasets: [{
-                data: [200, 100, 100, 50, 50, 50],
-                backgroundColor: ['#00ffcc', '#ff3366', '#33ccff', '#ffcc33', '#9966ff', '#ff6699'],
-                borderColor: '#000',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'right',
-                    labels: {
-                        color: '#fff',
-                        font: { size: 12 },
-                        boxWidth: 20,
-                        padding: 10
+    } else {
+        const ctx = chartCanvas.getContext('2d');
+        if (!ctx) {
+            console.error("Failed to get 2D context for pie chart!");
+        } else {
+            const chart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: [
+                        'Presale (40%)',
+                        'Burned (20%)',
+                        'Liquidity (20%)',
+                        'Team (10%)',
+                        'Development (10%)',
+                        'Marketing (10%)'
+                    ],
+                    datasets: [{
+                        data: [200, 100, 100, 50, 50, 50],
+                        backgroundColor: ['#00ffcc', '#ff3366', '#33ccff', '#ffcc33', '#9966ff', '#ff6699'],
+                        borderColor: '#000',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                color: '#fff',
+                                font: { size: 12 },
+                                boxWidth: 20,
+                                padding: 10
+                            }
+                        }
                     }
                 }
-            }
+            });
         }
+    }
+
+    // Hamburger Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const popupMenu = document.getElementById('popupMenu');
+    menuToggle.addEventListener('click', () => {
+        popupMenu.classList.toggle('active');
     });
 });
