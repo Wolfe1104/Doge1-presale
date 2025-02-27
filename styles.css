@@ -1,31 +1,31 @@
-/* Make the presale container responsive */
+/* Responsive presale container */
 .presale {
     background: #1f1f1f;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
-    max-width: 90%; /* Scales down on smaller screens */
+    max-width: 90%;
     margin: 0 auto;
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
 }
 
-/* Responsive phase window */
+/* Phase window as a responsive container */
 .phase-window {
-    max-width: 90%; /* Matches .presale responsiveness */
-    height: 150px; /* Keep fixed height for consistency */
+    max-width: 90%;
+    height: 150px;
     overflow: hidden;
     margin: 20px auto;
     border: 2px solid #00ffcc;
     border-radius: 5px;
     background: #1f1f1f;
     box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+    position: relative;
 }
 
-/* Flexible slider */
+/* Slider with dynamic width */
 .phase-slider {
     display: flex;
-    width: calc(20% * 16); /* 16 boxes, each 20% of the container width */
     height: 100%;
-    animation: slide 32s linear infinite;
+    animation: slide 26s linear infinite; /* Adjusted timing for 13 boxes */
 }
 
 /* Responsive phase boxes */
@@ -36,43 +36,29 @@
     padding: 10px;
     text-align: center;
     color: #fff;
-    width: 20%; /* Each box takes 20% of .phase-window */
-    min-width: 150px; /* Ensures readability on small screens */
-    flex-shrink: 0;
-    box-sizing: border-box; /* Includes padding/border in width */
+    flex: 0 0 33.33%; /* Default: 3 boxes visible */
+    min-width: 120px;
+    max-width: 200px; /* Cap width to prevent stretching */
+    box-sizing: border-box;
 }
 
-/* Updated animation for responsive widths */
+/* Animation for sliding */
 @keyframes slide {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-20% * 13)); } /* Slides 13 boxes */
+    100% { transform: translateX(-100%); } /* Slides full width of content */
 }
 
-/* Media query for smaller screens */
-@media (max-width: 600px) {
+/* Desktop: Show more boxes */
+@media (min-width: 600px) {
     .phase-box {
-        width: 33.33%; /* 3 boxes visible on medium screens */
-        min-width: 120px; /* Slightly smaller for mobile */
-    }
-    .phase-slider {
-        width: calc(33.33% * 16); /* Adjust total width */
-    }
-    @keyframes slide {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-33.33% * 13)); }
+        flex: 0 0 20%; /* 5 boxes visible */
     }
 }
 
+/* Very small screens: Fewer boxes */
 @media (max-width: 400px) {
     .phase-box {
-        width: 50%; /* 2 boxes visible on very small screens */
+        flex: 0 0 50%; /* 2 boxes visible */
         min-width: 100px;
-    }
-    .phase-slider {
-        width: calc(50% * 16);
-    }
-    @keyframes slide {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-50% * 13)); }
     }
 }
