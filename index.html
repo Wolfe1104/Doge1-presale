@@ -52,13 +52,9 @@
                 <div id="walletInfo" style="display: none;">
                     <p>Connected: <span id="walletAddress"></span></p>
                     <select id="cryptoSelect">
-                        <option value="ETH">Ethereum (ETH)</option>
-                        <option value="SOL">Solana (SOL)</option>
-                        <option value="BTC">Bitcoin (BTC)</option>
-                        <option value="USDT">USDT (Polygon)</option>
-                        <option value="DOGE">Dogecoin (DOGE)</option>
+                        <option value="ETH" selected>Ethereum (ETH)</option>
                     </select>
-                    <input type="number" id="amountInput" placeholder="Enter amount" step="0.001" min="0.001">
+                    <input type="number" id="amountInput" placeholder="Enter amount in ETH" step="0.001" min="0.001">
                     <button id="buyBtn">Buy Now</button>
                 </div>
             </div>
@@ -185,12 +181,8 @@
             <div class="modal-content">
                 <h2>Buy $DOGE1</h2>
                 <input type="number" id="usdInput" placeholder="Amount in USD" step="1" min="1">
-                <select id="cryptoDropdown">
-                    <option value="ETH">Ethereum (ETH)</option>
-                    <option value="SOL">Solana (SOL)</option>
-                    <option value="BTC">Bitcoin (BTC)</option>
-                    <option value="USDT">USDT (Polygon)</option>
-                    <option value="DOGE">Dogecoin (DOGE)</option>
+                <select id="cryptoDropdown" disabled>
+                    <option value="ETH" selected>Ethereum (ETH)</option>
                 </select>
                 <p id="cryptoAmount">Crypto Amount: 0</p>
                 <button id="purchaseBtn">Purchase</button>
@@ -210,7 +202,7 @@
         <div class="modal" id="purchaseConfirmModal">
             <div class="modal-content">
                 <h2>Confirm Purchase</h2>
-                <p id="purchaseDetails">You are about to purchase X $DOGE1 for X [crypto].</p>
+                <p id="purchaseDetails">You are about to purchase X $DOGE1 for X ETH.</p>
                 <button id="connectWalletBtn">Connect Wallet to Continue</button>
                 <button id="purchaseCancelBtn">Cancel</button>
             </div>
@@ -222,4 +214,4 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
-</html>
+                                             </html>
