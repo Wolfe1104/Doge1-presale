@@ -99,34 +99,37 @@ main {
     justify-content: center;
     max-width: 1200px;
     margin: 0 auto;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 20px; /* Space between logo and text */
 }
 
 .shiba-logo {
     width: 70px;
     height: auto;
-    margin: 0 15px 0 0;
+    margin: 0;
     filter: drop-shadow(0 0 10px #00ffcc);
 }
 
 .intro-text {
     text-align: left;
     flex-grow: 1;
+    min-width: 200px; /* Prevent collapse on small screens */
 }
 
 .intro-text h1 {
     margin: 0;
-    font-size: 28px; /* Reduced from 36px */
+    font-size: 26px; /* Slightly smaller from 28px */
     text-transform: uppercase;
     color: #fff;
-    line-height: 1.2; /* Prevents overflow */
+    line-height: 1.5; /* Increased from 1.2 */
 }
 
 .intro-text p {
-    font-size: 14px; /* Reduced from 16px */
+    font-size: 12px; /* Down from 14px */
     color: #ccc;
-    margin: 3px 0;
+    margin: 5px 0; /* Increased from 3px */
     text-align: center;
-    line-height: 1.4;
+    line-height: 1.6; /* Increased from 1.4 */
 }
 
 .presale-goal {
@@ -356,4 +359,4 @@ footer {
         0% { transform: translateX(0); }
         100% { transform: translateX(calc(-50% * 11)); }
     }
-    }
+}
