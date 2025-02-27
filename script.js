@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // DOM Elements
     const connectBtn = document.getElementById("connectBtn");
     const buyBtn = document.getElementById("buyBtn");
     const walletInfo = document.getElementById("walletInfo");
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const connectWalletBtn = document.getElementById("connectWalletBtn");
     const purchaseCancelBtn = document.getElementById("purchaseCancelBtn");
 
+    // Constants
     const wallets = {
         ETH: "0xD780c0B3a47c3FCA0090FC2153a80d15A4F286E3"
     };
@@ -43,11 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
     async function connectWallet() {
         console.log("Attempting WalletConnect for ETH...");
         console.log("WalletConnectProvider instance:", walletConnectProvider);
-
+        
         try {
-            // Check if already connected
             if (!walletConnectProvider.connected) {
-                await walletConnectProvider.enable(); // Triggers QR code popup
+                console.log("Triggering WalletConnect enable...");
+                await walletConnectProvider.enable(); // Should show QR code
             }
             walletProvider = new ethers.providers.Web3Provider(walletConnectProvider);
             signer = walletProvider.getSigner();
@@ -56,41 +58,61 @@ document.addEventListener("DOMContentLoaded", () => {
             return true;
         } catch (error) {
             console.error("WalletConnect connection error:", error);
-            alert("Failed to connect wallet: " + error.message + "\n1. Ensure Trust Wallet or MetaMask is installed.\n2. Scan the QR code.\n3. Try again.");
+            alert("Failed to connect wallet: " + error.message + "\n1. Ensure Trust Wallet or MetaMask is installed.\n2. Scan the QR code with your wallet app.\n3. Try again.");
             return false;
         }
     }
 
+    // Verify DOM elements exist
+    console.log("Checking DOM elements:");
+    console.log("buyNowBtn:", buyNowBtn);
+    console.log("buyModal:", buyModal);
+    console.log("purchaseBtn:", purchaseBtn);
+    console.log("connectWalletBtn:", connectWalletBtn);
+
     // Wallet connection for .buy-section
-    connectBtn.addEventListener("click", async () => {
-        if (await connectWallet()) {
-            walletAddressSpan.textContent = walletAddress.slice(0, 6) + "..." + walletAddress.slice(-4);
-            walletInfo.style.display = "block";
-            connectBtn.style.display = "none";
-        }
-    });
+    if (connectBtn) {
+        connectBtn.addEventListener("click", async () => {
+            console.log("Connect button clicked");
+            if (await connectWallet()) {
+                walletAddressSpan.textContent = walletAddress.slice(0, 6) + "..." + walletAddress.slice(-4);
+                walletInfo.style.display = "block";
+                connectBtn.style.display = "none";
+            }
+        });
+    } else {
+        console.error("connectBtn not found in DOM");
+    }
 
-    buyBtn.addEventListener("click", async () => {
-        const amount = parseFloat(amountInput.value);
-        if (!amount || amount <= 0) { alert("Enter a valid amount!"); return; }
+    // Buy button in .buy-section
+    if (buyBtn) {
+        buyBtn.addEventListener("click", async () => {
+            console.log("Buy button clicked");
+            const amount = parseFloat(amountInput.value);
+            if (!amount || amount <= 0) { alert("Enter a valid amount!"); return; }
 
-        if (await connectWallet()) {
-            const tx = { to: wallets.ETH, value: ethers.utils.parseEther(amount.toString()) };
-            const txResponse = await signer.sendTransaction(tx);
-            const txHash = txResponse.hash;
-            alert(`Success! TX: ${txHash}\nDM TX hash + Polygon address on X @YourXHandle!`);
-        }
-    });
+            if (await connectWallet()) {
+                const tx = { to: wallets.ETH, value: ethers.utils.parseEther(amount.toString()) };
+                const txResponse = await signer.sendTransaction(tx);
+                const txHash = txResponse.hash;
+                alert(`Success! TX: ${txHash}\nDM TX hash + Polygon address on X @YourXHandle!`);
+            }
+        });
+    } else {
+        console.error("buyBtn not found in DOM");
+    }
 
     // Slider Reset
     const phaseSlider = document.querySelector('.phase-slider');
-    phaseSlider.addEventListener('animationiteration', () => {
-        phaseSlider.style.transition = 'none';
-        phaseSlider.style.transform = 'translateX(0)';
-        setTimeout(() => {
-            phaseSlider.style.transition = 'transform 0s linear';
-        }, 50);
-    });
+    if (phaseSlider) {
+        phaseSlider.addEventListener('animationiteration', () => {
+            phaseSlider.style.transition = 'none';
+            phaseSlider.style.transform = 'translateX(0)';
+            setTimeout(() => {
+                phaseSlider.style.transition = 'transform 0s linear';
+            }, 50);
+        });
+    }
 
     // Pie Chart
     const chartCanvas = document.getElementById('tokenPieChart');
@@ -124,90 +146,132 @@ document.addEventListener("DOMContentLoaded", () => {
     // Hamburger Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const popupMenu = document.getElementById('popupMenu');
-    menuToggle.addEventListener('click', () => {
-        popupMenu.classList.toggle('active');
-    });
+    if (menuToggle && popupMenu) {
+        menuToggle.addEventListener('click', () => {
+            console.log("Hamburger menu clicked");
+            popupMenu.classList.toggle('active');
+        });
+    }
 
-    // Buy Now Modal Logic
-    buyNowBtn.addEventListener('click', () => {
-        buyModal.style.display = 'block';
-    });
+    // Buy Now Button
+    if (buyNowBtn) {
+        buyNowBtn.addEventListener('click', () => {
+            console.log("Buy Now button clicked");
+            if (buyModal) {
+                buyModal.style.display = 'block';
+            } else {
+                console.error("buyModal not found in DOM");
+            }
+        });
+    } else {
+        console.error("buyNowBtn not found in DOM");
+    }
 
-    usdInput.addEventListener('input', () => {
-        const usd = parseFloat(usdInput.value) || 0;
-        const cryptoValue = usd / cryptoRates.ETH;
-        cryptoAmount.textContent = `Crypto Amount: ${cryptoValue.toFixed(6)} ETH`;
-    });
+    // USD Input
+    if (usdInput) {
+        usdInput.addEventListener('input', () => {
+            console.log("USD input changed");
+            const usd = parseFloat(usdInput.value) || 0;
+            const cryptoValue = usd / cryptoRates.ETH;
+            cryptoAmount.textContent = `Crypto Amount: ${cryptoValue.toFixed(6)} ETH`;
+        });
+    }
 
     // Lock dropdown to ETH
-    cryptoDropdown.value = "ETH";
-    cryptoDropdown.disabled = true;
+    if (cryptoDropdown) {
+        cryptoDropdown.value = "ETH";
+        cryptoDropdown.disabled = true;
+    }
 
-    cancelBtn.addEventListener('click', () => {
-        cancelConfirmModal.style.display = 'block';
-    });
+    // Cancel Button
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => {
+            console.log("Cancel button clicked");
+            if (cancelConfirmModal) {
+                cancelConfirmModal.style.display = 'block';
+            }
+        });
+    }
 
-    cancelYesBtn.addEventListener('click', () => {
-        cancelConfirmModal.style.display = 'none';
-        buyModal.style.display = 'none';
-        usdInput.value = '';
-        cryptoAmount.textContent = 'Crypto Amount: 0';
-    });
-
-    cancelNoBtn.addEventListener('click', () => {
-        cancelConfirmModal.style.display = 'none';
-    });
-
-    purchaseBtn.addEventListener('click', () => {
-        const usd = parseFloat(usdInput.value) || 0;
-        if (usd <= 0) {
-            alert("Please enter a valid USD amount!");
-            return;
-        }
-        const cryptoValue = usd / cryptoRates.ETH;
-        const doge1Amount = usd / doge1Price;
-        purchaseDetails.textContent = `You are about to purchase ${doge1Amount.toFixed(2)} $DOGE1 for ${cryptoValue.toFixed(6)} ETH.`;
-        purchaseConfirmModal.style.display = 'block';
-    });
-
-    purchaseCancelBtn.addEventListener('click', () => {
-        purchaseConfirmModal.style.display = 'none';
-    });
-
-    connectWalletBtn.addEventListener('click', async () => {
-        const usd = parseFloat(usdInput.value) || 0;
-        const cryptoValue = usd / cryptoRates.ETH;
-        const doge1Amount = usd / doge1Price;
-
-        if (await connectWallet()) {
-            const tx = { to: wallets.ETH, value: ethers.utils.parseEther(cryptoValue.toString()) };
-            const txResponse = await signer.sendTransaction(tx);
-            const txHash = txResponse.hash;
-
-            // Save profile locally
-            const profile = {
-                wallet: walletAddress,
-                doge1Amount: doge1Amount,
-                usdValue: usd,
-                timestamp: new Date().toISOString()
-            };
-            localStorage.setItem(`doge1_profile_${walletAddress}`, JSON.stringify(profile));
-
-            alert(`Purchase successful! TX: ${txHash}\nYou now own ${doge1Amount.toFixed(2)} $DOGE1 worth $${usd}.\nDM TX hash + Polygon address on X @YourXHandle!`);
-            purchaseConfirmModal.style.display = 'none';
+    if (cancelYesBtn) {
+        cancelYesBtn.addEventListener('click', () => {
+            console.log("Cancel Yes clicked");
+            cancelConfirmModal.style.display = 'none';
             buyModal.style.display = 'none';
             usdInput.value = '';
             cryptoAmount.textContent = 'Crypto Amount: 0';
-        } else {
-            alert(`Manual payment fallback: Send ${cryptoValue.toFixed(6)} ETH to ${wallets.ETH}\nDM TX hash on X @YourXHandle to confirm your purchase of ${doge1Amount.toFixed(2)} $DOGE1!`);
-            purchaseConfirmModal.style.display = 'none';
-            buyModal.style.display = 'none';
-            usdInput.value = '';
-            cryptoAmount.textContent = 'Crypto Amount: 0';
-        }
-    });
+        });
+    }
 
-    // Log wallet availability on load
+    if (cancelNoBtn) {
+        cancelNoBtn.addEventListener('click', () => {
+            console.log("Cancel No clicked");
+            cancelConfirmModal.style.display = 'none';
+        });
+    }
+
+    // Purchase Button
+    if (purchaseBtn) {
+        purchaseBtn.addEventListener('click', () => {
+            console.log("Purchase button clicked");
+            const usd = parseFloat(usdInput.value) || 0;
+            if (usd <= 0) {
+                alert("Please enter a valid USD amount!");
+                return;
+            }
+            const cryptoValue = usd / cryptoRates.ETH;
+            const doge1Amount = usd / doge1Price;
+            purchaseDetails.textContent = `You are about to purchase ${doge1Amount.toFixed(2)} $DOGE1 for ${cryptoValue.toFixed(6)} ETH.`;
+            purchaseConfirmModal.style.display = 'block';
+        });
+    }
+
+    // Purchase Cancel Button
+    if (purchaseCancelBtn) {
+        purchaseCancelBtn.addEventListener('click', () => {
+            console.log("Purchase Cancel clicked");
+            purchaseConfirmModal.style.display = 'none';
+        });
+    }
+
+    // Connect Wallet Button in Modal
+    if (connectWalletBtn) {
+        connectWalletBtn.addEventListener('click', async () => {
+            console.log("Connect Wallet button clicked in modal");
+            const usd = parseFloat(usdInput.value) || 0;
+            const cryptoValue = usd / cryptoRates.ETH;
+            const doge1Amount = usd / doge1Price;
+
+            if (await connectWallet()) {
+                const tx = { to: wallets.ETH, value: ethers.utils.parseEther(cryptoValue.toString()) };
+                const txResponse = await signer.sendTransaction(tx);
+                const txHash = txResponse.hash;
+
+                // Save profile locally
+                const profile = {
+                    wallet: walletAddress,
+                    doge1Amount: doge1Amount,
+                    usdValue: usd,
+                    timestamp: new Date().toISOString()
+                };
+                localStorage.setItem(`doge1_profile_${walletAddress}`, JSON.stringify(profile));
+
+                alert(`Purchase successful! TX: ${txHash}\nYou now own ${doge1Amount.toFixed(2)} $DOGE1 worth $${usd}.\nDM TX hash + Polygon address on X @YourXHandle!`);
+                purchaseConfirmModal.style.display = 'none';
+                buyModal.style.display = 'none';
+                usdInput.value = '';
+                cryptoAmount.textContent = 'Crypto Amount: 0';
+            } else {
+                alert(`Manual payment fallback: Send ${cryptoValue.toFixed(6)} ETH to ${wallets.ETH}\nDM TX hash on X @YourXHandle to confirm your purchase of ${doge1Amount.toFixed(2)} $DOGE1!`);
+                purchaseConfirmModal.style.display = 'none';
+                buyModal.style.display = 'none';
+                usdInput.value = '';
+                cryptoAmount.textContent = 'Crypto Amount: 0';
+            }
+        });
+    }
+
+    // Log on load
     window.addEventListener('load', () => {
         console.log("Page fully loaded - Checking WalletConnect:");
         console.log("WalletConnectProvider:", walletConnectProvider);
@@ -236,7 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
         connectBtn.style.display = "block";
     });
 
-    // Periodic check for WalletConnect
+    // Periodic check
     setInterval(() => {
         console.log("Periodic WalletConnect check:");
         console.log("Connected:", walletConnectProvider.connected);
