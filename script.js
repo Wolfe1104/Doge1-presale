@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const doge1Price = 0.00050; // Starting presale price
     let provider, signer, walletAddress;
 
-    // Function to connect wallet with retry
+    // Function to connect wallet
     async function connectWallet(crypto) {
         console.log(`Connecting wallet for ${crypto}...`);
         console.log("window.ethereum:", window.ethereum);
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             } else {
                 console.log("MetaMask not detected.");
-                alert("MetaMask not detected. Please install MetaMask or Trust Wallet and refresh the page!");
+                alert("MetaMask not detected!\n1. Install MetaMask extension.\n2. Unlock it.\n3. Refresh the page.");
                 return false;
             }
         } else if (crypto === "SOL") {
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             } else {
                 console.log("Phantom not detected.");
-                alert("Phantom not detected. Please install a Solana wallet (e.g., Phantom) and refresh the page!");
+                alert("Phantom not detected!\n1. Install Phantom extension.\n2. Unlock it.\n3. Refresh the page.");
                 return false;
             }
         }
@@ -296,14 +296,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Listen for wallet injection (MetaMask/Phantom might inject late)
+    // Log wallet availability on load
     window.addEventListener('load', () => {
         console.log("Page fully loaded - Checking wallets:");
         console.log("window.ethereum:", window.ethereum);
         console.log("window.solana:", window.solana);
     });
 
-    // Detect wallet changes (e.g., user unlocks MetaMask after page load)
+    // Detect wallet changes
     if (window.ethereum) {
         window.ethereum.on('accountsChanged', (accounts) => {
             console.log("Accounts changed:", accounts);
