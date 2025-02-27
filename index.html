@@ -17,7 +17,7 @@
                 <span></span>
             </div>
             <nav class="popup-menu" id="popupMenu">
-                <a href="https://wolfe1104.github.io/Doge1-presale/whitepaper.pdf" target="_blank">White Paper</a>
+                <a href="https://wolfe1104.github.io/Doge1-presale/white%20paper.pdf" target="_blank">White Paper</a>
                 <a href="#tokenomics">Tokenomics</a>
                 <a href="#roadmap">Roadmap</a>
             </nav>
@@ -36,6 +36,7 @@
             <div class="presale-goal">
                 <p>Presale Goal: Soft Cap $100,000 | Hard Cap $500,000</p>
             </div>
+            <button class="buy-now-btn" id="buyNowBtn">Buy Now</button>
         </section>
         <section class="description">
             <p>Doge1 rises, awakened by the Force—a raw, uncut warrior tipping the scales of justice with every buy. Forged for the downtrodden, the ones treated unjustly and unfairly, $DOGE1 brings balance where chaos reigned. The Jedi of Justice prevails, and now it’s your time to shine—join the fight, claim your power, and let the galaxy feel your howl!</p>
@@ -179,9 +180,44 @@
                 </ul>
             </div>
         </section>
+        <!-- Buy Modal -->
+        <div class="modal" id="buyModal">
+            <div class="modal-content">
+                <h2>Buy $DOGE1</h2>
+                <input type="number" id="usdInput" placeholder="Amount in USD" step="1" min="1">
+                <select id="cryptoDropdown">
+                    <option value="ETH">Ethereum (ETH)</option>
+                    <option value="SOL">Solana (SOL)</option>
+                    <option value="BTC">Bitcoin (BTC)</option>
+                    <option value="USDT">USDT (Polygon)</option>
+                    <option value="DOGE">Dogecoin (DOGE)</option>
+                </select>
+                <p id="cryptoAmount">Crypto Amount: 0</p>
+                <button id="purchaseBtn">Purchase</button>
+                <button id="cancelBtn">Cancel</button>
+            </div>
+        </div>
+        <!-- Cancel Confirmation Modal -->
+        <div class="modal" id="cancelConfirmModal">
+            <div class="modal-content">
+                <h2>Cancel Transaction</h2>
+                <p>Do you want to cancel this transaction?</p>
+                <button id="cancelYesBtn">Yes</button>
+                <button id="cancelNoBtn">No</button>
+            </div>
+        </div>
+        <!-- Purchase Confirmation Modal -->
+        <div class="modal" id="purchaseConfirmModal">
+            <div class="modal-content">
+                <h2>Confirm Purchase</h2>
+                <p id="purchaseDetails">You are about to purchase X $DOGE1 for X [crypto].</p>
+                <button id="connectWalletBtn">Connect Wallet to Continue</button>
+                <button id="purchaseCancelBtn">Cancel</button>
+            </div>
+        </div>
     </main>
     <footer>
-        <p>$DOGE1 - Live Soon on Polygon | doge1.me | <a href="https://wolfe1104.github.io/Doge1-presale/whitepaper.pdf" target="_blank" class="footer-link">White Paper</a></p>
+        <p>$DOGE1 - Live Soon on Polygon | doge1.me | <a href="https://wolfe1104.github.io/Doge1-presale/white%20paper.pdf" target="_blank" class="footer-link">White Paper</a></p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
