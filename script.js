@@ -5,15 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const walletAddressSpan = document.getElementById("walletAddress");
     const cryptoSelect = document.getElementById("cryptoSelect");
     const amountInput = document.getElementById("amountInput");
-    const raisedSpan = document.getElementById("raised");
-    const soldSpan = document.getElementById("sold");
 
-    // Your wallet addresses (replace these with Trust Wallet addresses tonight)
     const wallets = {
         ETH: "0xYourEthereumWalletHere",
         SOL: "YourSolanaWalletHere",
         BTC: "YourBitcoinWalletHere",
-        USDT: "0xYourPolygonWalletHere", // Same as MATIC/POL
+        USDT: "0xYourPolygonWalletHere",
         DOGE: "YourDogecoinWalletHere"
     };
 
@@ -35,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
             await window.solana.connect();
             walletAddress = window.solana.publicKey.toString();
         } else {
-            walletAddress = "Manual_" + crypto; // BTC/DOGE placeholder
+            walletAddress = "Manual_" + crypto;
         }
         walletAddressSpan.textContent = walletAddress.slice(0, 6) + "..." + walletAddress.slice(-4);
         walletInfo.style.display = "block";
@@ -72,6 +69,39 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
         alert(`Success! TX: ${txHash}\nDM TX hash + Polygon address on X @YourXHandle!`);
-        // Manual update tracker (edit HTML later)
+    });
+
+    // Slider Reset for Seamless Loop
+    const phaseSlider = document.querySelector('.phase-slider');
+    phaseSlider.addEventListener('animationiteration', () => {
+        phaseSlider.style.transition = 'none';
+        phaseSlider.style.transform = 'translateX(0)';
+        setTimeout(() => {
+            phaseSlider.style.transition = 'transform 0s linear';
+        }, 50);
+    });
+
+    // Tokenomics Pie Chart
+    const ctx = document.getElementById('tokenPieChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Presale (40%)', 'Burned (10%)', 'Liquidity (30%)', 'Team & Dev (20%)'],
+            datasets: [{
+                data: [200, 50, 150, 100], // In millions
+                backgroundColor: ['#00ffcc', '#ff3366', '#33ccff', '#ffcc33'],
+                borderColor: '#000',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { color: '#fff', font: { size: 14 } }
+                }
+            }
+        }
     });
 });
