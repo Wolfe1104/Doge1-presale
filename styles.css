@@ -10,38 +10,38 @@ body {
 }
 header {
     background: #000;
-    padding: 20px; /* Reduced from 30px to tighten the header */
+    padding: 20px;
     border-bottom: 2px solid #00ffcc;
     box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
-    position: relative; /* Helps with layout control */
+    position: relative;
 }
 .header-container {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    max-width: 1200px; /* Limits sprawl */
-    margin: 0 auto; /* Centers container */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 .shiba-logo {
-    width: 50px; /* Smaller size for top-left corner */
+    width: 70px; /* Increased from 50px */
     height: auto;
-    margin: 0 15px 0 0; /* Tight margin: 0 top, 15px right, 0 bottom/left */
+    margin: 0 15px 0 0;
     filter: drop-shadow(0 0 10px #00ffcc);
 }
 .header-text {
     text-align: left;
-    flex-grow: 1; /* Lets text take remaining space */
+    flex-grow: 1;
 }
 .header-text h1 {
     margin: 0;
-    font-size: 36px; /* Slightly smaller than 48px to fit better */
+    font-size: 36px;
     text-transform: uppercase;
     color: #fff;
 }
 .header-text p {
-    font-size: 16px; /* Slightly smaller than 18px for balance */
+    font-size: 16px;
     color: #ccc;
-    margin: 3px 0; /* Tighter spacing */
+    margin: 3px 0;
     text-align: center;
 }
 .presale-goal {
@@ -69,6 +69,16 @@ main {
     margin: 10px 0;
     font-size: 16px;
 }
+.phase-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    padding: 20px 0;
+    justify-content: flex-start;
+    scrollbar-width: thin;
+    scrollbar-color: #00ffcc #1f1f1f;
+}
 .phase-box {
     background: #1f1f1f;
     border: 2px solid #00ffcc;
@@ -76,9 +86,14 @@ main {
     padding: 10px;
     text-align: center;
     color: #fff;
-    width: 300px;
-    margin: 20px auto;
+    width: 200px; /* Smaller width for slider */
+    flex-shrink: 0;
+    scroll-snap-align: center;
     box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+}
+.phase-box p {
+    margin: 5px 0;
+    font-size: 14px;
 }
 .buy-section, .x-feed {
     margin-top: 30px;
