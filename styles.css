@@ -69,27 +69,33 @@ main {
     margin: 10px 0;
     font-size: 16px;
 }
-.phase-slider-container {
+.phase-window {
     width: 100%;
-    max-width: 600px; /* Matches .presale */
-    margin: 20px auto;
-    overflow: hidden; /* Hides off-screen boxes */
+    height: 150px; /* Fixed height for the window */
+    background: #1f1f1f;
+    border: 2px solid #00ffcc;
+    border-radius: 5px;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    margin-top: 20px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+    scrollbar-width: thin;
+    scrollbar-color: #00ffcc #1f1f1f;
 }
 .phase-slider {
     display: flex;
-    transition: transform 0.5s ease; /* Smooth sliding */
-    width: calc(220px * 13); /* 13 boxes, 220px each (200px + 10px padding) */
+    gap: 15px; /* Space between boxes */
+    height: 100%; /* Fills the window */
 }
 .phase-box {
-    background: #1f1f1f;
-    border: 2px solid #00ffcc;
+    background: #2a2a2a; /* Slightly lighter than window for contrast */
+    border: 1px solid #00ffcc;
     border-radius: 5px;
     padding: 10px;
     text-align: center;
     color: #fff;
-    width: 200px;
+    width: 180px; /* Slightly smaller to fit window */
     flex-shrink: 0;
-    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
 }
 .phase-box p {
     margin: 5px 0;
