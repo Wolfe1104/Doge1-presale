@@ -115,10 +115,21 @@ document.addEventListener("DOMContentLoaded", () => {
             responsive: true,
             plugins: {
                 legend: {
-                    position: 'bottom',
+                    position: 'right', // Move to right for better visibility
                     labels: {
                         color: '#fff',
-                        font: { size: 14 }
+                        font: { size: 12 }, // Smaller font to fit
+                        boxWidth: 20, // Smaller color boxes
+                        padding: 10, // Space between items
+                        generateLabels: (chart) => {
+                            const data = chart.data;
+                            return data.labels.map((label, i) => ({
+                                text: label,
+                                fillStyle: data.datasets[0].backgroundColor[i],
+                                hidden: !chart.getDataVisibility(i),
+                                index: i
+                            }));
+                        }
                     }
                 }
             }
