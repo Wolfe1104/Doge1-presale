@@ -69,6 +69,24 @@ main {
     margin: 10px 0;
     font-size: 16px;
 }
+.phase-window {
+    width: 400px; /* Two boxes: 2 × 200px */
+    height: 150px;
+    overflow-x: auto; /* User slides manually */
+    overflow-y: hidden;
+    margin: 20px auto;
+    border: 2px solid #00ffcc;
+    border-radius: 5px;
+    background: #1f1f1f;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+    scrollbar-width: thin;
+    scrollbar-color: #00ffcc #1f1f1f;
+}
+.phase-slider {
+    display: flex;
+    width: calc(200px * 13); /* 13 boxes */
+    height: 100%;
+}
 .phase-box {
     background: linear-gradient(135deg, #0a0a23 0%, #1a1a3b 70%, #00ffcc 100%);
     border: 1px solid #00ffcc;
@@ -76,11 +94,10 @@ main {
     padding: 10px;
     text-align: center;
     color: #fff;
-    width: 300px;
-    margin: 20px auto;
+    width: 180px;
+    flex-shrink: 0;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
 }
 .phase-box::before {
     content: '';
