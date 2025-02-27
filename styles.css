@@ -14,22 +14,44 @@ header {
     border-bottom: 2px solid #00ffcc;
     box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
 }
-h1 { 
-    margin: 0; 
-    font-size: 48px; 
-    text-transform: uppercase; 
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
-h2 { 
-    margin: 10px 0; 
-    font-size: 28px; 
-    color: #00ffcc; 
+.shiba-logo {
+    width: 80px; /* Adjusted from .logo’s 250px to fit header */
+    height: auto;
+    margin-right: 20px;
+    filter: drop-shadow(0 0 10px #00ffcc); /* Matches .logo */
 }
-header p { 
-    font-size: 18px; 
-    color: #ccc; 
+.header-text {
+    text-align: left;
 }
-main { 
-    padding: 40px; 
+.header-text h1 {
+    margin: 0;
+    font-size: 48px;
+    text-transform: uppercase;
+    color: #fff; /* Matches original h1 */
+}
+.header-text p {
+    font-size: 18px;
+    color: #ccc; /* Matches header p */
+    margin: 5px 0;
+    text-align: center; /* Centers lines 2 and 3 under line 1 */
+}
+.presale-goal {
+    font-size: 18px;
+    color: #fff;
+    margin: 10px 0;
+}
+h2 {
+    margin: 10px 0;
+    font-size: 28px;
+    color: #00ffcc;
+}
+main {
+    padding: 40px;
 }
 .presale {
     background: #1f1f1f;
@@ -39,17 +61,23 @@ main {
     margin: 0 auto;
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
 }
-.logo {
-    max-width: 250px;
+.details p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+.phase-box {
+    background: #1f1f1f;
+    border: 2px solid #00ffcc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    width: 300px;
     margin: 20px auto;
-    filter: drop-shadow(0 0 10px #00ffcc);
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
 }
-.details p, .tracker p { 
-    margin: 10px 0; 
-    font-size: 16px; 
-}
-.buy-section, .x-feed { 
-    margin-top: 30px; 
+.buy-section, .x-feed {
+    margin-top: 30px;
 }
 #connectBtn, #buyBtn, .button {
     background: #00ffcc;
@@ -65,12 +93,12 @@ main {
     background: #00cc99;
     box-shadow: 0 0 10px #00ffcc;
 }
-#walletInfo { 
-    margin-top: 20px; 
+#walletInfo {
+    margin-top: 20px;
 }
-#walletAddress { 
-    font-family: monospace; 
-    color: #00ffcc; 
+#walletAddress {
+    font-family: monospace;
+    color: #00ffcc;
 }
 #cryptoSelect, #amountInput {
     padding: 10px;
@@ -80,8 +108,8 @@ main {
     border: 1px solid #00ffcc;
     border-radius: 5px;
 }
-#amountInput { 
-    width: 200px; 
+#amountInput {
+    width: 200px;
 }
 footer {
     background: #000;
