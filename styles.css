@@ -58,9 +58,15 @@ header {
 }
 
 h2 {
-    margin: 10px 0;
+    margin: 20px 0;
     font-size: 28px;
     color: #00ffcc;
+}
+
+h3 {
+    font-size: 22px;
+    color: #00ffcc;
+    margin: 15px 0;
 }
 
 main {
@@ -72,7 +78,7 @@ main {
     padding: 20px;
     border-radius: 10px;
     max-width: 90%;
-    margin: 0 auto;
+    margin: 0 auto 40px;
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
 }
 
@@ -164,6 +170,42 @@ main {
     width: 200px;
 }
 
+/* New Tokenomics Styles */
+.tokenomics {
+    background: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+}
+
+.tokenomics-details, .roadmap {
+    margin: 20px 0;
+}
+
+.tokenomics-details ul, .roadmap ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tokenomics-details li, .roadmap li {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.tokenomics-details li strong, .roadmap li strong {
+    color: #00ffcc;
+}
+
+.charts {
+    margin: 20px auto;
+    max-width: 300px;
+}
+
 footer {
     background: #000;
     padding: 15px;
@@ -192,4 +234,4 @@ footer {
         0% { transform: translateX(0); }
         100% { transform: translateX(calc(-50% * 11)); }
     }
-}
+            }
