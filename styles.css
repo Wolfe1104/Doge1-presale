@@ -171,6 +171,29 @@ main {
     width: 200px;
 }
 
+/* New Hype Section Styles */
+.hype {
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(0, 255, 204, 0.2));
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 90%;
+    margin: 40px auto;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+    border: 2px solid #00ffcc;
+}
+
+.hype h2 {
+    font-size: 32px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #00ffcc;
+}
+
+.hype p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #fff;
+}
+
 .tokenomics {
     background: #1f1f1f;
     padding: 20px;
@@ -203,8 +226,8 @@ main {
 
 .charts {
     margin: 20px auto;
-    max-width: 350px; /* Widened from 300px */
-    padding: 15px; /* Increased padding */
+    max-width: 350px;
+    padding: 15px;
     background: rgba(10, 10, 35, 0.8);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
@@ -237,4 +260,4 @@ footer {
         0% { transform: translateX(0); }
         100% { transform: translateX(calc(-50% * 11)); }
     }
-}
+    }
