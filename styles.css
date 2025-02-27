@@ -67,7 +67,6 @@ main {
     padding: 40px;
 }
 
-/* Responsive presale container */
 .presale {
     background: #1f1f1f;
     padding: 20px;
@@ -82,10 +81,9 @@ main {
     font-size: 16px;
 }
 
-/* Phase window with strict containment */
 .phase-window {
     max-width: 90%;
-    width: 100%; /* Ensure it takes full available width */
+    width: 100%;
     height: 150px;
     overflow: hidden;
     margin: 20px auto;
@@ -96,32 +94,32 @@ main {
     position: relative;
 }
 
-/* Slider with controlled width */
 .phase-slider {
     display: flex;
-    width: 100%; /* Fit within phase-window */
+    width: 100%;
     height: 100%;
     animation: slide 26s linear infinite;
 }
 
-/* Responsive phase boxes */
 .phase-box {
-    background: #2a2a2a;
+    background: linear-gradient(145deg, rgba(10, 10, 35, 0.9), rgba(26, 26, 59, 0.7)), url('https://cdn.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616_1280.jpg');
+    background-size: cover;
+    background-blend-mode: overlay;
     border: 1px solid #00ffcc;
     border-radius: 5px;
     padding: 10px;
     text-align: center;
     color: #fff;
-    flex: 0 0 33.33%; /* 3 boxes visible by default */
+    flex: 0 0 33.33%;
     min-width: 120px;
     max-width: 180px;
     box-sizing: border-box;
+    box-shadow: inset 0 0 5px rgba(0, 255, 204, 0.3);
 }
 
-/* Animation */
 @keyframes slide {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-33.33% * 10)); } /* Slide 10 boxes to show all 13 */
+    100% { transform: translateX(calc(-33.33% * 10)); }
 }
 
 .buy-section, .x-feed {
@@ -175,25 +173,23 @@ footer {
     border-top: 2px solid #00ffcc;
 }
 
-/* Desktop adjustments */
 @media (min-width: 600px) {
     .phase-box {
-        flex: 0 0 20%; /* 5 boxes visible */
+        flex: 0 0 20%;
     }
     @keyframes slide {
         0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-20% * 8)); } /* Slide 8 boxes to show all 13 */
+        100% { transform: translateX(calc(-20% * 8)); }
     }
 }
 
-/* Small screens */
 @media (max-width: 400px) {
     .phase-box {
-        flex: 0 0 50%; /* 2 boxes visible */
+        flex: 0 0 50%;
         min-width: 100px;
     }
     @keyframes slide {
         0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-50% * 11)); } /* Slide 11 boxes to show all 13 */
+        100% { transform: translateX(calc(-50% * 11)); }
     }
 }
