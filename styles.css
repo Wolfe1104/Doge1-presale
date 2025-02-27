@@ -1,90 +1,34 @@
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #0a0a23, #1a1a3b), url('https://cdn.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616_1280.jpg');
-    background-size: cover;
-    background-blend-mode: overlay;
-    color: #fff;
-    text-align: center;
-}
-header {
-    background: #000;
-    padding: 20px;
-    border-bottom: 2px solid #00ffcc;
-    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
-    position: relative;
-}
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-.shiba-logo {
-    width: 70px;
-    height: auto;
-    margin: 0 15px 0 0;
-    filter: drop-shadow(0 0 10px #00ffcc);
-}
-.header-text {
-    text-align: left;
-    flex-grow: 1;
-}
-.header-text h1 {
-    margin: 0;
-    font-size: 36px;
-    text-transform: uppercase;
-    color: #fff;
-}
-.header-text p {
-    font-size: 16px;
-    color: #ccc;
-    margin: 3px 0;
-    text-align: center;
-}
-.presale-goal {
-    font-size: 18px;
-    color: #fff;
-    margin: 10px 0;
-}
-h2 {
-    margin: 10px 0;
-    font-size: 28px;
-    color: #00ffcc;
-}
-main {
-    padding: 40px;
-}
+/* Make the presale container responsive */
 .presale {
     background: #1f1f1f;
     padding: 30px;
     border-radius: 10px;
-    max-width: 600px;
+    max-width: 90%; /* Scales down on smaller screens */
     margin: 0 auto;
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
 }
-.details p {
-    margin: 10px 0;
-    font-size: 16px;
-}
+
+/* Responsive phase window */
 .phase-window {
-    width: 600px; /* Matches .presale max-width */
-    height: 150px; /* Fixed height */
-    overflow: hidden; /* Hides excess */
+    max-width: 90%; /* Matches .presale responsiveness */
+    height: 150px; /* Keep fixed height for consistency */
+    overflow: hidden;
     margin: 20px auto;
     border: 2px solid #00ffcc;
     border-radius: 5px;
     background: #1f1f1f;
     box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
 }
+
+/* Flexible slider */
 .phase-slider {
     display: flex;
-    width: calc(200px * 16); /* 13 phases + 3 duplicates = 16 boxes */
+    width: calc(20% * 16); /* 16 boxes, each 20% of the container width */
     height: 100%;
-    animation: slide 32s linear infinite; /* Smooth auto-slide */
+    animation: slide 32s linear infinite;
 }
+
+/* Responsive phase boxes */
 .phase-box {
     background: #2a2a2a;
     border: 1px solid #00ffcc;
@@ -92,57 +36,43 @@ main {
     padding: 10px;
     text-align: center;
     color: #fff;
-    width: 180px; /* 3 fit in 600px with padding */
+    width: 20%; /* Each box takes 20% of .phase-window */
+    min-width: 150px; /* Ensures readability on small screens */
     flex-shrink: 0;
+    box-sizing: border-box; /* Includes padding/border in width */
 }
-.phase-box p {
-    margin: 5px 0;
-    font-size: 14px;
-}
+
+/* Updated animation for responsive widths */
 @keyframes slide {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-200px * 13)); } /* Slides full 13 boxes */
+    100% { transform: translateX(calc(-20% * 13)); } /* Slides 13 boxes */
 }
-.buy-section, .x-feed {
-    margin-top: 30px;
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    .phase-box {
+        width: 33.33%; /* 3 boxes visible on medium screens */
+        min-width: 120px; /* Slightly smaller for mobile */
+    }
+    .phase-slider {
+        width: calc(33.33% * 16); /* Adjust total width */
+    }
+    @keyframes slide {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-33.33% * 13)); }
+    }
 }
-#connectBtn, #buyBtn, .button {
-    background: #00ffcc;
-    color: #000;
-    border: none;
-    padding: 12px 25px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-#connectBtn:hover, #buyBtn:hover, .button:hover {
-    background: #00cc99;
-    box-shadow: 0 0 10px #00ffcc;
-}
-#walletInfo {
-    margin-top: 20px;
-}
-#walletAddress {
-    font-family: monospace;
-    color: #00ffcc;
-}
-#cryptoSelect, #amountInput {
-    padding: 10px;
-    margin: 10px 0;
-    background: #333;
-    color: #fff;
-    border: 1px solid #00ffcc;
-    border-radius: 5px;
-}
-#amountInput {
-    width: 200px;
-}
-footer {
-    background: #000;
-    padding: 15px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    border-top: 2px solid #00ffcc;
+
+@media (max-width: 400px) {
+    .phase-box {
+        width: 50%; /* 2 boxes visible on very small screens */
+        min-width: 100px;
+    }
+    .phase-slider {
+        width: calc(50% * 16);
+    }
+    @keyframes slide {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-50% * 13)); }
+    }
 }
