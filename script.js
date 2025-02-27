@@ -81,36 +81,47 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 50);
     });
 
-    // Tokenomics Pie Chart with Marketing and Development
+    // Tokenomics Pie Chart with Development and Marketing
     const chartCanvas = document.getElementById('tokenPieChart');
-    if (chartCanvas) {
-        const ctx = chartCanvas.getContext('2d');
-        if (ctx) {
-            new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: ['Presale (40%)', 'Burned (10%)', 'Liquidity (24%)', 'Team (10%)', 'Development (10%)', 'Marketing (6%)'],
-                    datasets: [{
-                        data: [200, 50, 120, 50, 50, 30], // In millions
-                        backgroundColor: ['#00ffcc', '#ff3366', '#33ccff', '#ffcc33', '#9966ff', '#ff6699'],
-                        borderColor: '#000',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: { color: '#fff', font: { size: 14 } }
-                        }
+    if (!chartCanvas) {
+        console.error("Pie chart canvas not found!");
+        return;
+    }
+    const ctx = chartCanvas.getContext('2d');
+    if (!ctx) {
+        console.error("Failed to get 2D context for pie chart!");
+        return;
+    }
+
+    const chart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: [
+                'Presale (40%)',
+                'Burned (10%)',
+                'Liquidity (24%)',
+                'Team (10%)',
+                'Development (10%)',
+                'Marketing (6%)'
+            ],
+            datasets: [{
+                data: [200, 50, 120, 50, 50, 30], // Matches tokenomics list
+                backgroundColor: ['#00ffcc', '#ff3366', '#33ccff', '#ffcc33', '#9966ff', '#ff6699'],
+                borderColor: '#000',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#fff',
+                        font: { size: 14 }
                     }
                 }
-            });
-        } else {
-            console.error("Failed to get 2D context for pie chart canvas.");
+            }
         }
-    } else {
-        console.error("Pie chart canvas element not found.");
-    }
+    });
 });
