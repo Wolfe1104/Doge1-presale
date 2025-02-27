@@ -69,36 +69,18 @@ main {
     margin: 10px 0;
     font-size: 16px;
 }
-.phase-window {
-    width: 600px; /* Matches .presale */
-    height: 150px;
-    overflow: hidden;
-    margin: 20px auto;
-    border: 2px solid #00ffcc;
-    border-radius: 5px;
-    background: #1f1f1f;
-    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
-    position: relative;
-}
-.phase-slider {
-    display: flex;
-    width: calc(200px * 16); /* 16 boxes total */
-    height: 100%;
-    animation: slide 32s linear infinite;
-    position: absolute;
-    left: 0; /* Starts at left edge of window */
-}
 .phase-box {
-    background: #00ffcc !important; /* Still bright cyan to confirm */
-    border: 1px solid #000;
+    background: linear-gradient(135deg, #0a0a23 0%, #1a1a3b 70%, #00ffcc 100%);
+    border: 1px solid #00ffcc;
     border-radius: 5px;
     padding: 10px;
     text-align: center;
-    color: #000;
-    width: 180px;
-    flex-shrink: 0;
+    color: #fff;
+    width: 300px;
+    margin: 20px auto;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
 }
 .phase-box::before {
     content: '';
@@ -109,7 +91,7 @@ main {
     height: 100%;
     background: url('https://cdn.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616_1280.jpg') no-repeat center center;
     background-size: cover;
-    opacity: 0.5;
+    opacity: 0.3;
     z-index: 0;
 }
 .phase-box p {
@@ -117,10 +99,6 @@ main {
     font-size: 14px;
     position: relative;
     z-index: 1;
-}
-@keyframes slide {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-200px * 13)); } /* Slides 13 boxes */
 }
 .buy-section, .x-feed {
     margin-top: 30px;
@@ -164,4 +142,4 @@ footer {
     bottom: 0;
     width: 100%;
     border-top: 2px solid #00ffcc;
-    }
+}
