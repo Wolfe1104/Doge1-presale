@@ -14,16 +14,87 @@ header {
     padding: 20px;
     border-bottom: 2px solid #00ffcc;
     box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
-    position: relative;
+    position: fixed; /* Fixed to stay at top */
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 .header-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between; /* Adjusted for dropdown */
+    justify-content: flex-end; /* Menu on right */
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+    cursor: pointer;
+    padding: 10px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #00ffcc;
+    margin: 6px 0;
+    transition: all 0.3s ease;
+}
+
+/* Popup Menu */
+.popup-menu {
+    display: none;
+    position: fixed;
+    top: 70px; /* Below header */
+    right: 20px;
+    background: #1f1f1f;
+    width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 255, 204, 0.2);
+    border-radius: 5px;
+    border: 1px solid #00ffcc;
+    z-index: 1001;
+}
+
+.popup-menu.active {
+    display: block; /* Show when active */
+}
+
+.popup-menu a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+.popup-menu a:hover {
+    background: #00cc99;
+    color: #000;
+}
+
+main {
+    padding: 40px;
+    padding-bottom: 100px;
+    padding-top: 100px; /* Space for fixed header */
+}
+
+.intro {
+    background: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+    margin: 0 auto 40px;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+}
+
+.intro-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .shiba-logo {
@@ -33,97 +104,29 @@ header {
     filter: drop-shadow(0 0 10px #00ffcc);
 }
 
-.header-text {
+.intro-text {
     text-align: left;
     flex-grow: 1;
 }
 
-.header-text h1 {
+.intro-text h1 {
     margin: 0;
     font-size: 36px;
     text-transform: uppercase;
     color: #fff;
 }
 
-.header-text p {
+.intro-text p {
     font-size: 16px;
     color: #ccc;
     margin: 3px 0;
     text-align: center;
 }
 
-/* Dropdown Styles */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-btn {
-    background: #00ffcc;
-    color: #000;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.dropdown-btn:hover {
-    background: #00cc99;
-    box-shadow: 0 0 10px #00ffcc;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    background: #1f1f1f;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0, 255, 204, 0.2);
-    z-index: 1;
-    border-radius: 5px;
-    border: 1px solid #00ffcc;
-}
-
-.dropdown-content a {
-    color: #fff;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-size: 14px;
-}
-
-.dropdown-content a:hover {
-    background: #00cc99;
-    color: #000;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
 .presale-goal {
     font-size: 18px;
     color: #fff;
     margin: 10px 0;
-}
-
-h2 {
-    margin: 20px 0;
-    font-size: 28px;
-    color: #00ffcc;
-}
-
-h3 {
-    font-size: 22px;
-    color: #00ffcc;
-    margin: 15px 0;
-}
-
-main {
-    padding: 40px;
-    padding-bottom: 100px;
 }
 
 .presale {
@@ -335,4 +338,4 @@ footer {
         0% { transform: translateX(0); }
         100% { transform: translateX(calc(-50% * 11)); }
     }
-}
+        }
