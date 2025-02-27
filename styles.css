@@ -98,7 +98,7 @@ main {
     align-items: center;
     justify-content: center;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto 15px;
     flex-wrap: wrap;
     gap: 20px;
 }
@@ -118,7 +118,7 @@ main {
 
 .intro-text h1 {
     margin: 0;
-    font-size: 22px; /* Reduced from 26px */
+    font-size: 22px;
     text-transform: uppercase;
     color: #fff;
     line-height: 1.5;
@@ -130,6 +130,20 @@ main {
     margin: 5px 0;
     text-align: center;
     line-height: 1.6;
+}
+
+.description {
+    max-width: 90%;
+    margin: 0 auto 40px;
+}
+
+.description p {
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .presale-goal {
@@ -359,4 +373,4 @@ footer {
         0% { transform: translateX(0); }
         100% { transform: translateX(calc(-50% * 11)); }
     }
-}
+    }
