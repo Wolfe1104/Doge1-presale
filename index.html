@@ -14,9 +14,25 @@
             <a href="index.html" class="home-icon">
                 <img src="home-icon.png" alt="Home" style="width: 40px; height: 40px;">
             </a>
-            <div class="auth-buttons">
-                <button id="signUpBtn" class="jedi-btn">Sign Up</button>
-                <button id="signInBtn" class="jedi-btn">Sign In</button>
+            <div class="auth-buttons" id="authButtons">
+                <button id="signUpBtn" class="jedi-btn">
+                    <img src="signup-icon.png" alt="Sign Up" class="btn-icon"> Sign Up
+                </button>
+                <button id="signInBtn" class="jedi-btn">
+                    <img src="signin-icon.png" alt="Sign In" class="btn-icon"> Sign In
+                </button>
+            </div>
+            <div class="user-menu" id="userMenu" style="display: none;">
+                <button id="userMenuBtn" class="jedi-btn">
+                    <img src="user-icon.png" alt="User" class="btn-icon">
+                </button>
+                <nav class="dropdown-menu" id="dropdownMenu">
+                    <a href="#profile">Profile</a>
+                    <a href="#tokenomics">Tokenomics</a>
+                    <a href="#roadmap">Roadmap</a>
+                    <a href="https://wolfe1104.github.io/Doge1-presale/white%20paper.pdf" target="_blank">white paper.pdf</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </nav>
             </div>
         </div>
     </header>
@@ -33,7 +49,9 @@
         </section>
         <section class="presale">
             <div class="buy-section">
-                <button id="connectBtn" class="jedi-btn">Connect Wallet</button>
+                <button id="connectBtn" class="jedi-btn">
+                    <img src="wallet-icon.png" alt="Wallet" class="btn-icon"> Connect Wallet
+                </button>
                 <div id="walletInfo" style="display: none;">
                     <p>Connected: <span id="walletAddress"></span></p>
                     <select id="cryptoSelect">
@@ -146,8 +164,12 @@
                 <input type="password" id="passwordInput" placeholder="Password">
                 <label><input type="checkbox" id="notRobot"> Not a Robot</label>
                 <div class="modal-buttons">
-                    <button id="cancelSignUpBtn" class="jedi-btn">Cancel</button>
-                    <button id="registerBtn" class="jedi-btn">Register</button>
+                    <button id="cancelSignUpBtn" class="jedi-btn">
+                        <img src="cancel-icon.png" alt="Cancel" class="btn-icon"> Cancel
+                    </button>
+                    <button id="registerBtn" class="jedi-btn">
+                        <img src="register-icon.png" alt="Register" class="btn-icon"> Register
+                    </button>
                 </div>
             </div>
         </div>
@@ -158,8 +180,12 @@
                 <input type="text" id="loginUsernameInput" placeholder="Username">
                 <input type="password" id="loginPasswordInput" placeholder="Password">
                 <div class="modal-buttons">
-                    <button id="cancelSignInBtn" class="jedi-btn">Cancel</button>
-                    <button id="loginBtn" class="jedi-btn">Sign In</button>
+                    <button id="cancelSignInBtn" class="jedi-btn">
+                        <img src="cancel-icon.png" alt="Cancel" class="btn-icon"> Cancel
+                    </button>
+                    <button id="loginBtn" class="jedi-btn">
+                        <img src="login-icon.png" alt="Sign In" class="btn-icon"> Sign In
+                    </button>
                 </div>
             </div>
         </div>
@@ -171,4 +197,4 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
-    </html>
+</html>
