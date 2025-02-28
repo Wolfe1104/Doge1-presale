@@ -22,57 +22,43 @@ header {
 
 .header-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.menu-toggle {
-    cursor: pointer;
-    padding: 10px;
-    width: 40px;
-    height: 30px;
+.home-icon {
+    display: block;
+}
+
+.home-icon img {
+    filter: drop-shadow(0 0 5px #00ffcc);
+}
+
+.auth-buttons {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    gap: 10px;
 }
 
-.menu-toggle span {
-    display: block;
-    width: 100%;
-    height: 4px;
-    background: #00ffcc;
-    transition: all 0.3s ease;
-}
-
-.popup-menu {
-    display: none;
-    position: fixed;
-    top: 70px;
-    right: 20px;
-    background: #1f1f1f;
-    width: 200px;
-    box-shadow: 0 8px 16px rgba(0, 255, 204, 0.2);
-    border-radius: 5px;
-    border: 1px solid #00ffcc;
-    z-index: 1001;
-}
-
-.popup-menu.active {
-    display: block;
-}
-
-.popup-menu a {
-    color: #fff;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-size: 14px;
-}
-
-.popup-menu a:hover {
-    background: #00cc99;
+.jedi-btn {
+    background: linear-gradient(45deg, #00ffcc, #00cc99);
     color: #000;
+    border: 2px solid #00ffcc;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+}
+
+.jedi-btn:hover {
+    background: linear-gradient(45deg, #00cc99, #00ffcc);
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.8);
+    transform: scale(1.05);
 }
 
 main {
@@ -142,22 +128,6 @@ main {
 
 .buy-section {
     margin-top: 30px;
-}
-
-#connectBtn {
-    background: #00ffcc;
-    color: #000;
-    border: none;
-    padding: 12px 25px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-#connectBtn:hover {
-    background: #00cc99;
-    box-shadow: 0 0 10px #00ffcc;
 }
 
 #walletInfo {
@@ -253,6 +223,63 @@ h2 {
     background: rgba(10, 10, 35, 0.8);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1002;
+}
+
+.modal-content {
+    background: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 15% auto;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+    border: 2px solid #00ffcc;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin: 0 0 15px;
+    font-size: 24px;
+    color: #00ffcc;
+    text-shadow: 0 0 5px rgba(0, 255, 204, 0.7);
+}
+
+.modal-content input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    background: #333;
+    color: #fff;
+    border: 1px solid #00ffcc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.modal-content label {
+    display: block;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.modal-content input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
 }
 
 @media (min-width: 600px) {
