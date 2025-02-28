@@ -173,6 +173,20 @@ main {
     line-height: 1.6;
 }
 
+.description {
+    max-width: 90%;
+    margin: 0 auto 40px;
+}
+
+.description p {
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .presale {
     background: #1f1f1f;
     padding: 20px;
@@ -255,6 +269,28 @@ main {
 @keyframes slide {
     0% { transform: translateX(0); }
     100% { transform: translateX(calc(-33.33% * 10)); }
+}
+
+.hype {
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(0, 255, 204, 0.2));
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 90%;
+    margin: 40px auto;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+    border: 2px solid #00ffcc;
+}
+
+.hype h2 {
+    font-size: 32px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #00ffcc;
+}
+
+.hype p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #fff;
 }
 
 .tokenomics, .roadmap {
@@ -387,4 +423,4 @@ footer {
         0% { transform: translateX(0); }
         100% { transform: translateX(calc(-50% * 11)); }
     }
-}
+                              }
