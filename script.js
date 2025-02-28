@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
         userMenu.style.display = "none";
     }
 
-    // Sign-In Logic (Fixed)
+    // Sign-In Logic (Fully Functional)
     if (loginBtn) {
         loginBtn.addEventListener('click', () => {
             const username = document.getElementById("loginUsernameInput").value.trim();
@@ -158,8 +158,8 @@ document.addEventListener("DOMContentLoaded", () => {
         footerAuth.style.display = "none";
         userMenu.style.display = "block";
         startSessionTimeout();
+        console.log("Logged in successfully, redirecting to profile.html");
         if (window.location.pathname.split('/').pop() !== 'profile.html') {
-            console.log("Redirecting to profile.html");
             window.location.href = 'profile.html';
         }
     }
@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
         userMenu.style.display = "none";
         dropdownMenu.style.display = "none";
         if (window.location.pathname.split('/').pop() !== 'index.html') {
-            console.log("Redirecting to index.html");
+            console.log("Logging out, redirecting to index.html");
             window.location.href = 'index.html';
         }
     }
