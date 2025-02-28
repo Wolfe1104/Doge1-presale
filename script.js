@@ -39,49 +39,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const doge1Price = 0.00050; // Starting presale price
     let provider, signer, walletAddress;
 
-    // Web3Modal Setup with your Infura Project ID
-    const providerOptions = {
-        walletconnect: {
-            package: WalletConnectProvider,
-            options: {
-                infuraId: "7a8ed9926f0e4c4da7bdb336342171cf" // Your Project ID
-            }
-        }
-    };
-
-    const web3Modal = new Web3Modal({
-        cacheProvider: true,
-        providerOptions
-    });
-
-    // Updated Connect Wallet Function
+    // Function to connect wallet
     async function connectWallet(crypto) {
-        try {
-            if (crypto === "ETH" || crypto === "USDT") {
-                const instance = await web3Modal.connect();
-                provider = new ethers.providers.Web3Provider(instance);
+        console.log(`Connecting wallet for ${crypto}...`);
+        if (crypto === "ETH" || crypto === "USDT") {
+            if (typeof window.ethereum !== "undefined") {
+                provider = new ethers.providers.Web3Provider(window.ethereum);
+                await provider.send("eth_requestAccounts", []);
                 signer = provider.getSigner();
                 walletAddress = await signer.getAddress();
-                console.log("Connected Wallet:", walletAddress);
+                console.log("Connected wallet:", walletAddress);
                 return true;
-            } else if (crypto === "SOL" && window.solana) {
-                await window.solana.connect();
-                walletAddress = window.solana.publicKey.toString();
-                console.log("Connected Solana Wallet:", walletAddress);
-                return true;
-            } else if (crypto === "SOL") {
-                console.log("Solana wallet not detected.");
-                alert("Please install a Solana wallet (e.g., Phantom) to connect for SOL!");
-                return false;
             } else {
-                walletAddress = "Manual_" + crypto;
-                console.log("Manual payment selected for:", crypto);
-                return true; // Manual payment mode
+                console.log("Ethereum wallet not detected.");
+                alert("Please install MetaMask or Trust Wallet to connect for ETH/USDT!");
+                return false;
             }
-        } catch (error) {
-            console.error("Wallet Connection Failed:", error);
-            alert("Failed to connect wallet: " + error.message);
+        } else if (crypto === "SOL" && window.solana) {
+            await window.solana.connect();
+            walletAddress = window.solana.publicKey.toString();
+            console.log("Connected Solana wallet:", walletAddress);
+            return true;
+        } else if (crypto === "SOL") {
+            console.log("Solana wallet not detected.");
+            alert("Please install a Solana wallet (e.g., Phantom) to connect for SOL!");
             return false;
+        } else {
+            walletAddress = "Manual_" + crypto;
+            console.log("Manual payment selected for:", crypto);
+            return true; // Manual payment mode
         }
     }
 
@@ -103,18 +89,18 @@ document.addEventListener("DOMContentLoaded", () => {
         if (await connectWallet(crypto)) {
             let txHash;
             if (crypto === "ETH") {
-                const tx = { to: wallets.ETH, value: ethers.parseEther(amount.toString()) };
+                const tx = { to: wallets.ETH, value: ethers.utils.parseEther(amount.toString()) };
                 const txResponse = await signer.sendTransaction(tx);
                 txHash = txResponse.hash;
             } else if (crypto === "USDT") {
                 const usdtContract = new ethers.Contract("0xc2132D05D31c914a87C6611C10748AEb04B58e8F", ["function transfer(address to, uint256 value)"], signer);
-                const txResponse = await usdtContract.transfer(wallets.USDT, ethers.parseUnits(amount.toString(), 6));
+                const txResponse = await usdtContract.transfer(wallets.USDT, ethers.utils.parseUnits(amount.toString(), 6));
                 txHash = txResponse.hash;
             } else if (crypto === "SOL") {
                 const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl("mainnet-beta"));
                 const transaction = new solanaWeb3.Transaction().add(
                     solanaWeb3.SystemProgram.transfer({
-                        fromPubkey: new solanaWeb3.PublicKey(walletAddress),
+                        fromPubkey: window.solana.publicKey,
                         toPubkey: new solanaWeb3.PublicKey(wallets.SOL),
                         lamports: Math.floor(amount * solanaWeb3.LAMPORTS_PER_SOL),
                     })
@@ -176,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Buy Now Button
-    buyNowBtn.addEventListener("click", () => {
+    buyNowBtn.addEventListener('click', () => {
         console.log("Buy Now clicked");
         buyModal.style.display = 'block';
     });
@@ -236,44 +222,4 @@ document.addEventListener("DOMContentLoaded", () => {
         if (await connectWallet(crypto)) {
             let txHash;
             if (crypto === "ETH") {
-                const tx = { to: wallets.ETH, value: ethers.parseEther(cryptoValue.toString()) };
-                const txResponse = await signer.sendTransaction(tx);
-                txHash = txResponse.hash;
-            } else if (crypto === "USDT") {
-                const usdtContract = new ethers.Contract("0xc2132D05D31c914a87C6611C10748AEb04B58e8F", ["function transfer(address to, uint256 value)"], signer);
-                const txResponse = await usdtContract.transfer(wallets.USDT, ethers.parseUnits(cryptoValue.toString(), 6));
-                txHash = txResponse.hash;
-            } else if (crypto === "SOL") {
-                const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl("mainnet-beta"));
-                const transaction = new solanaWeb3.Transaction().add(
-                    solanaWeb3.SystemProgram.transfer({
-                        fromPubkey: new solanaWeb3.PublicKey(walletAddress),
-                        toPubkey: new solanaWeb3.PublicKey(wallets.SOL),
-                        lamports: Math.floor(cryptoValue * solanaWeb3.LAMPORTS_PER_SOL),
-                    })
-                );
-                const signature = await window.solana.signAndSendTransaction(transaction);
-                txHash = signature;
-            } else {
-                alert(`Manual payment: Send ${cryptoValue.toFixed(6)} ${crypto} to: ${wallets[crypto]}\nDM TX hash on X @YourXHandle to confirm your purchase of ${doge1Amount.toFixed(2)} $DOGE1!`);
-                purchaseConfirmModal.style.display = 'none';
-                buyModal.style.display = 'none';
-                usdInput.value = '';
-                cryptoAmount.textContent = 'Crypto Amount: 0';
-                return;
-            }
-            const profile = {
-                wallet: walletAddress,
-                doge1Amount: doge1Amount,
-                usdValue: usd,
-                timestamp: new Date().toISOString()
-            };
-            localStorage.setItem(`doge1_profile_${walletAddress}`, JSON.stringify(profile));
-            alert(`Purchase successful! TX: ${txHash}\nYou now own ${doge1Amount.toFixed(2)} $DOGE1 worth $${usd}.\nDM TX hash + Polygon address on X @YourXHandle!`);
-            purchaseConfirmModal.style.display = 'none';
-            buyModal.style.display = 'none';
-            usdInput.value = '';
-            cryptoAmount.textContent = 'Crypto Amount: 0';
-        }
-    });
-});
+                const tx = { to: wallet
