@@ -104,6 +104,24 @@ main {
     padding-top: 80px;
 }
 
+.profile {
+    background: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+    margin: 0 auto 40px;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+}
+
+.profile-details p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.profile-details strong {
+    color: #00ffcc;
+}
+
 .intro {
     background: #1f1f1f;
     padding: 20px;
@@ -239,12 +257,12 @@ main {
     100% { transform: translateX(calc(-33.33% * 10)); }
 }
 
-.tokenomics {
+.tokenomics, .roadmap {
     background: #1f1f1f;
     padding: 20px;
     border-radius: 10px;
     max-width: 90%;
-    margin: 0 auto;
+    margin: 0 auto 40px;
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
 }
 
@@ -261,6 +279,36 @@ h2 {
     background: rgba(10, 10, 35, 0.8);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+}
+
+.roadmap-details ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.roadmap-details li {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.roadmap-details li strong {
+    color: #00ffcc;
+}
+
+footer {
+    background: #000;
+    padding: 15px;
+    width: 100%;
+    position: relative;
+}
+
+.footer-auth {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .modal {
@@ -339,4 +387,4 @@ h2 {
         0% { transform: translateX(0); }
         100% { transform: translateX(calc(-50% * 11)); }
     }
-    }
+}
