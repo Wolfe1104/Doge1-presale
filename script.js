@@ -87,23 +87,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Buy Now Buttons (Index.html)
+    console.log("introBuyBtn:", introBuyBtn);
+    console.log("hypeBuyBtn:", hypeBuyBtn);
+    console.log("footerBuyBtn:", footerBuyBtn);
+
     if (introBuyBtn) {
         introBuyBtn.addEventListener('click', () => {
-            if (loggedInUser) window.location.href = 'profile.html';
-            else signInModal.style.display = 'block';
+            console.log("Intro Buy Button Clicked");
+            if (loggedInUser) {
+                window.location.href = 'profile.html';
+            } else {
+                signInModal.style.display = 'block';
+            }
         });
     }
     if (hypeBuyBtn) {
         hypeBuyBtn.addEventListener('click', () => {
-            if (loggedInUser) window.location.href = 'profile.html';
-            else signInModal.style.display = 'block';
+            console.log("Hype Buy Button Clicked");
+            if (loggedInUser) {
+                window.location.href = 'profile.html';
+            } else {
+                signInModal.style.display = 'block';
+            }
         });
     }
     if (footerBuyBtn) {
         footerBuyBtn.addEventListener('click', () => {
-            if (loggedInUser && currentPage !== 'profile.html') window.location.href = 'profile.html';
-            else if (!loggedInUser) signInModal.style.display = 'block';
-            else buyModal.style.display = 'block';
+            console.log("Footer Buy Button Clicked");
+            if (loggedInUser && currentPage !== 'profile.html') {
+                window.location.href = 'profile.html';
+            } else if (!loggedInUser) {
+                signInModal.style.display = 'block';
+            } else {
+                buyModal.style.display = 'block';
+            }
         });
     }
 
@@ -111,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (menuBuyBtn) {
         menuBuyBtn.addEventListener('click', (e) => {
             e.preventDefault();
+            console.log("Menu Buy Button Clicked");
             buyModal.style.display = 'block';
         });
     }
@@ -202,7 +220,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 <progress id="progressBar" value="0" max="100"></progress>
                 <p>Status: <span id="status">Pending</span></p>
                 <script>
-                    // Simulated transaction check (replace with real blockchain monitoring later)
                     let progress = 0;
                     const progressBar = document.getElementById("progressBar");
                     const status = document.getElementById("status");
@@ -460,17 +477,4 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("nameInput").value = '';
             document.getElementById("usernameInput").value = '';
             document.getElementById("emailInput").value = '';
-            document.getElementById("passwordInput").value = '';
-            document.getElementById("notRobot").checked = false;
-        }
-    }
-
-    function clearSignInForm() {
-        if (document.getElementById("loginUsernameInput")) {
-            document.getElementById("loginUsernameInput").value = '';
-            document.getElementById("loginPasswordInput").value = '';
-        }
-    }
-
-    // Background Music
-    const audio = documen
+            document
