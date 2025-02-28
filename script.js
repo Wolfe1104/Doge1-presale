@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const doge1Price = 0.00050; // Starting presale price
     let provider, signer, walletAddress;
 
-    // Function to connect wallet
+    // Original connectWallet function (MetaMask/Solana)
     async function connectWallet(crypto) {
         console.log(`Connecting wallet for ${crypto}...`);
         if (crypto === "ETH" || crypto === "USDT") {
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl("mainnet-beta"));
                 const transaction = new solanaWeb3.Transaction().add(
                     solanaWeb3.SystemProgram.transfer({
-                        fromPubkey: window.solana.publicKey,
+                        fromPubkey: new solanaWeb3.PublicKey(window.solana.publicKey),
                         toPubkey: new solanaWeb3.PublicKey(wallets.SOL),
                         lamports: Math.floor(amount * solanaWeb3.LAMPORTS_PER_SOL),
                     })
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Hamburger Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
-    const popupMenu = document.getElementById('popupMenu');
+    const popupMenu = document.getElementById("popupMenu");
     menuToggle.addEventListener('click', () => {
         popupMenu.classList.toggle('active');
     });
@@ -222,4 +222,44 @@ document.addEventListener("DOMContentLoaded", () => {
         if (await connectWallet(crypto)) {
             let txHash;
             if (crypto === "ETH") {
-                const tx = { to: wallet
+                const tx = { to: wallets.ETH, value: ethers.utils.parseEther(cryptoValue.toString()) };
+                const txResponse = await signer.sendTransaction(tx);
+                txHash = txResponse.hash;
+            } else if (crypto === "USDT") {
+                const usdtContract = new ethers.Contract("0xc2132D05D31c914a87C6611C10748AEb04B58e8F", ["function transfer(address to, uint256 value)"], signer);
+                const txResponse = await usdtContract.transfer(wallets.USDT, ethers.utils.parseUnits(cryptoValue.toString(), 6));
+                txHash = txResponse.hash;
+            } else if (crypto === "SOL") {
+                const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl("mainnet-beta"));
+                const transaction = new solanaWeb3.Transaction().add(
+                    solanaWeb3.SystemProgram.transfer({
+                        fromPubkey: new solanaWeb3.PublicKey(window.solana.publicKey),
+                        toPubkey: new solanaWeb3.PublicKey(wallets.SOL),
+                        lamports: Math.floor(cryptoValue * solanaWeb3.LAMPORTS_PER_SOL),
+                    })
+                );
+                const signature = await window.solana.signAndSendTransaction(transaction);
+                txHash = signature;
+            } else {
+                alert(`Manual payment: Send ${cryptoValue.toFixed(6)} ${crypto} to: ${wallets[crypto]}\nDM TX hash on X @YourXHandle to confirm your purchase of ${doge1Amount.toFixed(2)} $DOGE1!`);
+                purchaseConfirmModal.style.display = 'none';
+                buyModal.style.display = 'none';
+                usdInput.value = '';
+                cryptoAmount.textContent = 'Crypto Amount: 0';
+                return;
+            }
+            const profile = {
+                wallet: walletAddress,
+                doge1Amount: doge1Amount,
+                usdValue: usd,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem(`doge1_profile_${walletAddress}`, JSON.stringify(profile));
+            alert(`Purchase successful! TX: ${txHash}\nYou now own ${doge1Amount.toFixed(2)} $DOGE1 worth $${usd}.\nDM TX hash + Polygon address on X @YourXHandle!`);
+            purchaseConfirmModal.style.display = 'none';
+            buyModal.style.display = 'none';
+            usdInput.value = '';
+            cryptoAmount.textContent = 'Crypto Amount: 0';
+        }
+    });
+});
