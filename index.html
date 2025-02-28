@@ -11,16 +11,13 @@
 <body>
     <header>
         <div class="header-container">
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <a href="index.html" class="home-icon">
+                <img src="home-icon.png" alt="Home" style="width: 40px; height: 40px;">
+            </a>
+            <div class="auth-buttons">
+                <button id="signUpBtn" class="jedi-btn">Sign Up</button>
+                <button id="signInBtn" class="jedi-btn">Sign In</button>
             </div>
-            <nav class="popup-menu" id="popupMenu">
-                <a href="https://wolfe1104.github.io/Doge1-presale/white%20paper.pdf" target="_blank">White Paper</a>
-                <a href="#tokenomics">Tokenomics</a>
-                <a href="#roadmap">Roadmap</a>
-            </nav>
         </div>
     </header>
     <main>
@@ -36,7 +33,7 @@
         </section>
         <section class="presale">
             <div class="buy-section">
-                <button id="connectBtn">Connect Wallet</button>
+                <button id="connectBtn" class="jedi-btn">Connect Wallet</button>
                 <div id="walletInfo" style="display: none;">
                     <p>Connected: <span id="walletAddress"></span></p>
                     <select id="cryptoSelect">
@@ -139,8 +136,39 @@
                 </div>
             </div>
         </section>
+        <!-- Sign Up Modal -->
+        <div class="modal" id="signUpModal">
+            <div class="modal-content">
+                <h2>Sign Up</h2>
+                <input type="text" id="nameInput" placeholder="Name">
+                <input type="text" id="usernameInput" placeholder="Username">
+                <input type="email" id="emailInput" placeholder="Email">
+                <input type="password" id="passwordInput" placeholder="Password">
+                <label><input type="checkbox" id="notRobot"> Not a Robot</label>
+                <div class="modal-buttons">
+                    <button id="cancelSignUpBtn" class="jedi-btn">Cancel</button>
+                    <button id="registerBtn" class="jedi-btn">Register</button>
+                </div>
+            </div>
+        </div>
+        <!-- Sign In Modal -->
+        <div class="modal" id="signInModal">
+            <div class="modal-content">
+                <h2>Sign In</h2>
+                <input type="text" id="loginUsernameInput" placeholder="Username">
+                <input type="password" id="loginPasswordInput" placeholder="Password">
+                <div class="modal-buttons">
+                    <button id="cancelSignInBtn" class="jedi-btn">Cancel</button>
+                    <button id="loginBtn" class="jedi-btn">Sign In</button>
+                </div>
+            </div>
+        </div>
+        <!-- Background Audio -->
+        <audio id="backgroundMusic" loop>
+            <source src="star-wars-theme.mp3" type="audio/mpeg">
+        </audio>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
-</html>
+    </html>
