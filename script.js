@@ -28,20 +28,38 @@ document.addEventListener("DOMContentLoaded", () => {
     let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || null;
     let sessionTimeout;
 
-    // Redirect Logic with Debugging
+    // Single Redirect Check
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     console.log("Current Page:", currentPage);
     console.log("Logged In User:", loggedInUser);
 
-    // Only redirect if not already on the correct page
     if (loggedInUser && currentPage !== 'profile.html') {
         console.log("Redirecting to profile.html");
         window.location.href = 'profile.html';
-        return; // Exit to prevent further execution
+        return; // Stop execution
     } else if (!loggedInUser && currentPage !== 'index.html') {
         console.log("Redirecting to index.html");
         window.location.href = 'index.html';
-        return; // Exit to prevent further execution
+        return; // Stop execution
+    }
+
+    // Populate Profile Data (only on profile.html)
+    if (loggedInUser && currentPage === 'profile.html' && profileName && profileUsername && profileEmail) {
+        profileName.textContent = loggedInUser.name;
+        profileUsername.textContent = loggedInUser.username;
+        profileEmail.textContent = loggedInUser.email;
+    }
+
+    // Set UI State Based on Login
+    if (loggedInUser) {
+        if (authButtons) authButtons.style.display = "none";
+        if (footerAuth) footerAuth.style.display = "none";
+        if (userMenu) userMenu.style.display = "block";
+        startSessionTimeout();
+    } else {
+        if (authButtons) authButtons.style.display = "flex";
+        if (footerAuth) footerAuth.style.display = "flex";
+        if (userMenu) userMenu.style.display = "none";
     }
 
     // Wallet Connection
@@ -137,7 +155,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (userMenu) userMenu.style.display = "block";
         startSessionTimeout();
         if (currentPage !== 'profile.html') {
+            console.log("setLoggedIn redirecting to profile.html");
             window.location.href = 'profile.html';
+        } else {
+            // Update profile fields if already on profile.html
+            if (profileName) profileName.textContent = user.name;
+            if (profileUsername) profileUsername.textContent = user.username;
+            if (profileEmail) profileEmail.textContent = user.email;
         }
     }
 
@@ -150,6 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (userMenu) userMenu.style.display = "none";
         if (dropdownMenu) dropdownMenu.style.display = "none";
         if (currentPage !== 'index.html') {
+            console.log("Logout redirecting to index.html");
             window.location.href = 'index.html';
         }
     }
@@ -157,12 +182,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function startSessionTimeout() {
         clearTimeout(sessionTimeout);
         sessionTimeout = setTimeout(logout, 10 * 60 * 1000); // 10 minutes
-    }
-
-    if (loggedInUser && profileName && profileUsername && profileEmail) {
-        profileName.textContent = loggedInUser.name;
-        profileUsername.textContent = loggedInUser.username;
-        profileEmail.textContent = loggedInUser.email;
     }
 
     // Sign Up Modal (index.html only)
