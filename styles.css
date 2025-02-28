@@ -106,7 +106,6 @@ main {
 .shiba-logo {
     width: 70px;
     height: auto;
-    max-width: 100px; /* Prevent oversized image */
     margin: 0;
     filter: drop-shadow(0 0 10px #00ffcc);
 }
