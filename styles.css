@@ -1,17 +1,446 @@
-/* ... Existing styles unchanged ... */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #0a0a23, #1a1a3b), url('https://cdn.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616_1280.jpg');
+    background-size: cover;
+    background-blend-mode: overlay;
+    color: #fff;
+    text-align: center;
+}
+
+header {
+    background: #000;
+    padding: 20px;
+    border-bottom: 2px solid #00ffcc;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+    cursor: pointer;
+    padding: 10px;
+    width: 40px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: #00ffcc;
+    transition: all 0.3s ease;
+}
+
+/* Popup Menu */
+.popup-menu {
+    display: none;
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background: #1f1f1f;
+    width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 255, 204, 0.2);
+    border-radius: 5px;
+    border: 1px solid #00ffcc;
+    z-index: 1001;
+}
+
+.popup-menu.active {
+    display: block;
+}
+
+.popup-menu a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+.popup-menu a:hover {
+    background: #00cc99;
+    color: #000;
+}
+
+main {
+    padding: 40px;
+    padding-bottom: 100px;
+    padding-top: 100px;
+}
+
+.intro {
+    background: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+    margin: 0 auto 40px;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+}
+
+.intro-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto 15px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.shiba-logo {
+    width: 70px;
+    height: auto;
+    max-width: 100px; /* Prevent oversized image */
+    margin: 0;
+    filter: drop-shadow(0 0 10px #00ffcc);
+}
+
+.intro-text {
+    flex-grow: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.intro-text h1 {
+    margin: 0;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1.5;
+    text-align: center;
+    width: 100%;
+}
+
+.intro-text p {
+    font-size: 12px;
+    color: #ccc;
+    margin: 5px 0;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.buy-now-btn {
+    background: #00ffcc;
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.buy-now-btn:hover {
+    background: #00cc99;
+    box-shadow: 0 0 10px #00ffcc;
+}
+
+.description {
+    max-width: 90%;
+    margin: 0 auto 40px;
+}
+
+.description p {
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.presale-goal {
+    font-size: 18px;
+    color: #fff;
+    margin: 10px 0;
+    text-align: center;
+}
+
+h2 {
+    margin: 20px 0;
+    font-size: 28px;
+    color: #00ffcc;
+}
+
+h3 {
+    font-size: 22px;
+    color: #00ffcc;
+    margin: 15px 0;
+}
+
+.presale {
+    background: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+    margin: 0 auto 40px;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+}
+
+.details p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.phase-window {
+    max-width: 90%;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    margin: 20px auto;
+    border: 2px solid #00ffcc;
+    border-radius: 5px;
+    background: #1f1f1f;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+    position: relative;
+}
+
+.phase-slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    animation: slide 26s linear infinite;
+}
+
+.phase-box {
+    background: linear-gradient(145deg, rgba(10, 10, 35, 0.9), rgba(26, 26, 59, 0.7)), url('https://cdn.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616_1280.jpg');
+    background-size: cover;
+    background-blend-mode: overlay;
+    border: 1px solid #00ffcc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    flex: 0 0 33.33%;
+    min-width: 120px;
+    max-width: 180px;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 5px rgba(0, 255, 204, 0.3);
+}
+
+.phase-box p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.phase-box .price {
+    color: #00ffcc;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(0, 255, 204, 0.7);
+    font-size: 16px;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-33.33% * 10)); }
+}
+
+.buy-section, .x-feed {
+    margin-top: 30px;
+}
+
+#connectBtn, #buyBtn, .button {
+    background: #00ffcc;
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#connectBtn:hover, #buyBtn:hover, .button:hover {
+    background: #00cc99;
+    box-shadow: 0 0 10px #00ffcc;
+}
 
 #walletInfo {
     margin-top: 20px;
-    padding: 15px;
-    background: rgba(31, 31, 31, 0.9);
-    border-radius: 5px;
-    border: 1px solid #00ffcc;
 }
 
 #walletAddress {
     font-family: monospace;
     color: #00ffcc;
-    font-size: 14px;
 }
 
-/* ... Remaining styles unchanged ... */
+#cryptoSelect, #amountInput {
+    padding: 10px;
+    margin: 10px 0;
+    background: #333;
+    color: #fff;
+    border: 1px solid #00ffcc;
+    border-radius: 5px;
+}
+
+#amountInput {
+    width: 200px;
+}
+
+.hype {
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(0, 255, 204, 0.2));
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 90%;
+    margin: 40px auto;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+    border: 2px solid #00ffcc;
+}
+
+.hype h2 {
+    font-size: 32px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #00ffcc;
+}
+
+.hype p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #fff;
+}
+
+.tokenomics {
+    background: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+}
+
+.tokenomics-details, .roadmap {
+    margin: 20px 0;
+}
+
+.tokenomics-details ul, .roadmap ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tokenomics-details li, .roadmap li {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.tokenomics-details li strong, .roadmap li strong {
+    color: #00ffcc;
+}
+
+.charts {
+    margin: 20px auto;
+    max-width: 350px;
+    padding: 15px;
+    background: rgba(10, 10, 35, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1002;
+}
+
+.modal-content {
+    background: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 15% auto;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+    border: 1px solid #00ffcc;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin: 0 0 15px;
+    font-size: 24px;
+}
+
+.modal-content input, .modal-content select {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    background: #333;
+    color: #fff;
+    border: 1px solid #00ffcc;
+    border-radius: 5px;
+}
+
+.modal-content p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.modal-content button {
+    margin: 10px 5px;
+}
+
+footer {
+    background: #000;
+    padding: 15px;
+    width: 100%;
+    border-top: 2px solid #00ffcc;
+    position: relative;
+}
+
+.footer-link {
+    color: #00ffcc;
+    text-decoration: none;
+    margin-left: 10px;
+    transition: all 0.3s;
+}
+
+.footer-link:hover {
+    color: #00cc99;
+    text-shadow: 0 0 5px #00ffcc;
+}
+
+@media (min-width: 600px) {
+    .phase-box {
+        flex: 0 0 20%;
+    }
+    @keyframes slide {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-20% * 8)); }
+    }
+}
+
+@media (max-width: 400px) {
+    .phase-box {
+        flex: 0 0 50%;
+        min-width: 100px;
+    }
+    @keyframes slide {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-50% * 11)); }
+    }
+}
