@@ -5,27 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$DOGE1 Presale - doge1.me</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.ethers.io/lib/ethers-5.7.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/solana-web3/1.95.3/solana-web3.min.js"></script>
 </head>
 <body>
     <header>
         <div class="header-container">
-            <a href="index.html" class="home-icon">
-                <img src="home-icon.png" alt="Home" style="width: 40px; height: 40px;">
-            </a>
+            <a href="index.html" class="home-icon">Home</a>
             <div class="auth-buttons" id="authButtons">
-                <button id="signUpBtn" class="jedi-btn">
-                    <img src="signup-icon.png" alt="Sign Up" class="btn-icon"> Sign Up
-                </button>
-                <button id="signInBtn" class="jedi-btn">
-                    <img src="signin-icon.png" alt="Sign In" class="btn-icon"> Sign In
-                </button>
+                <button id="signUpBtn" class="jedi-btn">Sign Up</button>
+                <button id="signInBtn" class="jedi-btn">Sign In</button>
             </div>
             <div class="user-menu" id="userMenu" style="display: none;">
-                <button id="userMenuBtn" class="jedi-btn">
-                    <img src="user-icon.png" alt="User" class="btn-icon">
-                </button>
+                <button id="userMenuBtn" class="jedi-btn">User</button>
                 <nav class="dropdown-menu" id="dropdownMenu">
                     <a href="profile.html">Profile</a>
                     <a href="#tokenomics">Tokenomics</a>
@@ -39,7 +29,6 @@
     <main>
         <section class="intro">
             <div class="intro-container">
-                <img src="shiba-jedi-logo.webp" alt="Shiba Jedi Logo" class="shiba-logo">
                 <div class="intro-text">
                     <h1>Doge 1 D-O-G $DOGE1</h1>
                     <p>The Jedi of Justice Awakens</p>
@@ -55,9 +44,7 @@
         </section>
         <section class="presale">
             <div class="buy-section">
-                <button id="connectBtn" class="jedi-btn">
-                    <img src="wallet-icon.png" alt="Wallet" class="btn-icon"> Connect Wallet
-                </button>
+                <button id="connectBtn" class="jedi-btn">Connect Wallet</button>
                 <div id="walletInfo" style="display: none;">
                     <p>Connected: <span id="walletAddress"></span></p>
                     <select id="cryptoSelect">
@@ -189,12 +176,8 @@
                 <input type="password" id="passwordInput" placeholder="Password">
                 <label><input type="checkbox" id="notRobot"> Not a Robot</label>
                 <div class="modal-buttons">
-                    <button id="cancelSignUpBtn" class="jedi-btn">
-                        <img src="cancel-icon.png" alt="Cancel" class="btn-icon"> Cancel
-                    </button>
-                    <button id="registerBtn" class="jedi-btn">
-                        <img src="register-icon.png" alt="Register" class="btn-icon"> Register
-                    </button>
+                    <button id="cancelSignUpBtn" class="jedi-btn">Cancel</button>
+                    <button id="registerBtn" class="jedi-btn">Register</button>
                 </div>
             </div>
         </div>
@@ -205,35 +188,124 @@
                 <input type="text" id="loginUsernameInput" placeholder="Username">
                 <input type="password" id="loginPasswordInput" placeholder="Password">
                 <div class="modal-buttons">
-                    <button id="cancelSignInBtn" class="jedi-btn">
-                        <img src="cancel-icon.png" alt="Cancel" class="btn-icon"> Cancel
-                    </button>
-                    <button id="loginBtn" class="jedi-btn">
-                        <img src="login-icon.png" alt="Sign In" class="btn-icon"> Sign In
-                    </button>
+                    <button id="cancelSignInBtn" class="jedi-btn">Cancel</button>
+                    <button id="loginBtn" class="jedi-btn">Sign In</button>
                 </div>
                 <p>Not registered? <a href="#" id="registerLink">Sign Up</a></p>
             </div>
         </div>
-        <!-- Background Audio -->
-        <audio id="backgroundMusic" loop>
-            <source src="star-wars-theme.mp3" type="audio/mpeg">
-        </audio>
     </main>
     <footer>
         <div class="footer-auth" id="footerAuth">
-            <button id="footerSignUpBtn" class="jedi-btn">
-                <img src="signup-icon.png" alt="Sign Up" class="btn-icon"> Sign Up
-            </button>
-            <button id="footerSignInBtn" class="jedi-btn">
-                <img src="signin-icon.png" alt="Sign In" class="btn-icon"> Sign In
-            </button>
+            <button id="footerSignUpBtn" class="jedi-btn">Sign Up</button>
+            <button id="footerSignInBtn" class="jedi-btn">Sign In</button>
         </div>
         <div class="buy-now-container">
             <button id="footerBuyBtn" class="jedi-btn buy-now-btn">Buy Now</button>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const signUpBtn = document.getElementById("signUpBtn");
+            const signInBtn = document.getElementById("signInBtn");
+            const introBuyBtn = document.getElementById("introBuyBtn");
+            const hypeBuyBtn = document.getElementById("hypeBuyBtn");
+            const footerBuyBtn = document.getElementById("footerBuyBtn");
+            const footerSignUpBtn = document.getElementById("footerSignUpBtn");
+            const footerSignInBtn = document.getElementById("footerSignInBtn");
+            const signUpModal = document.getElementById("signUpModal");
+            const signInModal = document.getElementById("signInModal");
+            const cancelSignUpBtn = document.getElementById("cancelSignUpBtn");
+            const registerBtn = document.getElementById("registerBtn");
+            const cancelSignInBtn = document.getElementById("cancelSignInBtn");
+            const loginBtn = document.getElementById("loginBtn");
+            const registerLink = document.getElementById("registerLink");
+
+            console.log("Sign Up Btn:", signUpBtn);
+            console.log("Sign In Btn:", signInBtn);
+            console.log("Intro Buy Btn:", introBuyBtn);
+            console.log("Hype Buy Btn:", hypeBuyBtn);
+            console.log("Footer Buy Btn:", footerBuyBtn);
+            console.log("Footer Sign Up Btn:", footerSignUpBtn);
+            console.log("Footer Sign In Btn:", footerSignInBtn);
+
+            if (signUpBtn) {
+                signUpBtn.addEventListener('click', () => {
+                    console.log("Sign Up Clicked");
+                    signUpModal.style.display = 'block';
+                });
+            }
+            if (signInBtn) {
+                signInBtn.addEventListener('click', () => {
+                    console.log("Sign In Clicked");
+                    signInModal.style.display = 'block';
+                });
+            }
+            if (introBuyBtn) {
+                introBuyBtn.addEventListener('click', () => {
+                    console.log("Intro Buy Clicked");
+                    signInModal.style.display = 'block';
+                });
+            }
+            if (hypeBuyBtn) {
+                hypeBuyBtn.addEventListener('click', () => {
+                    console.log("Hype Buy Clicked");
+                    signInModal.style.display = 'block';
+                });
+            }
+            if (footerBuyBtn) {
+                footerBuyBtn.addEventListener('click', () => {
+                    console.log("Footer Buy Clicked");
+                    signInModal.style.display = 'block';
+                });
+            }
+            if (footerSignUpBtn) {
+                footerSignUpBtn.addEventListener('click', () => {
+                    console.log("Footer Sign Up Clicked");
+                    signUpModal.style.display = 'block';
+                });
+            }
+            if (footerSignInBtn) {
+                footerSignInBtn.addEventListener('click', () => {
+                    console.log("Footer Sign In Clicked");
+                    signInModal.style.display = 'block';
+                });
+            }
+            if (cancelSignUpBtn) {
+                cancelSignUpBtn.addEventListener('click', () => {
+                    console.log("Cancel Sign Up Clicked");
+                    signUpModal.style.display = 'none';
+                });
+            }
+            if (registerBtn) {
+                registerBtn.addEventListener('click', () => {
+                    console.log("Register Clicked");
+                    signUpModal.style.display = 'none';
+                    alert("Registration placeholder - full logic to be added.");
+                });
+            }
+            if (cancelSignInBtn) {
+                cancelSignInBtn.addEventListener('click', () => {
+                    console.log("Cancel Sign In Clicked");
+                    signInModal.style.display = 'none';
+                });
+            }
+            if (loginBtn) {
+                loginBtn.addEventListener('click', () => {
+                    console.log("Login Clicked");
+                    signInModal.style.display = 'none';
+                    alert("Login placeholder - full logic to be added.");
+                });
+            }
+            if (registerLink) {
+                registerLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    console.log("Register Link Clicked");
+                    signInModal.style.display = 'none';
+                    signUpModal.style.display = 'block';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
