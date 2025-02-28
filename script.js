@@ -28,12 +28,20 @@ document.addEventListener("DOMContentLoaded", () => {
     let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || null;
     let sessionTimeout;
 
-    // Redirect Logic
+    // Redirect Logic with Debugging
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    console.log("Current Page:", currentPage);
+    console.log("Logged In User:", loggedInUser);
+
+    // Only redirect if not already on the correct page
     if (loggedInUser && currentPage !== 'profile.html') {
+        console.log("Redirecting to profile.html");
         window.location.href = 'profile.html';
+        return; // Exit to prevent further execution
     } else if (!loggedInUser && currentPage !== 'index.html') {
+        console.log("Redirecting to index.html");
         window.location.href = 'index.html';
+        return; // Exit to prevent further execution
     }
 
     // Wallet Connection
@@ -128,7 +136,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (footerAuth) footerAuth.style.display = "none";
         if (userMenu) userMenu.style.display = "block";
         startSessionTimeout();
-        window.location.href = 'profile.html';
+        if (currentPage !== 'profile.html') {
+            window.location.href = 'profile.html';
+        }
     }
 
     function logout() {
@@ -139,7 +149,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (footerAuth) footerAuth.style.display = "flex";
         if (userMenu) userMenu.style.display = "none";
         if (dropdownMenu) dropdownMenu.style.display = "none";
-        window.location.href = 'index.html';
+        if (currentPage !== 'index.html') {
+            window.location.href = 'index.html';
+        }
     }
 
     function startSessionTimeout() {
@@ -147,11 +159,10 @@ document.addEventListener("DOMContentLoaded", () => {
         sessionTimeout = setTimeout(logout, 10 * 60 * 1000); // 10 minutes
     }
 
-    if (loggedInUser) {
-        setLoggedIn(loggedInUser);
-        if (profileName) profileName.textContent = loggedInUser.name;
-        if (profileUsername) profileUsername.textContent = loggedInUser.username;
-        if (profileEmail) profileEmail.textContent = loggedInUser.email;
+    if (loggedInUser && profileName && profileUsername && profileEmail) {
+        profileName.textContent = loggedInUser.name;
+        profileUsername.textContent = loggedInUser.username;
+        profileEmail.textContent = loggedInUser.email;
     }
 
     // Sign Up Modal (index.html only)
