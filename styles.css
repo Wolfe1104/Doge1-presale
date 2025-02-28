@@ -25,10 +25,8 @@ header {
     justify-content: flex-end;
     max-width: 1200px;
     margin: 0 auto;
-    position: relative;
 }
 
-/* Hamburger Menu */
 .menu-toggle {
     cursor: pointer;
     padding: 10px;
@@ -47,7 +45,6 @@ header {
     transition: all 0.3s ease;
 }
 
-/* Popup Menu */
 .popup-menu {
     display: none;
     position: fixed;
@@ -80,7 +77,6 @@ header {
 
 main {
     padding: 40px;
-    padding-bottom: 100px;
     padding-top: 100px;
 }
 
@@ -98,7 +94,7 @@ main {
     align-items: center;
     justify-content: center;
     max-width: 1200px;
-    margin: 0 auto 15px;
+    margin: 0 auto;
     flex-wrap: wrap;
     gap: 20px;
 }
@@ -125,7 +121,6 @@ main {
     color: #fff;
     line-height: 1.5;
     text-align: center;
-    width: 100%;
 }
 
 .intro-text p {
@@ -134,39 +129,6 @@ main {
     margin: 5px 0;
     text-align: center;
     line-height: 1.6;
-}
-
-.description {
-    max-width: 90%;
-    margin: 0 auto 40px;
-}
-
-.description p {
-    font-size: 16px;
-    color: #fff;
-    text-align: center;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.presale-goal {
-    font-size: 18px;
-    color: #fff;
-    margin: 10px 0;
-    text-align: center;
-}
-
-h2 {
-    margin: 20px 0;
-    font-size: 28px;
-    color: #00ffcc;
-}
-
-h3 {
-    font-size: 22px;
-    color: #00ffcc;
-    margin: 15px 0;
 }
 
 .presale {
@@ -178,9 +140,42 @@ h3 {
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
 }
 
-.details p {
-    margin: 10px 0;
+.buy-section {
+    margin-top: 30px;
+}
+
+#connectBtn {
+    background: #00ffcc;
+    color: #000;
+    border: none;
+    padding: 12px 25px;
     font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#connectBtn:hover {
+    background: #00cc99;
+    box-shadow: 0 0 10px #00ffcc;
+}
+
+#walletInfo {
+    margin-top: 20px;
+}
+
+#walletAddress {
+    font-family: monospace;
+    color: #00ffcc;
+}
+
+#cryptoSelect {
+    padding: 10px;
+    margin: 10px 0;
+    background: #333;
+    color: #fff;
+    border: 1px solid #00ffcc;
+    border-radius: 5px;
 }
 
 .phase-window {
@@ -236,66 +231,6 @@ h3 {
     100% { transform: translateX(calc(-33.33% * 10)); }
 }
 
-.buy-section, .x-feed {
-    margin-top: 30px;
-}
-
-#connectBtn, .button {
-    background: #00ffcc;
-    color: #000;
-    border: none;
-    padding: 12px 25px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-#connectBtn:hover, .button:hover {
-    background: #00cc99;
-    box-shadow: 0 0 10px #00ffcc;
-}
-
-#walletInfo {
-    margin-top: 20px;
-}
-
-#walletAddress {
-    font-family: monospace;
-    color: #00ffcc;
-}
-
-#cryptoSelect {
-    padding: 10px;
-    margin: 10px 0;
-    background: #333;
-    color: #fff;
-    border: 1px solid #00ffcc;
-    border-radius: 5px;
-}
-
-.hype {
-    background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(0, 255, 204, 0.2));
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 90%;
-    margin: 40px auto;
-    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
-    border: 2px solid #00ffcc;
-}
-
-.hype h2 {
-    font-size: 32px;
-    text-transform: uppercase;
-    text-shadow: 0 0 10px #00ffcc;
-}
-
-.hype p {
-    font-size: 18px;
-    line-height: 1.5;
-    color: #fff;
-}
-
 .tokenomics {
     background: #1f1f1f;
     padding: 20px;
@@ -305,24 +240,9 @@ h3 {
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
 }
 
-.tokenomics-details, .roadmap {
+h2 {
     margin: 20px 0;
-}
-
-.tokenomics-details ul, .roadmap ul {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.tokenomics-details li, .roadmap li {
-    margin: 10px 0;
-    font-size: 16px;
-}
-
-.tokenomics-details li strong, .roadmap li strong {
+    font-size: 28px;
     color: #00ffcc;
 }
 
@@ -333,26 +253,6 @@ h3 {
     background: rgba(10, 10, 35, 0.8);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
-}
-
-footer {
-    background: #000;
-    padding: 15px;
-    width: 100%;
-    border-top: 2px solid #00ffcc;
-    position: relative;
-}
-
-.footer-link {
-    color: #00ffcc;
-    text-decoration: none;
-    margin-left: 10px;
-    transition: all 0.3s;
-}
-
-.footer-link:hover {
-    color: #00cc99;
-    text-shadow: 0 0 5px #00ffcc;
 }
 
 @media (min-width: 600px) {
