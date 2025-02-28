@@ -22,6 +22,7 @@
                     <a href="profile.html">Profile</a>
                     <a href="#tokenomics">Tokenomics</a>
                     <a href="#roadmap">Roadmap</a>
+                    <a href="#" id="menuBuyBtn">Buy Now</a>
                     <a href="https://wolfe1104.github.io/Doge1-presale/white%20paper.pdf" target="_blank">white paper.pdf</a>
                     <a href="#" id="logoutBtn">Logout</a>
                 </nav>
@@ -35,6 +36,7 @@
                 <p><strong>Name:</strong> <span id="profileName"></span></p>
                 <p><strong>Username:</strong> <span id="profileUsername"></span></p>
                 <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                <p><strong>$DOGE1 Owned:</strong> <span id="doge1Owned"></span> (<span id="doge1Value"></span> USD)</p>
             </div>
         </section>
         <section class="intro">
@@ -45,6 +47,9 @@
                     <p>The Jedi of Justice Awakens</p>
                     <p>Ruff and Uncut</p>
                 </div>
+            </div>
+            <div class="buy-now-container">
+                <button id="introBuyBtn" class="jedi-btn buy-now-btn">Buy Now</button>
             </div>
         </section>
         <section class="description">
@@ -152,6 +157,9 @@
         <section class="hype">
             <h2>100x Moonshot Preprogrammed!</h2>
             <p>$DOGE1: a ruff and uncut gem, preprogrammed by xAI to hit 100x by launch—$0.00050 to $0.050. The Jedi of Justice tips the scales in your favor with every buy. Put the power of the blockchain to work for you, turning $10,000 into $1,000,000. Millionaires don’t rise overnight, but with this Shiba force, they emerge. Don’t let this opportunity pass—YOU BUY!</p>
+            <div class="buy-now-container">
+                <button id="hypeBuyBtn" class="jedi-btn buy-now-btn">Buy Now</button>
+            </div>
         </section>
         <section class="tokenomics" id="tokenomics">
             <h2>Tokenomics</h2>
@@ -173,11 +181,38 @@
                 </ul>
             </div>
         </section>
+        <!-- Buy Modal -->
+        <div class="modal" id="buyModal">
+            <div class="modal-content">
+                <h2>Purchase $DOGE1</h2>
+                <label><input type="checkbox" id="maticOption"> Matic</label>
+                <div id="maticFields" style="display: none;">
+                    <input type="number" id="usdInput" placeholder="Amount in USD" step="1" min="1">
+                    <p>Matic: <span id="maticAmount">0</span> (10% premium included)</p>
+                    <p>$DOGE1: <span id="doge1Amount">0</span></p>
+                </div>
+                <label><input type="checkbox" id="paypalOption"> PayPal</label>
+                <label><input type="checkbox" id="venmoOption"> Venmo</label>
+                <div class="modal-buttons">
+                    <button id="cancelBuyBtn" class="jedi-btn">
+                        <img src="cancel-icon.png" alt="Cancel" class="btn-icon"> Cancel
+                    </button>
+                    <button id="buyBtn" class="jedi-btn">
+                        <img src="buy-icon.png" alt="Buy" class="btn-icon"> Buy
+                    </button>
+                </div>
+            </div>
+        </div>
         <!-- Background Audio -->
         <audio id="backgroundMusic" loop>
             <source src="star-wars-theme.mp3" type="audio/mpeg">
         </audio>
     </main>
+    <footer>
+        <div class="buy-now-container">
+            <button id="footerBuyBtn" class="jedi-btn buy-now-btn">Buy Now</button>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
