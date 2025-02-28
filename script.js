@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let users = JSON.parse(localStorage.getItem("users")) || [];
     let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || null;
     let sessionTimeout;
-    let isFreshLogin = false; // Track if this is a new login
 
     // DOM Elements (Shared)
     const authButtons = document.getElementById("authButtons");
@@ -45,14 +44,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initial State
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     if (loggedInUser) {
-        if (authButtons) authButtons.style.display = "none";
-        if (footerAuth) footerAuth.style.display = "none";
-        if (userMenu) userMenu.style.display = "block";
-        startSessionTimeout();
         if (currentPage === 'profile.html') {
+            if (userMenu) userMenu.style.display = "block";
+            startSessionTimeout();
             populateProfile();
-        } else if (isFreshLogin) {
-            window.location.href = 'profile.html';
+        } else {
+            // On index.html, stay unless explicitly signing in
+            if (authButtons) authButtons.style.display = "none";
+            if (footerAuth) footerAuth.style.display = "none";
+            if (userMenu) userMenu.style.display = "block";
+            startSessionTimeout();
         }
     } else {
         if (authButtons) authButtons.style.display = "flex";
@@ -79,10 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = users.find(u => u.username === username && u.password === password);
             if (user) {
                 console.log("User found:", user);
-                isFreshLogin = true; // Mark as fresh login
                 setLoggedIn(user);
                 signInModal.style.display = 'none';
                 clearSignInForm();
+                window.location.href = 'profile.html'; // Explicit redirect after sign-in
             } else {
                 console.log("Login failed - Users in storage:", users);
                 alert("Invalid username or password.");
@@ -112,10 +113,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = { name, username, email, password, doge1Owned: 0 };
             users.push(user);
             localStorage.setItem("users", JSON.stringify(users));
-            isFreshLogin = true; // Mark as fresh login
             setLoggedIn(user);
             signUpModal.style.display = 'none';
             clearSignUpForm();
+            window.location.href = 'profile.html'; // Explicit redirect after sign-up
         });
     }
 
@@ -137,96 +138,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (buyNowBtn) buyNowBtn.addEventListener('click', () => alert("Buy functionality coming soon!"));
 
     // User Menu (both pages)
-    if (userMenuBtn) userMenuBtn.addEventListener('click', () => dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block");
-    if (logoutBtn) logoutBtn.addEventListener('click', (e) => { e.preventDefault(); logout(); });
-
-    // Wallet Connection (index.html, placeholder)
-    if (connectBtn) {
-        connectBtn.addEventListener("click", () => {
-            const crypto = cryptoSelect.value;
-            walletAddressSpan.textContent = `Connected_${crypto}_Wallet`;
-            walletInfo.style.display = "block";
-            connectBtn.style.display = "none";
-            console.log(`Connected to ${crypto} wallet (simulated)`);
-        });
-    }
-
-    // Pie Chart (index.html)
-    if (chartCanvas) {
-        const ctx = chartCanvas.getContext('2d');
-        new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['Presale (40%)', 'Burned (20%)', 'Liquidity (20%)', 'Team (10%)', 'Development (10%)'],
-                datasets: [{
-                    data: [200, 100, 100, 50, 50],
-                    backgroundColor: ['#00ffcc', '#ff3366', '#33ccff', '#ffcc33', '#9966ff'],
-                    borderColor: '#000',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { position: 'right', labels: { color: '#fff', font: { size: 12 } } } }
-            }
-        });
-    }
-
-    // Helper Functions
-    function setLoggedIn(user) {
-        loggedInUser = user;
-        localStorage.setItem("loggedInUser", JSON.stringify(user));
-        if (authButtons) authButtons.style.display = "none";
-        if (footerAuth) footerAuth.style.display = "none";
-        if (userMenu) userMenu.style.display = "block";
-        startSessionTimeout();
-        console.log("Logged in successfully");
-        if (isFreshLogin && window.location.pathname.split('/').pop() !== 'profile.html') {
-            window.location.href = 'profile.html';
-        } else if (window.location.pathname.split('/').pop() === 'profile.html') {
-            populateProfile();
-        }
-    }
-
-    function logout() {
-        loggedInUser = null;
-        localStorage.removeItem("loggedInUser");
-        clearTimeout(sessionTimeout);
-        if (authButtons) authButtons.style.display = "flex";
-        if (footerAuth) footerAuth.style.display = "flex";
-        if (userMenu) userMenu.style.display = "none";
-        if (dropdownMenu) dropdownMenu.style.display = "none";
-        console.log("Logging out, redirecting to index.html");
-        window.location.href = 'index.html';
-    }
-
-    function startSessionTimeout() {
-        clearTimeout(sessionTimeout);
-        sessionTimeout = setTimeout(logout, 10 * 60 * 1000); // 10 minutes
-    }
-
-    function clearSignUpForm() {
-        if (document.getElementById("nameInput")) {
-            document.getElementById("nameInput").value = '';
-            document.getElementById("usernameInput").value = '';
-            document.getElementById("emailInput").value = '';
-            document.getElementById("passwordInput").value = '';
-            document.getElementById("notRobot").checked = false;
-        }
-    }
-
-    function clearSignInForm() {
-        if (document.getElementById("loginUsernameInput")) {
-            document.getElementById("loginUsernameInput").value = '';
-            document.getElementById("loginPasswordInput").value = '';
-        }
-    }
-
-    function populateProfile() {
-        if (profileName) profileName.textContent = loggedInUser.name;
-        if (profileUsername) profileUsername.textContent = loggedInUser.username;
-        if (profileEmail) profileEmail.textContent = loggedInUser.email;
-        if (doge1Owned) doge1Owned.textContent = loggedInUser.doge1Owned || 0;
-        if (doge1Value) doge1Value.textContent = ((loggedInUser.doge1Owned || 0) * 0.00050).toFixed(2); // Phase 1 price
-    }
-});
+    if (userMenuBtn) userMenuBtn.addEventListener('click', () => dropdownMenu.style.display = dropdownMenu.styl
