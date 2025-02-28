@@ -27,10 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const introBuyBtn = document.getElementById("introBuyBtn");
     const hypeBuyBtn = document.getElementById("hypeBuyBtn");
     const footerBuyBtn = document.getElementById("footerBuyBtn");
-    const connectBtn = document.getElementById("connectBtn");
-    const walletInfo = document.getElementById("walletInfo");
-    const walletAddressSpan = document.getElementById("walletAddress");
-    const cryptoSelect = document.getElementById("cryptoSelect");
     const chartCanvas = document.getElementById("tokenPieChart");
 
     // Profile.html Elements
@@ -48,12 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
             if (userMenu) userMenu.style.display = "block";
             startSessionTimeout();
             populateProfile();
-        } else {
-            // On index.html, stay unless explicitly signing in
-            if (authButtons) authButtons.style.display = "none";
-            if (footerAuth) footerAuth.style.display = "none";
-            if (userMenu) userMenu.style.display = "block";
-            startSessionTimeout();
+        } else if (currentPage === 'index.html') {
+            // Force logout state on index.html unless signing in
+            loggedInUser = null;
+            localStorage.removeItem("loggedInUser");
+            if (authButtons) authButtons.style.display = "flex";
+            if (footerAuth) footerAuth.style.display = "flex";
+            if (userMenu) userMenu.style.display = "none";
         }
     } else {
         if (authButtons) authButtons.style.display = "flex";
@@ -138,4 +135,80 @@ document.addEventListener("DOMContentLoaded", () => {
     if (buyNowBtn) buyNowBtn.addEventListener('click', () => alert("Buy functionality coming soon!"));
 
     // User Menu (both pages)
-    if (userMenuBtn) userMenuBtn.addEventListener('click', () => dropdownMenu.style.display = dropdownMenu.styl
+    if (userMenuBtn) userMenuBtn.addEventListener('click', () => dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block");
+    if (logoutBtn) logoutBtn.addEventListener('click', (e) => { e.preventDefault(); logout(); });
+
+    // Pie Chart (index.html)
+    if (chartCanvas) {
+        const ctx = chartCanvas.getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Presale (40%)', 'Burned (20%)', 'Liquidity (20%)', 'Team (10%)', 'Development (10%)'],
+                datasets: [{
+                    data: [200, 100, 100, 50, 50],
+                    backgroundColor: ['#00ffcc', '#ff3366', '#33ccff', '#ffcc33', '#9966ff'],
+                    borderColor: '#000',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { position: 'right', labels: { color: '#fff', font: { size: 12 } } } }
+            }
+        });
+    }
+
+    // Helper Functions
+    function setLoggedIn(user) {
+        loggedInUser = user;
+        localStorage.setItem("loggedInUser", JSON.stringify(user));
+        if (authButtons) authButtons.style.display = "none";
+        if (footerAuth) footerAuth.style.display = "none";
+        if (userMenu) userMenu.style.display = "block";
+        startSessionTimeout();
+        console.log("Logged in successfully");
+    }
+
+    function logout() {
+        loggedInUser = null;
+        localStorage.removeItem("loggedInUser");
+        clearTimeout(sessionTimeout);
+        if (authButtons) authButtons.style.display = "flex";
+        if (footerAuth) footerAuth.style.display = "flex";
+        if (userMenu) userMenu.style.display = "none";
+        if (dropdownMenu) dropdownMenu.style.display = "none";
+        console.log("Logging out, redirecting to index.html");
+        window.location.href = 'index.html';
+    }
+
+    function startSessionTimeout() {
+        clearTimeout(sessionTimeout);
+        sessionTimeout = setTimeout(logout, 10 * 60 * 1000); // 10 minutes
+    }
+
+    function clearSignUpForm() {
+        if (document.getElementById("nameInput")) {
+            document.getElementById("nameInput").value = '';
+            document.getElementById("usernameInput").value = '';
+            document.getElementById("emailInput").value = '';
+            document.getElementById("passwordInput").value = '';
+            document.getElementById("notRobot").checked = false;
+        }
+    }
+
+    function clearSignInForm() {
+        if (document.getElementById("loginUsernameInput")) {
+            document.getElementById("loginUsernameInput").value = '';
+            document.getElementById("loginPasswordInput").value = '';
+        }
+    }
+
+    function populateProfile() {
+        if (profileName) profileName.textContent = loggedInUser.name;
+        if (profileUsername) profileUsername.textContent = loggedInUser.username;
+        if (profileEmail) profileEmail.textContent = loggedInUser.email;
+        if (doge1Owned) doge1Owned.textContent = loggedInUser.doge1Owned || 0;
+        if (doge1Value) doge1Value.textContent = ((loggedInUser.doge1Owned || 0) * 0.00050).toFixed(2); // Phase 1 price
+    }
+});
