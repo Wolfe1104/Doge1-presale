@@ -5,12 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const walletAddressSpan = document.getElementById("walletAddress");
     const cryptoSelect = document.getElementById("cryptoSelect");
     const amountInput = document.getElementById("amountInput");
-    const buyNowBtn = document.getElementById("buyNowBtn");
-    const buyModal = document.getElementById("buyModal");
-    const usdInput = document.getElementById("usdInput");
-    const cryptoDropdown = document.getElementById("cryptoDropdown");
-    const cryptoAmount = document.getElementById("cryptoAmount");
-    const purchaseBtn = document.getElementById("purchaseBtn");
 
     const wallets = {
         ETH: "0xD780c0B3a47c3FCA0090FC2153a80d15A4F286E3",
@@ -31,12 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const doge1Price = 0.00050; // Starting presale price
     let provider, signer, walletAddress;
 
-    // Web3Modal Setup
+    // Web3Modal Setup with your Infura Project ID
     const providerOptions = {
         walletconnect: {
             package: WalletConnectProvider,
             options: {
-                infuraId: "YOUR_INFURA_ID" // Replace with your Infura ID
+                infuraId: "7a8ed9926f0e4c4da7bdb336342171cf" // Your Project ID
             }
         }
     };
@@ -122,28 +116,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 txHash = signature;
             } else {
                 alert(`Send ${amount} ${crypto} to: ${wallets[crypto]}\nDM TX hash on X @YourXHandle!`);
+                amountInput.value = "";
                 return;
             }
             alert(`Success! TX: ${txHash}\nDM TX hash + Polygon address on X @YourXHandle!`);
             amountInput.value = "";
         }
     });
-
-    // Buy Now Modal Handler (simplified for brevity)
-    buyNowBtn.addEventListener("click", () => {
-        buyModal.style.display = "block";
-    });
-
-    purchaseBtn.addEventListener("click", async () => {
-        const usd = parseFloat(usdInput.value) || 0;
-        const crypto = cryptoDropdown.value;
-        const cryptoValue = usd / cryptoRates[crypto];
-        if (await connectWallet(crypto)) {
-            // Similar transaction logic as above
-            alert(`Purchase initiated for ${cryptoValue} ${crypto}. Check wallet for confirmation.`);
-            buyModal.style.display = "none";
-        }
-    });
-
-    // Remaining logic (charts, slider, etc.) unchanged for brevity
 });
