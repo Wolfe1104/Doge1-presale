@@ -3,10 +3,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const walletInfo = document.getElementById("walletInfo");
     const walletAddressSpan = document.getElementById("walletAddress");
     const cryptoSelect = document.getElementById("cryptoSelect");
+    const signUpBtn = document.getElementById("signUpBtn");
+    const signInBtn = document.getElementById("signInBtn");
+    const signUpModal = document.getElementById("signUpModal");
+    const signInModal = document.getElementById("signInModal");
+    const cancelSignUpBtn = document.getElementById("cancelSignUpBtn");
+    const registerBtn = document.getElementById("registerBtn");
+    const cancelSignInBtn = document.getElementById("cancelSignInBtn");
+    const loginBtn = document.getElementById("loginBtn");
 
     let provider, signer, walletAddress;
+    let users = JSON.parse(localStorage.getItem("users")) || []; // Simulated DB
 
-    // Original connectWallet function (MetaMask/Solana)
+    // Wallet Connection
     async function connectWallet(crypto) {
         console.log(`Connecting wallet for ${crypto}...`);
         if (crypto === "ETH" || crypto === "USDT") {
@@ -34,11 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             walletAddress = "Manual_" + crypto;
             console.log("Manual payment selected for:", crypto);
-            return true; // Manual payment mode
+            return true;
         }
     }
 
-    // Wallet connection for .buy-section
     connectBtn.addEventListener("click", async () => {
         const crypto = cryptoSelect.value;
         if (await connectWallet(crypto)) {
@@ -48,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Slider Reset
+    // Slider Animation
     const phaseSlider = document.querySelector('.phase-slider');
     phaseSlider.addEventListener('animationiteration', () => {
         phaseSlider.style.transition = 'none';
@@ -87,10 +95,76 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Hamburger Menu Toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const popupMenu = document.getElementById("popupMenu");
-    menuToggle.addEventListener('click', () => {
-        popupMenu.classList.toggle('active');
+    // Sign Up Modal
+    signUpBtn.addEventListener('click', () => {
+        signUpModal.style.display = 'block';
     });
+
+    cancelSignUpBtn.addEventListener('click', () => {
+        signUpModal.style.display = 'none';
+        clearSignUpForm();
+    });
+
+    registerBtn.addEventListener('click', () => {
+        const name = document.getElementById("nameInput").value;
+        const username = document.getElementById("usernameInput").value;
+        const email = document.getElementById("emailInput").value;
+        const password = document.getElementById("passwordInput").value;
+        const notRobot = document.getElementById("notRobot").checked;
+
+        if (!name || !username || !email || !password || !notRobot) {
+            alert("Please fill all fields and confirm you're not a robot.");
+            return;
+        }
+
+        const user = { name, username, email, password };
+        users.push(user);
+        localStorage.setItem("users", JSON.stringify(users)); // Simulated DB
+        alert("Registration successful!");
+        signUpModal.style.display = 'none';
+        clearSignUpForm();
+    });
+
+    // Sign In Modal
+    signInBtn.addEventListener('click', () => {
+        signInModal.style.display = 'block';
+    });
+
+    cancelSignInBtn.addEventListener('click', () => {
+        signInModal.style.display = 'none';
+        clearSignInForm();
+    });
+
+    loginBtn.addEventListener('click', () => {
+        const username = document.getElementById("loginUsernameInput").value;
+        const password = document.getElementById("loginPasswordInput").value;
+
+        const user = users.find(u => u.username === username && u.password === password);
+        if (user) {
+            alert(`Welcome back, ${user.name}!`);
+            signInModal.style.display = 'none';
+            clearSignInForm();
+        } else {
+            alert("Invalid username or password.");
+        }
+    });
+
+    // Clear Forms
+    function clearSignUpForm() {
+        document.getElementById("nameInput").value = '';
+        document.getElementById("usernameInput").value = '';
+        document.getElementById("emailInput").value = '';
+        document.getElementById("passwordInput").value = '';
+        document.getElementById("notRobot").checked = false;
+    }
+
+    function clearSignInForm() {
+        document.getElementById("loginUsernameInput").value = '';
+        document.getElementById("loginPasswordInput").value = '';
+    }
+
+    // Background Music
+    const audio = document.getElementById("backgroundMusic");
+    audio.volume = 0.1; // Subtle volume
+    audio.play().catch(() => console.log("Autoplay blocked by browser."));
 });
