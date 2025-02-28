@@ -11,7 +11,7 @@ body {
 
 header {
     background: #000;
-    padding: 20px;
+    padding: 15px;
     border-bottom: 2px solid #00ffcc;
     box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
     position: fixed;
@@ -38,21 +38,28 @@ header {
 
 .auth-buttons {
     display: flex;
-    gap: 10px;
+    gap: 8px;
+}
+
+.user-menu {
+    position: relative;
 }
 
 .jedi-btn {
     background: linear-gradient(45deg, #00ffcc, #00cc99);
     color: #000;
     border: 2px solid #00ffcc;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 8px 15px;
+    font-size: 14px;
     font-family: 'Arial', sans-serif;
     text-transform: uppercase;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .jedi-btn:hover {
@@ -61,9 +68,40 @@ header {
     transform: scale(1.05);
 }
 
+.btn-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #1f1f1f;
+    width: 150px;
+    box-shadow: 0 8px 16px rgba(0, 255, 204, 0.2);
+    border-radius: 5px;
+    border: 1px solid #00ffcc;
+    z-index: 1001;
+}
+
+.dropdown-menu a {
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+    background: #00cc99;
+    color: #000;
+}
+
 main {
     padding: 40px;
-    padding-top: 100px;
+    padding-top: 80px;
 }
 
 .intro {
@@ -301,4 +339,4 @@ h2 {
         0% { transform: translateX(0); }
         100% { transform: translateX(calc(-50% * 11)); }
     }
-}
+    }
