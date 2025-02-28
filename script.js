@@ -11,9 +11,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const registerBtn = document.getElementById("registerBtn");
     const cancelSignInBtn = document.getElementById("cancelSignInBtn");
     const loginBtn = document.getElementById("loginBtn");
+    const authButtons = document.getElementById("authButtons");
+    const userMenu = document.getElementById("userMenu");
+    const userMenuBtn = document.getElementById("userMenuBtn");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    const logoutBtn = document.getElementById("logoutBtn");
 
     let provider, signer, walletAddress;
-    let users = JSON.parse(localStorage.getItem("users")) || []; // Simulated DB
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || null;
+    let sessionTimeout;
 
     // Wallet Connection
     async function connectWallet(crypto) {
@@ -95,6 +102,33 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // Login State Management
+    function setLoggedIn(user) {
+        loggedInUser = user;
+        localStorage.setItem("loggedInUser", JSON.stringify(user));
+        authButtons.style.display = "none";
+        userMenu.style.display = "block";
+        startSessionTimeout();
+    }
+
+    function logout() {
+        loggedInUser = null;
+        localStorage.removeItem("loggedInUser");
+        clearTimeout(sessionTimeout);
+        authButtons.style.display = "flex";
+        userMenu.style.display = "none";
+        dropdownMenu.style.display = "none";
+    }
+
+    function startSessionTimeout() {
+        clearTimeout(sessionTimeout);
+        sessionTimeout = setTimeout(logout, 10 * 60 * 1000); // 10 minutes
+    }
+
+    if (loggedInUser) {
+        setLoggedIn(loggedInUser);
+    }
+
     // Sign Up Modal
     signUpBtn.addEventListener('click', () => {
         signUpModal.style.display = 'block';
@@ -117,10 +151,15 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        if (users.find(u => u.username === username)) {
+            alert("Username already exists.");
+            return;
+        }
+
         const user = { name, username, email, password };
         users.push(user);
-        localStorage.setItem("users", JSON.stringify(users)); // Simulated DB
-        alert("Registration successful!");
+        localStorage.setItem("users", JSON.stringify(users));
+        setLoggedIn(user);
         signUpModal.style.display = 'none';
         clearSignUpForm();
     });
@@ -141,12 +180,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const user = users.find(u => u.username === username && u.password === password);
         if (user) {
-            alert(`Welcome back, ${user.name}!`);
+            setLoggedIn(user);
             signInModal.style.display = 'none';
             clearSignInForm();
         } else {
             alert("Invalid username or password.");
         }
+    });
+
+    // User Menu Dropdown
+    userMenuBtn.addEventListener('click', () => {
+        dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+    });
+
+    logoutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        logout();
     });
 
     // Clear Forms
@@ -165,6 +214,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Background Music
     const audio = document.getElementById("backgroundMusic");
-    audio.volume = 0.1; // Subtle volume
+    audio.volume = 0.1;
     audio.play().catch(() => console.log("Autoplay blocked by browser."));
 });
