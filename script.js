@@ -3,13 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
     let users = JSON.parse(localStorage.getItem("users")) || [];
     let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || null;
     let sessionTimeout;
+    let isFreshLogin = false; // Track if this is a new login
 
-    // DOM Elements
+    // DOM Elements (Shared)
     const authButtons = document.getElementById("authButtons");
     const userMenu = document.getElementById("userMenu");
     const userMenuBtn = document.getElementById("userMenuBtn");
     const dropdownMenu = document.getElementById("dropdownMenu");
     const logoutBtn = document.getElementById("logoutBtn");
+    const footerAuth = document.getElementById("footerAuth");
+
+    // Index.html Elements
     const signUpBtn = document.getElementById("signUpBtn");
     const signInBtn = document.getElementById("signInBtn");
     const signUpModal = document.getElementById("signUpModal");
@@ -19,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const cancelSignInBtn = document.getElementById("cancelSignInBtn");
     const loginBtn = document.getElementById("loginBtn");
     const registerLink = document.getElementById("registerLink");
-    const footerAuth = document.getElementById("footerAuth");
     const footerSignUpBtn = document.getElementById("footerSignUpBtn");
     const footerSignInBtn = document.getElementById("footerSignInBtn");
     const introBuyBtn = document.getElementById("introBuyBtn");
@@ -29,23 +32,38 @@ document.addEventListener("DOMContentLoaded", () => {
     const walletInfo = document.getElementById("walletInfo");
     const walletAddressSpan = document.getElementById("walletAddress");
     const cryptoSelect = document.getElementById("cryptoSelect");
+    const chartCanvas = document.getElementById("tokenPieChart");
+
+    // Profile.html Elements
+    const profileName = document.getElementById("profileName");
+    const profileUsername = document.getElementById("profileUsername");
+    const profileEmail = document.getElementById("profileEmail");
+    const doge1Owned = document.getElementById("doge1Owned");
+    const doge1Value = document.getElementById("doge1Value");
+    const buyNowBtn = document.getElementById("buyNowBtn");
 
     // Initial State
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     if (loggedInUser) {
-        authButtons.style.display = "none";
-        footerAuth.style.display = "none";
-        userMenu.style.display = "block";
+        if (authButtons) authButtons.style.display = "none";
+        if (footerAuth) footerAuth.style.display = "none";
+        if (userMenu) userMenu.style.display = "block";
         startSessionTimeout();
-        if (window.location.pathname.split('/').pop() !== 'profile.html') {
+        if (currentPage === 'profile.html') {
+            populateProfile();
+        } else if (isFreshLogin) {
             window.location.href = 'profile.html';
         }
     } else {
-        authButtons.style.display = "flex";
-        footerAuth.style.display = "flex";
-        userMenu.style.display = "none";
+        if (authButtons) authButtons.style.display = "flex";
+        if (footerAuth) footerAuth.style.display = "flex";
+        if (userMenu) userMenu.style.display = "none";
+        if (currentPage !== 'index.html') {
+            window.location.href = 'index.html';
+        }
     }
 
-    // Sign-In Logic (Fully Functional)
+    // Sign-In Logic
     if (loginBtn) {
         loginBtn.addEventListener('click', () => {
             const username = document.getElementById("loginUsernameInput").value.trim();
@@ -61,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = users.find(u => u.username === username && u.password === password);
             if (user) {
                 console.log("User found:", user);
+                isFreshLogin = true; // Mark as fresh login
                 setLoggedIn(user);
                 signInModal.style.display = 'none';
                 clearSignInForm();
@@ -93,13 +112,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = { name, username, email, password, doge1Owned: 0 };
             users.push(user);
             localStorage.setItem("users", JSON.stringify(users));
+            isFreshLogin = true; // Mark as fresh login
             setLoggedIn(user);
             signUpModal.style.display = 'none';
             clearSignUpForm();
         });
     }
 
-    // Modal Triggers
+    // Modal Triggers (index.html)
     if (signUpBtn) signUpBtn.addEventListener('click', () => signUpModal.style.display = 'block');
     if (footerSignUpBtn) footerSignUpBtn.addEventListener('click', () => signUpModal.style.display = 'block');
     if (signInBtn) signInBtn.addEventListener('click', () => signInModal.style.display = 'block');
@@ -108,28 +128,30 @@ document.addEventListener("DOMContentLoaded", () => {
     if (cancelSignInBtn) cancelSignInBtn.addEventListener('click', () => { signInModal.style.display = 'none'; clearSignInForm(); });
     if (registerLink) registerLink.addEventListener('click', (e) => { e.preventDefault(); signInModal.style.display = 'none'; signUpModal.style.display = 'block'; });
 
-    // Buy Buttons
+    // Buy Buttons (index.html)
     if (introBuyBtn) introBuyBtn.addEventListener('click', () => loggedInUser ? window.location.href = 'profile.html' : signInModal.style.display = 'block');
     if (hypeBuyBtn) hypeBuyBtn.addEventListener('click', () => loggedInUser ? window.location.href = 'profile.html' : signInModal.style.display = 'block');
     if (footerBuyBtn) footerBuyBtn.addEventListener('click', () => loggedInUser ? window.location.href = 'profile.html' : signInModal.style.display = 'block');
 
-    // User Menu
+    // Buy Button (profile.html)
+    if (buyNowBtn) buyNowBtn.addEventListener('click', () => alert("Buy functionality coming soon!"));
+
+    // User Menu (both pages)
     if (userMenuBtn) userMenuBtn.addEventListener('click', () => dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block");
     if (logoutBtn) logoutBtn.addEventListener('click', (e) => { e.preventDefault(); logout(); });
 
-    // Wallet Connection (Placeholder)
+    // Wallet Connection (index.html, placeholder)
     if (connectBtn) {
         connectBtn.addEventListener("click", () => {
             const crypto = cryptoSelect.value;
-            walletAddressSpan.textContent = `Connected_${crypto}_Wallet`; // Simulated
+            walletAddressSpan.textContent = `Connected_${crypto}_Wallet`;
             walletInfo.style.display = "block";
             connectBtn.style.display = "none";
             console.log(`Connected to ${crypto} wallet (simulated)`);
         });
     }
 
-    // Pie Chart
-    const chartCanvas = document.getElementById('tokenPieChart');
+    // Pie Chart (index.html)
     if (chartCanvas) {
         const ctx = chartCanvas.getContext('2d');
         new Chart(ctx, {
@@ -154,13 +176,15 @@ document.addEventListener("DOMContentLoaded", () => {
     function setLoggedIn(user) {
         loggedInUser = user;
         localStorage.setItem("loggedInUser", JSON.stringify(user));
-        authButtons.style.display = "none";
-        footerAuth.style.display = "none";
-        userMenu.style.display = "block";
+        if (authButtons) authButtons.style.display = "none";
+        if (footerAuth) footerAuth.style.display = "none";
+        if (userMenu) userMenu.style.display = "block";
         startSessionTimeout();
-        console.log("Logged in successfully, redirecting to profile.html");
-        if (window.location.pathname.split('/').pop() !== 'profile.html') {
+        console.log("Logged in successfully");
+        if (isFreshLogin && window.location.pathname.split('/').pop() !== 'profile.html') {
             window.location.href = 'profile.html';
+        } else if (window.location.pathname.split('/').pop() === 'profile.html') {
+            populateProfile();
         }
     }
 
@@ -168,14 +192,12 @@ document.addEventListener("DOMContentLoaded", () => {
         loggedInUser = null;
         localStorage.removeItem("loggedInUser");
         clearTimeout(sessionTimeout);
-        authButtons.style.display = "flex";
-        footerAuth.style.display = "flex";
-        userMenu.style.display = "none";
-        dropdownMenu.style.display = "none";
-        if (window.location.pathname.split('/').pop() !== 'index.html') {
-            console.log("Logging out, redirecting to index.html");
-            window.location.href = 'index.html';
-        }
+        if (authButtons) authButtons.style.display = "flex";
+        if (footerAuth) footerAuth.style.display = "flex";
+        if (userMenu) userMenu.style.display = "none";
+        if (dropdownMenu) dropdownMenu.style.display = "none";
+        console.log("Logging out, redirecting to index.html");
+        window.location.href = 'index.html';
     }
 
     function startSessionTimeout() {
@@ -184,15 +206,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function clearSignUpForm() {
-        document.getElementById("nameInput").value = '';
-        document.getElementById("usernameInput").value = '';
-        document.getElementById("emailInput").value = '';
-        document.getElementById("passwordInput").value = '';
-        document.getElementById("notRobot").checked = false;
+        if (document.getElementById("nameInput")) {
+            document.getElementById("nameInput").value = '';
+            document.getElementById("usernameInput").value = '';
+            document.getElementById("emailInput").value = '';
+            document.getElementById("passwordInput").value = '';
+            document.getElementById("notRobot").checked = false;
+        }
     }
 
     function clearSignInForm() {
-        document.getElementById("loginUsernameInput").value = '';
-        document.getElementById("loginPasswordInput").value = '';
+        if (document.getElementById("loginUsernameInput")) {
+            document.getElementById("loginUsernameInput").value = '';
+            document.getElementById("loginPasswordInput").value = '';
+        }
+    }
+
+    function populateProfile() {
+        if (profileName) profileName.textContent = loggedInUser.name;
+        if (profileUsername) profileUsername.textContent = loggedInUser.username;
+        if (profileEmail) profileEmail.textContent = loggedInUser.email;
+        if (doge1Owned) doge1Owned.textContent = loggedInUser.doge1Owned || 0;
+        if (doge1Value) doge1Value.textContent = ((loggedInUser.doge1Owned || 0) * 0.00050).toFixed(2); // Phase 1 price
     }
 });
