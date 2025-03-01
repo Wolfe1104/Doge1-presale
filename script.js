@@ -1,19 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Core Variables
     let loggedInUser = null;
-    let sessionTimeout;
+    let token = localStorage.getItem('token');
 
     // DOM Elements (Shared)
     const authButtons = document.getElementById("authButtons");
-    const userMenu = document.getElementById("userMenu");
-    const userMenuBtn = document.getElementById("userMenuBtn");
-    const dropdownMenu = document.getElementById("dropdownMenu");
-    const logoutBtn = document.getElementById("logoutBtn");
     const footerAuth = document.getElementById("footerAuth");
 
     // Index.html Elements
-    const signUpBtn = document.getElementById("signUpBtn");
-    const signInBtn = document.getElementById("signInBtn");
     const signUpModal = document.getElementById("signUpModal");
     const signInModal = document.getElementById("signInModal");
     const cancelSignUpBtn = document.getElementById("cancelSignUpBtn");
@@ -27,109 +21,155 @@ document.addEventListener("DOMContentLoaded", () => {
     const hypeBuyBtn = document.getElementById("hypeBuyBtn");
     const footerBuyBtn = document.getElementById("footerBuyBtn");
     const chartCanvas = document.getElementById("tokenPieChart");
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const hamburgerMenu = document.getElementById("hamburgerMenu");
+    const signUpLink = document.getElementById("signUpLink");
+    const signInLink = document.getElementById("signInLink");
+    const profileLink = document.getElementById("profileLink");
+    const logoutLink = document.getElementById("logoutLink");
 
     // Profile.html Elements
     const profileName = document.getElementById("profileName");
     const profileUsername = document.getElementById("profileUsername");
     const profileEmail = document.getElementById("profileEmail");
-    const dojiOwned = document.getElementById("dojiOwned");
-    const dojiValue = document.getElementById("dojiValue");
+    const doge1Owned = document.getElementById("doge1Owned");
+    const doge1Value = document.getElementById("doge1Value");
+    const buyNowBtn = document.getElementById("buyNowBtn");
+
+    // Debug: Log DOM elements
+    console.log("Login Button:", loginBtn);
+    console.log("Register Button:", registerBtn);
 
     // Initial State
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || null;
-    if (loggedInUser && currentPage === 'profile.html') {
-        if (userMenu) userMenu.style.display = "block";
-        startSessionTimeout();
-        populateProfile();
-    } else if (currentPage === 'index.html') {
-        loggedInUser = null;
-        localStorage.removeItem("loggedInUser");
+    if (token) {
+        fetchProfile();
+    } else {
         if (authButtons) authButtons.style.display = "flex";
         if (footerAuth) footerAuth.style.display = "flex";
-        if (userMenu) userMenu.style.display = "none";
-    } else {
-        window.location.href = 'index.html';
+        if (signUpLink) signUpLink.style.display = "block";
+        if (signInLink) signInLink.style.display = "block";
+        if (profileLink) profileLink.style.display = "none";
+        if (logoutLink) logoutLink.style.display = "none";
+        if (currentPage !== 'index.html') {
+            window.location.href = 'index.html';
+        }
+    }
+
+    // Hamburger Menu Toggle
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            console.log("Hamburger clicked");
+            hamburgerMenu.style.display = hamburgerMenu.style.display === "block" ? "none" : "block";
+        });
     }
 
     // Sign-In Logic
     if (loginBtn) {
         loginBtn.addEventListener('click', async () => {
+            console.log("Sign In button clicked");
             const username = document.getElementById("loginUsernameInput").value.trim();
             const password = document.getElementById("loginPasswordInput").value.trim();
+
+            console.log("Login attempt - Username:", username, "Password:", password ? "[hidden]" : "empty");
 
             if (!username || !password) {
                 alert("Please enter both username and password.");
                 return;
             }
 
-            const response = await fetch('/api/signin', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password })
-            });
-            const data = await response.json();
-
-            if (response.ok) {
-                setLoggedIn(data.user);
-                signInModal.style.display = 'none';
-                clearSignInForm();
-                window.location.href = 'profile.html';
-            } else {
-                alert(data.error);
+            try {
+                console.log("Sending login request...");
+                const response = await fetch('http://localhost:3000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await response.json();
+                console.log("Login response:", data);
+                if (response.ok) {
+                    localStorage.setItem('token', data.token);
+                    token = data.token;
+                    setLoggedIn();
+                    signInModal.style.display = 'none';
+                    clearSignInForm();
+                    window.location.href = 'profile.html';
+                } else {
+                    alert(data.error);
+                }
+            } catch (err) {
+                console.error('Login error:', err);
+                alert('Server error. Is the backend running?');
             }
         });
+    } else {
+        console.error("Login button not found in DOM");
     }
 
     // Sign-Up Logic
     if (registerBtn) {
         registerBtn.addEventListener('click', async () => {
+            console.log("Sign Up button clicked");
             const name = document.getElementById("nameInput").value.trim();
             const username = document.getElementById("usernameInput").value.trim();
             const email = document.getElementById("emailInput").value.trim();
             const password = document.getElementById("passwordInput").value.trim();
             const notRobot = document.getElementById("notRobot").checked;
 
+            console.log("Signup attempt - Name:", name, "Username:", username, "Email:", email, "Not Robot:", notRobot);
+
             if (!name || !username || !email || !password || !notRobot) {
                 alert("Please fill all fields and confirm you're not a robot.");
                 return;
             }
 
-            const response = await fetch('/api/signup', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, username, email, password })
-            });
-            const data = await response.json();
-
-            if (response.ok) {
-                setLoggedIn(data.user);
-                signUpModal.style.display = 'none';
-                clearSignUpForm();
-                window.location.href = 'profile.html';
-            } else {
-                alert(data.error);
+            try {
+                console.log("Sending signup request...");
+                const response = await fetch('http://localhost:3000/api/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, username, email, password })
+                });
+                const data = await response.json();
+                console.log("Signup response:", data);
+                if (response.ok) {
+                    localStorage.setItem('token', data.token);
+                    token = data.token;
+                    setLoggedIn();
+                    signUpModal.style.display = 'none';
+                    clearSignUpForm();
+                    window.location.href = 'profile.html';
+                } else {
+                    alert(data.error);
+                }
+            } catch (err) {
+                console.error('Signup error:', err);
+                alert('Server error. Is the backend running?');
             }
         });
+    } else {
+        console.error("Register button not found in DOM");
     }
 
     // Modal Triggers (index.html)
-    if (signUpBtn) signUpBtn.addEventListener('click', () => signUpModal.style.display = 'block');
-    if (footerSignUpBtn) footerSignUpBtn.addEventListener('click', () => signUpModal.style.display = 'block');
-    if (signInBtn) signInBtn.addEventListener('click', () => signInModal.style.display = 'block');
-    if (footerSignInBtn) footerSignInBtn.addEventListener('click', () => signInModal.style.display = 'block');
+    if (footerSignUpBtn) footerSignUpBtn.addEventListener('click', () => { console.log("Footer Sign Up"); signUpModal.style.display = 'block'; });
+    if (footerSignInBtn) footerSignInBtn.addEventListener('click', () => { console.log("Footer Sign In"); signInModal.style.display = 'block'; });
     if (cancelSignUpBtn) cancelSignUpBtn.addEventListener('click', () => { signUpModal.style.display = 'none'; clearSignUpForm(); });
     if (cancelSignInBtn) cancelSignInBtn.addEventListener('click', () => { signInModal.style.display = 'none'; clearSignInForm(); });
     if (registerLink) registerLink.addEventListener('click', (e) => { e.preventDefault(); signInModal.style.display = 'none'; signUpModal.style.display = 'block'; });
+    if (signUpLink) signUpLink.addEventListener('click', (e) => { e.preventDefault(); console.log("Menu Sign Up"); signUpModal.style.display = 'block'; hamburgerMenu.style.display = 'none'; });
+    if (signInLink) signInLink.addEventListener('click', (e) => { e.preventDefault(); console.log("Menu Sign In"); signInModal.style.display = 'block'; hamburgerMenu.style.display = 'none'; });
 
     // Buy Buttons (index.html)
-    if (introBuyBtn) introBuyBtn.addEventListener('click', () => loggedInUser ? window.location.href = 'profile.html' : signInModal.style.display = 'block');
-    if (hypeBuyBtn) hypeBuyBtn.addEventListener('click', () => loggedInUser ? window.location.href = 'profile.html' : signInModal.style.display = 'block');
-    if (footerBuyBtn) footerBuyBtn.addEventListener('click', () => loggedInUser ? window.location.href = 'profile.html' : signInModal.style.display = 'block');
+    if (introBuyBtn) introBuyBtn.addEventListener('click', () => token ? window.location.href = 'profile.html' : signInModal.style.display = 'block');
+    if (hypeBuyBtn) hypeBuyBtn.addEventListener('click', () => token ? window.location.href = 'profile.html' : signInModal.style.display = 'block');
+    if (footerBuyBtn) footerBuyBtn.addEventListener('click', () => token ? window.location.href = 'profile.html' : signInModal.style.display = 'block');
 
-    // User Menu (both pages)
-    if (userMenuBtn) userMenuBtn.addEventListener('click', () => dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block");
-    if (logoutBtn) logoutBtn.addEventListener('click', (e) => { e.preventDefault(); logout(); });
+    // Buy Button (profile.html)
+    if (buyNowBtn) buyNowBtn.addEventListener('click', () => alert("Buy functionality coming soon!"));
+
+    // Logout (hamburger menu)
+    if (logoutLink) logoutLink.addEventListener('click', (e) => { e.preventDefault(); logout(); });
 
     // Pie Chart (index.html)
     if (chartCanvas) {
@@ -153,29 +193,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Helper Functions
-    function setLoggedIn(user) {
-        loggedInUser = user;
-        localStorage.setItem("loggedInUser", JSON.stringify(user));
+    function setLoggedIn() {
         if (authButtons) authButtons.style.display = "none";
         if (footerAuth) footerAuth.style.display = "none";
-        if (userMenu) userMenu.style.display = "block";
-        startSessionTimeout();
+        if (signUpLink) signUpLink.style.display = "none";
+        if (signInLink) signInLink.style.display = "none";
+        if (profileLink) profileLink.style.display = "block";
+        if (logoutLink) logoutLink.style.display = "block";
+        console.log("Logged in successfully");
     }
 
     function logout() {
-        loggedInUser = null;
-        localStorage.removeItem("loggedInUser");
-        clearTimeout(sessionTimeout);
+        localStorage.removeItem('token');
+        token = null;
         if (authButtons) authButtons.style.display = "flex";
         if (footerAuth) footerAuth.style.display = "flex";
-        if (userMenu) userMenu.style.display = "none";
-        if (dropdownMenu) dropdownMenu.style.display = "none";
+        if (signUpLink) signUpLink.style.display = "block";
+        if (signInLink) signInLink.style.display = "block";
+        if (profileLink) profileLink.style.display = "none";
+        if (logoutLink) logoutLink.style.display = "none";
+        console.log("Logging out, redirecting to index.html");
         window.location.href = 'index.html';
     }
 
-    function startSessionTimeout() {
-        clearTimeout(sessionTimeout);
-        sessionTimeout = setTimeout(logout, 10 * 60 * 1000); // 10 minutes
+    async function fetchProfile() {
+        try {
+            const response = await fetch('http://localhost:3000/api/profile', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const data = await response.json();
+            if (response.ok) {
+                loggedInUser = data;
+                setLoggedIn();
+                if (currentPage === 'profile.html') {
+                    populateProfile();
+                }
+            } else {
+                logout(); // Invalid token, force logout
+            }
+        } catch (err) {
+            console.error('Profile fetch error:', err);
+            logout();
+        }
     }
 
     function clearSignUpForm() {
@@ -199,7 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (profileName) profileName.textContent = loggedInUser.name;
         if (profileUsername) profileUsername.textContent = loggedInUser.username;
         if (profileEmail) profileEmail.textContent = loggedInUser.email;
-        if (dojiOwned) dojiOwned.textContent = loggedInUser.dojiOwned || 0;
-        if (dojiValue) dojiValue.textContent = ((loggedInUser.dojiOwned || 0) * 0.00050).toFixed(2); // Phase 1 price
+        if (doge1Owned) doge1Owned.textContent = loggedInUser.doge1Owned || 0;
+        if (doge1Value) doge1Value.textContent = ((loggedInUser.doge1Owned || 0) * 0.00050).toFixed(2); // Phase 1 price
     }
 });
