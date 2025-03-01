@@ -28,12 +28,28 @@ header {
     margin: 0 auto;
 }
 
-.home-icon {
-    display: block;
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between logo and text */
 }
 
-.home-icon img {
-    filter: drop-shadow(0 0 5px #00ffcc);
+.shiba-logo {
+    width: 40px; /* Adjust size as needed */
+    height: auto;
+    filter: drop-shadow(0 0 5px #00ffcc); /* Jedi glow effect */
+}
+
+.logo-text {
+    font-size: 20px; /* Matches your h1 size, adjust if needed */
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px #00ffcc; /* Glow to match theme */
+}
+
+.home-icon {
+    display: block;
 }
 
 .auth-buttons {
@@ -72,11 +88,6 @@ header {
     margin: 15px auto;
 }
 
-.btn-icon {
-    width: 16px;
-    height: 16px;
-}
-
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -108,24 +119,6 @@ main {
     padding-top: 80px;
 }
 
-.profile {
-    background: #1f1f1f;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 90%;
-    margin: 0 auto 40px;
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
-}
-
-.profile-details p {
-    margin: 10px 0;
-    font-size: 16px;
-}
-
-.profile-details strong {
-    color: #00ffcc;
-}
-
 .intro {
     background: #1f1f1f;
     padding: 20px;
@@ -147,21 +140,6 @@ main {
 
 .buy-now-container {
     text-align: center;
-}
-
-.shiba-logo {
-    width: 70px;
-    height: auto;
-    margin: 0;
-    filter: drop-shadow(0 0 10px #00ffcc);
-}
-
-.intro-text {
-    flex-grow: 1;
-    min-width: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .intro-text h1 {
@@ -206,24 +184,6 @@ main {
 
 .buy-section {
     margin-top: 30px;
-}
-
-#walletInfo {
-    margin-top: 20px;
-}
-
-#walletAddress {
-    font-family: monospace;
-    color: #00ffcc;
-}
-
-#cryptoSelect {
-    padding: 10px;
-    margin: 10px 0;
-    background: #333;
-    color: #fff;
-    border: 1px solid #00ffcc;
-    border-radius: 5px;
 }
 
 .phase-window {
@@ -431,4 +391,4 @@ footer {
         0% { transform: translateX(0); }
         100% { transform: translateX(calc(-50% * 11)); }
     }
-    }
+}
