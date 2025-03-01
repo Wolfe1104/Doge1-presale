@@ -120,7 +120,7 @@ main {
 }
 
 .intro {
-    background: #1f1f1f;
+    background: linear-gradient(rgba(31, 31, 31, 0.8), rgba(31, 31, 31, 0.8)), url('shiba-jedi-logo.webp') center center / cover no-repeat;
     padding: 20px;
     border-radius: 10px;
     max-width: 90%;
@@ -391,4 +391,4 @@ footer {
         0% { transform: translateX(0); }
         100% { transform: translateX(calc(-50% * 11)); }
     }
-}
+    }
