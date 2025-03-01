@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Core Variables
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || null;
+    let loggedInUser = null;
     let sessionTimeout;
 
     // DOM Elements (Shared)
@@ -33,64 +32,58 @@ document.addEventListener("DOMContentLoaded", () => {
     const profileName = document.getElementById("profileName");
     const profileUsername = document.getElementById("profileUsername");
     const profileEmail = document.getElementById("profileEmail");
-    const doge1Owned = document.getElementById("doge1Owned");
-    const doge1Value = document.getElementById("doge1Value");
-    const buyNowBtn = document.getElementById("buyNowBtn");
+    const dojiOwned = document.getElementById("dojiOwned");
+    const dojiValue = document.getElementById("dojiValue");
 
     // Initial State
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    if (loggedInUser) {
-        if (currentPage === 'profile.html') {
-            if (userMenu) userMenu.style.display = "block";
-            startSessionTimeout();
-            populateProfile();
-        } else if (currentPage === 'index.html') {
-            // Force logout state on index.html unless signing in
-            loggedInUser = null;
-            localStorage.removeItem("loggedInUser");
-            if (authButtons) authButtons.style.display = "flex";
-            if (footerAuth) footerAuth.style.display = "flex";
-            if (userMenu) userMenu.style.display = "none";
-        }
-    } else {
+    loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || null;
+    if (loggedInUser && currentPage === 'profile.html') {
+        if (userMenu) userMenu.style.display = "block";
+        startSessionTimeout();
+        populateProfile();
+    } else if (currentPage === 'index.html') {
+        loggedInUser = null;
+        localStorage.removeItem("loggedInUser");
         if (authButtons) authButtons.style.display = "flex";
         if (footerAuth) footerAuth.style.display = "flex";
         if (userMenu) userMenu.style.display = "none";
-        if (currentPage !== 'index.html') {
-            window.location.href = 'index.html';
-        }
+    } else {
+        window.location.href = 'index.html';
     }
 
     // Sign-In Logic
     if (loginBtn) {
-        loginBtn.addEventListener('click', () => {
+        loginBtn.addEventListener('click', async () => {
             const username = document.getElementById("loginUsernameInput").value.trim();
             const password = document.getElementById("loginPasswordInput").value.trim();
-
-            console.log("Login attempt - Username:", username, "Password:", password);
 
             if (!username || !password) {
                 alert("Please enter both username and password.");
                 return;
             }
 
-            const user = users.find(u => u.username === username && u.password === password);
-            if (user) {
-                console.log("User found:", user);
-                setLoggedIn(user);
+            const response = await fetch('/api/signin', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+            const data = await response.json();
+
+            if (response.ok) {
+                setLoggedIn(data.user);
                 signInModal.style.display = 'none';
                 clearSignInForm();
-                window.location.href = 'profile.html'; // Explicit redirect after sign-in
+                window.location.href = 'profile.html';
             } else {
-                console.log("Login failed - Users in storage:", users);
-                alert("Invalid username or password.");
+                alert(data.error);
             }
         });
     }
 
     // Sign-Up Logic
     if (registerBtn) {
-        registerBtn.addEventListener('click', () => {
+        registerBtn.addEventListener('click', async () => {
             const name = document.getElementById("nameInput").value.trim();
             const username = document.getElementById("usernameInput").value.trim();
             const email = document.getElementById("emailInput").value.trim();
@@ -102,18 +95,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            if (users.find(u => u.username === username)) {
-                alert("Username already exists.");
-                return;
-            }
+            const response = await fetch('/api/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, username, email, password })
+            });
+            const data = await response.json();
 
-            const user = { name, username, email, password, doge1Owned: 0 };
-            users.push(user);
-            localStorage.setItem("users", JSON.stringify(users));
-            setLoggedIn(user);
-            signUpModal.style.display = 'none';
-            clearSignUpForm();
-            window.location.href = 'profile.html'; // Explicit redirect after sign-up
+            if (response.ok) {
+                setLoggedIn(data.user);
+                signUpModal.style.display = 'none';
+                clearSignUpForm();
+                window.location.href = 'profile.html';
+            } else {
+                alert(data.error);
+            }
         });
     }
 
@@ -130,9 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (introBuyBtn) introBuyBtn.addEventListener('click', () => loggedInUser ? window.location.href = 'profile.html' : signInModal.style.display = 'block');
     if (hypeBuyBtn) hypeBuyBtn.addEventListener('click', () => loggedInUser ? window.location.href = 'profile.html' : signInModal.style.display = 'block');
     if (footerBuyBtn) footerBuyBtn.addEventListener('click', () => loggedInUser ? window.location.href = 'profile.html' : signInModal.style.display = 'block');
-
-    // Buy Button (profile.html)
-    if (buyNowBtn) buyNowBtn.addEventListener('click', () => alert("Buy functionality coming soon!"));
 
     // User Menu (both pages)
     if (userMenuBtn) userMenuBtn.addEventListener('click', () => dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block");
@@ -167,7 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (footerAuth) footerAuth.style.display = "none";
         if (userMenu) userMenu.style.display = "block";
         startSessionTimeout();
-        console.log("Logged in successfully");
     }
 
     function logout() {
@@ -178,7 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (footerAuth) footerAuth.style.display = "flex";
         if (userMenu) userMenu.style.display = "none";
         if (dropdownMenu) dropdownMenu.style.display = "none";
-        console.log("Logging out, redirecting to index.html");
         window.location.href = 'index.html';
     }
 
@@ -208,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (profileName) profileName.textContent = loggedInUser.name;
         if (profileUsername) profileUsername.textContent = loggedInUser.username;
         if (profileEmail) profileEmail.textContent = loggedInUser.email;
-        if (doge1Owned) doge1Owned.textContent = loggedInUser.doge1Owned || 0;
-        if (doge1Value) doge1Value.textContent = ((loggedInUser.doge1Owned || 0) * 0.00050).toFixed(2); // Phase 1 price
+        if (dojiOwned) dojiOwned.textContent = loggedInUser.dojiOwned || 0;
+        if (dojiValue) dojiValue.textContent = ((loggedInUser.dojiOwned || 0) * 0.00050).toFixed(2); // Phase 1 price
     }
 });
