@@ -35,13 +35,13 @@ header {
 }
 
 .shiba-logo {
-    width: 40px; /* Adjust size as needed */
-    height: auto;
+    height: 20px; /* Matches font-size of logo-text */
+    width: auto; /* Maintains aspect ratio */
     filter: drop-shadow(0 0 5px #00ffcc); /* Jedi glow effect */
 }
 
 .logo-text {
-    font-size: 20px; /* Matches your h1 size, adjust if needed */
+    font-size: 20px; /* Base size for text */
     font-family: 'Arial', sans-serif;
     color: #fff;
     text-transform: uppercase;
