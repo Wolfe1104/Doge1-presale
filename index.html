@@ -151,15 +151,17 @@
             touch-action: pan-y;
         }
         .presale-box {
-            min-width: 360px; /* Larger boxes */
+            min-width: 360px;
             width: 360px;
-            height: 180px;
+            height: 200px; /* Increased height for more space */
             margin: 0 10px;
             background: rgba(0, 0, 0, 0.9);
             border: 1px solid #00BFFF;
             border-radius: 8px;
             padding: 15px;
             flex-shrink: 0;
+            position: relative;
+            overflow: hidden; /* Prevent text overflow */
         }
         .presale-box.current {
             border: 2px solid #FFD700;
@@ -168,13 +170,19 @@
         .presale-box.future { opacity: 0.8; }
         .presale-box h4 {
             color: #00BFFF;
-            font-size: 18px; /* Slightly larger text */
+            font-size: 18px;
             margin: 0 0 10px;
+            white-space: nowrap; /* Prevent wrapping */
+            overflow: hidden;
+            text-overflow: ellipsis; /* Add ellipsis if too long */
         }
         .presale-box p {
-            font-size: 16px; /* Slightly larger text */
+            font-size: 16px;
             color: #E0E0E0;
             margin: 5px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .stage-badge {
             position: absolute;
@@ -185,14 +193,19 @@
             font-size: 12px;
             padding: 5px 8px;
             border-radius: 50%;
+            z-index: 1; /* Ensure it’s above content */
         }
         .progress-bar {
             width: 100%;
-            height: 8px; /* Slightly thicker bar */
+            height: 8px;
             background: #333;
             border-radius: 4px;
             overflow: hidden;
             margin-top: 10px;
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
         }
         .progress-fill {
             height: 100%;
@@ -220,9 +233,9 @@
         .arrow.right { right: 0; color: #FF0000; }
         .arrow:hover:not(.disabled) { opacity: 1; color: #FFFFFF; }
 
-        @media (max-width: 760px) { /* 740px + some padding */
+        @media (max-width: 760px) {
             .slider-container { width: 100%; }
-            .presale-box { min-width: calc((100% - 20px) / 2); width: calc((100% - 20px) / 2); } /* 2 boxes fit container */
+            .presale-box { min-width: calc((100% - 20px) / 2); width: calc((100% - 20px) / 2); }
             .arrow { font-size: 20px; padding: 6px 10px; }
             #presale h3 { font-size: 28px; }
         }
