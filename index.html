@@ -10,8 +10,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Orbitron', sans-serif;
-            background: #121212 url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center fixed;
-            background-size: cover;
+            background: #121212; /* Darker global background */
             color: #E0E0E0;
             line-height: 1.6;
         }
@@ -23,171 +22,113 @@
             text-decoration: underline;
         }
 
-        /* Header */
+        /* Header Section */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 25px 40px;
-            background: rgba(0, 0, 0, 0.9); /* Darker for better contrast */
+            background: rgba(0, 0, 0, 0.9);
             border: 2px solid #00BFFF;
             border-radius: 8px;
-            margin: 10px;
-            width: calc(100% - 20px);
             position: fixed;
-            top: 0;
+            width: calc(100% - 20px);
+            margin: 10px;
             z-index: 100;
             box-sizing: border-box;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-        .logo {
-            width: 60px;
-            height: 60px;
-            background: url('logo.webp') no-repeat;
-            background-size: cover;
-        }
-        .logo-text {
-            font-size: 28px;
-            color: #00BFFF;
-            text-shadow: 0 0 10px #00BFFF;
-            margin-left: 15px;
-        }
-
-        /* Dropdown */
-        .dropdown-content {
-            background: rgba(0, 0, 0, 0.95); /* Darker Dropdown */
-        }
-        .dropdown-content a:hover {
-            background: rgba(0, 191, 255, 0.3);
         }
 
         /* Hero Section */
         #hero {
             text-align: center;
             padding: 120px 40px 60px;
-            background: rgba(0, 0, 0, 0.9), url('hero.webp') no-repeat center;
-            background-size: cover;
+            background: rgba(0, 0, 0, 0.9); /* Darker overlay */
             border: 2px solid #00BFFF;
             border-radius: 8px;
             margin: 20px auto;
             max-width: 900px;
         }
-        #hero h1 {
-            font-size: 54px;
-            color: #FFD700;
-            text-shadow: 0 0 10px #FFD700;
-        }
-        #hero p {
-            font-size: 20px;
+        #hero h1, #hero p {
             color: #E0E0E0;
-        }
-        .cta-button {
-            background: #00BFFF;
-            border: 2px solid #FFD700;
-            box-shadow: 0 0 15px #00BFFF;
-            transition: 0.3s;
-        }
-        .cta-button:hover {
-            box-shadow: 0 0 30px #00BFFF;
         }
 
         /* About Section */
         #about {
-            background: rgba(0, 0, 0, 0.95), url('about.jpg') no-repeat center;
-            background-size: cover;
-            border: 2px solid #00BFFF;
-            margin: 20px auto;
-        }
-        #about p {
-            font-size: 20px;
-            color: #E0E0E0;
-        }
-
-        /* Tokenomics & Roadmap */
-        section {
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(10, 10, 10, 0.95); /* Darker translucent overlay */
+            padding: 60px;
+            text-align: center;
             border: 2px solid #00BFFF;
             border-radius: 8px;
             margin: 20px auto;
-        }
-        h3 {
-            text-shadow: 0 0 10px #00BFFF;
-            color: #00BFFF;
-            text-align: center;
+            max-width: 900px;
         }
 
-        /* How to Buy */
-        #how-to-buy .bonus-tip {
-            background: rgba(130, 71, 229, 0.2);
-            border: 1px dashed #8247E5;
+        #about p {
+            color: #E0E0E0;
+            font-size: 20px;
+            line-height: 1.8;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: #00BFFF;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            border: 2px solid #FFFFFF;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #00BFFF;
+            transition: all 0.3s ease-in-out;
+        }
+        .cta-button:hover {
+            box-shadow: 0 0 20px #00BFFF;
+        }
+
+        /* Section General Styles */
+        section {
+            padding: 80px 40px;
+            background: rgba(15, 15, 15, 0.9);
+            border: 2px solid #00BFFF;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 900px;
         }
     </style>
 </head>
 <body>
-
-<header>
-    <div class="logo-container">
-        <div class="logo"></div>
-        <div class="logo-text">DOJI</div>
-    </div>
-    <div class="dropdown">
-        <div class="hamburger">☰</div>
-        <div class="dropdown-content">
-            <a href="#hero">Hero</a>
-            <a href="#about">About the Coin</a>
-            <a href="#tokenomics">Tokenomics</a>
-            <a href="#roadmap">Roadmap</a>
-            <a href="#how-to-buy">How to Buy</a>
-            <a href="whitepaper.pdf">Whitepaper</a>
+    <header>
+        <div class="logo-container">
+            <div class="logo"></div>
+            <div class="logo-text">DOJI</div>
         </div>
-    </div>
-</header>
+        <div class="dropdown">
+            <div class="hamburger">☰</div>
+            <div class="dropdown-content">
+                <a href="#hero">Hero</a>
+                <a href="#about">About the Coin</a>
+                <a href="#tokenomics">Tokenomics</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#how-to-buy">How to Buy</a>
+            </div>
+        </div>
+    </header>
 
-<section id="hero">
-    <h1><span class="doji">$DOJI</span> BITES BACK!</h1>
-    <h2>Awaken the Jedi—Join the Force!</h2>
-    <p>Only the strongest rebels will rise. Limited supply available!</p>
-    <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
-</section>
+    <section id="hero">
+        <h1>
+            <span class="breaking">BREAKING THE CHAINS</span>
+            <span class="doji">$DOJI</span>
+            <span class="bites">BITES BACK!</span>
+        </h1>
+        <h2>Awaken the Jedi—Join the Force!</h2>
+        <p>The Countdown Has Begun—This Offer Is Only Available for a Limited Time!</p>
+        <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
+    </section>
 
-<section id="about">
-    <h3>About the Coin</h3>
-    <p>$DOJI is the Jedi of justice—fueled by xAI analytics on Polygon, ready to break meme coin chains.</p>
-</section>
+    <section id="about">
+        <h3>About the Coin</h3>
+        <p>$DOJI is the Jedi of justice in the memecoin galaxy, built with cutting-edge Polygon tech.</p>
+    </section>
 
-<section id="tokenomics">
-    <h3>Tokenomics</h3>
-    <ul>
-        <li><strong>Total Supply:</strong> 1 Billion $DOJI</li>
-        <li><strong>Presale:</strong> 25% Allocation</li>
-        <li><strong>Liquidity:</strong> 30%</li>
-    </ul>
-</section>
-
-<section id="roadmap">
-    <h3>Roadmap</h3>
-    <ol>
-        <li>Presale Launch</li>
-        <li>DEX Listing</li>
-        <li>Community Rewards</li>
-        <li>NFTs Release</li>
-    </ol>
-</section>
-
-<section id="how-to-buy">
-    <h3>How to Buy</h3>
-    <ol>
-        <li>Install MetaMask</li>
-        <li>Connect Wallet</li>
-        <li>Buy $DOJI</li>
-    </ol>
-    <div class="bonus-tip">Join the Discord if you need help!</div>
-</section>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </body>
 </html>
