@@ -9,8 +9,8 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Orbitron', sans-serif;
-            background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center fixed;
+            font-family: 'Arial', sans-serif; /* Fallback font */
+            background: #000 url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center fixed;
             background-size: cover;
             color: #E0E0E0;
             line-height: 1.6;
@@ -24,8 +24,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 25px 40px;
-            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center;
-            background-size: cover;
+            background: rgba(0, 0, 0, 0.9);
             position: fixed;
             width: 100%;
             top: 0;
@@ -43,8 +42,7 @@
         .logo {
             width: 60px;
             height: 60px;
-            background: url('logo.webp') no-repeat;
-            background-size: cover;
+            background: #FFF; /* Placeholder for logo */
         }
         .logo-text {
             font-size: 20px;
@@ -91,8 +89,7 @@
         #hero {
             text-align: center;
             padding: 120px 40px 60px;
-            background: url('hero.webp') no-repeat center, rgba(0, 0, 0, 0.8);
-            background-size: cover;
+            background: rgba(0, 0, 0, 0.8);
             border: 2px solid #00BFFF;
             border-radius: 8px;
             margin: 20px auto;
@@ -174,10 +171,6 @@
         }
 
         /* About Section */
-        #about {
-            background: url('about.jpg') no-repeat center, rgba(0, 0, 0, 0.8);
-            background-size: cover;
-        }
         #about p {
             font-size: 20px;
             line-height: 1.8;
@@ -187,8 +180,6 @@
         #moonshot {
             position: relative;
             text-align: center;
-            background: url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.9);
-            background-size: cover;
             overflow: hidden;
         }
         #moonshot h3 {
@@ -197,7 +188,6 @@
             text-shadow: 0 0 10px #FFD700, 0 0 20px #00BFFF;
             letter-spacing: 2px;
             text-transform: uppercase;
-            animation: glowPulse 3s infinite ease-in-out;
         }
         #moonshot p {
             font-size: 20px;
@@ -231,11 +221,6 @@
             height: 100px;
             animation-duration: 25s;
         }
-        @keyframes glowPulse {
-            0% { text-shadow: 0 0 10px #FFD700, 0 0 20px #00BFFF; }
-            50% { text-shadow: 0 0 20px #FFD700, 0 0 30px #00BFFF; }
-            100% { text-shadow: 0 0 10px #FFD700, 0 0 20px #00BFFF; }
-        }
         @keyframes orbitMoon {
             0% { transform: translateX(0) rotate(0deg); }
             100% { transform: translateX(50px) rotate(360deg); }
@@ -244,14 +229,11 @@
         /* Tokenomics Section */
         #tokenomics {
             text-align: center;
-            position: relative;
         }
         .pie-chart-container {
             width: 350px;
             height: 350px;
             margin: 0 auto 30px;
-            perspective: 1000px;
-            position: relative;
         }
         .pie-chart {
             width: 100%;
@@ -265,88 +247,7 @@
                 #8B0000 85% 100%
             );
             border: 4px solid #333333;
-            box-shadow: 0 0 25px #00BFFF, inset 0 0 15px rgba(0, 191, 255, 0.5);
-            transform: rotateX(25deg) rotateY(15deg);
-            position: relative;
-            animation: orbitGlow 12s infinite linear;
-            transition: transform 0.5s ease, box-shadow 0.3s ease;
-            z-index: 2;
-        }
-        .pie-chart::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 30%, rgba(50, 50, 50, 0.6) 0%, rgba(0, 0, 0, 0.8) 70%);
-            border-radius: 50%;
-            opacity: 0.5;
-            z-index: 1;
-        }
-        .pie-chart:hover {
-            transform: rotateX(0deg) rotateY(0deg) scale(1.05);
-            box-shadow: 0 0 40px #00BFFF, inset 0 0 20px rgba(0, 191, 255, 0.7);
-        }
-        .pie-chart::after {
-            content: '';
-            position: absolute;
-            top: 15%;
-            left: 15%;
-            width: 30%;
-            height: 30%;
-            background: radial-gradient(circle, rgba(0, 0, 0, 0.9) 20%, rgba(50, 50, 50, 0.6) 60%, transparent 70%);
-            border-radius: 50%;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
-            z-index: 3;
-        }
-        .pie-chart-container::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            width: calc(100% + 20px);
-            height: calc(100% + 20px);
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 191, 255, 0.2) 0%, transparent 70%);
-            z-index: -1;
-            animation: saberPulse 2s infinite ease-in-out;
-        }
-        .pie-chart-container [data-tooltip] {
-            position: relative;
-        }
-        .pie-chart-container [data-tooltip]::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 110%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.9);
-            color: #00BFFF;
-            padding: 8px 12px;
-            border-radius: 4px;
-            font-size: 14px;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s;
-            z-index: 10;
-            box-shadow: 0 0 10px #00BFFF;
-            border: 1px solid #00BFFF;
-        }
-        .pie-chart-container:hover [data-tooltip]::after {
-            opacity: 1;
-            visibility: visible;
-        }
-        @keyframes orbitGlow {
-            0% { box-shadow: 0 0 25px #00BFFF, inset 0 0 15px rgba(0, 191, 255, 0.5); transform: rotateX(25deg) rotateY(15deg); }
-            50% { box-shadow: 0 0 35px #00BFFF, inset 0 0 20px rgba(0, 191, 255, 0.7); transform: rotateX(25deg) rotateY(-15deg); }
-            100% { box-shadow: 0 0 25px #00BFFF, inset 0 0 15px rgba(0, 191, 255, 0.5); transform: rotateX(25deg) rotateY(15deg); }
-        }
-        @keyframes saberPulse {
-            0% { opacity: 0.2; }
-            50% { opacity: 0.5; }
-            100% { opacity: 0.2; }
+            box-shadow: 0 0 25px #00BFFF;
         }
         .pie-chart-legend {
             display: flex;
@@ -359,10 +260,6 @@
             display: flex;
             align-items: center;
             font-size: 18px;
-            transition: transform 0.3s ease;
-        }
-        .legend-item:hover {
-            transform: scale(1.1);
         }
         .legend-color {
             width: 20px;
@@ -370,10 +267,6 @@
             margin-right: 10px;
             border-radius: 50%;
             box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-            transition: box-shadow 0.3s ease;
-        }
-        .legend-item:hover .legend-color {
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
         /* Roadmap Section */
@@ -384,8 +277,6 @@
         #roadmap li {
             margin: 20px auto;
             font-size: 20px;
-            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.9);
-            background-size: cover;
             border: 1px solid #00BFFF;
             padding: 20px;
             border-radius: 5px;
@@ -405,8 +296,6 @@
         #how-to-buy li {
             margin: 20px auto;
             font-size: 20px;
-            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.9);
-            background-size: cover;
             border: 1px solid #00BFFF;
             padding: 20px;
             border-radius: 5px;
@@ -429,4 +318,219 @@
             margin-top: 40px;
             display: block;
             width: 220px;
-           
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* FAQ Section */
+        #faq {
+            background: rgba(0, 0, 0, 0.9);
+        }
+        #faq h3 {
+            font-size: 42px;
+            color: #00BFFF;
+            text-shadow: 0 0 10px #00BFFF;
+        }
+        .faq-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #00BFFF;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .faq-item:hover {
+            box-shadow: 0 0 15px #00BFFF;
+            transform: translateY(-5px);
+        }
+        .faq-item h4 {
+            font-size: 18px;
+            color: #FFD700;
+            margin: 0 0 8px;
+            text-shadow: 0 0 5px #FFD700;
+        }
+        .faq-item p {
+            font-size: 14px;
+            margin: 0;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        .faq-item:hover p {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <div class="logo"></div>
+            <div class="logo-text">DOJI-1-KENOBI</div>
+        </div>
+        <div class="dropdown">
+            <div class="hamburger">☰</div>
+            <div class="dropdown-content">
+                <a href="#hero">Hero</a>
+                <a href="#about">About the Coin</a>
+                <a href="#moonshot">100x Moonshot</a>
+                <a href="#tokenomics">Tokenomics</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#how-to-buy">How to Buy</a>
+                <a href="#faq">FAQ</a>
+                <a href="whitepaper.pdf">Whitepaper</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <h1>
+            <span class="breaking">BREAKING THE CHAINS</span>
+            <span class="doji"> $DOJI </span>
+            <span class="bites">BITES BACK!</span>
+        </h1>
+        <h2>Awaken the Jedi—Join the Force!</h2>
+        <p>The Countdown Has Begun—This Offer Is Only Available for a Limited Time, Don’t Let It Pass, BUY!</p>
+        <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
+    </section>
+
+    <!-- About the Coin Section -->
+    <section id="about">
+        <h3>About the Coin</h3>
+        <p>$DOJI is a little ruff around the edges—the Jedi of justice in a memecoin galaxy. Forged with cutting-edge tech on the Polygon network, $DOJI blasts light years ahead of rival meme coins with low fees and warp-speed transactions. Powered by xAI’s latest analytical breakthroughs, it’s preprogrammed for a warp-speed 100x post-launch—token burns, a masterful presale, and strategic fund allocation fuel its pure force-driven propulsion, paving a hyperspace road to the stars!</p>
+    </section>
+
+    <!-- 100x Moonshot Section -->
+    <section id="moonshot">
+        <div class="moon-graphic"></div>
+        <div class="moon-graphic"></div>
+        <div class="moon-graphic"></div>
+        <h3>100X MOONSHOT</h3>
+        <p>$DOJI is engineered for a hyperspace leap to the moons of fortune! Powered by xAI’s cutting-edge analytics, this memecoin is preprogrammed for a 100x surge post-launch. With token burns slashing supply, a 13-stage presale igniting demand, and strategic liquidity drops on DEXs and CEXs, $DOJI’s trajectory is set to blast past the stars. The Force is strong with this one—join early to ride the galactic wave to a $0.05 valuation and beyond!</p>
+    </section>
+
+    <!-- Tokenomics Section -->
+    <section id="tokenomics">
+        <h3>Tokenomics</h3>
+        <div class="pie-chart-container">
+            <div class="pie-chart"></div>
+        </div>
+        <div class="pie-chart-legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4682B4;"></div>
+                Presale: 25%
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #DAA520;"></div>
+                Liquidity: 30%
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #2E8B57;"></div>
+                Community Rewards: 10%
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #483D8B;"></div>
+                Roadmap/Development: 20%
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #8B0000;"></div>
+                Team: 15%
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap">
+        <h3>Hyperspace Roadmap to the Stars</h3>
+        <ol>
+            <li><strong>Presale: The Jedi Uprising (13 Stages)</strong> - The Force awakens—$DOJI’s presale ignites across 13 stages, shattering meme coin chains. From $0.0005, prices warp to $0.01 as conditions trigger—xAI’s masterful analytics fuel the rise, unleashing 250M tokens into the galaxy. Join early, or miss the hyperspace jump!</li>
+            <li><strong>Post-Presale Phase 1: Token Burn Ignition</strong> - Lightsabers slash—$DOJI burns unsold or reserved tokens, tightening supply. xAI’s analytics lock in the perfect burn, propelling value toward 100x warp speed.</li>
+            <li><strong>Post-Presale Phase 2: Hyperspace Launch</strong> - $DOJI hits lightspeed—DEX listings (e.g., PancakeSwap) drop with 300M liquidity tokens. Ruff rebels trade, xAI’s fund allocation ignites the warp.</li>
+            <li><strong>Post-Presale Phase 3: Galactic Conquest</strong> - Jedi strike—CEX listings (e.g., Binance) and 100M community rewards rain down. $DOJI’s 100x warp ($0.05) hits, fueled by xAI’s strategic plays.</li>
+            <li><strong>Post-Presale Phase 4: Beyond the Stars</strong> - $DOJI rules—ongoing burns and xAI-driven upgrades (e.g., NFT drops) push past 100x to uncharted moons!</li>
+        </ol>
+    </section>
+
+    <!-- How to Buy Section -->
+    <section id="how-to-buy">
+        <h3>Unleash the Force—How to Buy $DOJI</h3>
+        <h4>Grab Your $DOJI Before the Galaxy Runs Out!</h4>
+        <ol>
+            <li><strong>Gear Up Your Wallet</strong> - Get a lightsaber-ready wallet like MetaMask or Trust Wallet. No weak centralized junk—$DOJI’s all about freedom on the Polygon network. Install it, secure your seed phrase, and load it with MATIC—Polygon’s fuel for the fight!</li>
+            <li><strong>Ignite the Connection</strong> - Hit the ‘JOIN THE FORCE’ button and connect your wallet like you’re linking hyperspace coordinates. Approve the link, and you’re in the $DOJI cockpit.</li>
+            <li><strong>Slash In Your Amount</strong> - Pick how much $DOJI you’re snagging—starts at $0.0005, warps to $0.01 across 13 stages on Polygon. Enter your MATIC amount (e.g., 10 MATIC scores a stash at launch price). Double-check—no Jedi mind trick reverses this!</li>
+            <li><strong>Unleash the Transaction</strong> - Confirm the buy in your wallet—Polygon’s gas fees are dirt cheap, no excuses. Sign it, send it, and your $DOJI tokens hit your wallet when the presale wraps. HODL tight, rebel!</li>
+        </ol>
+        <p class="bonus-tip">Lost? Jump into the $DOJI Discord or Telegram—our Jedi masters have your back. Don’t sleep—250M tokens won’t last on Polygon’s hyperspace lanes!</p>
+        <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4>What is $DOJI?</h4>
+            <p>$DOJI is a memecoin on the Polygon network, designed with xAI’s analytics for a 100x moonshot, blending low fees with high-speed transactions.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How does the 100x moonshot work?</h4>
+            <p>xAI’s preprogrammed strategy includes token burns, a 13-stage presale, and strategic listings to drive $DOJI’s value from $0.0005 to $0.05 or higher.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Why Polygon?</h4>
+            <p>Polygon offers lightning-fast transactions and minimal fees, making $DOJI accessible and efficient for all rebels in the galaxy.</p>
+        </div>
+        <div class="faq-item">
+            <h4>When can I buy $DOJI?</h4>
+            <p>The presale is live now in 13 stages—join early to secure the lowest price before the hyperspace launch!</p>
+        </div>
+        <div class="faq-item">
+            <h4>What wallets are supported?</h4>
+            <p>Use MetaMask, Trust Wallet, or any wallet compatible with Polygon to join the $DOJI rebellion.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What happens to unsold tokens?</h4>
+            <p>Unsold tokens are burned post-presale, tightening supply and boosting value, per xAI’s strategy.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Are there community rewards?</h4>
+            <p>Yes, 10% of tokens fuel rewards—100M $DOJI will rain down on the community after launch.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How secure is $DOJI?</h4>
+            <p>Built on Polygon’s robust network and backed by xAI’s analytics, $DOJI is a fortress in the memecoin galaxy.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I trade $DOJI after presale?</h4>
+            <p>Yes, $DOJI hits DEXs like PancakeSwap post-launch, followed by CEXs like Binance for galactic trading.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What’s the total supply?</h4>
+            <p>Total supply starts at 1 billion $DOJI, with burns reducing it over time to fuel the moonshot.</p>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('.dropdown-content a');
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
