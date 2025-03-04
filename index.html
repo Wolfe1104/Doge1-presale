@@ -6,7 +6,7 @@
     <title>DOJI-1-KENOBI Presale</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* [Previous CSS remains unchanged up to .cta-button] */
+        /* [Previous CSS remains unchanged up to Hero] */
         body {
             margin: 0;
             padding: 0;
@@ -185,6 +185,12 @@
             font-style: italic;
             text-align: center;
             margin: 0 0 40px;
+        }
+
+        /* New class for $doji styling */
+        .token-doji {
+            color: #00FF00;
+            text-shadow: 0 0 10px #00FF00;
         }
 
         #about {
@@ -387,9 +393,8 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
-        /* Updated Roadmap Section */
         #roadmap {
-            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.85);
+            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.85);
             background-size: cover;
         }
         #roadmap h3 {
@@ -417,9 +422,8 @@
             line-height: 1.5;
         }
 
-        /* Updated How-to-Buy Section */
         #how-to-buy {
-            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.85);
+            background: url('https://images.unsplash.com/photo-1610296669228-55fa3d2c0dc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.85);
             background-size: cover;
         }
         #how-to-buy h3 {
@@ -427,7 +431,7 @@
             text-shadow: 0 0 8px #FFD700;
             margin-bottom: 40px;
         }
-        #how-to-buy h4 {
+        #how-to-buy h4:not(.how-to-buy-item h4) {
             color: #E0E0E0;
             text-shadow: 0 0 5px #00BFFF;
         }
@@ -443,6 +447,14 @@
         .how-to-buy-item:hover {
             box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
             transform: translateY(-3px);
+        }
+        .how-to-buy-item h4 {
+            color: #00BFFF;
+            font-size: 20px;
+            margin: 0 0 10px;
+            text-align: left;
+            text-shadow: 0 0 5px #00BFFF;
+            font-style: normal;
         }
         .how-to-buy-item p {
             font-size: 16px;
@@ -467,7 +479,6 @@
             margin-right: auto;
         }
 
-        /* FAQ Section */
         #faq {
             background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.85);
             background-size: cover;
@@ -531,7 +542,7 @@
     <section id="hero">
         <h1>
             <span class="breaking">BREAKING THE CHAINS</span>
-            <span class="doji"> $DOJI </span>
+            <span class="doji"> <span class="token-doji">$doji</span> </span>
             <span class="bites">BITES BACK!</span>
         </h1>
         <h2>Awaken the Jedi—Join the Force!</h2>
@@ -541,7 +552,7 @@
 
     <section id="about">
         <h3>About the Coin</h3>
-        <p>$DOJI is a little ruff around the edges—the Jedi of justice in a memecoin galaxy. Forged with cutting-edge tech on the Polygon network, $DOJI blasts light years ahead of rival meme coins with low fees and warp-speed transactions. Powered by xAI’s latest analytical breakthroughs, it’s preprogrammed for a warp-speed 100x post-launch—token burns, a masterful presale, and strategic fund allocation fuel its pure force-driven propulsion, paving a hyperspace road to the stars!</p>
+        <p><span class="token-doji">$doji</span> is a little ruff around the edges—the Jedi of justice in a memecoin galaxy. Forged with cutting-edge tech on the Polygon network, <span class="token-doji">$doji</span> blasts light years ahead of rival meme coins with low fees and warp-speed transactions. Powered by xAI’s latest analytical breakthroughs, it’s preprogrammed for a warp-speed 100x post-launch—token burns, a masterful presale, and strategic fund allocation fuel its pure force-driven propulsion, paving a hyperspace road to the stars!</p>
     </section>
 
     <section id="moonshot">
@@ -549,7 +560,7 @@
         <div class="moon-graphic"></div>
         <div class="moon-graphic"></div>
         <h3>100X MOONSHOT</h3>
-        <p>$DOJI is engineered for a hyperspace leap to the moons of fortune! Powered by xAI’s cutting-edge analytics, this memecoin is preprogrammed for a 100x surge post-launch. With token burns slashing supply, a 13-stage presale igniting demand, and strategic liquidity drops on DEXs and CEXs, $DOJI’s trajectory is set to blast past the stars. The Force is strong with this one—join early to ride the galactic wave to a $0.05 valuation and beyond!</p>
+        <p><span class="token-doji">$doji</span> is engineered for a hyperspace leap to the moons of fortune! Powered by xAI’s cutting-edge analytics, this memecoin is preprogrammed for a 100x surge post-launch. With token burns slashing supply, a 13-stage presale igniting demand, and strategic liquidity drops on DEXs and CEXs, <span class="token-doji">$doji</span>’s trajectory is set to blast past the stars. The Force is strong with this one—join early to ride the galactic wave to a $0.05 valuation and beyond!</p>
     </section>
 
     <section id="tokenomics">
@@ -571,112 +582,4 @@
                 Community Rewards: 10%
             </div>
             <div class="legend-item">
-                <div class="legend-color" style="background: #483D8B;"></div>
-                Roadmap/Development: 20%
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #8B0000;"></div>
-                Team: 15%
-            </div>
-        </div>
-    </section>
-
-    <section id="roadmap">
-        <h3>Hyperspace Roadmap to the Stars</h3>
-        <div class="roadmap-item">
-            <p><strong>Presale: The Jedi Uprising (13 Stages)</strong> - The Force awakens—$DOJI’s presale ignites across 13 stages, shattering meme coin chains. From $0.0005, prices warp to $0.01 as conditions trigger—xAI’s masterful analytics fuel the rise, unleashing 250M tokens into the galaxy. Join early, or miss the hyperspace jump!</p>
-        </div>
-        <div class="roadmap-item">
-            <p><strong>Post-Presale Phase 1: Token Burn Ignition</strong> - Lightsabers slash—$DOJI burns unsold or reserved tokens, tightening supply. xAI’s analytics lock in the perfect burn, propelling value toward 100x warp speed.</p>
-        </div>
-        <div class="roadmap-item">
-            <p><strong>Post-Presale Phase 2: Hyperspace Launch</strong> - $DOJI hits lightspeed—DEX listings (e.g., PancakeSwap) drop with 300M liquidity tokens. Ruff rebels trade, xAI’s fund allocation ignites the warp.</p>
-        </div>
-        <div class="roadmap-item">
-            <p><strong>Post-Presale Phase 3: Galactic Conquest</strong> - Jedi strike—CEX listings (e.g., Binance) and 100M community rewards rain down. $DOJI’s 100x warp ($0.05) hits, fueled by xAI’s strategic plays.</p>
-        </div>
-        <div class="roadmap-item">
-            <p><strong>Post-Presale Phase 4: Beyond the Stars</strong> - $DOJI rules—ongoing burns and xAI-driven upgrades (e.g., NFT drops) push past 100x to uncharted moons!</p>
-        </div>
-    </section>
-
-    <section id="how-to-buy">
-        <h3>Unleash the Force—How to Buy $DOJI</h3>
-        <h4>Grab Your $DOJI Before the Galaxy Runs Out!</h4>
-        <div class="how-to-buy-item">
-            <p><strong>Gear Up Your Wallet</strong> - Get a lightsaber-ready wallet like MetaMask or Trust Wallet. No weak centralized junk—$DOJI’s all about freedom on the Polygon network. Install it, secure your seed phrase, and load it with MATIC—Polygon’s fuel for the fight!</p>
-        </div>
-        <div class="how-to-buy-item">
-            <p><strong>Ignite the Connection</strong> - Hit the ‘JOIN THE FORCE’ button and connect your wallet like you’re linking hyperspace coordinates. Approve the link, and you’re in the $DOJI cockpit.</p>
-        </div>
-        <div class="how-to-buy-item">
-            <p><strong>Slash In Your Amount</strong> - Pick how much $DOJI you’re snagging—starts at $0.0005, warps to $0.01 across 13 stages on Polygon. Enter your MATIC amount (e.g., 10 MATIC scores a stash at launch price). Double-check—no Jedi mind trick reverses this!</p>
-        </div>
-        <div class="how-to-buy-item">
-            <p><strong>Unleash the Transaction</strong> - Confirm the buy in your wallet—Polygon’s gas fees are dirt cheap, no excuses. Sign it, send it, and your $DOJI tokens hit your wallet when the presale wraps. HODL tight, rebel!</p>
-        </div>
-        <p class="bonus-tip">Lost? Jump into the $DOJI Discord or Telegram—our Jedi masters have your back. Don’t sleep—250M tokens won’t last on Polygon’s hyperspace lanes!</p>
-        <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
-    </section>
-
-    <section id="faq">
-        <h3>Frequently Asked Questions</h3>
-        <div class="faq-item">
-            <h4>What is $DOJI?</h4>
-            <p>$DOJI is a memecoin on the Polygon network, designed with xAI’s analytics for a 100x moonshot, blending low fees with high-speed transactions.</p>
-        </div>
-        <div class="faq-item">
-            <h4>How does the 100x moonshot work?</h4>
-            <p>xAI’s preprogrammed strategy includes token burns, a 13-stage presale, and strategic listings to drive $DOJI’s value from $0.0005 to $0.05 or higher.</p>
-        </div>
-        <div class="faq-item">
-            <h4>Why choose Polygon network?</h4>
-            <p>Polygon offers lightning-fast transactions and minimal fees, making $DOJI accessible and efficient for all galactic investors.</p>
-        </div>
-        <div class="faq-item">
-            <h4>When can I purchase $DOJI?</h4>
-            <p>The presale is live now in 13 stages—join early to secure the lowest price before the hyperspace launch!</p>
-        </div>
-        <div class="faq-item">
-            <h4>Which wallets are compatible?</h4>
-            <p>Use MetaMask, Trust Wallet, or any wallet compatible with Polygon to join the $DOJI rebellion.</p>
-        </div>
-        <div class="faq-item">
-            <h4>What happens to unsold tokens?</h4>
-            <p>Unsold tokens are burned post-presale, tightening supply and boosting value, per xAI’s strategy.</p>
-        </div>
-        <div class="faq-item">
-            <h4>Are there community incentives?</h4>
-            <p>Yes, 10% of tokens fuel rewards—100M $DOJI will be distributed to the community after launch.</p>
-        </div>
-        <div class="faq-item">
-            <h4>How secure is $DOJI?</h4>
-            <p>Built on Polygon’s robust network and backed by xAI’s analytics, $DOJI offers strong security in the memecoin galaxy.</p>
-        </div>
-        <div class="faq-item">
-            <h4>Can I trade $DOJI after presale?</h4>
-            <p>Yes, $DOJI will be listed on DEXs like PancakeSwap post-launch, followed by CEXs like Binance.</p>
-        </div>
-        <div class="faq-item">
-            <h4>What’s the total token supply?</h4>
-            <p>Total supply starts at 1 billion $DOJI, with burns reducing it over time to fuel the moonshot.</p>
-        </div>
-    </section>
-
-    <script>
-        document.querySelectorAll('.dropdown-content a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                <div 
