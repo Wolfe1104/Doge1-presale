@@ -23,29 +23,28 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 40px; /* Increased padding */
+            padding: 30px 40px;
             background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47') no-repeat center / cover;
             position: fixed;
-            width: calc(100% - 80px);
+            width: 100%; /* Full width */
             top: 0;
+            left: 0; /* Ensure it starts at left edge */
             z-index: 1000;
             box-sizing: border-box;
-            border: 2px solid #00BFFF;
-            border-radius: 8px;
-            margin: 10px;
+            border-bottom: 2px solid #00BFFF; /* Changed to border-bottom for full width */
         }
         .logo-container {
             display: flex;
             align-items: center;
         }
         .logo {
-            width: 80px; /* Increased size */
+            width: 80px;
             height: 80px;
             background: url('logo.webp') no-repeat;
             background-size: cover;
         }
         .logo-text {
-            font-size: 24px; /* Increased size */
+            font-size: 24px;
             font-weight: bold;
             color: #00BFFF;
             text-shadow: 0 0 5px #00BFFF;
@@ -56,7 +55,7 @@
             margin-right: 20px;
         }
         .hamburger {
-            font-size: 40px; /* Increased size */
+            font-size: 40px;
             color: #00BFFF;
             cursor: pointer;
         }
@@ -87,14 +86,15 @@
 
         #hero {
             text-align: center;
-            padding: 160px 40px 60px; /* Increased top padding to clear larger header */
-            background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover, rgba(0, 0, 0, 0.8);
+            padding: 180px 40px 60px; /* Further increased top padding */
+            background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover;
             border: 2px solid #00BFFF;
             border-radius: 8px;
             margin: 20px auto;
             max-width: 900px;
             position: relative;
             z-index: 1;
+            background-color: rgba(0, 0, 0, 0.8); /* Separated rgba for reliability */
         }
         #hero h1 {
             font-size: 54px;
@@ -151,7 +151,8 @@
         }
 
         #presale {
-            background: url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05') no-repeat center / cover, rgba(0, 0, 0, 0.85);
+            background: url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.85);
             padding: 80px 20px;
             max-width: 900px;
             margin: 20px auto;
@@ -279,7 +280,6 @@
             padding: 80px 40px;
             max-width: 900px;
             margin: 20px auto;
-            background: rgba(0, 0, 0, 0.8);
             border: 2px solid #00BFFF;
             border-radius: 8px;
             position: relative;
@@ -303,7 +303,8 @@
         }
 
         #about {
-            background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover, rgba(0, 0, 0, 0.8);
+            background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.8);
         }
         #about p {
             font-size: 20px;
@@ -313,7 +314,8 @@
         #moonshot {
             position: relative;
             text-align: center;
-            background: url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a') no-repeat center / cover, rgba(0, 0, 0, 0.9);
+            background: url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.9);
             overflow: hidden;
         }
         #moonshot h3 {
@@ -369,7 +371,8 @@
         #tokenomics {
             text-align: center;
             position: relative;
-            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center / cover, rgba(0, 0, 0, 0.8);
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.8);
         }
         .pie-chart-container {
             width: 350px;
@@ -421,7 +424,8 @@
         }
 
         #roadmap {
-            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa') no-repeat center / cover, rgba(0, 0, 0, 0.85);
+            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.85);
         }
         #roadmap h3 {
             color: #FFD700;
@@ -457,7 +461,8 @@
         }
 
         #how-to-buy {
-            background: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d') no-repeat center / cover, rgba(0, 0, 0, 0.85);
+            background: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.85);
         }
         #how-to-buy h3 {
             color: #FFD700;
@@ -506,7 +511,8 @@
         }
 
         #faq {
-            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center / cover, rgba(0, 0, 0, 0.85);
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.85);
         }
         #faq h3 {
             color: #FFD700;
@@ -834,7 +840,7 @@
                 const targetElement = document.getElementById(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 120, /* Adjusted for larger header */
+                        top: targetElement.offsetTop - 140, /* Increased for wider header */
                         behavior: 'smooth'
                     });
                 }
