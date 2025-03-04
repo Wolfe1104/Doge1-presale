@@ -183,16 +183,46 @@
         }
 
         /* Tokenomics Section */
-        #tokenomics ul {
-            list-style: none;
-            padding: 0;
+        #tokenomics {
+            text-align: center;
         }
-        #tokenomics li {
-            margin: 20px 0;
-            font-size: 20px;
+        .pie-chart {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #00BFFF 0% 25%,    /* Presale: 25% */
+                #FFD700 25% 55%,   /* Liquidity: 30% */
+                #00FF00 55% 65%,   /* Community Rewards: 10% */
+                #8247E5 65% 85%,   /* Roadmap/Development: 20% */
+                #FF4500 85% 100%   /* Team: 15% */
+            );
+            margin: 0 auto 20px;
+            border: 2px solid #00BFFF;
+            box-shadow: 0 0 15px #00BFFF;
+            background-image: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80'), radial-gradient(circle, rgba(0, 0, 0, 0.9) 50%, transparent 70%);
+            background-size: cover, cover;
+            background-position: center, center;
+            position: relative;
         }
-        #tokenomics li strong {
-            color: #00BFFF;
+        .pie-chart-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
 
         /* Roadmap Section */
@@ -295,15 +325,29 @@
     <!-- Tokenomics Section -->
     <section id="tokenomics">
         <h3>Tokenomics</h3>
-        <ul>
-            <li><strong>Total Supply:</strong> 1,000,000,000 $DOJI</li>
-            <li><strong>Starting Price:</strong> $0.0005 per $DOJI (presale start, payable in MATIC on Polygon)</li>
-            <li><strong>Presale:</strong> 25% (250,000,000 $DOJI) - Join the Jedi uprising—grab $DOJI before the chains break! Raises $1M-$2M (avg $0.004-$0.008, ending at $0.01).</li>
-            <li><strong>Liquidity:</strong> 30% (300,000,000 $DOJI) - Pure force fuel—keeps $DOJI soaring through the galaxy.</li>
-            <li><strong>Community Rewards:</strong> 10% (100,000,000 $DOJI) - For the ruff rebels who HODL and fight back!</li>
-            <li><strong>Roadmap/Development:</strong> 20% (200,000,000 $DOJI) - Propulsion to the stars—$DOJI’s galactic future.</li>
-            <li><strong>Team:</strong> 15% (150,000,000 $DOJI, locked 12 months) - Jedi masters get their cut—locked for justice.</li>
-        </ul>
+        <div class="pie-chart"></div>
+        <div class="pie-chart-legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: #00BFFF;"></div>
+                Presale: 25%
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #FFD700;"></div>
+                Liquidity: 30%
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #00FF00;"></div>
+                Community Rewards: 10%
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #8247E5;"></div>
+                Roadmap/Development: 20%
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #FF4500;"></div>
+                Team: 15%
+            </div>
+        </div>
     </section>
 
     <!-- Roadmap Section -->
