@@ -9,11 +9,13 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Orbitron', sans-serif; /* Sci-fi font from Google Fonts */
-            background: #1A1A1A; /* Dark space gray */
-            color: #FFFFFF; /* White text */
+            font-family: 'Orbitron', sans-serif;
+            background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center fixed;
+            background-size: cover;
+            color: #E0E0E0;
+            line-height: 1.6;
         }
-        a { color: #00BFFF; text-decoration: none; } /* Neon blue links */
+        a { color: #00BFFF; text-decoration: none; }
         a:hover { text-decoration: underline; }
 
         /* Header Section */
@@ -21,35 +23,41 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            background: #1A1A1A;
+            padding: 25px 40px;
+            background: rgba(26, 26, 26, 0.8);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 100;
+            box-sizing: border-box;
+            border: 2px solid #00BFFF; /* Neon blue border */
+            border-radius: 8px; /* Slightly rounded */
+            margin: 10px; /* Space from edge */
+            width: calc(100% - 20px); /* Adjust for margin */
         }
         .logo-container {
             display: flex;
             align-items: center;
         }
         .logo {
-            width: 50px;
-            height: 50px;
-            background: url('https://via.placeholder.com/50?text=$DOJI') no-repeat; /* Placeholder logo */
+            width: 60px;
+            height: 60px;
+            background: url('https://via.placeholder.com/60?text=$DOJI') no-repeat;
             background-size: cover;
         }
         .logo-text {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            color: #00BFFF; /* Neon blue */
+            color: #00BFFF;
             text-shadow: 0 0 5px #00BFFF;
-            margin-left: 10px;
+            margin-left: 15px;
         }
         .dropdown {
             position: relative;
+            margin-right: 20px; /* Shifted left */
         }
         .hamburger {
-            font-size: 30px;
+            font-size: 34px;
             color: #00BFFF;
             cursor: pointer;
         }
@@ -57,85 +65,96 @@
             display: none;
             position: absolute;
             right: 0;
-            background: #1A1A1A;
-            min-width: 160px;
+            background: rgba(26, 26, 26, 0.9);
+            min-width: 180px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border: 1px solid #00BFFF; /* Border for dropdown */
+            border-radius: 4px;
         }
         .dropdown:hover .dropdown-content {
             display: block;
         }
         .dropdown-content a {
-            color: #FFFFFF;
-            padding: 12px 16px;
+            color: #E0E0E0;
+            padding: 14px 20px;
             display: block;
+            font-size: 16px;
         }
         .dropdown-content a:hover {
             color: #00BFFF;
-            background: rgba(0, 191, 255, 0.1); /* Force wave effect */
+            background: rgba(0, 191, 255, 0.2);
         }
 
         /* Hero Section */
         #hero {
             text-align: center;
-            padding: 100px 20px 50px; /* Extra top padding for fixed header */
-            background: url('https://via.placeholder.com/1500x500?text=Space+Background') no-repeat center;
-            background-size: cover;
+            padding: 120px 40px 60px;
+            background: rgba(26, 26, 26, 0.7); /* Slightly darker overlay */
+            border: 2px solid #00BFFF; /* Neon blue box */
+            border-radius: 8px;
+            margin: 20px auto; /* Space from top/bottom */
+            max-width: 900px; /* Matches other sections */
         }
         #hero h1 {
-            font-size: 48px;
+            font-size: 54px;
             color: #00BFFF;
             text-shadow: 0 0 10px #00BFFF;
-            margin: 0;
+            margin: 0 0 20px;
         }
         #hero h2 {
-            font-size: 24px;
+            font-size: 28px;
             font-style: italic;
-            margin: 10px 0;
+            margin: 0 0 20px;
         }
         #hero p {
-            font-size: 18px;
-            margin: 20px 0;
+            font-size: 20px;
+            margin: 0 0 30px;
         }
         .cta-button {
             display: inline-block;
-            padding: 15px 30px;
+            padding: 18px 40px;
             background: #00BFFF;
             color: #FFFFFF;
             font-weight: bold;
+            font-size: 18px;
             text-transform: uppercase;
-            border: none;
+            border: 2px solid #FFFFFF; /* White border for contrast */
             border-radius: 5px;
             box-shadow: 0 0 10px #00BFFF;
             transition: all 0.3s;
         }
         .cta-button:hover {
-            box-shadow: 0 0 20px #00BFFF; /* Pulsing glow */
+            box-shadow: 0 0 20px #00BFFF;
             cursor: pointer;
         }
 
         /* General Section Styles */
         section {
-            padding: 50px 20px;
-            max-width: 800px;
-            margin: 0 auto;
+            padding: 80px 40px;
+            max-width: 900px;
+            margin: 20px auto; /* Consistent spacing */
+            background: rgba(26, 26, 26, 0.7);
+            border: 2px solid #00BFFF; /* Neon blue box */
+            border-radius: 8px;
         }
         h3 {
-            font-size: 36px;
+            font-size: 42px;
             color: #00BFFF;
             text-shadow: 0 0 5px #00BFFF;
             text-align: center;
+            margin-bottom: 20px;
         }
         h4 {
-            font-size: 20px;
+            font-size: 24px;
             font-style: italic;
             text-align: center;
-            margin: 10px 0 30px;
+            margin: 0 0 40px;
         }
 
         /* About Section */
         #about p {
-            font-size: 18px;
-            line-height: 1.5;
+            font-size: 20px;
+            line-height: 1.8;
         }
 
         /* Tokenomics Section */
@@ -144,8 +163,8 @@
             padding: 0;
         }
         #tokenomics li {
-            margin: 15px 0;
-            font-size: 18px;
+            margin: 20px 0;
+            font-size: 20px;
         }
         #tokenomics li strong {
             color: #00BFFF;
@@ -153,32 +172,33 @@
 
         /* Roadmap Section */
         #roadmap ol {
-            padding-left: 20px;
+            padding-left: 30px;
         }
         #roadmap li {
-            margin: 20px 0;
-            font-size: 18px;
+            margin: 25px 0;
+            font-size: 20px;
         }
 
         /* How to Buy Section */
         #how-to-buy ol {
-            padding-left: 20px;
+            padding-left: 30px;
         }
         #how-to-buy li {
-            margin: 20px 0;
-            font-size: 18px;
+            margin: 25px 0;
+            font-size: 20px;
         }
         #how-to-buy .bonus-tip {
-            font-size: 16px;
+            font-size: 18px;
             font-style: italic;
-            margin-top: 20px;
-            border: 1px dashed #8247E5; /* Polygon purple */
-            padding: 10px;
+            margin-top: 30px;
+            border: 1px dashed #8247E5;
+            padding: 15px;
+            background: rgba(130, 71, 229, 0.1);
         }
         #how-to-buy .cta-button {
-            margin-top: 30px;
+            margin-top: 40px;
             display: block;
-            width: 200px;
+            width: 220px;
             text-align: center;
             margin-left: auto;
             margin-right: auto;
@@ -193,7 +213,7 @@
             <div class="logo-text">DOJI</div>
         </div>
         <div class="dropdown">
-            <div class="hamburger">&#9776;</div>
+            <div class="hamburger">☰</div>
             <div class="dropdown-content">
                 <a href="#hero">Hero</a>
                 <a href="#about">About the Coin</a>
