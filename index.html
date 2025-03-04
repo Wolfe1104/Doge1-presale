@@ -182,6 +182,64 @@
             line-height: 1.8;
         }
 
+        /* 100x Moonshot Section */
+        #moonshot {
+            position: relative;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.85);
+            background-size: cover;
+            overflow: hidden;
+        }
+        #moonshot h3 {
+            font-size: 48px;
+            color: #FFD700; /* Gold for Star Wars flair */
+            text-shadow: 0 0 10px #FFD700, 0 0 20px #00BFFF;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: glowPulse 3s infinite ease-in-out;
+        }
+        #moonshot p {
+            font-size: 20px;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 20px auto;
+            text-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+        }
+        .moon-graphic {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #E0E0E0 10%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: orbitMoon 15s infinite linear;
+            z-index: 0;
+        }
+        .moon-graphic:nth-child(2) {
+            top: 10%;
+            left: 10%;
+            width: 150px;
+            height: 150px;
+            animation-duration: 20s;
+            animation-direction: reverse;
+        }
+        .moon-graphic:nth-child(3) {
+            bottom: 10%;
+            right: 10%;
+            width: 100px;
+            height: 100px;
+            animation-duration: 25s;
+        }
+        @keyframes glowPulse {
+            0% { text-shadow: 0 0 10px #FFD700, 0 0 20px #00BFFF; }
+            50% { text-shadow: 0 0 20px #FFD700, 0 0 30px #00BFFF; }
+            100% { text-shadow: 0 0 10px #FFD700, 0 0 20px #00BFFF; }
+        }
+        @keyframes orbitMoon {
+            0% { transform: translateX(0) rotate(0deg); }
+            100% { transform: translateX(50px) rotate(360deg); }
+        }
+
         /* Tokenomics Section */
         #tokenomics {
             text-align: center;
@@ -199,17 +257,17 @@
             height: 100%;
             border-radius: 50%;
             background: conic-gradient(
-                #4682B4 0% 25%,    /* Presale: Steel Blue (muted Jedi blue) */
-                #DAA520 25% 55%,   /* Liquidity: Goldenrod (muted gold) */
-                #2E8B57 55% 65%,   /* Community Rewards: Sea Green (muted Jedi green) */
-                #483D8B 65% 85%,   /* Roadmap/Development: Dark Slate Blue (muted purple) */
-                #8B0000 85% 100%   /* Team: Dark Red (muted Sith red) */
+                #4682B4 0% 25%,    /* Presale: Steel Blue */
+                #DAA520 25% 55%,   /* Liquidity: Goldenrod */
+                #2E8B57 55% 65%,   /* Community Rewards: Sea Green */
+                #483D8B 65% 85%,   /* Roadmap/Development: Dark Slate Blue */
+                #8B0000 85% 100%   /* Team: Dark Red */
             );
-            border: 4px solid #333333; /* Dark metallic edge */
+            border: 4px solid #333333;
             box-shadow: 0 0 25px #00BFFF, inset 0 0 15px rgba(0, 191, 255, 0.5);
-            transform: rotateX(25deg) rotateY(15deg); /* 3D Death Star tilt */
+            transform: rotateX(25deg) rotateY(15deg);
             position: relative;
-            animation: orbitGlow 12s infinite linear; /* Galactic orbit effect */
+            animation: orbitGlow 12s infinite linear;
             transition: transform 0.5s ease, box-shadow 0.3s ease;
             z-index: 2;
         }
@@ -220,16 +278,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 30%, rgba(50, 50, 50, 0.6) 0%, rgba(0, 0, 0, 0.8) 70%); /* Death Star texture */
+            background: radial-gradient(circle at 30% 30%, rgba(50, 50, 50, 0.6) 0%, rgba(0, 0, 0, 0.8) 70%);
             border-radius: 50%;
-            opacity: 0.5; /* Reduced opacity to show slices */
+            opacity: 0.5;
             z-index: 1;
         }
         .pie-chart:hover {
-            transform: rotateX(0deg) rotateY(0deg) scale(1.05); /* Flatten and zoom */
+            transform: rotateX(0deg) rotateY(0deg) scale(1.05);
             box-shadow: 0 0 40px #00BFFF, inset 0 0 20px rgba(0, 191, 255, 0.7);
         }
-        /* Death Star dish effect */
         .pie-chart::after {
             content: '';
             position: absolute;
@@ -242,7 +299,6 @@
             box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
             z-index: 3;
         }
-        /* Lightsaber glow */
         .pie-chart-container::before {
             content: '';
             position: absolute;
@@ -255,7 +311,6 @@
             z-index: -1;
             animation: saberPulse 2s infinite ease-in-out;
         }
-        /* Tooltip styles */
         .pie-chart-container [data-tooltip] {
             position: relative;
         }
@@ -282,7 +337,6 @@
             opacity: 1;
             visibility: visible;
         }
-        /* Animation keyframes */
         @keyframes orbitGlow {
             0% { box-shadow: 0 0 25px #00BFFF, inset 0 0 15px rgba(0, 191, 255, 0.5); transform: rotateX(25deg) rotateY(15deg); }
             50% { box-shadow: 0 0 35px #00BFFF, inset 0 0 20px rgba(0, 191, 255, 0.7); transform: rotateX(25deg) rotateY(-15deg); }
@@ -378,6 +432,46 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        /* FAQ Section */
+        #faq {
+            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.9);
+            background-size: cover;
+        }
+        #faq h3 {
+            font-size: 42px;
+            color: #00BFFF;
+            text-shadow: 0 0 10px #00BFFF;
+        }
+        .faq-item {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #00BFFF;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .faq-item:hover {
+            box-shadow: 0 0 15px #00BFFF;
+            transform: translateY(-5px);
+        }
+        .faq-item h4 {
+            font-size: 22px;
+            color: #FFD700;
+            margin: 0 0 10px;
+            text-shadow: 0 0 5px #FFD700;
+        }
+        .faq-item p {
+            font-size: 18px;
+            margin: 0;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        .faq-item:hover p {
+            opacity: 1;
+        }
+
     </style>
 </head>
 <body>
@@ -392,9 +486,11 @@
             <div class="dropdown-content">
                 <a href="#hero">Hero</a>
                 <a href="#about">About the Coin</a>
+                <a href="#moonshot">100x Moonshot</a>
                 <a href="#tokenomics">Tokenomics</a>
                 <a href="#roadmap">Roadmap</a>
                 <a href="#how-to-buy">How to Buy</a>
+                <a href="#faq">FAQ</a>
                 <a href="whitepaper.pdf">Whitepaper</a>
             </div>
         </div>
@@ -416,6 +512,15 @@
     <section id="about">
         <h3>About the Coin</h3>
         <p>$DOJI is a little ruff around the edges—the Jedi of justice in a memecoin galaxy. Forged with cutting-edge tech on the Polygon network, $DOJI blasts light years ahead of rival meme coins with low fees and warp-speed transactions. Powered by xAI’s latest analytical breakthroughs, it’s preprogrammed for a warp-speed 100x post-launch—token burns, a masterful presale, and strategic fund allocation fuel its pure force-driven propulsion, paving a hyperspace road to the stars!</p>
+    </section>
+
+    <!-- 100x Moonshot Section -->
+    <section id="moonshot">
+        <div class="moon-graphic"></div>
+        <div class="moon-graphic"></div>
+        <div class="moon-graphic"></div>
+        <h3>100X MOONSHOT</h3>
+        <p>$DOJI is engineered for a hyperspace leap to the moons of fortune! Powered by xAI’s cutting-edge analytics, this memecoin is preprogrammed for a 100x surge post-launch. With token burns slashing supply, a 13-stage presale igniting demand, and strategic liquidity drops on DEXs and CEXs, $DOJI’s trajectory is set to blast past the stars. The Force is strong with this one—join early to ride the galactic wave to a $0.05 valuation and beyond!</p>
     </section>
 
     <!-- Tokenomics Section -->
@@ -455,26 +560,4 @@
             <li><strong>Presale: The Jedi Uprising (13 Stages)</strong> - The Force awakens—$DOJI’s presale ignites across 13 stages, shattering meme coin chains. From $0.0005, prices warp to $0.01 as conditions trigger—xAI’s masterful analytics fuel the rise, unleashing 250M tokens into the galaxy. Join early, or miss the hyperspace jump!</li>
             <li><strong>Post-Presale Phase 1: Token Burn Ignition</strong> - Lightsabers slash—$DOJI burns unsold or reserved tokens, tightening supply. xAI’s analytics lock in the perfect burn, propelling value toward 100x warp speed.</li>
             <li><strong>Post-Presale Phase 2: Hyperspace Launch</strong> - $DOJI hits lightspeed—DEX listings (e.g., PancakeSwap) drop with 300M liquidity tokens. Ruff rebels trade, xAI’s fund allocation ignites the warp.</li>
-            <li><strong>Post-Presale Phase 3: Galactic Conquest</strong> - Jedi strike—CEX listings (e.g., Binance) and 100M community rewards rain down. $DOJI’s 100x warp ($0.05) hits, fueled by xAI’s strategic plays.</li>
-            <li><strong>Post-Presale Phase 4: Beyond the Stars</strong> - $DOJI rules—ongoing burns and xAI-driven upgrades (e.g., NFT drops) push past 100x to uncharted moons!</li>
-        </ol>
-    </section>
-
-    <!-- How to Buy Section -->
-    <section id="how-to-buy">
-        <h3>Unleash the Force—How to Buy $DOJI</h3>
-        <h4>Grab Your $DOJI Before the Galaxy Runs Out!</h4>
-        <ol>
-            <li><strong>Gear Up Your Wallet</strong> - Get a lightsaber-ready wallet like MetaMask or Trust Wallet. No weak centralized junk—$DOJI’s all about freedom on the Polygon network. Install it, secure your seed phrase, and load it with MATIC—Polygon’s fuel for the fight!</li>
-            <li><strong>Ignite the Connection</strong> - Hit the ‘JOIN THE FORCE’ button and connect your wallet like you’re linking hyperspace coordinates. Approve the link, and you’re in the $DOJI cockpit.</li>
-            <li><strong>Slash In Your Amount</strong> - Pick how much $DOJI you’re snagging—starts at $0.0005, warps to $0.01 across 13 stages on Polygon. Enter your MATIC amount (e.g., 10 MATIC scores a stash at launch price). Double-check—no Jedi mind trick reverses this!</li>
-            <li><strong>Unleash the Transaction</strong> - Confirm the buy in your wallet—Polygon’s gas fees are dirt cheap, no excuses. Sign it, send it, and your $DOJI tokens hit your wallet when the presale wraps. HODL tight, rebel!</li>
-        </ol>
-        <p class="bonus-tip">Lost? Jump into the $DOJI Discord or Telegram—our Jedi masters have your back. Don’t sleep—250M tokens won’t last on Polygon’s hyperspace lanes!</p>
-        <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
-    </section>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-</body>
-</html>
+            <li><strong>Post-Presale Phase 3: Galactic Conquest</strong> - Jedi strike
