@@ -14,6 +14,7 @@
             background-size: cover;
             color: #E0E0E0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         a { color: #00BFFF; text-decoration: none; }
         a:hover { text-decoration: underline; }
@@ -106,7 +107,7 @@
             display: block;
             max-width: 600px;
             margin: 0 auto;
-            font-size: 36px;
+            font-size: 36 Zhao;
         }
         #hero .doji {
             color: #00FF00;
@@ -129,41 +130,119 @@
             font-size: 20px;
             margin: 0 0 30px;
         }
-        .cta-button {
-            display: inline-block;
-            padding: 15px 35px;
-            background: #000000;
-            color: #00FF00;
-            font-weight: bold;
-            font-size: 18px;
-            text-transform: uppercase;
-            border: 2px solid #00FF00;
-            box-shadow: 0 0 15px #00FF00;
-            text-shadow: 0 0 5px #00FF00;
+
+        /* Presale Section */
+        #presale {
+            background: url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.85);
+            background-size: cover;
+            padding: 80px 40px;
+            max-width: 900px;
+            margin: 20px auto;
+            border: 2px solid #00BFFF;
+            border-radius: 8px;
             position: relative;
+        }
+        #presale h3 {
+            color: #FFD700;
+            text-shadow: 0 0 8px #FFD700;
+            font-size: 42px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .slider-container {
+            position: relative;
+            width: 960px;
+            margin: 0 auto;
             overflow: hidden;
-            transition: all 0.3s;
         }
-        .cta-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.3), transparent);
-            transition: all 0.5s;
+        .slider-track {
+            display: flex;
+            width: 4160px; /* 13 boxes * 320px */
+            transition: transform 0.5s ease;
         }
-        .cta-button:hover::after {
-            left: 100%;
+        .presale-box {
+            width: 300px;
+            height: 200px;
+            margin: 0 10px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00BFFF;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            flex-shrink: 0;
         }
-        .cta-button:hover {
-            box-shadow: 0 0 25px #00FF00;
+        .presale-box:hover {
             transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+        }
+        .presale-box.current {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+            animation: pulse 2s infinite;
+        }
+        .presale-box.past { opacity: 0.7; }
+        .presale-box.future { opacity: 0.8; }
+        .presale-box h4 {
+            color: #00BFFF;
+            font-size: 20px;
+            margin: 0 0 10px;
+            text-align: left;
+            text-shadow: 0 0 5px #00BFFF;
+            font-style: normal;
+        }
+        .presale-box p {
+            font-size: 16px;
+            color: #E0E0E0;
+            margin: 5px 0;
+        }
+        .stage-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #FFD700;
+            color: #000;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #333;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #00BFFF;
+            transition: width 0.3s ease;
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: #00BFFF;
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            padding: 10px;
             cursor: pointer;
+            transition: color 0.3s;
+        }
+        .arrow.left { left: -50px; color: #00BFFF; }
+        .arrow.right { right: -50px; color: #FF0000; }
+        .arrow:hover { color: #FFFFFF; }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px rgba(0, 191, 255, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(0, 191, 255, 0.7); }
+            100% { box-shadow: 0 0 10px rgba(0, 191, 255, 0.3); }
         }
 
-        section {
+        /* Other Sections */
+        section:not(#presale) {
             padding: 80px 40px;
             max-width: 900px;
             margin: 20px auto;
@@ -185,7 +264,6 @@
             text-align: center;
             margin: 0 0 40px;
         }
-
         .token-doji {
             color: #00FF00;
             text-shadow: 0 0 10px #00FF00;
@@ -534,6 +612,7 @@
             <div class="hamburger">☰</div>
             <div class="dropdown-content">
                 <a href="#hero">Hero</a>
+                <a href="#presale">Presale</a>
                 <a href="#about">About the Coin</a>
                 <a href="#moonshot">100x Moonshot</a>
                 <a href="#tokenomics">Tokenomics</a>
@@ -556,6 +635,107 @@
         <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
     </section>
 
+    <section id="presale">
+        <h3>Presale: The Jedi Uprising</h3>
+        <div class="slider-container">
+            <button class="arrow left" onclick="slideLeft()">⟵</button>
+            <div class="slider-track" id="sliderTrack">
+                <div class="presale-box past stage-1">
+                    <h4>The Force Awakens</h4>
+                    <p>Price: <span class="token-doji">$0.00050</span></p>
+                    <p>Goal: $12,500</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+                    <span class="stage-badge">Stage 1</span>
+                </div>
+                <div class="presale-box past stage-2">
+                    <h4>Rebels Assemble</h4>
+                    <p>Price: <span class="token-doji">$0.00062</span></p>
+                    <p>Goal: $14,880</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+                    <span class="stage-badge">Stage 2</span>
+                </div>
+                <div class="presale-box past stage-3">
+                    <h4>Lightsaber Ignition</h4>
+                    <p>Price: <span class="token-doji">$0.00077</span></p>
+                    <p>Goal: $17,710</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+                    <span class="stage-badge">Stage 3</span>
+                </div>
+                <div class="presale-box past stage-4">
+                    <h4>Hyperspace Preparation</h4>
+                    <p>Price: <span class="token-doji">$0.00095</span></p>
+                    <p>Goal: $20,900</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+                    <span class="stage-badge">Stage 4</span>
+                </div>
+                <div class="presale-box current stage-5">
+                    <h4>Jedi Training Complete</h4>
+                    <p>Price: <span class="token-doji">$0.00118</span></p>
+                    <p>Goal: $24,780</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 50%;"></div></div>
+                    <span class="stage-badge">Stage 5</span>
+                </div>
+                <div class="presale-box future stage-6">
+                    <h4>The Rebellion Grows</h4>
+                    <p>Price: <span class="token-doji">$0.00146</span></p>
+                    <p>Goal: $29,200</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                    <span class="stage-badge">Stage 6</span>
+                </div>
+                <div class="presale-box future stage-7">
+                    <h4>Force Momentum Builds</h4>
+                    <p>Price: <span class="token-doji">$0.00181</span></p>
+                    <p>Goal: $34,390</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                    <span class="stage-badge">Stage 7</span>
+                </div>
+                <div class="presale-box future stage-8">
+                    <h4>Galactic Resistance Rises</h4>
+                    <p>Price: <span class="token-doji">$0.00224</span></p>
+                    <p>Goal: $40,320</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                    <span class="stage-badge">Stage 8</span>
+                </div>
+                <div class="presale-box future stage-9">
+                    <h4>Warp Speed Engaged</h4>
+                    <p>Price: <span class="token-doji">$0.00278</span></p>
+                    <p>Goal: $47,260</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                    <span class="stage-badge">Stage 9</span>
+                </div>
+                <div class="presale-box future stage-10">
+                    <h4>Jedi Strike Force</h4>
+                    <p>Price: <span class="token-doji">$0.00344</span></p>
+                    <p>Goal: $55,040</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                    <span class="stage-badge">Stage 10</span>
+                </div>
+                <div class="presale-box future stage-11">
+                    <h4>Hyperspace Breakthrough</h4>
+                    <p>Price: <span class="token-doji">$0.00426</span></p>
+                    <p>Goal: $63,900</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                    <span class="stage-badge">Stage 11</span>
+                </div>
+                <div class="presale-box future stage-12">
+                    <h4>The Final Countdown</h4>
+                    <p>Price: <span class="token-doji">$0.00527</span></p>
+                    <p>Goal: $73,780</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                    <span class="stage-badge">Stage 12</span>
+                </div>
+                <div class="presale-box future stage-13">
+                    <h4>Moonshot Ignition</h4>
+                    <p>Price: <span class="token-doji">$0.01000</span></p>
+                    <p>Goal: $130,000</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                    <span class="stage-badge">Stage 13</span>
+                </div>
+            </div>
+            <button class="arrow right" onclick="slideRight()">⟶</button>
+        </div>
+    </section>
+
     <section id="about">
         <h3>About the Coin</h3>
         <p><span class="token-doji">$DOJI</span> is a little ruff around the edges—the Jedi of justice in a memecoin galaxy. Forged with cutting-edge tech on the Polygon network, <span class="token-doji">$DOJI</span> blasts light years ahead of rival meme coins with low fees and warp-speed transactions. Powered by xAI’s latest analytical breakthroughs, it’s preprogrammed for a warp-speed 100x post-launch—token burns, a masterful presale, and strategic fund allocation fuel its pure force-driven propulsion, paving a hyperspace road to the stars!</p>
@@ -575,26 +755,11 @@
             <div class="pie-chart" data-tooltip="The Force Allocates the Galaxy"></div>
         </div>
         <div class="pie-chart-legend">
-            <div class="legend-item">
-                <div class="legend-color" style="background: #4682B4;"></div>
-                Presale: 25%
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #DAA520;"></div>
-                Liquidity: 30%
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #2E8B57;"></div>
-                Community Rewards: 10%
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #483D8B;"></div>
-                Roadmap/Development: 20%
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #8B0000;"></div>
-                Team: 15%
-            </div>
+            <div class="legend-item"><div class="legend-color" style="background: #4682B4;"></div>Presale: 25%</div>
+            <div class="legend-item"><div class="legend-color" style="background: #DAA520;"></div>Liquidity: 30%</div>
+            <div class="legend-item"><div class="legend-color" style="background: #2E8B57;"></div>Community Rewards: 10%</div>
+            <div class="legend-item"><div class="legend-color" style="background: #483D8B;"></div>Roadmap/Development: 20%</div>
+            <div class="legend-item"><div class="legend-color" style="background: #8B0000;"></div>Team: 15%</div>
         </div>
     </section>
 
@@ -690,6 +855,52 @@
     </section>
 
     <script>
+        const sliderTrack = document.getElementById('sliderTrack');
+        let currentPosition = -1280; // Centers Stage 5 (mock current stage)
+        const slideWidth = 320; // Box width + margin
+        const maxPosition = 0; // Stage 1
+        const minPosition = -2880; // Stage 13
+
+        function slideLeft() {
+            currentPosition += slideWidth;
+            if (currentPosition > maxPosition) currentPosition = maxPosition;
+            sliderTrack.style.transform = `translateX(${currentPosition}px)`;
+        }
+
+        function slideRight() {
+            currentPosition -= slideWidth;
+            if (currentPosition < minPosition) currentPosition = minPosition;
+            sliderTrack.style.transform = `translateX(${currentPosition}px)`;
+        }
+
+        // Touch Swipe Support
+        let touchStartX = 0;
+        let touchMoveX = 0;
+
+        sliderTrack.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        sliderTrack.addEventListener('touchmove', (e) => {
+            touchMoveX = e.touches[0].clientX;
+            const deltaX = touchMoveX - touchStartX;
+            sliderTrack.style.transform = `translateX(${currentPosition + deltaX}px)`;
+        });
+
+        sliderTrack.addEventListener('touchend', () => {
+            const deltaX = touchMoveX - touchStartX;
+            if (Math.abs(deltaX) > 50) {
+                if (deltaX > 0) slideLeft();
+                else slideRight();
+            } else {
+                sliderTrack.style.transform = `translateX(${currentPosition}px)`;
+            }
+        });
+
+        // Initial position (centers Stage 5)
+        sliderTrack.style.transform = `translateX(${currentPosition}px)`;
+
+        // Dropdown Navigation
         document.querySelectorAll('.dropdown-content a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
