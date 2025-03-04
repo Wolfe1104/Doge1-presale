@@ -107,7 +107,7 @@
             display: block;
             max-width: 600px;
             margin: 0 auto;
-            font-size: 36 Zhao;
+            font-size: 36px;
         }
         #hero .doji {
             color: #00FF00;
@@ -121,7 +121,7 @@
             display: block;
             font-size: 54px;
         }
-        #hero h2 {
+Kirkpatrick    #hero h2 {
             font-size: 28px;
             font-style: italic;
             margin: 0 0 20px;
@@ -135,12 +135,13 @@
         #presale {
             background: url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.85);
             background-size: cover;
-            padding: 80px 40px;
+            padding: 80px 20px;
             max-width: 900px;
             margin: 20px auto;
             border: 2px solid #00BFFF;
             border-radius: 8px;
             position: relative;
+            box-sizing: border-box;
         }
         #presale h3 {
             color: #FFD700;
@@ -151,17 +152,20 @@
         }
         .slider-container {
             position: relative;
-            width: 960px;
+            width: 100%;
+            max-width: 900px;
             margin: 0 auto;
             overflow: hidden;
+            padding: 0 40px; /* Space for arrows */
+            box-sizing: border-box;
         }
         .slider-track {
             display: flex;
-            width: 4160px; /* 13 boxes * 320px */
             transition: transform 0.5s ease;
         }
         .presale-box {
-            width: 300px;
+            width: calc(33.33vw - 30px); /* 3 boxes on desktop */
+            max-width: 300px;
             height: 200px;
             margin: 0 10px;
             background: rgba(0, 0, 0, 0.9);
@@ -172,6 +176,7 @@
             transition: all 0.3s ease;
             position: relative;
             flex-shrink: 0;
+            box-sizing: border-box;
         }
         .presale-box:hover {
             transform: scale(1.05);
@@ -186,14 +191,14 @@
         .presale-box.future { opacity: 0.8; }
         .presale-box h4 {
             color: #00BFFF;
-            font-size: 20px;
+            font-size: 18px;
             margin: 0 0 10px;
             text-align: left;
             text-shadow: 0 0 5px #00BFFF;
             font-style: normal;
         }
         .presale-box p {
-            font-size: 16px;
+            font-size: 14px;
             color: #E0E0E0;
             margin: 5px 0;
         }
@@ -203,15 +208,15 @@
             right: 10px;
             background: #FFD700;
             color: #000;
-            font-size: 14px;
-            padding: 5px 10px;
+            font-size: 12px;
+            padding: 5px 8px;
             border-radius: 50%;
         }
         .progress-bar {
             width: 100%;
-            height: 10px;
+            height: 8px;
             background: #333;
-            border-radius: 5px;
+            border-radius: 4px;
             overflow: hidden;
             margin-top: 10px;
         }
@@ -231,14 +236,31 @@
             padding: 10px;
             cursor: pointer;
             transition: color 0.3s;
+            z-index: 10;
         }
-        .arrow.left { left: -50px; color: #00BFFF; }
-        .arrow.right { right: -50px; color: #FF0000; }
+        .arrow.left { left: 10px; color: #00BFFF; }
+        .arrow.right { right: 10px; color: #FF0000; }
         .arrow:hover { color: #FFFFFF; }
         @keyframes pulse {
             0% { box-shadow: 0 0 10px rgba(0, 191, 255, 0.3); }
             50% { box-shadow: 0 0 20px rgba(0, 191, 255, 0.7); }
             100% { box-shadow: 0 0 10px rgba(0, 191, 255, 0.3); }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .presale-box {
+                width: calc(50vw - 30px); /* 2 boxes on tablet */
+            }
+            .arrow { font-size: 24px; padding: 8px; }
+            #presale h3 { font-size: 32px; }
+        }
+        @media (max-width: 480px) {
+            .presale-box {
+                width: calc(100vw - 60px); /* 1 box on mobile */
+            }
+            .arrow { font-size: 20px; padding: 6px; }
+            #presale h3 { font-size: 28px; }
         }
 
         /* Other Sections */
@@ -856,18 +878,33 @@
 
     <script>
         const sliderTrack = document.getElementById('sliderTrack');
-        let currentPosition = -1280; // Centers Stage 5 (mock current stage)
-        const slideWidth = 320; // Box width + margin
-        const maxPosition = 0; // Stage 1
-        const minPosition = -2880; // Stage 13
+        const boxes = document.querySelectorAll('.presale-box');
+        let currentStage = 4; // Stage 5 (0-indexed)
+        let currentPosition = 0;
+        let slideWidth = 0;
+
+        function updateSlideWidth() {
+            const boxWidth = boxes[0].offsetWidth + 20; // Width + margin
+            slideWidth = boxWidth;
+            const totalWidth = boxes.length * boxWidth;
+            sliderTrack.style.width = `${totalWidth}px`;
+            const maxPosition = 0;
+            const minPosition = -(totalWidth - (window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1) * boxWidth);
+            currentPosition = -currentStage * boxWidth + (window.innerWidth > 768 ? boxWidth : window.innerWidth > 480 ? boxWidth / 2 : 0);
+            if (currentPosition > maxPosition) currentPosition = maxPosition;
+            if (currentPosition < minPosition) currentPosition = minPosition;
+            sliderTrack.style.transform = `translateX(${currentPosition}px)`;
+        }
 
         function slideLeft() {
+            const maxPosition = 0;
             currentPosition += slideWidth;
             if (currentPosition > maxPosition) currentPosition = maxPosition;
             sliderTrack.style.transform = `translateX(${currentPosition}px)`;
         }
 
         function slideRight() {
+            const minPosition = -(boxes.length * slideWidth - (window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1) * slideWidth);
             currentPosition -= slideWidth;
             if (currentPosition < minPosition) currentPosition = minPosition;
             sliderTrack.style.transform = `translateX(${currentPosition}px)`;
@@ -897,8 +934,9 @@
             }
         });
 
-        // Initial position (centers Stage 5)
-        sliderTrack.style.transform = `translateX(${currentPosition}px)`;
+        // Initial setup and resize handler
+        window.addEventListener('load', updateSlideWidth);
+        window.addEventListener('resize', updateSlideWidth);
 
         // Dropdown Navigation
         document.querySelectorAll('.dropdown-content a').forEach(anchor => {
