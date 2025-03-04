@@ -6,7 +6,7 @@
     <title>DOJI-1-KENOBI Presale</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* [Previous CSS remains unchanged up to How-to-Buy section] */
+        /* [Previous CSS remains unchanged up to .cta-button] */
         body {
             margin: 0;
             padding: 0;
@@ -134,19 +134,38 @@
         .cta-button {
             display: inline-block;
             padding: 18px 40px;
-            background: #00BFFF;
-            color: #FFFFFF;
+            background: linear-gradient(45deg, #FFD700, #00BFFF);
+            color: #000000;
             font-weight: bold;
             font-size: 18px;
             text-transform: uppercase;
-            border: 2px solid #FFFFFF;
-            border-radius: 5px;
-            box-shadow: 0 0 10px #00BFFF;
+            border: 3px solid #FFFFFF;
+            border-radius: 0;
+            box-shadow: 0 0 15px #FFD700, inset 0 0 10px #00BFFF;
+            text-shadow: 0 0 5px #FFFFFF;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 215, 0, 0.3);
+            transform: rotate(30deg);
+            transition: all 0.5s;
+        }
+        .cta-button:hover::before {
+            top: -30%;
+            left: -30%;
         }
         .cta-button:hover {
-            box-shadow: 0 0 20px #00BFFF;
+            box-shadow: 0 0 25px #FFD700, inset 0 0 15px #00BFFF;
             cursor: pointer;
+            transform: scale(1.05);
         }
 
         section {
@@ -426,6 +445,45 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        /* New FAQ Section Styles */
+        #faq {
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.85);
+            background-size: cover;
+        }
+        #faq h3 {
+            color: #FFD700;
+            text-shadow: 0 0 8px #FFD700;
+            font-size: 42px;
+            margin-bottom: 40px;
+        }
+        .faq-item {
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00BFFF;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+            transform: translateY(-3px);
+        }
+        .faq-item h4 {
+            color: #00BFFF;
+            font-size: 20px;
+            margin: 0 0 10px;
+            text-align: left;
+            text-shadow: 0 0 5px #00BFFF;
+            font-style: normal;
+        }
+        .faq-item p {
+            font-size: 16px;
+            color: #E0E0E0;
+            margin: 0;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -443,6 +501,7 @@
                 <a href="#tokenomics">Tokenomics</a>
                 <a href="#roadmap">Roadmap</a>
                 <a href="#how-to-buy">How to Buy</a>
+                <a href="#faq">FAQ</a>
                 <a href="whitepaper.pdf">Whitepaper</a>
             </div>
         </div>
@@ -521,4 +580,69 @@
             <li><strong>Slash In Your Amount</strong> - Pick how much $DOJI you’re snagging—starts at $0.0005, warps to $0.01 across 13 stages on Polygon. Enter your MATIC amount (e.g., 10 MATIC scores a stash at launch price). Double-check—no Jedi mind trick reverses this!</li>
             <li><strong>Unleash the Transaction</strong> - Confirm the buy in your wallet—Polygon’s gas fees are dirt cheap, no excuses. Sign it, send it, and your $DOJI tokens hit your wallet when the presale wraps. HODL tight, rebel!</li>
         </ol>
-        <p class="bonus-tip">Lost? Jump into the $DOJI Discord or Telegram—our Jedi masters have yo
+        <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
+        <p class="bonus-tip">Lost? Jump into the $DOJI Discord or Telegram—our Jedi masters have your back. Don’t sleep—250M tokens won’t last on Polygon’s hyperspace lanes!</p>
+        <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
+    </section>
+
+    <section id="faq">
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <h4>What is $DOJI?</h4>
+            <p>$DOJI is a memecoin on the Polygon network, designed with xAI’s analytics for a 100x moonshot, blending low fees with high-speed transactions.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How does the 100x moonshot work?</h4>
+            <p>xAI’s preprogrammed strategy includes token burns, a 13-stage presale, and strategic listings to drive $DOJI’s value from $0.0005 to $0.05 or higher.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Why choose Polygon network?</h4>
+            <p>Polygon offers lightning-fast transactions and minimal fees, making $DOJI accessible and efficient for all galactic investors.</p>
+        </div>
+        <div class="faq-item">
+            <h4>When can I purchase $DOJI?</h4>
+            <p>The presale is live now in 13 stages—join early to secure the lowest price before the hyperspace launch!</p>
+        </div>
+        <div class="faq-item">
+            <h4>Which wallets are compatible?</h4>
+            <p>Use MetaMask, Trust Wallet, or any wallet compatible with Polygon to join the $DOJI rebellion.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What happens to unsold tokens?</h4>
+            <p>Unsold tokens are burned post-presale, tightening supply and boosting value, per xAI’s strategy.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Are there community incentives?</h4>
+            <p>Yes, 10% of tokens fuel rewards—100M $DOJI will be distributed to the community after launch.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How secure is $DOJI?</h4>
+            <p>Built on Polygon’s robust network and backed by xAI’s analytics, $DOJI offers strong security in the memecoin galaxy.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I trade $DOJI after presale?</h4>
+            <p>Yes, $DOJI will be listed on DEXs like PancakeSwap post-launch, followed by CEXs like Binance.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What’s the total token supply?</h4>
+            <p>Total supply starts at 1 billion $DOJI, with burns reducing it over time to fuel the moonshot.</p>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.dropdown-content a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
