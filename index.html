@@ -45,7 +45,7 @@
         </h1>
         <h2>Awaken the Jedi—Join the Force!</h2>
         <p>The Countdown Has Begun—This Offer Is Only Available for a Limited Time, Don’t Let It Pass, BUY!</p>
-        <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
+        <button class="cta-button" onclick="connectWallet()">JOIN THE FORCE</button>
     </section>
 
     <section id="presale">
@@ -217,7 +217,7 @@
             <p>Confirm the buy in your wallet—Polygon’s gas fees are dirt cheap, no excuses. Sign it, send it, and your <span class="token-doji">$DOJI</span> tokens hit your wallet when the presale wraps. HODL tight, rebel!</p>
         </div>
         <p class="bonus-tip">Lost? Jump into the <span class="token-doji">$DOJI</span> Discord or Telegram—our Jedi masters have your back. Don’t sleep—250M tokens won’t last on Polygon’s hyperspace lanes!</p>
-        <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
+        <button class="cta-button" onclick="connectWallet()">JOIN THE FORCE</button>
     </section>
 
     <section id="rewards">
@@ -235,7 +235,7 @@
             <h4>NFT Jedi Holocrons</h4>
             <p>Top 50 presale buyers unlock a Jedi Holocron NFT—ancient relics with 5% staking boosts. Random HODLers might snag one post-launch!</p>
         </div>
-        <button class="cta-button" onclick="alert('Connect wallet placeholder')">CLAIM YOUR REWARDS</button>
+        <button class="cta-button" onclick="connectWallet()">CLAIM YOUR REWARDS</button>
     </section>
 
     <section id="faq">
@@ -282,7 +282,11 @@
         </div>
     </section>
 
+    <!-- Add WalletConnect and Web3.js CDNs -->
+    <script src="https://unpkg.com/@walletconnect/web3-provider@2.10.2/dist/umd/index.min.js"></script>
+    <script src="https://unpkg.com/web3@1.10.0/dist/web3.min.js"></script>
     <script defer>
+        // Slider Logic
         const sliderTrack = document.getElementById('sliderTrack'),
               leftArrow = document.getElementById('leftArrow'),
               rightArrow = document.getElementById('rightArrow'),
@@ -342,6 +346,7 @@
         window.addEventListener('load', updateSlider);
         window.addEventListener('resize', throttle(updateSlider, 100));
 
+        // Dropdown Smooth Scroll
         document.querySelectorAll('.dropdown-content a').forEach(anchor => {
             anchor.addEventListener('click', e => {
                 e.preventDefault();
@@ -350,6 +355,52 @@
                 if (targetElement) window.scrollTo({ top: targetElement.offsetTop - 70, behavior: 'smooth' });
             });
         });
+
+        // WalletConnect Integration
+        async function connectWallet() {
+            try {
+                const provider = new WalletConnectProvider.default({
+                    rpc: {
+                        137: "https://polygon-rpc.com" // Polygon Mainnet
+                    },
+                    chainId: 137, // Polygon Mainnet Chain ID
+                    qrcodeModalOptions: {
+                        mobileLinks: ["metamask", "trust"] // Suggest MetaMask and Trust Wallet
+                    }
+                });
+
+                // Enable the provider (triggers QR code or wallet app)
+                await provider.enable();
+
+                // Create Web3 instance with WalletConnect provider
+                const web3 = new Web3(provider);
+
+                // Get the connected account
+                const accounts = await web3.eth.getAccounts();
+                const account = accounts[0];
+                console.log("Connected wallet:", account);
+
+                // Update button text or UI
+                document.querySelectorAll('.cta-button').forEach(btn => {
+                    btn.textContent = `Connected: ${account.slice(0, 6)}...${account.slice(-4)}`;
+                    btn.disabled = true; // Disable after connection
+                });
+
+                // Store provider and account for later use
+                window.web3Provider = provider;
+                window.connectedAccount = account;
+
+                // Optional: Alert user
+                alert(`Wallet connected: ${account}`);
+
+                // TODO: Add presale interaction here once contract is deployed
+                // e.g., call buyTokens() with contract ABI and address
+
+            } catch (error) {
+                console.error("Wallet connection failed:", error);
+                alert("Failed to connect wallet. Please try again.");
+            }
+        }
     </script>
 </body>
 </html>
