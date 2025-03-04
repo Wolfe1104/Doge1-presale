@@ -191,7 +191,7 @@
             width: 350px;
             height: 350px;
             margin: 0 auto 30px;
-            perspective: 1000px; /* Adds 3D depth */
+            perspective: 1000px;
             position: relative;
         }
         .pie-chart {
@@ -199,34 +199,49 @@
             height: 100%;
             border-radius: 50%;
             background: conic-gradient(
-                #00BFFF 0% 25%,    /* Presale: 25% */
-                #FFD700 25% 55%,   /* Liquidity: 30% */
-                #00FF00 55% 65%,   /* Community Rewards: 10% */
-                #8247E5 65% 85%,   /* Roadmap/Development: 20% */
-                #FF4500 85% 100%   /* Team: 15% */
+                #00BFFF 0% 25%,    /* Presale: Lightsaber Blue */
+                #FFD700 25% 55%,   /* Liquidity: Gold */
+                #00FF00 55% 65%,   /* Community Rewards: Lightsaber Green */
+                #8247E5 65% 85%,   /* Roadmap/Development: Purple */
+                #FF4500 85% 100%   /* Team: Sith Red */
             );
-            border: 3px solid #00BFFF;
-            box-shadow: 0 0 20px #00BFFF, inset 0 0 15px rgba(0, 191, 255, 0.5);
-            transform: rotateX(20deg); /* 3D tilt */
-            animation: spinGlow 10s infinite linear; /* Subtle rotation glow */
+            border: 4px solid #333333; /* Dark metallic edge */
+            box-shadow: 0 0 25px #00BFFF, inset 0 0 15px rgba(0, 191, 255, 0.5);
+            transform: rotateX(25deg) rotateY(15deg); /* 3D Death Star tilt */
             position: relative;
-            transition: transform 0.5s ease;
+            animation: orbitGlow 12s infinite linear; /* Galactic orbit effect */
+            transition: transform 0.5s ease, box-shadow 0.3s ease;
+            background-image: radial-gradient(circle at 30% 30%, rgba(50, 50, 50, 0.8) 0%, rgba(0, 0, 0, 0.9) 70%); /* Death Star texture */
         }
         .pie-chart:hover {
-            transform: rotateX(0deg) scale(1.05); /* Flatten and zoom on hover */
-            box-shadow: 0 0 30px #00BFFF, inset 0 0 20px rgba(0, 191, 255, 0.7);
+            transform: rotateX(0deg) rotateY(0deg) scale(1.05); /* Flatten and zoom */
+            box-shadow: 0 0 40px #00BFFF, inset 0 0 20px rgba(0, 191, 255, 0.7);
         }
-        /* Inner glow effect */
+        /* Death Star dish effect */
         .pie-chart::before {
             content: '';
             position: absolute;
-            top: 10%;
-            left: 10%;
-            width: 80%;
-            height: 80%;
-            background: radial-gradient(circle, rgba(0, 191, 255, 0.3) 0%, transparent 70%);
+            top: 15%;
+            left: 15%;
+            width: 30%;
+            height: 30%;
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.9) 20%, rgba(50, 50, 50, 0.6) 60%, transparent 70%);
             border-radius: 50%;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+            z-index: 1;
+        }
+        /* Lightsaber glow */
+        .pie-chart::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: calc(100% + 20px);
+            height: calc(100% + 20px);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.2) 0%, transparent 70%);
             z-index: -1;
+            animation: saberPulse 2s infinite ease-in-out;
         }
         /* Tooltip styles */
         .pie-chart-container [data-tooltip] {
@@ -249,16 +264,22 @@
             transition: opacity 0.3s;
             z-index: 10;
             box-shadow: 0 0 10px #00BFFF;
+            border: 1px solid #00BFFF;
         }
         .pie-chart-container:hover [data-tooltip]::after {
             opacity: 1;
             visibility: visible;
         }
         /* Animation keyframes */
-        @keyframes spinGlow {
-            0% { box-shadow: 0 0 20px #00BFFF, inset 0 0 15px rgba(0, 191, 255, 0.5); }
-            50% { box-shadow: 0 0 30px #00BFFF, inset 0 0 20px rgba(0, 191, 255, 0.7); }
-            100% { box-shadow: 0 0 20px #00BFFF, inset 0 0 15px rgba(0, 191, 255, 0.5); }
+        @keyframes orbitGlow {
+            0% { box-shadow: 0 0 25px #00BFFF, inset 0 0 15px rgba(0, 191, 255, 0.5); transform: rotateX(25deg) rotateY(15deg); }
+            50% { box-shadow: 0 0 35px #00BFFF, inset 0 0 20px rgba(0, 191, 255, 0.7); transform: rotateX(25deg) rotateY(-15deg); }
+            100% { box-shadow: 0 0 25px #00BFFF, inset 0 0 15px rgba(0, 191, 255, 0.5); transform: rotateX(25deg) rotateY(15deg); }
+        }
+        @keyframes saberPulse {
+            0% { opacity: 0.2; }
+            50% { opacity: 0.5; }
+            100% { opacity: 0.2; }
         }
         .pie-chart-legend {
             display: flex;
@@ -389,7 +410,7 @@
     <section id="tokenomics">
         <h3>Tokenomics</h3>
         <div class="pie-chart-container">
-            <div class="pie-chart" data-tooltip="Hover for Details"></div>
+            <div class="pie-chart" data-tooltip="The Force Allocates the Galaxy"></div>
         </div>
         <div class="pie-chart-legend">
             <div class="legend-item">
