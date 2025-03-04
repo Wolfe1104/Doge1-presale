@@ -10,32 +10,36 @@
             margin: 0;
             padding: 0;
             font-family: 'Orbitron', sans-serif;
-            background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center fixed;
+            background: #121212 url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center fixed;
             background-size: cover;
             color: #E0E0E0;
             line-height: 1.6;
         }
-        a { color: #00BFFF; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        a {
+            color: #00BFFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
 
-        /* Header Section */
+        /* Header */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 25px 40px;
-            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center; /* Starry night */
-            background-size: cover;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.9); /* Darker for better contrast */
             border: 2px solid #00BFFF;
             border-radius: 8px;
             margin: 10px;
             width: calc(100% - 20px);
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            box-sizing: border-box;
         }
+
         .logo-container {
             display: flex;
             align-items: center;
@@ -48,49 +52,24 @@
         }
         .logo-text {
             font-size: 28px;
-            font-weight: bold;
             color: #00BFFF;
-            text-shadow: 0 0 5px #00BFFF;
+            text-shadow: 0 0 10px #00BFFF;
             margin-left: 15px;
         }
-        .dropdown {
-            position: relative;
-            margin-right: 20px;
-        }
-        .hamburger {
-            font-size: 34px;
-            color: #00BFFF;
-            cursor: pointer;
-        }
+
+        /* Dropdown */
         .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background: rgba(0, 0, 0, 0.9); /* Darker for dropdown */
-            min-width: 180px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            border: 1px solid #00BFFF;
-            border-radius: 4px;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .dropdown-content a {
-            color: #E0E0E0;
-            padding: 14px 20px;
-            display: block;
-            font-size: 16px;
+            background: rgba(0, 0, 0, 0.95); /* Darker Dropdown */
         }
         .dropdown-content a:hover {
-            color: #00BFFF;
-            background: rgba(0, 191, 255, 0.2);
+            background: rgba(0, 191, 255, 0.3);
         }
 
         /* Hero Section */
         #hero {
             text-align: center;
             padding: 120px 40px 60px;
-            background: url('hero.webp') no-repeat center, rgba(0, 0, 0, 0.8); /* Darker translucent overlay */
+            background: rgba(0, 0, 0, 0.9), url('hero.webp') no-repeat center;
             background-size: cover;
             border: 2px solid #00BFFF;
             border-radius: 8px;
@@ -99,214 +78,116 @@
         }
         #hero h1 {
             font-size: 54px;
-            margin: 0 0 20px;
-            line-height: 1.1;
-        }
-        #hero .breaking {
-            color: #00BFFF;
-            text-shadow: 0 0 10px #00BFFF;
-            display: block;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        #hero .doji {
             color: #FFD700;
             text-shadow: 0 0 10px #FFD700;
-            display: inline;
-            font-size: 54px;
-        }
-        #hero .bites {
-            color: #00BFFF;
-            text-shadow: 0 0 10px #00BFFF;
-            display: block;
-        }
-        #hero h2 {
-            font-size: 28px;
-            font-style: italic;
-            margin: 0 0 20px;
         }
         #hero p {
             font-size: 20px;
-            margin: 0 0 30px;
+            color: #E0E0E0;
         }
         .cta-button {
-            display: inline-block;
-            padding: 18px 40px;
             background: #00BFFF;
-            color: #FFFFFF;
-            font-weight: bold;
-            font-size: 18px;
-            text-transform: uppercase;
-            border: 2px solid #FFFFFF;
-            border-radius: 5px;
-            box-shadow: 0 0 10px #00BFFF;
-            transition: all 0.3s;
+            border: 2px solid #FFD700;
+            box-shadow: 0 0 15px #00BFFF;
+            transition: 0.3s;
         }
         .cta-button:hover {
-            box-shadow: 0 0 20px #00BFFF;
-            cursor: pointer;
-        }
-
-        /* General Section Styles */
-        section {
-            padding: 80px 40px;
-            max-width: 900px;
-            margin: 20px auto;
-            background: rgba(0, 0, 0, 0.8); /* Darker translucent overlay */
-            border: 2px solid #00BFFF;
-            border-radius: 8px;
-        }
-        h3 {
-            font-size: 42px;
-            color: #00BFFF;
-            text-shadow: 0 0 5px #00BFFF;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        h4 {
-            font-size: 24px;
-            font-style: italic;
-            text-align: center;
-            margin: 0 0 40px;
+            box-shadow: 0 0 30px #00BFFF;
         }
 
         /* About Section */
         #about {
-            background: url('about.jpg') no-repeat center, rgba(0, 0, 0, 0.8); /* Darker translucent overlay */
+            background: rgba(0, 0, 0, 0.95), url('about.jpg') no-repeat center;
             background-size: cover;
+            border: 2px solid #00BFFF;
+            margin: 20px auto;
         }
         #about p {
             font-size: 20px;
-            line-height: 1.8;
+            color: #E0E0E0;
         }
 
-        /* Tokenomics Section */
-        #tokenomics ul {
-            list-style: none;
-            padding: 0;
+        /* Tokenomics & Roadmap */
+        section {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00BFFF;
+            border-radius: 8px;
+            margin: 20px auto;
         }
-        #tokenomics li {
-            margin: 20px 0;
-            font-size: 20px;
-        }
-        #tokenomics li strong {
+        h3 {
+            text-shadow: 0 0 10px #00BFFF;
             color: #00BFFF;
-        }
-
-        /* Roadmap Section */
-        #roadmap ol {
-            padding-left: 30px;
-        }
-        #roadmap li {
-            margin: 25px 0;
-            font-size: 20px;
-        }
-
-        /* How to Buy Section */
-        #how-to-buy ol {
-            padding-left: 30px;
-        }
-        #how-to-buy li {
-            margin: 25px 0;
-            font-size: 20px;
-        }
-        #how-to-buy .bonus-tip {
-            font-size: 18px;
-            font-style: italic;
-            margin-top: 30px;
-            border: 1px dashed #8247E5;
-            padding: 15px;
-            background: rgba(130, 71, 229, 0.1);
-        }
-        #how-to-buy .cta-button {
-            margin-top: 40px;
-            display: block;
-            width: 220px;
             text-align: center;
-            margin-left: auto;
-            margin-right: auto;
+        }
+
+        /* How to Buy */
+        #how-to-buy .bonus-tip {
+            background: rgba(130, 71, 229, 0.2);
+            border: 1px dashed #8247E5;
         }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <div class="logo-container">
-            <div class="logo"></div>
-            <div class="logo-text">DOJI</div>
+
+<header>
+    <div class="logo-container">
+        <div class="logo"></div>
+        <div class="logo-text">DOJI</div>
+    </div>
+    <div class="dropdown">
+        <div class="hamburger">☰</div>
+        <div class="dropdown-content">
+            <a href="#hero">Hero</a>
+            <a href="#about">About the Coin</a>
+            <a href="#tokenomics">Tokenomics</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="#how-to-buy">How to Buy</a>
+            <a href="whitepaper.pdf">Whitepaper</a>
         </div>
-        <div class="dropdown">
-            <div class="hamburger">☰</div>
-            <div class="dropdown-content">
-                <a href="#hero">Hero</a>
-                <a href="#about">About the Coin</a>
-                <a href="#tokenomics">Tokenomics</a>
-                <a href="#roadmap">Roadmap</a>
-                <a href="#how-to-buy">How to Buy</a>
-                <a href="whitepaper.pdf">Whitepaper</a>
-            </div>
-        </div>
-    </header>
+    </div>
+</header>
 
-    <!-- Hero Section -->
-    <section id="hero">
-        <h1>
-            <span class="breaking">BREAKING THE CHAINS</span>
-            <span class="doji"> $DOJI </span>
-            <span class="bites">BITES BACK!</span>
-        </h1>
-        <h2>Awaken the Jedi—Join the Force!</h2>
-        <p>The Countdown Has Begun—This Offer Is Only Available for a Limited Time, Don’t Let It Pass, BUY!</p>
-        <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
-    </section>
+<section id="hero">
+    <h1><span class="doji">$DOJI</span> BITES BACK!</h1>
+    <h2>Awaken the Jedi—Join the Force!</h2>
+    <p>Only the strongest rebels will rise. Limited supply available!</p>
+    <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
+</section>
 
-    <!-- About the Coin Section -->
-    <section id="about">
-        <h3>About the Coin</h3>
-        <p>$DOJI is a little ruff around the edges—the Jedi of justice in a memecoin galaxy. Forged with cutting-edge tech on the Polygon network, $DOJI blasts light years ahead of rival meme coins with low fees and warp-speed transactions. Powered by xAI’s latest analytical breakthroughs, it’s preprogrammed for a warp-speed 100x post-launch—token burns, a masterful presale, and strategic fund allocation fuel its pure force-driven propulsion, paving a hyperspace road to the stars!</p>
-    </section>
+<section id="about">
+    <h3>About the Coin</h3>
+    <p>$DOJI is the Jedi of justice—fueled by xAI analytics on Polygon, ready to break meme coin chains.</p>
+</section>
 
-    <!-- Tokenomics Section -->
-    <section id="tokenomics">
-        <h3>Tokenomics</h3>
-        <ul>
-            <li><strong>Total Supply:</strong> 1,000,000,000 $DOJI</li>
-            <li><strong>Starting Price:</strong> $0.0005 per $DOJI (presale start, payable in MATIC on Polygon)</li>
-            <li><strong>Presale:</strong> 25% (250,000,000 $DOJI) - Join the Jedi uprising—grab $DOJI before the chains break! Raises $1M-$2M (avg $0.004-$0.008, ending at $0.01).</li>
-            <li><strong>Liquidity:</strong> 30% (300,000,000 $DOJI) - Pure force fuel—keeps $DOJI soaring through the galaxy.</li>
-            <li><strong>Community Rewards:</strong> 10% (100,000,000 $DOJI) - For the ruff rebels who HODL and fight back!</li>
-            <li><strong>Roadmap/Development:</strong> 20% (200,000,000 $DOJI) - Propulsion to the stars—$DOJI’s galactic future.</li>
-            <li><strong>Team:</strong> 15% (150,000,000 $DOJI, locked 12 months) - Jedi masters get their cut—locked for justice.</li>
-        </ul>
-    </section>
+<section id="tokenomics">
+    <h3>Tokenomics</h3>
+    <ul>
+        <li><strong>Total Supply:</strong> 1 Billion $DOJI</li>
+        <li><strong>Presale:</strong> 25% Allocation</li>
+        <li><strong>Liquidity:</strong> 30%</li>
+    </ul>
+</section>
 
-    <!-- Roadmap Section -->
-    <section id="roadmap">
-        <h3>Hyperspace Roadmap to the Stars</h3>
-        <ol>
-            <li><strong>Presale: The Jedi Uprising (13 Stages)</strong> - The Force awakens—$DOJI’s presale ignites across 13 stages, shattering meme coin chains. From $0.0005, prices warp to $0.01 as conditions trigger—xAI’s masterful analytics fuel the rise, unleashing 250M tokens into the galaxy. Join early, or miss the hyperspace jump!</li>
-            <li><strong>Post-Presale Phase 1: Token Burn Ignition</strong> - Lightsabers slash—$DOJI burns unsold or reserved tokens, tightening supply. xAI’s analytics lock in the perfect burn, propelling value toward 100x warp speed.</li>
-            <li><strong>Post-Presale Phase 2: Hyperspace Launch</strong> - $DOJI hits lightspeed—DEX listings (e.g., PancakeSwap) drop with 300M liquidity tokens. Ruff rebels trade, xAI’s fund allocation ignites the warp.</li>
-            <li><strong>Post-Presale Phase 3: Galactic Conquest</strong> - Jedi strike—CEX listings (e.g., Binance) and 100M community rewards rain down. $DOJI’s 100x warp ($0.05) hits, fueled by xAI’s strategic plays.</li>
-            <li><strong>Post-Presale Phase 4: Beyond the Stars</strong> - $DOJI rules—ongoing burns and xAI-driven upgrades (e.g., NFT drops) push past 100x to uncharted moons!</li>
-        </ol>
-    </section>
+<section id="roadmap">
+    <h3>Roadmap</h3>
+    <ol>
+        <li>Presale Launch</li>
+        <li>DEX Listing</li>
+        <li>Community Rewards</li>
+        <li>NFTs Release</li>
+    </ol>
+</section>
 
-    <!-- How to Buy Section -->
-    <section id="how-to-buy">
-        <h3>Unleash the Force—How to Buy $DOJI</h3>
-        <h4>Grab Your $DOJI Before the Galaxy Runs Out!</h4>
-        <ol>
-            <li><strong>Gear Up Your Wallet</strong> - Get a lightsaber-ready wallet like MetaMask or Trust Wallet. No weak centralized junk—$DOJI’s all about freedom on the Polygon network. Install it, secure your seed phrase, and load it with MATIC—Polygon’s fuel for the fight!</li>
-            <li><strong>Ignite the Connection</strong> - Hit the ‘JOIN THE FORCE’ button and connect your wallet like you’re linking hyperspace coordinates. Approve the link, and you’re in the $DOJI cockpit.</li>
-            <li><strong>Slash In Your Amount</strong> - Pick how much $DOJI you’re snagging—starts at $0.0005, warps to $0.01 across 13 stages on Polygon. Enter your MATIC amount (e.g., 10 MATIC scores a stash at launch price). Double-check—no Jedi mind trick reverses this!</li>
-            <li><strong>Unleash the Transaction</strong> - Confirm the buy in your wallet—Polygon’s gas fees are dirt cheap, no excuses. Sign it, send it, and your $DOJI tokens hit your wallet when the presale wraps. HODL tight, rebel!</li>
-        </ol>
-        <p class="bonus-tip">Lost? Jump into the $DOJI Discord or Telegram—our Jedi masters have your back. Don’t sleep—250M tokens won’t last on Polygon’s hyperspace lanes!</p>
-        <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
-    </section>
+<section id="how-to-buy">
+    <h3>How to Buy</h3>
+    <ol>
+        <li>Install MetaMask</li>
+        <li>Connect Wallet</li>
+        <li>Buy $DOJI</li>
+    </ol>
+    <div class="bonus-tip">Join the Discord if you need help!</div>
+</section>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </body>
 </html>
