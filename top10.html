@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Cryptos to Buy Now</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Orbitron', sans-serif; background: #1A1A1A; color: #E0E0E0; line-height: 1.6; }
+        a { color: #00BFFF; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Header */
+        header {
+            background: #00BFFF;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        header .logo { font-size: 24px; font-weight: bold; color: #000; }
+        nav a { margin: 0 15px; color: #000; font-size: 16px; }
+        .search-bar { padding: 5px; border-radius: 4px; border: none; }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 20px 40px;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .hero h1 { font-size: 48px; margin: 0 0 20px; color: #00FF00; }
+        .hero p { font-size: 18px; max-width: 800px; margin: 0 auto 20px; }
+        .crypto-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .crypto-tile {
+            background: #333;
+            padding: 15px;
+            border-radius: 8px;
+            width: 220px;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+        .crypto-tile:hover { transform: scale(1.05); }
+        .crypto-tile h3 { color: #00FF00; margin: 0 0 10px; }
+        .crypto-tile p { font-size: 14px; margin: 0; }
+        .crypto-tile .price { color: #00BFFF; }
+        .cta-button {
+            background: #00BFFF;
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .cta-button:hover { background: #00FFFF; }
+
+        /* Top 10 Section */
+        #top10 {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        #top10 h2 { font-size: 36px; color: #00BFFF; text-align: center; margin-bottom: 30px; }
+        .top10-list { display: flex; flex-direction: column; gap: 20px; }
+        .top10-item {
+            background: #333;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top10-item h3 { color: #00FF00; }
+        .top10-item p { max-width: 600px; }
+        .top10-item .stats { text-align: right; }
+        .sort-filter { text-align: center; margin-bottom: 20px; }
+        .sort-filter select { padding: 5px; background: #333; color: #E0E0E0; border: 1px solid #00BFFF; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .crypto-grid { flex-direction: column; align-items: center; }
+            .crypto-tile { width: 100%; max-width: 300px; }
+            .top10-item { flex-direction: column; text-align: center; }
+            .top10-item .stats { text-align: center; margin-top: 10px; }
+            nav a { margin: 0 5px; font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Top 10 Cryptos</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#top10">Top 10</a>
+            <a href="#compare">Compare</a>
+            <a href="#news">News</a>
+            <a href="#community">Community</a>
+            <a href="#about">About</a>
+        </nav>
+        <input type="text" class="search-bar" placeholder="Search cryptos...">
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Top 10 Cryptos to Buy Now</h1>
+        <p>Discover the best cryptocurrencies for 2025, ranked by presale success, utility, and community hype.</p>
+        <div class="crypto-grid">
+            <div class="crypto-tile">
+                <h3>#1 [Your Crypto]</h3>
+                <p class="price">$[Your Price]</p>
+                <p>[Your Tagline]</p>
+            </div>
+            <div class="crypto-tile">
+                <h3>#2 Solaxy (SOLX)</h3>
+                <p class="price">$1.20</p>
+                <p>Fastest Layer-2 on Solana</p>
+            </div>
+            <div class="crypto-tile">
+                <h3>#3 Wall Street Pepe (WEPE)</h3>
+                <p class="price">$0.03</p>
+                <p>Meme Meets Trading</p>
+            </div>
+            <div class="crypto-tile">
+                <h3>#4 Meme Index (MEMEX)</h3>
+                <p class="price">$0.85</p>
+                <p>Diversified Meme Power</p>
+            </div>
+            <div class="crypto-tile">
+                <h3>#5 Best Wallet Token (BEST)</h3>
+                <p class="price">$0.45</p>
+                <p>Wallet Utility King</p>
+            </div>
+            <div class="crypto-tile">
+                <h3>#6 BTCBULL</h3>
+                <p class="price">$2.10</p>
+                <p>Bitcoin Rewards</p>
+            </div>
+            <div class="crypto-tile">
+                <h3>#7 The Last Dwarfs (TLD)</h3>
+                <p class="price">$0.95</p>
+                <p>GameFi Leader</p>
+            </div>
+            <div class="crypto-tile">
+                <h3>#8 Pepe Unchained (PEPU)</h3>
+                <p class="price">$0.02</p>
+                <p>Pepe’s DeFi Evolution</p>
+            </div>
+            <div class="crypto-tile">
+                <h3>#9 Flockerz (FLOCK)</h3>
+                <p class="price">$0.15</p>
+                <p>Vote-to-Earn Meme</p>
+            </div>
+            <div class="crypto-tile">
+                <h3>#10 Catslap (SLAP)</h3>
+                <p class="price">$0.008</p>
+                <p>Slap-to-Earn Fun</p>
+            </div>
+        </div>
+        <button class="cta-button" onclick="document.getElementById('top10').scrollIntoView({behavior: 'smooth'})">Explore the Top 10</button>
+    </section>
+
+    <!-- Top 10 Section -->
+    <section id="top10">
+        <h2>Top 10 Cryptos</h2>
+        <div class="sort-filter">
+            <select onchange="sortList(this.value)">
+                <option value="rank">Sort by Rank</option>
+                <option value="price">Sort by Price</option>
+            </select>
+        </div>
+        <div class="top10-list" id="top10List">
+            <div class="top10-item" data-price="[Your Price]">
+                <div>
+                    <h3>#1 [Your Crypto]</h3>
+                    <p>[Fill in your crypto’s description: utility, presale success, or unique features.]</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$[Your Price]</p>
+                    <p>24h: [Your Change]</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="1.20">
+                <div>
+                    <h3>#2 Solaxy (SOLX)</h3>
+                    <p>Solana’s first Layer-2 solution with high staking rewards and cross-chain compatibility.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$1.20</p>
+                    <p>24h: +5.1%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="0.03">
+                <div>
+                    <h3>#3 Wall Street Pepe (WEPE)</h3>
+                    <p>A meme coin offering trading signals, backed by a $25M presale.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$0.03</p>
+                    <p>24h: +3.8%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="0.85">
+                <div>
+                    <h3>#4 Meme Index (MEMEX)</h3>
+                    <p>First decentralized meme coin index with staking and governance.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$0.85</p>
+                    <p>24h: +2.0%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="0.45">
+                <div>
+                    <h3>#5 Best Wallet Token (BEST)</h3>
+                    <p>Utility token for a non-custodial wallet with presale access perks.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$0.45</p>
+                    <p>24h: +4.5%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="2.10">
+                <div>
+                    <h3>#6 BTCBULL</h3>
+                    <p>Ethereum-based token rewarding holders with Bitcoin airdrops.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$2.10</p>
+                    <p>24h: +1.9%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="0.95">
+                <div>
+                    <h3>#7 The Last Dwarfs (TLD)</h3>
+                    <p>GameFi project with 300K+ users and Play-to-Invest mechanics.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$0.95</p>
+                    <p>24h: +6.2%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="0.02">
+                <div>
+                    <h3>#8 Pepe Unchained (PEPU)</h3>
+                    <p>Pepe reborn with DeFi and Layer-2, raised $39M in presale.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$0.02</p>
+                    <p>24h: +7.1%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="0.15">
+                <div>
+                    <h3>#9 Flockerz (FLOCK)</h3>
+                    <p>Bird-themed meme coin with DAO and $8.9M presale success.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$0.15</p>
+                    <p>24h: +3.3%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="0.008">
+                <div>
+                    <h3>#10 Catslap (SLAP)</h3>
+                    <p>Cat-themed coin with slap-to-earn, up 4,600% since launch.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$0.008</p>
+                    <p>24h: +9.5%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Sort functionality
+        function sortList(criteria) {
+            const list = document.getElementById('top10List');
+            const items = Array.from(list.getElementsByClassName('top10-item'));
+            
+            if (criteria === 'price') {
+                items.sort((a, b) => {
+                    const priceA = parseFloat(a.getAttribute('data-price')) || 0;
+                    const priceB = parseFloat(b.getAttribute('data-price')) || 0;
+                    return priceB - priceA; // Descending order
+                });
+            } else {
+                // Reset to original rank order
+                items.sort((a, b) => {
+                    const rankA = Array.from(list.children).indexOf(a);
+                    const rankB = Array.from(list.children).indexOf(b);
+                    return rankA - rankB;
+                });
+            }
+
+            // Re-append sorted items
+            items.forEach(item => list.appendChild(item));
+        }
+    </script>
+</body>
+</html>
