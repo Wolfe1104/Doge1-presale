@@ -133,39 +133,36 @@
         }
         .cta-button {
             display: inline-block;
-            padding: 18px 40px;
-            background: linear-gradient(45deg, #FFD700, #00BFFF);
-            color: #000000;
+            padding: 15px 35px;
+            background: #000000;
+            color: #00FF00;
             font-weight: bold;
             font-size: 18px;
             text-transform: uppercase;
-            border: 3px solid #FFFFFF;
-            border-radius: 0;
-            box-shadow: 0 0 15px #FFD700, inset 0 0 10px #00BFFF;
-            text-shadow: 0 0 5px #FFFFFF;
-            transition: all 0.3s;
+            border: 2px solid #00FF00;
+            box-shadow: 0 0 15px #00FF00;
+            text-shadow: 0 0 5px #00FF00;
             position: relative;
             overflow: hidden;
+            transition: all 0.3s;
         }
-        .cta-button::before {
+        .cta-button::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255, 215, 0, 0.3);
-            transform: rotate(30deg);
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.3), transparent);
             transition: all 0.5s;
         }
-        .cta-button:hover::before {
-            top: -30%;
-            left: -30%;
+        .cta-button:hover::after {
+            left: 100%;
         }
         .cta-button:hover {
-            box-shadow: 0 0 25px #FFD700, inset 0 0 15px #00BFFF;
-            cursor: pointer;
+            box-shadow: 0 0 25px #00FF00;
             transform: scale(1.05);
+            cursor: pointer;
         }
 
         section {
@@ -390,63 +387,87 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
-        #roadmap ol {
-            padding-left: 0;
-            list-style-position: inside;
-        }
-        #roadmap li {
-            margin: 20px auto;
-            font-size: 20px;
-            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.9);
+        /* Updated Roadmap Section */
+        #roadmap {
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.85);
             background-size: cover;
+        }
+        #roadmap h3 {
+            color: #FFD700;
+            text-shadow: 0 0 8px #FFD700;
+            margin-bottom: 40px;
+        }
+        .roadmap-item {
+            background: rgba(0, 0, 0, 0.9);
             border: 1px solid #00BFFF;
+            border-radius: 8px;
             padding: 20px;
-            border-radius: 5px;
-            max-width: 700px;
+            margin: 15px 0;
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
             transition: all 0.3s ease;
         }
-        #roadmap li:hover {
-            box-shadow: 0 0 15px #00BFFF;
-            transform: scale(1.02);
+        .roadmap-item:hover {
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+            transform: translateY(-3px);
+        }
+        .roadmap-item p {
+            font-size: 16px;
+            color: #E0E0E0;
+            margin: 0;
+            line-height: 1.5;
         }
 
-        #how-to-buy ol {
-            padding-left: 0;
-            list-style-position: inside;
-        }
-        #how-to-buy li {
-            margin: 20px auto;
-            font-size: 20px;
-            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.9);
+        /* Updated How-to-Buy Section */
+        #how-to-buy {
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.85);
             background-size: cover;
+        }
+        #how-to-buy h3 {
+            color: #FFD700;
+            text-shadow: 0 0 8px #FFD700;
+            margin-bottom: 40px;
+        }
+        #how-to-buy h4 {
+            color: #E0E0E0;
+            text-shadow: 0 0 5px #00BFFF;
+        }
+        .how-to-buy-item {
+            background: rgba(0, 0, 0, 0.9);
             border: 1px solid #00BFFF;
+            border-radius: 8px;
             padding: 20px;
-            border-radius: 5px;
-            max-width: 700px;
+            margin: 15px 0;
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
             transition: all 0.3s ease;
         }
-        #how-to-buy li:hover {
-            box-shadow: 0 0 15px #00BFFF;
-            transform: scale(1.02);
+        .how-to-buy-item:hover {
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+            transform: translateY(-3px);
+        }
+        .how-to-buy-item p {
+            font-size: 16px;
+            color: #E0E0E0;
+            margin: 0;
+            line-height: 1.5;
         }
         #how-to-buy .bonus-tip {
-            font-size: 18px;
+            font-size: 16px;
             font-style: italic;
             margin-top: 30px;
             border: 1px dashed #8247E5;
             padding: 15px;
             background: rgba(130, 71, 229, 0.1);
+            border-radius: 8px;
         }
         #how-to-buy .cta-button {
             margin-top: 40px;
             display: block;
             width: 220px;
-            text-align: center;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* New FAQ Section Styles */
+        /* FAQ Section */
         #faq {
             background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.85);
             background-size: cover;
@@ -562,25 +583,38 @@
 
     <section id="roadmap">
         <h3>Hyperspace Roadmap to the Stars</h3>
-        <ol>
-            <li><strong>Presale: The Jedi Uprising (13 Stages)</strong> - The Force awakens—$DOJI’s presale ignites across 13 stages, shattering meme coin chains. From $0.0005, prices warp to $0.01 as conditions trigger—xAI’s masterful analytics fuel the rise, unleashing 250M tokens into the galaxy. Join early, or miss the hyperspace jump!</li>
-            <li><strong>Post-Presale Phase 1: Token Burn Ignition</strong> - Lightsabers slash—$DOJI burns unsold or reserved tokens, tightening supply. xAI’s analytics lock in the perfect burn, propelling value toward 100x warp speed.</li>
-            <li><strong>Post-Presale Phase 2: Hyperspace Launch</strong> - $DOJI hits lightspeed—DEX listings (e.g., PancakeSwap) drop with 300M liquidity tokens. Ruff rebels trade, xAI’s fund allocation ignites the warp.</li>
-            <li><strong>Post-Presale Phase 3: Galactic Conquest</strong> - Jedi strike—CEX listings (e.g., Binance) and 100M community rewards rain down. $DOJI’s 100x warp ($0.05) hits, fueled by xAI’s strategic plays.</li>
-            <li><strong>Post-Presale Phase 4: Beyond the Stars</strong> - $DOJI rules—ongoing burns and xAI-driven upgrades (e.g., NFT drops) push past 100x to uncharted moons!</li>
-        </ol>
+        <div class="roadmap-item">
+            <p><strong>Presale: The Jedi Uprising (13 Stages)</strong> - The Force awakens—$DOJI’s presale ignites across 13 stages, shattering meme coin chains. From $0.0005, prices warp to $0.01 as conditions trigger—xAI’s masterful analytics fuel the rise, unleashing 250M tokens into the galaxy. Join early, or miss the hyperspace jump!</p>
+        </div>
+        <div class="roadmap-item">
+            <p><strong>Post-Presale Phase 1: Token Burn Ignition</strong> - Lightsabers slash—$DOJI burns unsold or reserved tokens, tightening supply. xAI’s analytics lock in the perfect burn, propelling value toward 100x warp speed.</p>
+        </div>
+        <div class="roadmap-item">
+            <p><strong>Post-Presale Phase 2: Hyperspace Launch</strong> - $DOJI hits lightspeed—DEX listings (e.g., PancakeSwap) drop with 300M liquidity tokens. Ruff rebels trade, xAI’s fund allocation ignites the warp.</p>
+        </div>
+        <div class="roadmap-item">
+            <p><strong>Post-Presale Phase 3: Galactic Conquest</strong> - Jedi strike—CEX listings (e.g., Binance) and 100M community rewards rain down. $DOJI’s 100x warp ($0.05) hits, fueled by xAI’s strategic plays.</p>
+        </div>
+        <div class="roadmap-item">
+            <p><strong>Post-Presale Phase 4: Beyond the Stars</strong> - $DOJI rules—ongoing burns and xAI-driven upgrades (e.g., NFT drops) push past 100x to uncharted moons!</p>
+        </div>
     </section>
 
     <section id="how-to-buy">
         <h3>Unleash the Force—How to Buy $DOJI</h3>
         <h4>Grab Your $DOJI Before the Galaxy Runs Out!</h4>
-        <ol>
-            <li><strong>Gear Up Your Wallet</strong> - Get a lightsaber-ready wallet like MetaMask or Trust Wallet. No weak centralized junk—$DOJI’s all about freedom on the Polygon network. Install it, secure your seed phrase, and load it with MATIC—Polygon’s fuel for the fight!</li>
-            <li><strong>Ignite the Connection</strong> - Hit the ‘JOIN THE FORCE’ button and connect your wallet like you’re linking hyperspace coordinates. Approve the link, and you’re in the $DOJI cockpit.</li>
-            <li><strong>Slash In Your Amount</strong> - Pick how much $DOJI you’re snagging—starts at $0.0005, warps to $0.01 across 13 stages on Polygon. Enter your MATIC amount (e.g., 10 MATIC scores a stash at launch price). Double-check—no Jedi mind trick reverses this!</li>
-            <li><strong>Unleash the Transaction</strong> - Confirm the buy in your wallet—Polygon’s gas fees are dirt cheap, no excuses. Sign it, send it, and your $DOJI tokens hit your wallet when the presale wraps. HODL tight, rebel!</li>
-        </ol>
-        <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
+        <div class="how-to-buy-item">
+            <p><strong>Gear Up Your Wallet</strong> - Get a lightsaber-ready wallet like MetaMask or Trust Wallet. No weak centralized junk—$DOJI’s all about freedom on the Polygon network. Install it, secure your seed phrase, and load it with MATIC—Polygon’s fuel for the fight!</p>
+        </div>
+        <div class="how-to-buy-item">
+            <p><strong>Ignite the Connection</strong> - Hit the ‘JOIN THE FORCE’ button and connect your wallet like you’re linking hyperspace coordinates. Approve the link, and you’re in the $DOJI cockpit.</p>
+        </div>
+        <div class="how-to-buy-item">
+            <p><strong>Slash In Your Amount</strong> - Pick how much $DOJI you’re snagging—starts at $0.0005, warps to $0.01 across 13 stages on Polygon. Enter your MATIC amount (e.g., 10 MATIC scores a stash at launch price). Double-check—no Jedi mind trick reverses this!</p>
+        </div>
+        <div class="how-to-buy-item">
+            <p><strong>Unleash the Transaction</strong> - Confirm the buy in your wallet—Polygon’s gas fees are dirt cheap, no excuses. Sign it, send it, and your $DOJI tokens hit your wallet when the presale wraps. HODL tight, rebel!</p>
+        </div>
         <p class="bonus-tip">Lost? Jump into the $DOJI Discord or Telegram—our Jedi masters have your back. Don’t sleep—250M tokens won’t last on Polygon’s hyperspace lanes!</p>
         <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
     </section>
