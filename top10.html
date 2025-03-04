@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the Top 10 Cryptos to Buy Now in 2025, led by DOJI-1-KENOBI ($DOJI), a lunar-inspired token with a 100x moonshot potential. Get expert insights, timeless crypto news, and the best picks for investors.">
-    <title>Top 10 Cryptos to Buy Now</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Primary SEO Metadata -->
+    <title>Top 10 Cryptos to Buy Now 2025 | DOJI-1-KENOBI ($DOJI) & More</title>
+    <meta name="description" content="Discover the top 10 cryptocurrencies to buy in 2025, led by DOJI-1-KENOBI ($DOJI), a lunar-inspired token with 100x potential. Explore expert insights, timeless news, and the best crypto investments.">
+    <meta name="keywords" content="top 10 cryptos 2025, best cryptocurrencies to buy, DOJI-1-KENOBI, $DOJI, crypto investments, meme coins, DeFi, presale tokens">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Top 10 Cryptos Team">
+    
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="Top 10 Cryptos to Buy Now 2025 | $DOJI Leads the Pack">
+    <meta property="og:description" content="Explore the top 10 cryptocurrencies for 2025, starting with DOJI-1-KENOBI ($DOJI). Get insights, news, and investment picks now!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/top10.html">
+    <meta property="og:image" content="https://yourdomain.com/images/top10-og-image.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Top 10 Cryptos to Buy Now 2025 | $DOJI Leads">
+    <meta name="twitter:description" content="Check out the top 10 cryptos for 2025, featuring DOJI-1-KENOBI ($DOJI) and more. Expert picks and news!">
+    <meta name="twitter:image" content="https://yourdomain.com/images/top10-twitter-image.jpg">
+    
+    <!-- Favicon and Performance -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" async>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Orbitron', sans-serif; background: #1A1A1A; color: #E0E0E0; line-height: 1.6; }
@@ -38,6 +58,7 @@
         section { padding: 60px 20px; max-width: 1200px; margin: 20px auto; }
         h1 { font-size: 48px; color: #00FF00; text-align: center; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0, 255, 0, 0.3); }
         h2 { font-size: 36px; color: #00BFFF; text-align: center; margin-bottom: 30px; text-shadow: 1px 1px 3px rgba(0, 191, 255, 0.3); }
+        h3 { font-size: 18px; color: #00FF00; }
 
         /* Hero Section */
         .hero {
@@ -67,7 +88,7 @@
             transform: translateY(-5px);
             box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
         }
-        .crypto-tile h3 { color: #00FF00; margin: 0 0 10px; font-size: 18px; }
+        .crypto-tile h3 { margin: 0 0 10px; }
         .crypto-tile p { font-size: 14px; margin: 0; }
         .crypto-tile .price { color: #00BFFF; font-weight: 700; }
         .cta-button {
@@ -100,7 +121,6 @@
             transition: transform 0.3s;
         }
         .top10-item:hover { transform: scale(1.02); }
-        .top10-item h3 { color: #00FF00; }
         .top10-item p { max-width: 600px; }
         .top10-item .stats { text-align: right; }
         .sort-filter select {
@@ -112,28 +132,13 @@
             font-size: 14px;
         }
 
-        /* About Section */
-        #about {
+        /* Other Sections */
+        #about, #compare, #news, #community {
             background: rgba(0, 0, 0, 0.85);
             border: 2px solid #00BFFF;
             border-radius: 12px;
         }
-        #about p { font-size: 18px; max-width: 800px; margin: 0 auto; }
-
-        /* Compare Section */
-        #compare {
-            background: rgba(0, 0, 0, 0.9);
-            border: 2px solid #00BFFF;
-            border-radius: 12px;
-        }
-        #compare .placeholder { font-style: italic; }
-
-        /* News Section */
-        #news {
-            background: rgba(0, 0, 0, 0.85);
-            border: 2px solid #00BFFF;
-            border-radius: 12px;
-        }
+        #about p, #compare p, #community p { font-size: 18px; max-width: 800px; margin: 0 auto; }
         .news-list { display: flex; flex-direction: column; gap: 15px; }
         .news-item {
             background: #2A2A2A;
@@ -142,15 +147,7 @@
             transition: background 0.3s;
         }
         .news-item:hover { background: #333; }
-        .news-item h3 { color: #FFD700; font-size: 18px; }
-
-        /* Community Section */
-        #community {
-            background: rgba(0, 0, 0, 0.9);
-            border: 2px solid #00BFFF;
-            border-radius: 12px;
-        }
-        #community .placeholder { font-style: italic; }
+        .news-item h3 { color: #FFD700; }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -189,13 +186,13 @@
                 <a href="#about">About</a>
             </nav>
             <div class="hamburger" onclick="toggleNav()">☰</div>
-            <input type="text" class="search-bar" placeholder="Search cryptos...">
+            <input type="text" class="search-bar" placeholder="Search cryptos..." aria-label="Search cryptocurrencies">
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <h1>Top 10 Cryptos to Buy Now</h1>
+        <h1>Top 10 Cryptos to Buy Now 2025</h1>
         <p>Discover the best cryptocurrencies for 2025, ranked by presale success, utility, and community hype.</p>
         <div class="crypto-grid">
             <div class="crypto-tile">
@@ -254,9 +251,9 @@
 
     <!-- Top 10 Section -->
     <section id="top10">
-        <h2>Top 10 Cryptos</h2>
+        <h2>Top 10 Cryptocurrencies for 2025</h2>
         <div class="sort-filter">
-            <select onchange="sortList(this.value)">
+            <select onchange="sortList(this.value)" aria-label="Sort cryptocurrency list">
                 <option value="rank">Sort by Rank</option>
                 <option value="price">Sort by Price</option>
             </select>
@@ -367,13 +364,13 @@
 
     <!-- About Section -->
     <section id="about">
-        <h2>About Us</h2>
-        <p>Welcome to Top 10 Cryptos to Buy Now, your premier destination for discovering the best cryptocurrencies of 2025. Led by DOJI-1-KENOBI ($DOJI), our expertly curated list combines cutting-edge analysis, presale performance, and community insights to guide your investment journey. Whether you're a seasoned trader or new to crypto, we’re here to illuminate the path to the moon!</p>
+        <h2>About Top 10 Cryptos</h2>
+        <p>Welcome to Top 10 Cryptos to Buy Now, your premier guide to the best cryptocurrencies of 2025. Led by DOJI-1-KENOBI ($DOJI), our expertly curated list combines cutting-edge analysis, presale performance, and community insights to empower your investment journey. Whether you're a seasoned trader or new to crypto, we’re here to light the way to the moon!</p>
     </section>
 
     <!-- Compare Section -->
     <section id="compare">
-        <h2>Compare Cryptos</h2>
+        <h2>Compare Cryptocurrencies</h2>
         <p class="placeholder">Coming Soon: Compare your favorite top 10 cryptos side-by-side with detailed metrics like price, market cap, and staking yields. Stay tuned for this powerful tool!</p>
     </section>
 
@@ -398,7 +395,7 @@
 
     <!-- Community Section -->
     <section id="community">
-        <h2>Community</h2>
+        <h2>Crypto Community Hub</h2>
         <p class="placeholder">Join the conversation! Our community hub is coming soon with forums, polls, and more to connect with fellow crypto enthusiasts.</p>
     </section>
 
