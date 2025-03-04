@@ -94,7 +94,7 @@
             border-radius: 5px;
             font-size: 14px;
         }
-        #about, #compare, #news, #community {
+        #about, #compare, #news, #community, #partners {
             background: rgba(0, 0, 0, 0.85);
             border: 2px solid #00BFFF;
             border-radius: 12px;
@@ -109,6 +109,10 @@
         }
         .news-item:hover { background: #333; }
         .news-item h3 { color: #FFD700; }
+        #partners ul { list-style: none; padding: 0; }
+        #partners li { margin: 15px 0; font-size: 18px; }
+        #partners a { color: #00FF00; transition: color 0.3s; }
+        #partners a:hover { color: #FFD700; text-decoration: none; }
         @media (max-width: 768px) {
             .top10-item { flex-direction: column; text-align: center; }
             .top10-item .stats { text-align: center; margin-top: 10px; }
@@ -295,6 +299,18 @@
     <section id="community">
         <h2>Crypto Community Hub</h2>
         <p class="placeholder">Join the conversation! Our community hub is coming soon with forums, polls, and more to connect with fellow crypto enthusiasts.</p>
+    </section>
+
+    <!-- New Partners Section -->
+    <section id="partners">
+        <h2>Partner Sites</h2>
+        <ul>
+            <li><a href="best5.html" target="_blank">Best 5 Crypto Presales to Invest In</a></li>
+            <li><a href="5hottest.html" target="_blank">5 Hottest New Meme Coins with 100x Potential</a></li>
+            <li><a href="10new.html" target="_blank">10 New Tokens Making a Big Impact in 2025</a></li>
+            <li><a href="10hot.html" target="_blank">10 Hot Presales You Don’t Want to Miss Out On</a></li>
+            <li><a href="https://coinmarketcap.com/" target="_blank">CoinMarketCap - Crypto Market Insights</a></li>
+        </ul>
     </section>
 
     <script>
