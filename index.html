@@ -14,7 +14,6 @@
             background-size: cover;
             color: #E0E0E0;
             line-height: 1.6;
-            overflow-x: hidden;
         }
         a { color: #00BFFF; text-decoration: none; }
         a:hover { text-decoration: underline; }
@@ -23,39 +22,38 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 40px;
+            padding: 15px 20px; /* Reduced height */
             background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47') no-repeat center / cover;
             position: fixed;
-            width: 100%; /* Full width */
+            width: 100%;
             top: 0;
-            left: 0; /* Ensure it starts at left edge */
+            left: 0;
             z-index: 1000;
             box-sizing: border-box;
-            border-bottom: 2px solid #00BFFF; /* Changed to border-bottom for full width */
+            border-bottom: 2px solid #00BFFF;
+            height: 60px; /* Fixed height for 1-2 rows */
         }
         .logo-container {
             display: flex;
             align-items: center;
         }
         .logo {
-            width: 80px;
-            height: 80px;
+            width: 40px; /* Reduced size */
+            height: 40px;
             background: url('logo.webp') no-repeat;
             background-size: cover;
         }
         .logo-text {
-            font-size: 24px;
+            font-size: 18px; /* Reduced size */
             font-weight: bold;
             color: #00BFFF;
-            text-shadow: 0 0 5px #00BFFF;
-            margin-left: 15px;
+            margin-left: 10px;
         }
         .dropdown {
             position: relative;
-            margin-right: 20px;
         }
         .hamburger {
-            font-size: 40px;
+            font-size: 24px; /* Reduced size */
             color: #00BFFF;
             cursor: pointer;
         }
@@ -64,8 +62,7 @@
             position: absolute;
             right: 0;
             background: rgba(0, 0, 0, 0.9);
-            min-width: 180px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            min-width: 160px;
             border: 1px solid #00BFFF;
             border-radius: 4px;
         }
@@ -74,10 +71,9 @@
         }
         .dropdown-content a {
             color: #E0E0E0;
-            padding: 14px 20px;
+            padding: 10px 15px;
             display: block;
-            font-size: 16px;
-            cursor: pointer;
+            font-size: 14px;
         }
         .dropdown-content a:hover {
             color: #00BFFF;
@@ -86,86 +82,57 @@
 
         #hero {
             text-align: center;
-            padding: 180px 40px 60px; /* Further increased top padding */
+            padding: 100px 20px 40px; /* Adjusted for smaller header */
             background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.8);
             border: 2px solid #00BFFF;
             border-radius: 8px;
             margin: 20px auto;
             max-width: 900px;
             position: relative;
             z-index: 1;
-            background-color: rgba(0, 0, 0, 0.8); /* Separated rgba for reliability */
         }
         #hero h1 {
-            font-size: 54px;
-            margin: 0 0 20px;
+            font-size: 48px;
+            margin: 0 0 15px;
             line-height: 1.1;
         }
-        #hero .breaking {
-            color: #00BFFF;
-            text-shadow: 0 0 10px #00BFFF;
-            display: block;
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 36px;
-        }
-        #hero .doji {
-            color: #00FF00;
-            text-shadow: 0 0 10px #00FF00;
-            display: inline;
-            font-size: 54px;
-        }
-        #hero .bites {
-            color: #00BFFF;
-            text-shadow: 0 0 10px #00BFFF;
-            display: block;
-            font-size: 54px;
-        }
-        #hero h2 {
-            font-size: 28px;
-            font-style: italic;
-            margin: 0 0 20px;
-        }
-        #hero p {
-            font-size: 20px;
-            margin: 0 0 30px;
-        }
+        #hero .breaking { color: #00BFFF; display: block; font-size: 32px; }
+        #hero .doji { color: #00FF00; display: inline; font-size: 48px; }
+        #hero .bites { color: #00BFFF; display: block; font-size: 48px; }
+        #hero h2 { font-size: 24px; margin: 0 0 15px; font-style: italic; }
+        #hero p { font-size: 18px; margin: 0 0 20px; }
 
         .cta-button {
             background: #00BFFF;
             color: #000;
             border: none;
-            padding: 15px 30px;
-            font-size: 18px;
+            padding: 12px 25px;
+            font-size: 16px;
             font-family: 'Orbitron', sans-serif;
             border-radius: 5px;
             cursor: pointer;
             text-transform: uppercase;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+            transition: background 0.3s ease;
         }
         .cta-button:hover {
             background: #00FFFF;
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 191, 255, 0.8);
         }
 
         #presale {
             background: url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05') no-repeat center / cover;
             background-color: rgba(0, 0, 0, 0.85);
-            padding: 80px 20px;
+            padding: 60px 20px;
             max-width: 900px;
             margin: 20px auto;
             border: 2px solid #00BFFF;
             border-radius: 8px;
             position: relative;
-            box-sizing: border-box;
         }
         #presale h3 {
             color: #FFD700;
-            text-shadow: 0 0 8px #FFD700;
-            font-size: 42px;
-            margin-bottom: 40px;
+            font-size: 36px;
+            margin-bottom: 30px;
             text-align: center;
         }
         .slider-container {
@@ -175,7 +142,6 @@
             margin: 0 auto;
             overflow: hidden;
             padding: 0 40px;
-            box-sizing: border-box;
         }
         .slider-track {
             display: flex;
@@ -184,36 +150,24 @@
         .presale-box {
             width: calc(33.33vw - 30px);
             max-width: 300px;
-            height: 200px;
+            height: 180px;
             margin: 0 10px;
             background: rgba(0, 0, 0, 0.9);
             border: 1px solid #00BFFF;
             border-radius: 8px;
             padding: 15px;
-            box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
-            transition: all 0.3s ease;
             position: relative;
             flex-shrink: 0;
-            box-sizing: border-box;
-        }
-        .presale-box:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
         }
         .presale-box.current {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
-            animation: pulse 2s infinite;
+            border: 2px solid #FFD700;
         }
         .presale-box.past { opacity: 0.7; }
         .presale-box.future { opacity: 0.8; }
         .presale-box h4 {
             color: #00BFFF;
-            font-size: 18px;
+            font-size: 16px;
             margin: 0 0 10px;
-            text-align: left;
-            text-shadow: 0 0 5px #00BFFF;
-            font-style: normal;
         }
         .presale-box p {
             font-size: 14px;
@@ -232,7 +186,7 @@
         }
         .progress-bar {
             width: 100%;
-            height: 8px;
+            height: 6px;
             background: #333;
             border-radius: 4px;
             overflow: hidden;
@@ -247,37 +201,30 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 30px;
+            font-size: 24px;
             color: #00BFFF;
             background: rgba(0, 0, 0, 0.7);
             border: none;
-            padding: 10px;
+            padding: 8px;
             cursor: pointer;
-            transition: color 0.3s;
-            z-index: 10;
         }
-        .arrow.left { left: 10px; color: #00BFFF; }
+        .arrow.left { left: 10px; }
         .arrow.right { right: 10px; color: #FF0000; }
         .arrow:hover { color: #FFFFFF; }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 10px rgba(0, 191, 255, 0.3); }
-            50% { box-shadow: 0 0 20px rgba(0, 191, 255, 0.7); }
-            100% { box-shadow: 0 0 10px rgba(0, 191, 255, 0.3); }
-        }
 
         @media (max-width: 768px) {
             .presale-box { width: calc(50vw - 30px); }
-            .arrow { font-size: 24px; padding: 8px; }
-            #presale h3 { font-size: 32px; }
-        }
-        @media (max-width: 480px) {
-            .presale-box { width: calc(100vw - 60px); }
             .arrow { font-size: 20px; padding: 6px; }
             #presale h3 { font-size: 28px; }
         }
+        @media (max-width: 480px) {
+            .presale-box { width: calc(100vw - 60px); }
+            .arrow { font-size: 18px; padding: 5px; }
+            #presale h3 { font-size: 24px; }
+        }
 
         section:not(#presale) {
-            padding: 80px 40px;
+            padding: 60px 20px;
             max-width: 900px;
             margin: 20px auto;
             border: 2px solid #00BFFF;
@@ -285,101 +232,44 @@
             position: relative;
         }
         h3 {
-            font-size: 42px;
+            font-size: 36px;
             color: #00BFFF;
-            text-shadow: 0 0 5px #00BFFF;
             text-align: center;
             margin-bottom: 20px;
         }
         h4 {
-            font-size: 24px;
+            font-size: 20px;
             font-style: italic;
             text-align: center;
-            margin: 0 0 40px;
+            margin: 0 0 30px;
         }
         .token-doji {
             color: #00FF00;
-            text-shadow: 0 0 10px #00FF00;
         }
 
         #about {
             background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover;
             background-color: rgba(0, 0, 0, 0.8);
         }
-        #about p {
-            font-size: 20px;
-            line-height: 1.8;
-        }
+        #about p { font-size: 18px; line-height: 1.8; }
 
         #moonshot {
-            position: relative;
             text-align: center;
             background: url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a') no-repeat center / cover;
             background-color: rgba(0, 0, 0, 0.9);
-            overflow: hidden;
         }
-        #moonshot h3 {
-            font-size: 48px;
-            color: #FFD700;
-            text-shadow: 0 0 10px #FFD700, 0 0 20px #00BFFF;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            animation: glowPulse 3s infinite ease-in-out;
-        }
-        #moonshot p {
-            font-size: 20px;
-            line-height: 1.8;
-            max-width: 700px;
-            margin: 20px auto;
-            text-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
-        }
-        .moon-graphic {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, #E0E0E0 10%, transparent 70%);
-            border-radius: 50%;
-            opacity: 0.7;
-            animation: orbitMoon 15s infinite linear;
-            z-index: 0;
-        }
-        .moon-graphic:nth-child(2) {
-            top: 10%;
-            left: 10%;
-            width: 150px;
-            height: 150px;
-            animation-duration: 20s;
-            animation-direction: reverse;
-        }
-        .moon-graphic:nth-child(3) {
-            bottom: 10%;
-            right: 10%;
-            width: 100px;
-            height: 100px;
-            animation-duration: 25s;
-        }
-        @keyframes glowPulse {
-            0% { text-shadow: 0 0 10px #FFD700, 0 0 20px #00BFFF; }
-            50% { text-shadow: 0 0 20px #FFD700, 0 0 30px #00BFFF; }
-            100% { text-shadow: 0 0 10px #FFD700, 0 0 20px #00BFFF; }
-        }
-        @keyframes orbitMoon {
-            0% { transform: translateX(0) rotate(0deg); }
-            100% { transform: translateX(50px) rotate(360deg); }
-        }
+        #moonshot h3 { color: #FFD700; }
+        #moonshot p { font-size: 18px; line-height: 1.8; max-width: 700px; margin: 20px auto; }
 
         #tokenomics {
             text-align: center;
-            position: relative;
             background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center / cover;
             background-color: rgba(0, 0, 0, 0.8);
         }
         .pie-chart-container {
-            width: 350px;
-            height: 350px;
-            margin: 0 auto 30px;
-            perspective: 1000px;
-            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 20px;
         }
         .pie-chart {
             width: 100%;
@@ -393,155 +283,90 @@
                 #8B0000 85% 100%
             );
             border: 4px solid #333333;
-            box-shadow: 0 0 25px #00BFFF;
-            transform: rotateX(25deg) rotateY(15deg);
-            position: relative;
-            animation: orbitGlow 12s infinite linear;
         }
         .pie-chart-legend {
+            background: #000;
+            padding: 15px;
+            border: 1px solid #00BFFF;
+            border-radius: 8px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
         }
         .legend-item {
             display: flex;
             align-items: center;
-            font-size: 18px;
+            font-size: 16px;
         }
         .legend-color {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
             border-radius: 50%;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
-        @keyframes orbitGlow {
-            0% { box-shadow: 0 0 25px #00BFFF; }
-            50% { box-shadow: 0 0 35px #00BFFF; }
-            100% { box-shadow: 0 0 25px #00BFFF; }
         }
 
         #roadmap {
             background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa') no-repeat center / cover;
             background-color: rgba(0, 0, 0, 0.85);
         }
-        #roadmap h3 {
-            color: #FFD700;
-            text-shadow: 0 0 8px #FFD700;
-            margin-bottom: 40px;
-        }
+        #roadmap h3 { color: #FFD700; }
         .roadmap-item {
             background: rgba(0, 0, 0, 0.9);
             border: 1px solid #00BFFF;
             border-radius: 8px;
-            padding: 20px;
-            margin: 15px 0;
-            box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
-            transition: all 0.3s ease;
+            padding: 15px;
+            margin: 10px 0;
         }
-        .roadmap-item:hover {
-            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
-            transform: translateY(-3px);
-        }
-        .roadmap-item h4 {
-            color: #00BFFF;
-            font-size: 20px;
-            margin: 0 0 10px;
-            text-align: left;
-            text-shadow: 0 0 5px #00BFFF;
-            font-style: normal;
-        }
-        .roadmap-item p {
-            font-size: 16px;
-            color: #E0E0E0;
-            margin: 0;
-            line-height: 1.5;
-        }
+        .roadmap-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
+        .roadmap-item p { font-size: 14px; margin: 0; line-height: 1.5; }
 
         #how-to-buy {
             background: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d') no-repeat center / cover;
             background-color: rgba(0, 0, 0, 0.85);
         }
-        #how-to-buy h3 {
-            color: #FFD700;
-            text-shadow: 0 0 8px #FFD700;
-            margin-bottom: 40px;
-        }
-        #how-to-buy h4:not(.how-to-buy-item h4) {
-            color: #E0E0E0;
-            text-shadow: 0 0 5px #00BFFF;
-        }
+        #how-to-buy h3 { color: #FFD700; }
+        #how-to-buy h4:not(.how-to-buy-item h4) { color: #E0E0E0; }
         .how-to-buy-item {
             background: rgba(0, 0, 0, 0.9);
             border: 1px solid #00BFFF;
             border-radius: 8px;
-            padding: 20px;
-            margin: 15px 0;
-            box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
-        }
-        .how-to-buy-item h4 {
-            color: #00BFFF;
-            font-size: 20px;
-            margin: 0 0 10px;
-            text-align: left;
-            text-shadow: 0 0 5px #00BFFF;
-            font-style: normal;
-        }
-        .how-to-buy-item p {
-            font-size: 16px;
-            color: #E0E0E0;
-            margin: 0;
-            line-height: 1.5;
-        }
-        #how-to-buy .bonus-tip {
-            font-size: 16px;
-            font-style: italic;
-            margin-top: 30px;
-            border: 1px dashed #8247E5;
             padding: 15px;
+            margin: 10px 0;
+        }
+        .how-to-buy-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
+        .how-to-buy-item p { font-size: 14px; margin: 0; line-height: 1.5; }
+        #how-to-buy .bonus-tip {
+            font-size: 14px;
+            font-style: italic;
+            margin-top: 20px;
+            border: 1px dashed #8247E5;
+            padding: 10px;
             background: rgba(130, 71, 229, 0.1);
             border-radius: 8px;
         }
         #how-to-buy .cta-button {
-            margin: 40px auto 0;
+            margin: 30px auto 0;
             display: block;
-            width: 220px;
+            width: 200px;
         }
 
         #faq {
             background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center / cover;
             background-color: rgba(0, 0, 0, 0.85);
         }
-        #faq h3 {
-            color: #FFD700;
-            text-shadow: 0 0 8px #FFD700;
-            font-size: 42px;
-            margin-bottom: 40px;
-        }
+        #faq h3 { color: #FFD700; font-size: 36px; }
         .faq-item {
             background: rgba(0, 0, 0, 0.9);
             border: 1px solid #00BFFF;
             border-radius: 8px;
-            padding: 20px;
-            margin: 15px 0;
-            box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+            padding: 15px;
+            margin: 10px 0;
         }
-        .faq-item h4 {
-            color: #00BFFF;
-            font-size: 20px;
-            margin: 0 0 10px;
-            text-align: left;
-            text-shadow: 0 0 5px #00BFFF;
-            font-style: normal;
-        }
-        .faq-item p {
-            font-size: 16px;
-            color: #E0E0E0;
-            margin: 0;
-            line-height: 1.5;
-        }
+        .faq-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
+        .faq-item p { font-size: 14px; margin: 0; line-height: 1.5; }
     </style>
 </head>
 <body>
@@ -569,7 +394,7 @@
     <section id="hero">
         <h1>
             <span class="breaking">BREAKING THE CHAINS</span>
-            <span class="doji"> <span class="token-doji">$DOJI</span> </span>
+            <span class="doji"><span class="token-doji">$DOJI</span></span>
             <span class="bites">BITES BACK!</span>
         </h1>
         <h2>Awaken the Jedi—Join the Force!</h2>
@@ -684,9 +509,6 @@
     </section>
 
     <section id="moonshot">
-        <div class="moon-graphic"></div>
-        <div class="moon-graphic"></div>
-        <div class="moon-graphic"></div>
         <h3>100X MOONSHOT</h3>
         <p><span class="token-doji">$DOJI</span> is engineered for a hyperspace leap to the moons of fortune! Powered by xAI’s cutting-edge analytics, this memecoin is preprogrammed for a 100x surge post-launch. With token burns slashing supply, a 13-stage presale igniting demand, and strategic liquidity drops on DEXs and CEXs, <span class="token-doji">$DOJI</span>’s trajectory is set to blast past the stars. The Force is strong with this one—join early to ride the galactic wave to a $0.05 valuation and beyond!</p>
     </section>
@@ -840,7 +662,7 @@
                 const targetElement = document.getElementById(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 140, /* Increased for wider header */
+                        top: targetElement.offsetTop - 70,
                         behavior: 'smooth'
                     });
                 }
