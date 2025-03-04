@@ -199,11 +199,11 @@
             height: 100%;
             border-radius: 50%;
             background: conic-gradient(
-                #00BFFF 0% 25%,    /* Presale: Lightsaber Blue */
-                #FFD700 25% 55%,   /* Liquidity: Gold */
-                #00FF00 55% 65%,   /* Community Rewards: Lightsaber Green */
-                #8247E5 65% 85%,   /* Roadmap/Development: Purple */
-                #FF4500 85% 100%   /* Team: Sith Red */
+                #4682B4 0% 25%,    /* Presale: Steel Blue (muted Jedi blue) */
+                #DAA520 25% 55%,   /* Liquidity: Goldenrod (muted gold) */
+                #2E8B57 55% 65%,   /* Community Rewards: Sea Green (muted Jedi green) */
+                #483D8B 65% 85%,   /* Roadmap/Development: Dark Slate Blue (muted purple) */
+                #8B0000 85% 100%   /* Team: Dark Red (muted Sith red) */
             );
             border: 4px solid #333333; /* Dark metallic edge */
             box-shadow: 0 0 25px #00BFFF, inset 0 0 15px rgba(0, 191, 255, 0.5);
@@ -211,14 +211,26 @@
             position: relative;
             animation: orbitGlow 12s infinite linear; /* Galactic orbit effect */
             transition: transform 0.5s ease, box-shadow 0.3s ease;
-            background-image: radial-gradient(circle at 30% 30%, rgba(50, 50, 50, 0.8) 0%, rgba(0, 0, 0, 0.9) 70%); /* Death Star texture */
+            z-index: 2;
+        }
+        .pie-chart::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(50, 50, 50, 0.6) 0%, rgba(0, 0, 0, 0.8) 70%); /* Death Star texture */
+            border-radius: 50%;
+            opacity: 0.5; /* Reduced opacity to show slices */
+            z-index: 1;
         }
         .pie-chart:hover {
             transform: rotateX(0deg) rotateY(0deg) scale(1.05); /* Flatten and zoom */
             box-shadow: 0 0 40px #00BFFF, inset 0 0 20px rgba(0, 191, 255, 0.7);
         }
         /* Death Star dish effect */
-        .pie-chart::before {
+        .pie-chart::after {
             content: '';
             position: absolute;
             top: 15%;
@@ -228,10 +240,10 @@
             background: radial-gradient(circle, rgba(0, 0, 0, 0.9) 20%, rgba(50, 50, 50, 0.6) 60%, transparent 70%);
             border-radius: 50%;
             box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
-            z-index: 1;
+            z-index: 3;
         }
         /* Lightsaber glow */
-        .pie-chart::after {
+        .pie-chart-container::before {
             content: '';
             position: absolute;
             top: -10px;
@@ -414,23 +426,23 @@
         </div>
         <div class="pie-chart-legend">
             <div class="legend-item">
-                <div class="legend-color" style="background: #00BFFF;"></div>
+                <div class="legend-color" style="background: #4682B4;"></div>
                 Presale: 25%
             </div>
             <div class="legend-item">
-                <div class="legend-color" style="background: #FFD700;"></div>
+                <div class="legend-color" style="background: #DAA520;"></div>
                 Liquidity: 30%
             </div>
             <div class="legend-item">
-                <div class="legend-color" style="background: #00FF00;"></div>
+                <div class="legend-color" style="background: #2E8B57;"></div>
                 Community Rewards: 10%
             </div>
             <div class="legend-item">
-                <div class="legend-color" style="background: #8247E5;"></div>
+                <div class="legend-color" style="background: #483D8B;"></div>
                 Roadmap/Development: 20%
             </div>
             <div class="legend-item">
-                <div class="legend-color" style="background: #FF4500;"></div>
+                <div class="legend-color" style="background: #8B0000;"></div>
                 Team: 15%
             </div>
         </div>
