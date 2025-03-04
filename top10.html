@@ -142,4 +142,192 @@
                 <a href="#about">About</a>
             </nav>
             <div class="hamburger" onclick="toggleNav()">☰</div>
-            <input type="text" class="search-bar" placeholder="Search
+            <input type="text" class="search-bar" placeholder="Search cryptos..." aria-label="Search cryptocurrencies">
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Top 10 Cryptos to Buy Now 2025</h1>
+        <p>Discover the best cryptocurrencies for 2025, ranked by presale success, utility, and community hype, featuring DOJI-1-KENOBI ($DOJI) and more.</p>
+        <button class="cta-button" onclick="document.getElementById('top10').scrollIntoView({behavior: 'smooth'})">Explore the Top 10</button>
+    </section>
+
+    <section id="top10">
+        <h2>Top 10 Cryptocurrencies for 2025</h2>
+        <div class="sort-filter">
+            <select onchange="sortList(this.value)" aria-label="Sort cryptocurrency list">
+                <option value="rank">Sort by Rank</option>
+                <option value="price">Sort by Price</option>
+            </select>
+        </div>
+        <div class="top10-list" id="top10List">
+            <div class="top10-item" data-price="0.0005">
+                <div>
+                    <h3>#1 <a href="https://wolfe1104.github.io/Doge1-presale/" target="_blank">DOJI-1-KENOBI ($DOJI)</a></h3>
+                    <p>A lunar-inspired token on Polygon, aiming for a 100x moonshot with xAI-powered analytics and a 13-stage presale.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$0.0005</p>
+                    <p>24h: +4.2%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="1.20">
+                <div>
+                    <h3>#2 <a href="https://solaxy.io/" target="_blank">Solaxy (SOLX)</a></h3>
+                    <p>Solana’s first Layer-2 solution with high staking rewards and cross-chain compatibility.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$1.20</p>
+                    <p>24h: +5.1%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="0.03">
+                <div>
+                    <h3>#3 <a href="https://wallstreetpepe.com/" target="_blank">Wall Street Pepe (WEPE)</a></h3>
+                    <p>A meme coin offering trading signals, backed by a $25M presale.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$0.03</p>
+                    <p>24h: +3.8%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="0.85">
+                <div>
+                    <h3>#4 <a href="https://memeindex.io/" target="_blank">Meme Index (MEMEX)</a></h3>
+                    <p>First decentralized meme coin index with staking and governance.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$0.85</p>
+                    <p>24h: +2.0%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="0.45">
+                <div>
+                    <h3>#5 <a href="https://bestwallet.com/" target="_blank">Best Wallet Token (BEST)</a></h3>
+                    <p>Utility token for a non-custodial wallet with presale access perks.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$0.45</p>
+                    <p>24h: +4.5%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="2.10">
+                <div>
+                    <h3>#6 <a href="https://btcbulltoken.com/" target="_blank">BTCBULL</a></h3>
+                    <p>Ethereum-based token rewarding holders with Bitcoin airdrops.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$2.10</p>
+                    <p>24h: +1.9%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="0.95">
+                <div>
+                    <h3>#7 <a href="https://thelastdwarfs.com/" target="_blank">The Last Dwarfs (TLD)</a></h3>
+                    <p>GameFi project with 300K+ users and Play-to-Invest mechanics.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$0.95</p>
+                    <p>24h: +6.2%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="0.02">
+                <div>
+                    <h3>#8 <a href="https://pepeunchained.com/" target="_blank">Pepe Unchained (PEPU)</a></h3>
+                    <p>Pepe reborn with DeFi and Layer-2, raised $39M in presale.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$0.02</p>
+                    <p>24h: +7.1%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="0.15">
+                <div>
+                    <h3>#9 <a href="https://flockerz.com/" target="_blank">Flockerz (FLOCK)</a></h3>
+                    <p>Bird-themed meme coin with DAO and $8.9M presale success.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$0.15</p>
+                    <p>24h: +3.3%</p>
+                </div>
+            </div>
+            <div class="top10-item" data-price="0.008">
+                <div>
+                    <h3>#10 <a href="https://catslap.xyz/" target="_blank">Catslap (SLAP)</a></h3>
+                    <p>Cat-themed coin with slap-to-earn, up 4,600% since launch.</p>
+                </div>
+                <div class="stats">
+                    <p class="price">$0.008</p>
+                    <p>24h: +9.5%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Top 10 Cryptos</h2>
+        <p>Welcome to Top 10 Cryptos to Buy Now, your premier guide to the best cryptocurrencies of 2025. Led by DOJI-1-KENOBI ($DOJI), our expertly curated list combines cutting-edge analysis, presale performance, and community insights to empower your investment journey. Whether you're a seasoned trader or new to crypto, we’re here to light the way to the moon!</p>
+    </section>
+
+    <section id="compare">
+        <h2>Compare Cryptocurrencies</h2>
+        <p class="placeholder">Coming Soon: Compare your favorite top 10 cryptos side-by-side with detailed metrics like price, market cap, and staking yields. Stay tuned for this powerful tool!</p>
+    </section>
+
+    <section id="news">
+        <h2>Timeless Crypto News</h2>
+        <div class="news-list">
+            <div class="news-item">
+                <h3>$DOJI Launches 13-Stage Presale</h3>
+                <p>DOJI-1-KENOBI ($DOJI) kicks off its ambitious 13-stage presale on Polygon, starting at $0.0005 and targeting $0.01, blending Jedi lore with xAI analytics for a lunar ascent.</p>
+            </div>
+            <div class="news-item">
+                <h3>Bitcoin Halving Impacts Market</h3>
+                <p>The recurring Bitcoin halving event reduces mining rewards, historically driving price surges and influencing altcoin growth, a trend expected to shape 2025 markets.</p>
+            </div>
+            <div class="news-item">
+                <h3>Ethereum’s Layer-2 Boom</h3>
+                <p>Ethereum’s scaling solutions, like Polygon, fuel low-fee, high-speed transactions, cementing their role as DeFi and meme coin hubs into the future.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="community">
+        <h2>Crypto Community Hub</h2>
+        <p class="placeholder">Join the conversation! Our community hub is coming soon with forums, polls, and more to connect with fellow crypto enthusiasts.</p>
+    </section>
+
+    <script>
+        function toggleNav() {
+            const nav = document.getElementById('navMenu');
+            nav.classList.toggle('nav-active');
+        }
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                if (window.innerWidth <= 768) toggleNav();
+            });
+        });
+        function sortList(criteria) {
+            const list = document.getElementById('top10List');
+            const items = Array.from(list.getElementsByClassName('top10-item'));
+            if (criteria === 'price') {
+                items.sort((a, b) => {
+                    const priceA = parseFloat(a.getAttribute('data-price')) || 0;
+                    const priceB = parseFloat(b.getAttribute('data-price')) || 0;
+                    return priceB - priceA;
+                });
+            } else {
+                items.sort((a, b) => {
+                    const rankA = Array.from(list.children).indexOf(a);
+                    const rankB = Array.from(list.children).indexOf(b);
+                    return rankA - rankB;
+                });
+            }
+            items.forEach(item => list.appendChild(item));
+        }
+    </script>
+</body>
+</html>
