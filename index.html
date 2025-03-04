@@ -140,7 +140,7 @@
         }
         .slider-container {
             position: relative;
-            width: 860px; /* 3 boxes (280px) + 2 gaps (20px each) + arrow space */
+            width: 740px; /* 2 boxes (360px) + 1 gap (20px) + arrow space */
             max-width: 100%;
             margin: 0 auto;
             overflow: hidden;
@@ -151,8 +151,8 @@
             touch-action: pan-y;
         }
         .presale-box {
-            min-width: 280px;
-            width: 280px;
+            min-width: 360px; /* Larger boxes */
+            width: 360px;
             height: 180px;
             margin: 0 10px;
             background: rgba(0, 0, 0, 0.9);
@@ -168,11 +168,11 @@
         .presale-box.future { opacity: 0.8; }
         .presale-box h4 {
             color: #00BFFF;
-            font-size: 16px;
+            font-size: 18px; /* Slightly larger text */
             margin: 0 0 10px;
         }
         .presale-box p {
-            font-size: 14px;
+            font-size: 16px; /* Slightly larger text */
             color: #E0E0E0;
             margin: 5px 0;
         }
@@ -188,7 +188,7 @@
         }
         .progress-bar {
             width: 100%;
-            height: 6px;
+            height: 8px; /* Slightly thicker bar */
             background: #333;
             border-radius: 4px;
             overflow: hidden;
@@ -220,9 +220,9 @@
         .arrow.right { right: 0; color: #FF0000; }
         .arrow:hover:not(.disabled) { opacity: 1; color: #FFFFFF; }
 
-        @media (max-width: 880px) { /* 860px + some padding */
+        @media (max-width: 760px) { /* 740px + some padding */
             .slider-container { width: 100%; }
-            .presale-box { min-width: calc((100% - 40px) / 3); width: calc((100% - 40px) / 3); } /* 3 boxes fit container */
+            .presale-box { min-width: calc((100% - 20px) / 2); width: calc((100% - 20px) / 2); } /* 2 boxes fit container */
             .arrow { font-size: 20px; padding: 6px 10px; }
             #presale h3 { font-size: 28px; }
         }
@@ -632,8 +632,8 @@
         const rightArrow = document.getElementById('rightArrow');
         const boxes = document.querySelectorAll('.presale-box');
         const totalBoxes = boxes.length;
-        let currentIndex = Array.from(boxes).findIndex(box => box.classList.contains('current')) || 0;
-        const visibleBoxes = 3; // Always show 3 boxes
+        let currentIndex = 0; // Always start at Stage 1 (index 0)
+        const visibleBoxes = 2; // Always show 2 boxes
 
         // Core slider update function
         function updateSlider() {
