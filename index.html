@@ -197,11 +197,23 @@
 
         /* Roadmap Section */
         #roadmap ol {
-            padding-left: 30px;
+            padding-left: 0; /* Adjusted to center boxes */
+            list-style-position: inside; /* Keeps numbers inside boxes */
         }
         #roadmap li {
-            margin: 25px 0;
+            margin: 20px auto; /* Centered with spacing */
             font-size: 20px;
+            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.9); /* Same as header with overlay */
+            background-size: cover;
+            border: 1px solid #00BFFF; /* Light blue border */
+            padding: 20px; /* Inner spacing */
+            border-radius: 5px; /* Rounded corners */
+            max-width: 700px; /* Limits box width */
+            transition: all 0.3s ease; /* Smooth transition for effects */
+        }
+        #roadmap li:hover {
+            box-shadow: 0 0 15px #00BFFF; /* Glow effect on hover */
+            transform: scale(1.02); /* Slight scale-up on hover */
         }
 
         /* How to Buy Section */
@@ -212,7 +224,8 @@
         #how-to-buy li {
             margin: 20px auto; /* Centered with spacing */
             font-size: 20px;
-            background: rgba(0, 0, 0, 0.9); /* Darker box background */
+            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.9); /* Same as header with overlay */
+            background-size: cover;
             border: 1px solid #00BFFF; /* Light blue border */
             padding: 20px; /* Inner spacing */
             border-radius: 5px; /* Rounded corners */
