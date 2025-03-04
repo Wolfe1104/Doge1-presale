@@ -6,7 +6,6 @@
     <title>DOJI-1-KENOBI Presale</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Apply box-sizing globally to prevent overflow issues */
         * {
             box-sizing: border-box;
         }
@@ -27,7 +26,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px; /* Reduced height */
+            padding: 15px 20px;
             background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47') no-repeat center / cover;
             position: fixed;
             width: 100%;
@@ -35,20 +34,20 @@
             left: 0;
             z-index: 1000;
             border-bottom: 2px solid #00BFFF;
-            height: 60px; /* Fixed height for 1-2 rows */
+            height: 60px;
         }
         .logo-container {
             display: flex;
             align-items: center;
         }
         .logo {
-            width: 40px; /* Reduced size */
+            width: 40px;
             height: 40px;
             background: url('logo.webp') no-repeat;
             background-size: cover;
         }
         .logo-text {
-            font-size: 18px; /* Reduced size */
+            font-size: 18px;
             font-weight: bold;
             color: #00BFFF;
             margin-left: 10px;
@@ -57,7 +56,7 @@
             position: relative;
         }
         .hamburger {
-            font-size: 24px; /* Reduced size */
+            font-size: 24px;
             color: #00BFFF;
             cursor: pointer;
         }
@@ -86,7 +85,7 @@
 
         #hero {
             text-align: center;
-            padding: 100px 20px 40px; /* Adjusted for smaller header */
+            padding: 100px 20px 40px;
             background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover;
             background-color: rgba(0, 0, 0, 0.8);
             border: 2px solid #00BFFF;
@@ -625,40 +624,50 @@
     <script>
         const sliderTrack = document.getElementById('sliderTrack');
         const boxes = document.querySelectorAll('.presale-box');
-        let currentStage = 0;
-        let currentPosition = 0;
-        let slideWidth = 0;
+        const totalBoxes = boxes.length;
+        let currentIndex = 0; // Start at the first box
+        let boxWidth = 0;
 
-        function updateSlideWidth() {
-            const boxWidth = boxes[0].offsetWidth + 20;
-            slideWidth = boxWidth;
-            const totalWidth = boxes.length * boxWidth;
+        // Calculate the width of one box including margins
+        function updateBoxWidth() {
+            boxWidth = boxes[0].offsetWidth + 20; // Include margin (10px left + 10px right)
+            const totalWidth = totalBoxes * boxWidth;
             sliderTrack.style.width = `${totalWidth}px`;
-            const maxPosition = 0;
-            const minPosition = -(totalWidth - (window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1) * boxWidth);
-            currentPosition = -currentStage * boxWidth + (window.innerWidth > 768 ? boxWidth : window.innerWidth > 480 ? boxWidth / 2 : 0);
-            if (currentPosition > maxPosition) currentPosition = maxPosition;
-            if (currentPosition < minPosition) currentPosition = minPosition;
-            sliderTrack.style.transform = `translateX(${currentPosition}px)`;
+            updateSliderPosition();
         }
 
+        // Update the slider position based on currentIndex
+        function updateSliderPosition() {
+            const maxVisibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
+            const maxIndex = totalBoxes - maxVisibleBoxes;
+            if (currentIndex < 0) currentIndex = 0;
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            const newPosition = -currentIndex * boxWidth;
+            sliderTrack.style.transform = `translateX(${newPosition}px)`;
+        }
+
+        // Slide left (move to previous box)
         function slideLeft() {
-            const maxPosition = 0;
-            currentPosition += slideWidth;
-            if (currentPosition > maxPosition) currentPosition = maxPosition;
-            sliderTrack.style.transform = `translateX(${currentPosition}px)`;
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSliderPosition();
+            }
         }
 
+        // Slide right (move to next box)
         function slideRight() {
-            const minPosition = -(boxes.length * slideWidth - (window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1) * slideWidth);
-            currentPosition -= slideWidth;
-            if (currentPosition < minPosition) currentPosition = minPosition;
-            sliderTrack.style.transform = `translateX(${currentPosition}px)`;
+            const maxVisibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
+            if (currentIndex < totalBoxes - maxVisibleBoxes) {
+                currentIndex++;
+                updateSliderPosition();
+            }
         }
 
-        window.addEventListener('load', updateSlideWidth);
-        window.addEventListener('resize', updateSlideWidth);
+        // Initialize slider on load and resize
+        window.addEventListener('load', updateBoxWidth);
+        window.addEventListener('resize', updateBoxWidth);
 
+        // Smooth scrolling for dropdown menu
         document.querySelectorAll('.dropdown-content a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
