@@ -141,16 +141,17 @@
         .slider-container {
             position: relative;
             width: 100%;
-            max-width: 860px; /* Adjusted for padding and arrows */
+            max-width: 860px;
             margin: 0 auto;
             overflow: hidden;
         }
         .slider-track {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            touch-action: pan-y; /* Prevents vertical scrolling while swiping horizontally */
         }
         .presale-box {
-            min-width: 280px; /* Fixed min-width for consistency */
+            min-width: 280px;
             width: 280px;
             height: 180px;
             margin: 0 10px;
@@ -636,8 +637,9 @@
         let currentIndex = Array.from(boxes).findIndex(box => box.classList.contains('current')) || 0;
         const visibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
 
+        // Core slider update function
         function updateSlider() {
-            const boxWidth = boxes[0].offsetWidth + 20; // Width + margins (10px left + 10px right)
+            const boxWidth = boxes[0].offsetWidth + 20; // Width + margins
             const maxIndex = totalBoxes - visibleBoxes;
             currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
             const translateX = -currentIndex * boxWidth;
@@ -650,12 +652,11 @@
             console.log(`Slider updated: currentIndex=${currentIndex}, translateX=${translateX}, visibleBoxes=${visibleBoxes}`);
         }
 
+        // Arrow controls
         function slideLeft() {
             if (currentIndex > 0) {
                 currentIndex--;
                 updateSlider();
-            } else {
-                console.log('Cannot slide left: already at start');
             }
         }
 
@@ -664,10 +665,49 @@
             if (currentIndex < maxIndex) {
                 currentIndex++;
                 updateSlider();
-            } else {
-                console.log('Cannot slide right: already at end');
             }
         }
+
+        // Touch handling
+        let touchStartX = 0;
+        let touchCurrentX = 0;
+        let isDragging = false;
+
+        sliderTrack.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            isDragging = true;
+            sliderTrack.style.transition = 'none'; // Disable transition during drag
+            console.log(`Touch started at X=${touchStartX}`);
+        });
+
+        sliderTrack.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            touchCurrentX = e.touches[0].clientX;
+            const diffX = touchCurrentX - touchStartX;
+            const boxWidth = boxes[0].offsetWidth + 20;
+            const currentTranslateX = -currentIndex * boxWidth;
+            sliderTrack.style.transform = `translateX(${currentTranslateX + diffX}px)`;
+            e.preventDefault(); // Prevent scrolling
+        });
+
+        sliderTrack.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            sliderTrack.style.transition = 'transform 0.5s ease-in-out'; // Re-enable transition
+            const diffX = touchCurrentX - touchStartX;
+            const boxWidth = boxes[0].offsetWidth + 20;
+            const threshold = boxWidth / 3; // Swipe threshold (1/3 of box width)
+
+            if (Math.abs(diffX) > threshold) {
+                if (diffX > 0 && currentIndex > 0) {
+                    currentIndex--; // Swipe right (move left)
+                } else if (diffX < 0 && currentIndex < totalBoxes - visibleBoxes) {
+                    currentIndex++; // Swipe left (move right)
+                }
+            }
+            updateSlider();
+            console.log(`Touch ended: diffX=${diffX}, newIndex=${currentIndex}`);
+        });
 
         // Initialize slider
         window.addEventListener('load', () => {
