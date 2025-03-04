@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the Top 10 Cryptos to Buy Now in 2025, led by Doge1 (DOGE1), a lunar-inspired token with a 100x moonshot potential. Get real-time prices, expert insights, and the best picks for crypto investors.">
     <title>Top 10 Cryptos to Buy Now</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -14,7 +15,7 @@
         /* Header */
         header {
             background: #00BFFF;
-            padding: 15px 20px;
+            padding: 10px 15px; /* Reduced padding */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -22,14 +23,18 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            height: 40px; /* Fixed height */
         }
-        header .logo { font-size: 24px; font-weight: bold; color: #000; }
-        nav a { margin: 0 15px; color: #000; font-size: 16px; }
-        .search-bar { padding: 5px; border-radius: 4px; border: none; }
+        header .logo { font-size: 20px; font-weight: bold; color: #000; }
+        .nav-container { display: flex; align-items: center; }
+        nav { display: flex; gap: 20px; } /* Better spacing */
+        nav a { font-size: 14px; color: #000; } /* Smaller font */
+        .hamburger { display: none; font-size: 20px; cursor: pointer; color: #000; }
+        .search-bar { padding: 5px; border-radius: 4px; border: none; font-size: 12px; }
 
         /* Hero Section */
         .hero {
-            padding: 100px 20px 40px;
+            padding: 80px 20px 40px; /* Adjusted for shorter header */
             text-align: center;
             background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover;
             background-color: rgba(0, 0, 0, 0.8);
@@ -96,7 +101,10 @@
             .crypto-tile { width: 100%; max-width: 300px; }
             .top10-item { flex-direction: column; text-align: center; }
             .top10-item .stats { text-align: center; margin-top: 10px; }
-            nav a { margin: 0 5px; font-size: 14px; }
+            nav { display: none; } /* Hide nav links */
+            .hamburger { display: block; } /* Show hamburger */
+            .nav-active { display: flex; flex-direction: column; position: absolute; top: 40px; right: 15px; background: #00BFFF; padding: 10px; border-radius: 4px; }
+            .nav-active a { margin: 5px 0; }
         }
     </style>
 </head>
@@ -104,15 +112,18 @@
     <!-- Header -->
     <header>
         <div class="logo">Top 10 Cryptos</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#top10">Top 10</a>
-            <a href="#compare">Compare</a>
-            <a href="#news">News</a>
-            <a href="#community">Community</a>
-            <a href="#about">About</a>
-        </nav>
-        <input type="text" class="search-bar" placeholder="Search cryptos...">
+        <div class="nav-container">
+            <nav id="navMenu">
+                <a href="#home">Home</a>
+                <a href="#top10">Top 10</a>
+                <a href="#compare">Compare</a>
+                <a href="#news">News</a>
+                <a href="#community">Community</a>
+                <a href="#about">About</a>
+            </nav>
+            <div class="hamburger" onclick="toggleNav()">☰</div>
+            <input type="text" class="search-bar" placeholder="Search cryptos...">
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -121,9 +132,9 @@
         <p>Discover the best cryptocurrencies for 2025, ranked by presale success, utility, and community hype.</p>
         <div class="crypto-grid">
             <div class="crypto-tile">
-                <h3>#1 [Your Crypto]</h3>
-                <p class="price">$[Your Price]</p>
-                <p>[Your Tagline]</p>
+                <h3>#1 Doge1 (DOGE1)</h3>
+                <p class="price">$0.0005</p>
+                <p>Lunar Moonshot Leader</p>
             </div>
             <div class="crypto-tile">
                 <h3>#2 Solaxy (SOLX)</h3>
@@ -184,14 +195,14 @@
             </select>
         </div>
         <div class="top10-list" id="top10List">
-            <div class="top10-item" data-price="[Your Price]">
+            <div class="top10-item" data-price="0.0005">
                 <div>
-                    <h3>#1 [Your Crypto]</h3>
-                    <p>[Fill in your crypto’s description: utility, presale success, or unique features.]</p>
+                    <h3>#1 Doge1 (DOGE1)</h3>
+                    <p>A lunar-inspired token on Polygon, aiming for a 100x moonshot with xAI-powered analytics and a 13-stage presale.</p>
                 </div>
                 <div class="stats">
-                    <p class="price">$[Your Price]</p>
-                    <p>24h: [Your Change]</p>
+                    <p class="price">$0.0005</p>
+                    <p>24h: +4.2%</p>
                 </div>
             </div>
             <div class="top10-item" data-price="1.20">
@@ -289,12 +300,19 @@
 
     <!-- JavaScript -->
     <script>
+        // Toggle navigation for mobile
+        function toggleNav() {
+            const nav = document.getElementById('navMenu');
+            nav.classList.toggle('nav-active');
+        }
+
         // Smooth scrolling for navigation
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                if (window.innerWidth <= 768) toggleNav(); // Close menu on mobile
             });
         });
 
@@ -310,7 +328,6 @@
                     return priceB - priceA; // Descending order
                 });
             } else {
-                // Reset to original rank order
                 items.sort((a, b) => {
                     const rankA = Array.from(list.children).indexOf(a);
                     const rankB = Array.from(list.children).indexOf(b);
@@ -318,7 +335,6 @@
                 });
             }
 
-            // Re-append sorted items
             items.forEach(item => list.appendChild(item));
         }
     </script>
