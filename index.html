@@ -24,7 +24,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 25px 40px;
-            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center; /* Starry night */
+            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center;
             background-size: cover;
             position: fixed;
             width: 100%;
@@ -66,7 +66,7 @@
             display: none;
             position: absolute;
             right: 0;
-            background: rgba(0, 0, 0, 0.9); /* Darker for dropdown */
+            background: rgba(0, 0, 0, 0.9);
             min-width: 180px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             border: 1px solid #00BFFF;
@@ -90,7 +90,7 @@
         #hero {
             text-align: center;
             padding: 120px 40px 60px;
-            background: url('hero.webp') no-repeat center, rgba(0, 0, 0, 0.8); /* Darker translucent overlay */
+            background: url('hero.webp') no-repeat center, rgba(0, 0, 0, 0.8);
             background-size: cover;
             border: 2px solid #00BFFF;
             border-radius: 8px;
@@ -108,19 +108,19 @@
             display: block;
             max-width: 600px;
             margin: 0 auto;
-            font-size: 36px; /* Smaller size for BREAKING THE CHAINS */
+            font-size: 36px;
         }
         #hero .doji {
-            color: #00FF00; /* Changed to green */
-            text-shadow: 0 0 10px #00FF00; /* Matching green shadow */
+            color: #00FF00;
+            text-shadow: 0 0 10px #00FF00;
             display: inline;
-            font-size: 54px; /* Same size as h1 */
+            font-size: 54px;
         }
         #hero .bites {
             color: #00BFFF;
             text-shadow: 0 0 10px #00BFFF;
             display: block;
-            font-size: 54px; /* Same size as h1 */
+            font-size: 54px;
         }
         #hero h2 {
             font-size: 28px;
@@ -154,7 +154,7 @@
             padding: 80px 40px;
             max-width: 900px;
             margin: 20px auto;
-            background: rgba(0, 0, 0, 0.8); /* Darker translucent overlay */
+            background: rgba(0, 0, 0, 0.8);
             border: 2px solid #00BFFF;
             border-radius: 8px;
         }
@@ -174,7 +174,7 @@
 
         /* About Section */
         #about {
-            background: url('about.jpg') no-repeat center, rgba(0, 0, 0, 0.8); /* Darker translucent overlay */
+            background: url('about.jpg') no-repeat center, rgba(0, 0, 0, 0.8);
             background-size: cover;
         }
         #about p {
@@ -185,10 +185,18 @@
         /* Tokenomics Section */
         #tokenomics {
             text-align: center;
+            position: relative;
+        }
+        .pie-chart-container {
+            width: 350px;
+            height: 350px;
+            margin: 0 auto 30px;
+            perspective: 1000px; /* Adds 3D depth */
+            position: relative;
         }
         .pie-chart {
-            width: 300px;
-            height: 300px;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             background: conic-gradient(
                 #00BFFF 0% 25%,    /* Presale: 25% */
@@ -197,10 +205,60 @@
                 #8247E5 65% 85%,   /* Roadmap/Development: 20% */
                 #FF4500 85% 100%   /* Team: 15% */
             );
-            margin: 0 auto 20px;
-            border: 2px solid #00BFFF;
-            box-shadow: 0 0 15px #00BFFF;
+            border: 3px solid #00BFFF;
+            box-shadow: 0 0 20px #00BFFF, inset 0 0 15px rgba(0, 191, 255, 0.5);
+            transform: rotateX(20deg); /* 3D tilt */
+            animation: spinGlow 10s infinite linear; /* Subtle rotation glow */
             position: relative;
+            transition: transform 0.5s ease;
+        }
+        .pie-chart:hover {
+            transform: rotateX(0deg) scale(1.05); /* Flatten and zoom on hover */
+            box-shadow: 0 0 30px #00BFFF, inset 0 0 20px rgba(0, 191, 255, 0.7);
+        }
+        /* Inner glow effect */
+        .pie-chart::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        /* Tooltip styles */
+        .pie-chart-container [data-tooltip] {
+            position: relative;
+        }
+        .pie-chart-container [data-tooltip]::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: #00BFFF;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s;
+            z-index: 10;
+            box-shadow: 0 0 10px #00BFFF;
+        }
+        .pie-chart-container:hover [data-tooltip]::after {
+            opacity: 1;
+            visibility: visible;
+        }
+        /* Animation keyframes */
+        @keyframes spinGlow {
+            0% { box-shadow: 0 0 20px #00BFFF, inset 0 0 15px rgba(0, 191, 255, 0.5); }
+            50% { box-shadow: 0 0 30px #00BFFF, inset 0 0 20px rgba(0, 191, 255, 0.7); }
+            100% { box-shadow: 0 0 20px #00BFFF, inset 0 0 15px rgba(0, 191, 255, 0.5); }
         }
         .pie-chart-legend {
             display: flex;
@@ -213,6 +271,10 @@
             display: flex;
             align-items: center;
             font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+        .legend-item:hover {
+            transform: scale(1.1);
         }
         .legend-color {
             width: 20px;
@@ -220,48 +282,52 @@
             margin-right: 10px;
             border-radius: 50%;
             box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            transition: box-shadow 0.3s ease;
+        }
+        .legend-item:hover .legend-color {
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
         /* Roadmap Section */
         #roadmap ol {
-            padding-left: 0; /* Adjusted to center boxes */
-            list-style-position: inside; /* Keeps numbers inside boxes */
+            padding-left: 0;
+            list-style-position: inside;
         }
         #roadmap li {
-            margin: 20px auto; /* Centered with spacing */
+            margin: 20px auto;
             font-size: 20px;
-            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.9); /* Same as header with overlay */
+            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.9);
             background-size: cover;
-            border: 1px solid #00BFFF; /* Light blue border */
-            padding: 20px; /* Inner spacing */
-            border-radius: 5px; /* Rounded corners */
-            max-width: 700px; /* Limits box width */
-            transition: all 0.3s ease; /* Smooth transition for effects */
+            border: 1px solid #00BFFF;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 700px;
+            transition: all 0.3s ease;
         }
         #roadmap li:hover {
-            box-shadow: 0 0 15px #00BFFF; /* Glow effect on hover */
-            transform: scale(1.02); /* Slight scale-up on hover */
+            box-shadow: 0 0 15px #00BFFF;
+            transform: scale(1.02);
         }
 
         /* How to Buy Section */
         #how-to-buy ol {
-            padding-left: 0; /* Adjusted to center boxes */
-            list-style-position: inside; /* Keeps numbers inside boxes */
+            padding-left: 0;
+            list-style-position: inside;
         }
         #how-to-buy li {
-            margin: 20px auto; /* Centered with spacing */
+            margin: 20px auto;
             font-size: 20px;
-            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.9); /* Same as header with overlay */
+            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center, rgba(0, 0, 0, 0.9);
             background-size: cover;
-            border: 1px solid #00BFFF; /* Light blue border */
-            padding: 20px; /* Inner spacing */
-            border-radius: 5px; /* Rounded corners */
-            max-width: 700px; /* Limits box width */
-            transition: all 0.3s ease; /* Smooth transition for effects */
+            border: 1px solid #00BFFF;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 700px;
+            transition: all 0.3s ease;
         }
         #how-to-buy li:hover {
-            box-shadow: 0 0 15px #00BFFF; /* Glow effect on hover */
-            transform: scale(1.02); /* Slight scale-up on hover */
+            box-shadow: 0 0 15px #00BFFF;
+            transform: scale(1.02);
         }
         #how-to-buy .bonus-tip {
             font-size: 18px;
@@ -322,7 +388,9 @@
     <!-- Tokenomics Section -->
     <section id="tokenomics">
         <h3>Tokenomics</h3>
-        <div class="pie-chart"></div>
+        <div class="pie-chart-container">
+            <div class="pie-chart" data-tooltip="Hover for Details"></div>
+        </div>
         <div class="pie-chart-legend">
             <div class="legend-item">
                 <div class="legend-color" style="background: #00BFFF;"></div>
