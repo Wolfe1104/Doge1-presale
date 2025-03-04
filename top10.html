@@ -14,8 +14,8 @@
 
         /* Header */
         header {
-            background: #00BFFF;
-            padding: 10px 15px; /* Reduced padding */
+            background: linear-gradient(90deg, #00BFFF, #00FFFF); /* Gradient for flair */
+            padding: 10px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -23,77 +23,134 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            height: 40px; /* Fixed height */
+            height: 40px;
+            box-shadow: 0 2px 10px rgba(0, 191, 255, 0.5); /* Subtle glow */
         }
-        header .logo { font-size: 20px; font-weight: bold; color: #000; }
+        header .logo { font-size: 20px; font-weight: 700; color: #000; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); }
         .nav-container { display: flex; align-items: center; }
-        nav { display: flex; gap: 20px; } /* Better spacing */
-        nav a { font-size: 14px; color: #000; } /* Smaller font */
+        nav { display: flex; gap: 20px; }
+        nav a { font-size: 14px; color: #000; font-weight: 700; transition: color 0.3s; }
+        nav a:hover { color: #FFD700; }
         .hamburger { display: none; font-size: 20px; cursor: pointer; color: #000; }
-        .search-bar { padding: 5px; border-radius: 4px; border: none; font-size: 12px; }
+        .search-bar { padding: 5px 10px; border-radius: 15px; border: none; font-size: 12px; background: rgba(255, 255, 255, 0.9); }
+
+        /* Sections */
+        section { padding: 60px 20px; max-width: 1200px; margin: 20px auto; }
+        h1 { font-size: 48px; color: #00FF00; text-align: center; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0, 255, 0, 0.3); }
+        h2 { font-size: 36px; color: #00BFFF; text-align: center; margin-bottom: 30px; text-shadow: 1px 1px 3px rgba(0, 191, 255, 0.3); }
 
         /* Hero Section */
         .hero {
-            padding: 80px 20px 40px; /* Adjusted for shorter header */
+            padding: 80px 20px 40px;
             text-align: center;
             background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover;
             background-color: rgba(0, 0, 0, 0.8);
+            border-bottom: 2px solid #00BFFF;
         }
-        .hero h1 { font-size: 48px; margin: 0 0 20px; color: #00FF00; }
         .hero p { font-size: 18px; max-width: 800px; margin: 0 auto 20px; }
         .crypto-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 25px;
         }
         .crypto-tile {
-            background: #333;
-            padding: 15px;
-            border-radius: 8px;
-            width: 220px;
+            background: linear-gradient(135deg, #333, #222); /* Gradient background */
+            padding: 20px;
+            border-radius: 12px;
+            width: 240px;
             text-align: left;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2);
         }
-        .crypto-tile:hover { transform: scale(1.05); }
-        .crypto-tile h3 { color: #00FF00; margin: 0 0 10px; }
+        .crypto-tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
+        }
+        .crypto-tile h3 { color: #00FF00; margin: 0 0 10px; font-size: 18px; }
         .crypto-tile p { font-size: 14px; margin: 0; }
-        .crypto-tile .price { color: #00BFFF; }
+        .crypto-tile .price { color: #00BFFF; font-weight: 700; }
         .cta-button {
-            background: #00BFFF;
+            background: linear-gradient(90deg, #00BFFF, #00FFFF);
             color: #000;
             border: none;
-            padding: 12px 25px;
+            padding: 12px 30px;
             font-size: 16px;
-            border-radius: 5px;
+            border-radius: 25px;
             cursor: pointer;
             margin-top: 20px;
+            transition: background 0.3s;
         }
-        .cta-button:hover { background: #00FFFF; }
+        .cta-button:hover { background: linear-gradient(90deg, #00FFFF, #00BFFF); }
 
         /* Top 10 Section */
         #top10 {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 20px auto;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00BFFF;
+            border-radius: 12px;
         }
-        #top10 h2 { font-size: 36px; color: #00BFFF; text-align: center; margin-bottom: 30px; }
         .top10-list { display: flex; flex-direction: column; gap: 20px; }
         .top10-item {
-            background: #333;
+            background: linear-gradient(135deg, #2A2A2A, #1F1F1F);
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: transform 0.3s;
         }
+        .top10-item:hover { transform: scale(1.02); }
         .top10-item h3 { color: #00FF00; }
         .top10-item p { max-width: 600px; }
         .top10-item .stats { text-align: right; }
-        .sort-filter { text-align: center; margin-bottom: 20px; }
-        .sort-filter select { padding: 5px; background: #333; color: #E0E0E0; border: 1px solid #00BFFF; }
+        .sort-filter select {
+            padding: 8px;
+            background: #333;
+            color: #E0E0E0;
+            border: 1px solid #00BFFF;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        /* About Section */
+        #about {
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid #00BFFF;
+            border-radius: 12px;
+        }
+        #about p { font-size: 18px; max-width: 800px; margin: 0 auto; }
+
+        /* Compare Section */
+        #compare {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00BFFF;
+            border-radius: 12px;
+        }
+        #compare .placeholder { font-style: italic; }
+
+        /* News Section */
+        #news {
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid #00BFFF;
+            border-radius: 12px;
+        }
+        .news-list { display: flex; flex-direction: column; gap: 15px; }
+        .news-item {
+            background: #2A2A2A;
+            padding: 15px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .news-item:hover { background: #333; }
+        .news-item h3 { color: #FFD700; font-size: 18px; }
+
+        /* Community Section */
+        #community {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00BFFF;
+            border-radius: 12px;
+        }
+        #community .placeholder { font-style: italic; }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -101,9 +158,19 @@
             .crypto-tile { width: 100%; max-width: 300px; }
             .top10-item { flex-direction: column; text-align: center; }
             .top10-item .stats { text-align: center; margin-top: 10px; }
-            nav { display: none; } /* Hide nav links */
-            .hamburger { display: block; } /* Show hamburger */
-            .nav-active { display: flex; flex-direction: column; position: absolute; top: 40px; right: 15px; background: #00BFFF; padding: 10px; border-radius: 4px; }
+            nav { display: none; }
+            .hamburger { display: block; }
+            .nav-active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 40px;
+                right: 15px;
+                background: linear-gradient(90deg, #00BFFF, #00FFFF);
+                padding: 10px;
+                border-radius: 4px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            }
             .nav-active a { margin: 5px 0; }
         }
     </style>
@@ -298,6 +365,43 @@
         </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Welcome to Top 10 Cryptos to Buy Now, your premier destination for discovering the best cryptocurrencies of 2025. Led by Doge1 (DOGE1), our expertly curated list combines cutting-edge analysis, presale performance, and community insights to guide your investment journey. Whether you're a seasoned trader or new to crypto, we’re here to illuminate the path to the moon!</p>
+    </section>
+
+    <!-- Compare Section -->
+    <section id="compare">
+        <h2>Compare Cryptos</h2>
+        <p class="placeholder">Coming Soon: Compare your favorite top 10 cryptos side-by-side with detailed metrics like price, market cap, and staking yields. Stay tuned for this powerful tool!</p>
+    </section>
+
+    <!-- News Section -->
+    <section id="news">
+        <h2>Latest News</h2>
+        <div class="news-list">
+            <div class="news-item">
+                <h3>Doge1 Presale Hits Stage 3</h3>
+                <p>Doge1 surges past $17K in its Lightsaber Ignition phase, signaling strong investor confidence. - March 4, 2025</p>
+            </div>
+            <div class="news-item">
+                <h3>Solaxy Announces Cross-Chain Bridge</h3>
+                <p>SOLX unveils plans for interoperability, boosting its Layer-2 appeal. - March 3, 2025</p>
+            </div>
+            <div class="news-item">
+                <h3>Pepe Unchained Tops $40M in Presale</h3>
+                <p>PEPU’s momentum continues, cementing its spot in the top 10. - March 2, 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community">
+        <h2>Community</h2>
+        <p class="placeholder">Join the conversation! Our community hub is coming soon with forums, polls, and more to connect with fellow crypto enthusiasts.</p>
+    </section>
+
     <!-- JavaScript -->
     <script>
         // Toggle navigation for mobile
@@ -312,7 +416,7 @@
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
-                if (window.innerWidth <= 768) toggleNav(); // Close menu on mobile
+                if (window.innerWidth <= 768) toggleNav();
             });
         });
 
@@ -325,7 +429,7 @@
                 items.sort((a, b) => {
                     const priceA = parseFloat(a.getAttribute('data-price')) || 0;
                     const priceB = parseFloat(b.getAttribute('data-price')) || 0;
-                    return priceB - priceA; // Descending order
+                    return priceB - priceA;
                 });
             } else {
                 items.sort((a, b) => {
