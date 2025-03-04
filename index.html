@@ -9,10 +9,10 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Orbitron', sans-serif; /* Sci-fi font */
-            background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center fixed; /* Star Wars-ish starry background */
+            font-family: 'Orbitron', sans-serif;
+            background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center fixed;
             background-size: cover;
-            color: #E0E0E0; /* Softer white */
+            color: #E0E0E0;
             line-height: 1.6;
         }
         a { color: #00BFFF; text-decoration: none; }
@@ -24,12 +24,16 @@
             justify-content: space-between;
             align-items: center;
             padding: 25px 40px;
-            background: rgba(26, 26, 26, 0.8); /* Semi-transparent dark overlay */
+            background: rgba(26, 26, 26, 0.8);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 100;
             box-sizing: border-box;
+            border: 2px solid #00BFFF;
+            border-radius: 8px;
+            margin: 10px;
+            width: calc(100% - 20px);
         }
         .logo-container {
             display: flex;
@@ -38,7 +42,7 @@
         .logo {
             width: 60px;
             height: 60px;
-            background: url('https://via.placeholder.com/60?text=$DOJI') no-repeat;
+            background: url('logo.webp') no-repeat;
             background-size: cover;
         }
         .logo-text {
@@ -50,7 +54,7 @@
         }
         .dropdown {
             position: relative;
-            margin-right: 20px; /* Moves dropdown left a couple spaces */
+            margin-right: 20px;
         }
         .hamburger {
             font-size: 34px;
@@ -61,9 +65,11 @@
             display: none;
             position: absolute;
             right: 0;
-            background: rgba(26, 26, 26, 0.9); /* Matches header overlay */
+            background: rgba(26, 26, 26, 0.9);
             min-width: 180px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border: 1px solid #00BFFF;
+            border-radius: 4px;
         }
         .dropdown:hover .dropdown-content {
             display: block;
@@ -76,20 +82,42 @@
         }
         .dropdown-content a:hover {
             color: #00BFFF;
-            background: rgba(0, 191, 255, 0.2); /* Slightly stronger hover effect */
+            background: rgba(0, 191, 255, 0.2);
         }
 
         /* Hero Section */
         #hero {
             text-align: center;
             padding: 120px 40px 60px;
-            background: rgba(26, 26, 26, 0.5); /* Light overlay for contrast */
+            background: url('hero.webp') no-repeat center, rgba(26, 26, 26, 0.9); /* Darker overlay */
+            background-size: cover;
+            border: 2px solid #00BFFF;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 900px;
         }
         #hero h1 {
             font-size: 54px;
+            margin: 0 0 20px;
+            line-height: 1.1; /* Tighten for 2 lines max */
+        }
+        #hero .breaking {
             color: #00BFFF;
             text-shadow: 0 0 10px #00BFFF;
-            margin: 0 0 20px;
+            display: block; /* Force 2-line control */
+            max-width: 600px; /* Limit width for 2 lines */
+            margin: 0 auto;
+        }
+        #hero .doji {
+            color: #FFD700; /* Gold for $DOJI */
+            text-shadow: 0 0 10px #FFD700;
+            display: inline; /* Keep inline with Bites Back */
+            font-size: 54px; /* Same size as before */
+        }
+        #hero .bites {
+            color: #00BFFF;
+            text-shadow: 0 0 10px #00BFFF;
+            display: block; /* 1 line */
         }
         #hero h2 {
             font-size: 28px;
@@ -108,7 +136,7 @@
             font-weight: bold;
             font-size: 18px;
             text-transform: uppercase;
-            border: none;
+            border: 2px solid #FFFFFF;
             border-radius: 5px;
             box-shadow: 0 0 10px #00BFFF;
             transition: all 0.3s;
@@ -122,10 +150,10 @@
         section {
             padding: 80px 40px;
             max-width: 900px;
-            margin: 0 auto;
-            background: rgba(26, 26, 26, 0.7); /* Overlay for readability */
-            border-radius: 10px; /* Soft edges */
-            margin-bottom: 20px; /* Space between sections */
+            margin: 20px auto;
+            background: rgba(26, 26, 26, 0.9); /* Darker overlay */
+            border: 2px solid #00BFFF;
+            border-radius: 8px;
         }
         h3 {
             font-size: 42px;
@@ -142,6 +170,10 @@
         }
 
         /* About Section */
+        #about {
+            background: url('about.jpg') no-repeat center, rgba(26, 26, 26, 0.9); /* Darker overlay */
+            background-size: cover;
+        }
         #about p {
             font-size: 20px;
             line-height: 1.8;
@@ -210,14 +242,18 @@
                 <a href="#tokenomics">Tokenomics</a>
                 <a href="#roadmap">Roadmap</a>
                 <a href="#how-to-buy">How to Buy</a>
-                <a href="#whitepaper">Whitepaper</a>
+                <a href="whitepaper.pdf">Whitepaper</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section id="hero">
-        <h1>BREAKING THE CHAINS—$DOJI BITES BACK!</h1>
+        <h1>
+            <span class="breaking">BREAKING THE CHAINS</span>
+            <span class="doji"> $DOJI </span>
+            <span class="bites">BITES BACK!</span>
+        </h1>
         <h2>Awaken the Jedi—Join the Force!</h2>
         <p>The Countdown Has Begun—This Offer Is Only Available for a Limited Time, Don’t Let It Pass, BUY!</p>
         <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
