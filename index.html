@@ -151,8 +151,7 @@
             transition: transform 0.5s ease;
         }
         .presale-box {
-            width: calc(33.33vw - 30px);
-            max-width: 300px;
+            width: 280px;
             height: 180px;
             margin: 0 10px;
             background: rgba(0, 0, 0, 0.9);
@@ -161,6 +160,7 @@
             padding: 15px;
             position: relative;
             flex-shrink: 0;
+            box-sizing: border-box;
         }
         .presale-box.current {
             border: 2px solid #FFD700;
@@ -210,18 +210,24 @@
             border: none;
             padding: 8px;
             cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .arrow.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
         }
         .arrow.left { left: 10px; }
         .arrow.right { right: 10px; color: #FF0000; }
-        .arrow:hover { color: #FFFFFF; }
+        .arrow:hover:not(.disabled) { color: #FFFFFF; opacity: 1; }
 
         @media (max-width: 768px) {
-            .presale-box { width: calc(50vw - 30px); }
+            .presale-box { width: 260px; }
             .arrow { font-size: 20px; padding: 6px; }
             #presale h3 { font-size: 28px; }
         }
         @media (max-width: 480px) {
-            .presale-box { width: calc(100vw - 60px); }
+            .presale-box { width: 240px; }
             .arrow { font-size: 18px; padding: 5px; }
             #presale h3 { font-size: 24px; }
         }
@@ -408,7 +414,7 @@
     <section id="presale">
         <h3>Presale: The Jedi Uprising</h3>
         <div class="slider-container">
-            <button class="arrow left" onclick="slideLeft()">⟵</button>
+            <button class="arrow left" id="leftArrow" onclick="slideLeft()">⟵</button>
             <div class="slider-track" id="sliderTrack">
                 <div class="presale-box current stage-1">
                     <h4>The Force Awakens</h4>
@@ -502,7 +508,7 @@
                     <span class="stage-badge">Stage 13</span>
                 </div>
             </div>
-            <button class="arrow right" onclick="slideRight()">⟶</button>
+            <button class="arrow right" id="rightArrow" onclick="slideRight()">⟶</button>
         </div>
     </section>
 
@@ -624,19 +630,20 @@
     <script>
         const sliderTrack = document.getElementById('sliderTrack');
         const boxes = document.querySelectorAll('.presale-box');
+        const leftArrow = document.getElementById('leftArrow');
+        const rightArrow = document.getElementById('rightArrow');
         const totalBoxes = boxes.length;
-        let currentIndex = 0; // Start at the first box
+        let currentIndex = Array.from(boxes).findIndex(box => box.classList.contains('current')); // Start at current stage
         let boxWidth = 0;
 
-        // Calculate the width of one box including margins
         function updateBoxWidth() {
-            boxWidth = boxes[0].offsetWidth + 20; // Include margin (10px left + 10px right)
+            boxWidth = boxes[0].offsetWidth + 20; // Width + margins (10px left + 10px right)
             const totalWidth = totalBoxes * boxWidth;
             sliderTrack.style.width = `${totalWidth}px`;
             updateSliderPosition();
+            updateArrows();
         }
 
-        // Update the slider position based on currentIndex
         function updateSliderPosition() {
             const maxVisibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
             const maxIndex = totalBoxes - maxVisibleBoxes;
@@ -646,26 +653,38 @@
             sliderTrack.style.transform = `translateX(${newPosition}px)`;
         }
 
-        // Slide left (move to previous box)
+        function updateArrows() {
+            const maxVisibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
+            leftArrow.classList.toggle('disabled', currentIndex === 0);
+            rightArrow.classList.toggle('disabled', currentIndex >= totalBoxes - maxVisibleBoxes);
+        }
+
         function slideLeft() {
             if (currentIndex > 0) {
                 currentIndex--;
                 updateSliderPosition();
+                updateArrows();
             }
         }
 
-        // Slide right (move to next box)
         function slideRight() {
             const maxVisibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
             if (currentIndex < totalBoxes - maxVisibleBoxes) {
                 currentIndex++;
                 updateSliderPosition();
+                updateArrows();
             }
         }
 
-        // Initialize slider on load and resize
+        // Debounce resize for performance
+        let resizeTimeout;
+        function debounceResize() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(updateBoxWidth, 100);
+        }
+
         window.addEventListener('load', updateBoxWidth);
-        window.addEventListener('resize', updateBoxWidth);
+        window.addEventListener('resize', debounceResize);
 
         // Smooth scrolling for dropdown menu
         document.querySelectorAll('.dropdown-content a').forEach(anchor => {
