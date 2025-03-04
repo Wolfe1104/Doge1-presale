@@ -30,10 +30,10 @@
             top: 0;
             z-index: 100;
             box-sizing: border-box;
-            border: 2px solid #00BFFF; /* Neon blue border */
-            border-radius: 8px; /* Slightly rounded */
-            margin: 10px; /* Space from edge */
-            width: calc(100% - 20px); /* Adjust for margin */
+            border: 2px solid #00BFFF;
+            border-radius: 8px;
+            margin: 10px;
+            width: calc(100% - 20px);
         }
         .logo-container {
             display: flex;
@@ -42,7 +42,7 @@
         .logo {
             width: 60px;
             height: 60px;
-            background: url('https://via.placeholder.com/60?text=$DOJI') no-repeat;
+            background: url('logo.webp') no-repeat; /* Updated to logo.webp */
             background-size: cover;
         }
         .logo-text {
@@ -54,7 +54,7 @@
         }
         .dropdown {
             position: relative;
-            margin-right: 20px; /* Shifted left */
+            margin-right: 20px;
         }
         .hamburger {
             font-size: 34px;
@@ -68,7 +68,7 @@
             background: rgba(26, 26, 26, 0.9);
             min-width: 180px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            border: 1px solid #00BFFF; /* Border for dropdown */
+            border: 1px solid #00BFFF;
             border-radius: 4px;
         }
         .dropdown:hover .dropdown-content {
@@ -89,11 +89,12 @@
         #hero {
             text-align: center;
             padding: 120px 40px 60px;
-            background: rgba(26, 26, 26, 0.7); /* Slightly darker overlay */
-            border: 2px solid #00BFFF; /* Neon blue box */
+            background: url('hero.webp') no-repeat center, rgba(26, 26, 26, 0.7); /* Updated to hero.webp */
+            background-size: cover;
+            border: 2px solid #00BFFF;
             border-radius: 8px;
-            margin: 20px auto; /* Space from top/bottom */
-            max-width: 900px; /* Matches other sections */
+            margin: 20px auto;
+            max-width: 900px;
         }
         #hero h1 {
             font-size: 54px;
@@ -118,7 +119,7 @@
             font-weight: bold;
             font-size: 18px;
             text-transform: uppercase;
-            border: 2px solid #FFFFFF; /* White border for contrast */
+            border: 2px solid #FFFFFF;
             border-radius: 5px;
             box-shadow: 0 0 10px #00BFFF;
             transition: all 0.3s;
@@ -132,9 +133,9 @@
         section {
             padding: 80px 40px;
             max-width: 900px;
-            margin: 20px auto; /* Consistent spacing */
+            margin: 20px auto;
             background: rgba(26, 26, 26, 0.7);
-            border: 2px solid #00BFFF; /* Neon blue box */
+            border: 2px solid #00BFFF;
             border-radius: 8px;
         }
         h3 {
@@ -152,6 +153,10 @@
         }
 
         /* About Section */
+        #about {
+            background: url('about.jpg') no-repeat center, rgba(26, 26, 26, 0.7); /* Updated to about.jpg */
+            background-size: cover;
+        }
         #about p {
             font-size: 20px;
             line-height: 1.8;
@@ -220,7 +225,7 @@
                 <a href="#tokenomics">Tokenomics</a>
                 <a href="#roadmap">Roadmap</a>
                 <a href="#how-to-buy">How to Buy</a>
-                <a href="#whitepaper">Whitepaper</a>
+                <a href="whitepaper.pdf">Whitepaper</a> <!-- Updated to whitepaper.pdf -->
             </div>
         </div>
     </header>
