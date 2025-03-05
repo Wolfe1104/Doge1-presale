@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wallet Connect</title>
+    <title>Wallet Connect Demo</title>
     <style>
         body {
             background-color: #0a0911;
@@ -16,7 +16,6 @@
         }
 
         .wallet-button {
-            /* Extracted styling from the source */
             border-radius: 12px;
             height: 44px;
             width: 205px;
@@ -40,39 +39,125 @@
         }
 
         .wallet-button p {
-            /* Text styling from source */
             white-space: nowrap;
             color: black;
             margin: 0;
             font-size: 16px;
         }
+
+        .wallet-button.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
-    <!-- Wallet Connect button from the source -->
-    <div class="wallet-button" onclick="connectWallet()">
-        <p>Connect Wallet</p>
+    <div class="wallet-button" id="walletButton" onclick="connectWallet()">
+        <p id="buttonText">Connect Wallet</p>
     </div>
 
+    <!-- WalletConnect Dependency -->
+    <script src="https://unpkg.com/@walletconnect/web3-provider@1.8.0/dist/umd/index.min.js"></script>
+    <!-- Web3.js for blockchain interaction -->
+    <script src="https://unpkg.com/web3@1.7.4/dist/web3.min.js"></script>
+
     <script>
-        // Basic wallet connect functionality placeholder
-        // In the original source, this would connect to a larger wallet system
-        function connectWallet() {
-            // This is a placeholder - in a real implementation, you'd integrate
-            // with WalletConnect or another wallet provider SDK
-            console.log("Wallet connect initiated...");
-            alert("Wallet Connect clicked! This is a demo - add your wallet integration code here.");
-            
-            // Example of what actual integration might look like:
-            /*
-            const provider = new WalletConnectProvider({
-                rpc: {
-                    1: "https://mainnet.infura.io/v3/YOUR_PROJECT_ID"
-                }
-            });
-            await provider.enable();
-            */
+        // Initialize variables
+        let provider = null;
+        let web3 = null;
+        let accounts = null;
+        const button = document.getElementById('walletButton');
+        const buttonText = document.getElementById('buttonText');
+
+        async function connectWallet() {
+            if (button.classList.contains('disabled')) return;
+
+            try {
+                // Disable button during connection
+                button.classList.add('disabled');
+                buttonText.textContent = 'Connecting...';
+
+                // Initialize WalletConnect Provider
+                provider = new WalletConnectProvider({
+                    rpc: {
+                        // Mainnet RPC URL (You can change to other networks)
+                        1: "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+                        // Add more network RPCs if needed
+                        4: "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161" // Rinkeby testnet
+                    },
+                    qrcodeModalOptions: {
+                        mobileLinks: [
+                            "metamask",
+                            "trust",
+                            "rainbow",
+                            "argent"
+                        ]
+                    }
+                });
+
+                // Enable the provider (shows QR code for connection)
+                accounts = await provider.enable();
+
+                // Initialize Web3 with WalletConnect provider
+                web3 = new Web3(provider);
+
+                // Get connected account
+                const account = accounts[0];
+                
+                // Update button text with shortened address
+                const shortAddress = `${account.slice(0, 6)}...${account.slice(-4)}`;
+                buttonText.textContent = shortAddress;
+
+                console.log("Connected account:", account);
+                console.log("Chain ID:", await web3.eth.getChainId());
+
+                // Add disconnect listener
+                provider.on("disconnect", () => {
+                    resetButton();
+                    console.log("Wallet disconnected");
+                });
+
+                // Add chain change listener
+                provider.on("chainChanged", (chainId) => {
+                    console.log("Chain changed to:", chainId);
+                });
+
+                // Add account change listener
+                provider.on("accountsChanged", (newAccounts) => {
+                    if (newAccounts.length === 0) {
+                        resetButton();
+                    } else {
+                        const newShortAddress = `${newAccounts[0].slice(0, 6)}...${newAccounts[0].slice(-4)}`;
+                        buttonText.textContent = newShortAddress;
+                    }
+                });
+
+            } catch (error) {
+                console.error("Failed to connect wallet:", error);
+                alert("Failed to connect wallet: " + error.message);
+                resetButton();
+            }
         }
+
+        function resetButton() {
+            button.classList.remove('disabled');
+            buttonText.textContent = 'Connect Wallet';
+            if (provider) {
+                provider.disconnect();
+                provider = null;
+            }
+            accounts = null;
+            web3 = null;
+        }
+
+        // Add click-outside to disconnect (optional)
+        document.addEventListener('click', (event) => {
+            if (!button.contains(event.target) && accounts) {
+                if (confirm('Disconnect wallet?')) {
+                    resetButton();
+                }
+            }
+        });
     </script>
 </body>
 </html>
