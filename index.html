@@ -279,8 +279,8 @@
         </div>
     </section>
 
-    <!-- Scripts with WalletConnect Ethereum Provider -->
-    <script src="https://unpkg.com/@walletconnect/ethereum-provider@2.11.0/dist/umd/index.min.js"></script>
+    <!-- Scripts with Latest WalletConnect v2.0 -->
+    <script src="https://unpkg.com/@walletconnect/web3-provider@2.0.0/dist/umd/index.min.js"></script>
     <script src="https://unpkg.com/web3@1.10.0/dist/web3.min.js"></script>
     <script defer>
         // Slider Logic
@@ -353,32 +353,31 @@
             });
         });
 
-        // WalletConnect v2 Ethereum Provider Integration
+        // WalletConnect Integration
         async function connectWallet() {
             try {
-                // Check if EthereumProvider is available
-                if (typeof window.EthereumProvider === 'undefined') {
-                    throw new Error("EthereumProvider not loaded. Please ensure the WalletConnect script is loaded correctly.");
+                // Check if WalletConnectProvider is available
+                if (typeof window.WalletConnectProvider === 'undefined') {
+                    throw new Error("WalletConnectProvider not loaded. Check your internet or CDN.");
                 }
 
-                // Initialize WalletConnect provider
-                const provider = await window.EthereumProvider.init({
-                    projectId: "YOUR_PROJECT_ID", // Replace with your WalletConnect project ID (get from walletconnect.com)
-                    chains: [137], // Polygon Mainnet
-                    showQrModal: true, // Show QR code modal
-                    methods: ["eth_sendTransaction", "eth_sign", "personal_sign"],
-                    rpcMap: {
+                // Initialize WalletConnect provider for Polygon
+                const provider = new window.WalletConnectProvider({
+                    rpc: {
                         137: "https://rpc-mainnet.maticvigil.com" // Polygon RPC
                     },
-                    optionalChains: [137] // Ensure Polygon is supported
+                    chainId: 137, // Polygon Mainnet
+                    qrcodeModalOptions: {
+                        mobileLinks: ["metamask", "trust"] // Preferred wallets
+                    }
                 });
 
-                console.log("WalletConnect provider initialized:", provider);
+                console.log("Provider initialized:", provider);
 
-                // Connect to wallet
-                await provider.connect();
+                // Enable the provider (triggers QR code modal)
+                await provider.enable();
 
-                console.log("Provider connected successfully");
+                console.log("Provider enabled");
 
                 // Initialize Web3 with the provider
                 const web3 = new Web3(provider);
@@ -387,7 +386,7 @@
                 const accounts = await web3.eth.getAccounts();
                 const account = accounts[0];
 
-                console.log("Connected wallet address:", account);
+                console.log("Connected wallet:", account);
 
                 // Update UI
                 document.querySelectorAll('.cta-button').forEach(btn => {
@@ -408,7 +407,7 @@
 
         // Debug on load
         window.addEventListener('load', () => {
-            console.log("EthereumProvider available:", typeof window.EthereumProvider);
+            console.log("WalletConnectProvider available:", typeof window.WalletConnectProvider);
             console.log("Web3 available:", typeof Web3);
         });
     </script>
