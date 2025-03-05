@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOJI-1-KENOBI Presale</title>
+    <title>Doge1 Presale</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -101,7 +101,7 @@
             line-height: 1.1;
         }
         #hero .breaking { color: #00BFFF; display: block; font-size: 32px; }
-        #hero .doji { color: #00FF00; display: inline; font-size: 48px; }
+        #hero .doge { color: #00FF00; display: inline; font-size: 48px; }
         #hero .bites { color: #00BFFF; display: block; font-size: 48px; }
         #hero h2 { font-size: 24px; margin: 0 0 15px; font-style: italic; }
         #hero p { font-size: 18px; margin: 0 0 20px; }
@@ -120,6 +120,11 @@
         }
         .cta-button:hover {
             background: #00FFFF;
+        }
+        #connectionStatus {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #FFD700;
         }
 
         #presale {
@@ -148,7 +153,7 @@
         .slider-track {
             display: flex;
             transition: transform 0.5s ease-in-out;
-            touch-action: pan-y; /* Prevents vertical scrolling while swiping horizontally */
+            touch-action: pan-y;
         }
         .presale-box {
             min-width: 280px;
@@ -253,7 +258,7 @@
             text-align: center;
             margin: 0 0 30px;
         }
-        .token-doji {
+        .token-doge {
             color: #00FF00;
         }
 
@@ -383,7 +388,7 @@
     <header>
         <div class="logo-container">
             <div class="logo"></div>
-            <div class="logo-text">DOJI-1-KENOBI</div>
+            <div class="logo-text">DOGE1</div>
         </div>
         <div class="dropdown">
             <div class="hamburger">☰</div>
@@ -404,12 +409,13 @@
     <section id="hero">
         <h1>
             <span class="breaking">BREAKING THE CHAINS</span>
-            <span class="doji"><span class="token-doji">$DOJI</span></span>
+            <span class="doge"><span class="token-doge">$DOGE1</span></span>
             <span class="bites">BITES BACK!</span>
         </h1>
         <h2>Awaken the Jedi—Join the Force!</h2>
         <p>The Countdown Has Begun—This Offer Is Only Available for a Limited Time, Don’t Let It Pass, BUY!</p>
         <button class="cta-button" onclick="connectWallet()">JOIN THE FORCE</button>
+        <div id="connectionStatus"></div>
     </section>
 
     <section id="presale">
@@ -419,91 +425,91 @@
             <div class="slider-track" id="sliderTrack">
                 <div class="presale-box current stage-1">
                     <h4>The Force Awakens</h4>
-                    <p>Price: <span class="token-doji">$0.00050</span></p>
+                    <p>Price: <span class="token-doge">$0.00050</span></p>
                     <p>Goal: $12,500</p>
                     <div class="progress-bar"><div class="progress-fill" style="width: 50%;"></div></div>
                     <span class="stage-badge">Stage 1</span>
                 </div>
                 <div class="presale-box future stage-2">
                     <h4>Rebels Assemble</h4>
-                    <p>Price: <span class="token-doji">$0.00062</span></p>
+                    <p>Price: <span class="token-doge">$0.00062</span></p>
                     <p>Goal: $14,880</p>
                     <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 2</span>
                 </div>
                 <div class="presale-box future stage-3">
                     <h4>Lightsaber Ignition</h4>
-                    <p>Price: <span class="token-doji">$0.00077</span></p>
+                    <p>Price: <span class="token-doge">$0.00077</span></p>
                     <p>Goal: $17,710</p>
                     <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 3</span>
                 </div>
                 <div class="presale-box future stage-4">
                     <h4>Hyperspace Preparation</h4>
-                    <p>Price: <span class="token-doji">$0.00095</span></p>
+                    <p>Price: <span class="token-doge">$0.00095</span></p>
                     <p>Goal: $20,900</p>
                     <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 4</span>
                 </div>
                 <div class="presale-box future stage-5">
                     <h4>Jedi Training Complete</h4>
-                    <p>Price: <span class="token-doji">$0.00118</span></p>
+                    <p>Price: <span class="token-doge">$0.00118</span></p>
                     <p>Goal: $24,780</p>
                     <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 5</span>
                 </div>
                 <div class="presale-box future stage-6">
                     <h4>The Rebellion Grows</h4>
-                    <p>Price: <span class="token-doji">$0.00146</span></p>
+                    <p>Price: <span class="token-doge">$0.00146</span></p>
                     <p>Goal: $29,200</p>
                     <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 6</span>
                 </div>
                 <div class="presale-box future stage-7">
                     <h4>Force Momentum Builds</h4>
-                    <p>Price: <span class="token-doji">$0.00181</span></p>
+                    <p>Price: <span class="token-doge">$0.00181</span></p>
                     <p>Goal: $34,390</p>
                     <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 7</span>
                 </div>
                 <div class="presale-box future stage-8">
                     <h4>Galactic Resistance Rises</h4>
-                    <p>Price: <span class="token-doji">$0.00224</span></p>
+                    <p>Price: <span class="token-doge">$0.00224</span></p>
                     <p>Goal: $40,320</p>
                     <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 8</span>
                 </div>
                 <div class="presale-box future stage-9">
                     <h4>Warp Speed Engaged</h4>
-                    <p>Price: <span class="token-doji">$0.00278</span></p>
+                    <p>Price: <span class="token-doge">$0.00278</span></p>
                     <p>Goal: $47,260</p>
                     <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 9</span>
                 </div>
                 <div class="presale-box future stage-10">
                     <h4>Jedi Strike Force</h4>
-                    <p>Price: <span class="token-doji">$0.00344</span></p>
+                    <p>Price: <span class="token-doge">$0.00344</span></p>
                     <p>Goal: $55,040</p>
                     <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 10</span>
                 </div>
                 <div class="presale-box future stage-11">
                     <h4>Hyperspace Breakthrough</h4>
-                    <p>Price: <span class="token-doji">$0.00426</span></p>
+                    <p>Price: <span class="token-doge">$0.00426</span></p>
                     <p>Goal: $63,900</p>
                     <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 11</span>
                 </div>
                 <div class="presale-box future stage-12">
                     <h4>The Final Countdown</h4>
-                    <p>Price: <span class="token-doji">$0.00527</span></p>
+                    <p>Price: <span class="token-doge">$0.00527</span></p>
                     <p>Goal: $73,780</p>
                     <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 12</span>
                 </div>
                 <div class="presale-box future stage-13">
                     <h4>Moonshot Ignition</h4>
-                    <p>Price: <span class="token-doji">$0.01000</span></p>
+                    <p>Price: <span class="token-doge">$0.01000</span></p>
                     <p>Goal: $130,000</p>
                     <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 13</span>
@@ -515,12 +521,12 @@
 
     <section id="about">
         <h3>About the Coin</h3>
-        <p><span class="token-doji">$DOJI</span> is a little ruff around the edges—the Jedi of justice in a memecoin galaxy. Forged with cutting-edge tech on the Polygon network, <span class="token-doji">$DOJI</span> blasts light years ahead of rival meme coins with low fees and warp-speed transactions. Powered by xAI’s latest analytical breakthroughs, it’s preprogrammed for a warp-speed 100x post-launch—token burns, a masterful presale, and strategic fund allocation fuel its pure force-driven propulsion, paving a hyperspace road to the stars!</p>
+        <p><span class="token-doge">$DOGE1</span> is a little ruff around the edges—the Jedi of justice in a memecoin galaxy. Forged with cutting-edge tech on the Polygon network, <span class="token-doge">$DOGE1</span> blasts light years ahead of rival meme coins with low fees and warp-speed transactions. Powered by xAI’s latest analytical breakthroughs, it’s preprogrammed for a warp-speed 100x post-launch—token burns, a masterful presale, and strategic fund allocation fuel its pure force-driven propulsion, paving a hyperspace road to the stars!</p>
     </section>
 
     <section id="moonshot">
         <h3>100X MOONSHOT</h3>
-        <p><span class="token-doji">$DOJI</span> is engineered for a hyperspace leap to the moons of fortune! Powered by xAI’s cutting-edge analytics, this memecoin is preprogrammed for a 100x surge post-launch. With token burns slashing supply, a 13-stage presale igniting demand, and strategic liquidity drops on DEXs and CEXs, <span class="token-doji">$DOJI</span>’s trajectory is set to blast past the stars. The Force is strong with this one—join early to ride the galactic wave to a $0.05 valuation and beyond!</p>
+        <p><span class="token-doge">$DOGE1</span> is engineered for a hyperspace leap to the moons of fortune! Powered by xAI’s cutting-edge analytics, this memecoin is preprogrammed for a 100x surge post-launch. With token burns slashing supply, a 13-stage presale igniting demand, and strategic liquidity drops on DEXs and CEXs, <span class="token-doge">$DOGE1</span>’s trajectory is set to blast past the stars. The Force is strong with this one—join early to ride the galactic wave to a $0.05 valuation and beyond!</p>
     </section>
 
     <section id="tokenomics">
@@ -541,70 +547,71 @@
         <h3>Hyperspace Roadmap to the Stars</h3>
         <div class="roadmap-item">
             <h4>The Jedi Uprising Begins</h4>
-            <p>The Force awakens—<span class="token-doji">$DOJI</span>’s presale ignites across 13 stages, shattering meme coin chains. From $0.0005, prices warp to $0.01 as conditions trigger—xAI’s masterful analytics fuel the rise, unleashing 250M tokens into the galaxy. Join early, or miss the hyperspace jump!</p>
+            <p>The Force awakens—<span class="token-doge">$DOGE1</span>’s presale ignites across 13 stages, shattering meme coin chains. From $0.0005, prices warp to $0.01 as conditions trigger—xAI’s masterful analytics fuel the rise, unleashing 250M tokens into the galaxy. Join early, or miss the hyperspace jump!</p>
         </div>
         <div class="roadmap-item">
             <h4>Token Burn Ignition</h4>
-            <p>Lightsabers slash—<span class="token-doji">$DOJI</span> burns unsold or reserved tokens, tightening supply. xAI’s analytics lock in the perfect burn, propelling value toward 100x warp speed.</p>
+            <p>Lightsabers slash—<span class="token-doge">$DOGE1</span> burns unsold or reserved tokens, tightening supply. xAI’s analytics lock in the perfect burn, propelling value toward 100x warp speed.</p>
         </div>
         <div class="roadmap-item">
             <h4>Hyperspace Launch</h4>
-            <p><span class="token-doji">$DOJI</span> hits lightspeed—DEX listings (e.g., PancakeSwap) drop with 300M liquidity tokens. Ruff rebels trade, xAI’s fund allocation ignites the warp.</p>
+            <p><span class="token-doge">$DOGE1</span> hits lightspeed—DEX listings (e.g., PancakeSwap) drop with 300M liquidity tokens. Ruff rebels trade, xAI’s fund allocation ignites the warp.</p>
         </div>
         <div class="roadmap-item">
             <h4>Galactic Conquest</h4>
-            <p>Jedi strike—CEX listings (e.g., Binance) and 100M community rewards rain down. <span class="token-doji">$DOJI</span>’s 100x warp ($0.05) hits, fueled by xAI’s strategic plays.</p>
+            <p>Jedi strike—CEX listings (e.g., Binance) and 100M community rewards rain down. <span class="token-doge">$DOGE1</span>’s 100x warp ($0.05) hits, fueled by xAI’s strategic plays.</p>
         </div>
         <div class="roadmap-item">
             <h4>Beyond the Stars</h4>
-            <p><span class="token-doji">$DOJI</span> rules—ongoing burns and xAI-driven upgrades (e.g., NFT drops) push past 100x to uncharted moons!</p>
+            <p><span class="token-doge">$DOGE1</span> rules—ongoing burns and xAI-driven upgrades (e.g., NFT drops) push past 100x to uncharted moons!</p>
         </div>
     </section>
 
     <section id="how-to-buy">
-        <h3>Unleash the Force—How to Buy <span class="token-doji">$DOJI</span></h3>
-        <h4>Grab Your <span class="token-doji">$DOJI</span> Before the Galaxy Runs Out!</h4>
+        <h3>Unleash the Force—How to Buy <span class="token-doge">$DOGE1</span></h3>
+        <h4>Grab Your <span class="token-doge">$DOGE1</span> Before the Galaxy Runs Out!</h4>
         <div class="how-to-buy-item">
             <h4>Prepare Your Arsenal</h4>
-            <p>Get a lightsaber-ready wallet like MetaMask or Trust Wallet. No weak centralized junk—<span class="token-doji">$DOJI</span>’s all about freedom on the Polygon network. Install it, secure your seed phrase, and load it with MATIC—Polygon’s fuel for the fight!</p>
+            <p>Get a lightsaber-ready wallet like MetaMask or Trust Wallet. No weak centralized junk—<span class="token-doge">$DOGE1</span>’s all about freedom on the Polygon network. Install it, secure your seed phrase, and load it with MATIC—Polygon’s fuel for the fight!</p>
         </div>
         <div class="how-to-buy-item">
             <h4>Link to the Force</h4>
-            <p>Hit the ‘JOIN THE FORCE’ button and connect your wallet like you’re linking hyperspace coordinates. Approve the link, and you’re in the <span class="token-doji">$DOJI</span> cockpit.</p>
+            <p>Hit the ‘JOIN THE FORCE’ button and connect your wallet like you’re linking hyperspace coordinates. Approve the link, and you’re in the <span class="token-doge">$DOGE1</span> cockpit.</p>
         </div>
         <div class="how-to-buy-item">
             <h4>Choose Your Power</h4>
-            <p>Pick how much <span class="token-doji">$DOJI</span> you’re snagging—starts at $0.0005, warps to $0.01 across 13 stages on Polygon. Enter your MATIC amount (e.g., 10 MATIC scores a stash at launch price). Double-check—no Jedi mind trick reverses this!</p>
+            <p>Pick how much <span class="token-doge">$DOGE1</span> you’re snagging—starts at $0.0005, warps to $0.01 across 13 stages on Polygon. Enter your MATIC amount (e.g., 10 MATIC scores a stash at launch price). Double-check—no Jedi mind trick reverses this!</p>
         </div>
         <div class="how-to-buy-item">
             <h4>Unleash Your Destiny</h4>
-            <p>Confirm the buy in your wallet—Polygon’s gas fees are dirt cheap, no excuses. Sign it, send it, and your <span class="token-doji">$DOJI</span> tokens hit your wallet when the presale wraps. HODL tight, rebel!</p>
+            <p>Confirm the buy in your wallet—Polygon’s gas fees are dirt cheap, no excuses. Sign it, send it, and your <span class="token-doge">$DOGE1</span> tokens hit your wallet when the presale wraps. HODL tight, rebel!</p>
         </div>
-        <p class="bonus-tip">Lost? Jump into the <span class="token-doji">$DOJI</span> Discord or Telegram—our Jedi masters have your back. Don’t sleep—250M tokens won’t last on Polygon’s hyperspace lanes!</p>
+        <p class="bonus-tip">Lost? Jump into the <span class="token-doge">$DOGE1</span> Discord or Telegram—our Jedi masters have your back. Don’t sleep—250M tokens won’t last on Polygon’s hyperspace lanes!</p>
         <button class="cta-button" onclick="connectWallet()">JOIN THE FORCE</button>
+        <div id="connectionStatus"></div>
     </section>
 
     <section id="faq">
         <h3>Frequently Asked Questions</h3>
         <div class="faq-item">
-            <h4>What is <span class="token-doji">$DOJI</span>?</h4>
-            <p><span class="token-doji">$DOJI</span> is a memecoin on the Polygon network, designed with xAI’s analytics for a 100x moonshot, blending low fees with high-speed transactions.</p>
+            <h4>What is <span class="token-doge">$DOGE1</span>?</h4>
+            <p><span class="token-doge">$DOGE1</span> is a memecoin on the Polygon network, designed with xAI’s analytics for a 100x moonshot, blending low fees with high-speed transactions.</p>
         </div>
         <div class="faq-item">
             <h4>How does the 100x moonshot work?</h4>
-            <p>xAI’s preprogrammed strategy includes token burns, a 13-stage presale, and strategic listings to drive <span class="token-doji">$DOJI</span>’s value from $0.0005 to $0.05 or higher.</p>
+            <p>xAI’s preprogrammed strategy includes token burns, a 13-stage presale, and strategic listings to drive <span class="token-doge">$DOGE1</span>’s value from $0.0005 to $0.05 or higher.</p>
         </div>
         <div class="faq-item">
             <h4>Why choose Polygon network?</h4>
-            <p>Polygon offers lightning-fast transactions and minimal fees, making <span class="token-doji">$DOJI</span> accessible and efficient for all galactic investors.</p>
+            <p>Polygon offers lightning-fast transactions and minimal fees, making <span class="token-doge">$DOGE1</span> accessible and efficient for all galactic investors.</p>
         </div>
         <div class="faq-item">
-            <h4>When can I purchase <span class="token-doji">$DOJI</span>?</h4>
+            <h4>When can I purchase <span class="token-doge">$DOGE1</span>?</h4>
             <p>The presale is live now in 13 stages—join early to secure the lowest price before the hyperspace launch!</p>
         </div>
         <div class="faq-item">
             <h4>Which wallets are compatible?</h4>
-            <p>Use MetaMask, Trust Wallet, or any wallet compatible with Polygon to join the <span class="token-doji">$DOJI</span> rebellion.</p>
+            <p>Use MetaMask, Trust Wallet, or any wallet compatible with Polygon to join the <span class="token-doge">$DOGE1</span> rebellion.</p>
         </div>
         <div class="faq-item">
             <h4>What happens to unsold tokens?</h4>
@@ -612,74 +619,91 @@
         </div>
         <div class="faq-item">
             <h4>Are there community incentives?</h4>
-            <p>Yes, 10% of tokens fuel rewards—100M <span class="token-doji">$DOJI</span> will be distributed to the community after launch.</p>
+            <p>Yes, 10% of tokens fuel rewards—100M <span class="token-doge">$DOGE1</span> will be distributed to the community after launch.</p>
         </div>
         <div class="faq-item">
-            <h4>How secure is <span class="token-doji">$DOJI</span>?</h4>
-            <p>Built on Polygon’s robust network and backed by xAI’s analytics, <span class="token-doji">$DOJI</span> offers strong security in the memecoin galaxy.</p>
+            <h4>How secure is <span class="token-doge">$DOGE1</span>?</h4>
+            <p>Built on Polygon’s robust network and backed by xAI’s analytics, <span class="token-doge">$DOGE1</span> offers strong security in the memecoin galaxy.</p>
         </div>
         <div class="faq-item">
-            <h4>Can I trade <span class="token-doji">$DOJI</span> after presale?</h4>
-            <p>Yes, <span class="token-doji">$DOJI</span> will be listed on DEXs like PancakeSwap post-launch, followed by CEXs like Binance.</p>
+            <h4>Can I trade <span class="token-doge">$DOGE1</span> after presale?</h4>
+            <p>Yes, <span class="token-doge">$DOGE1</span> will be listed on DEXs like PancakeSwap post-launch, followed by CEXs like Binance.</p>
         </div>
         <div class="faq-item">
             <h4>What’s the total token supply?</h4>
-            <p>Total supply starts at 1 billion <span class="token-doji">$DOJI</span>, with burns reducing it over time to fuel the moonshot.</p>
+            <p>Total supply starts at 1 billion <span class="token-doge">$DOGE1</span>, with burns reducing it over time to fuel the moonshot.</p>
         </div>
     </section>
 
-    <!-- Add WalletConnect Libraries and Logic -->
-    <script src="https://cdn.ethers.io/lib/ethers-5.5.4.umd.min.js"></script>
-    <script src="https://unpkg.com/web3modal@1.9.4/dist/index.js"></script>
-    <script src="https://unpkg.com/@walletconnect/web3-provider@1.7.1/dist/umd/index.min.js"></script>
+    <!-- Web3Modal v2 Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@wagmi/core@2.12.7/dist/index.umd.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/viem@2.21.7/dist/index.umd.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@web3modal/ethereum@2.7.1/dist/index.umd.js" defer></script>
+
+    <!-- Wallet Connection Script -->
     <script>
-        // Configure WalletConnect for Polygon network
-        const providerOptions = {
-            walletconnect: {
-                package: window.WalletConnectProvider,
-                options: {
-                    rpc: {
-                        137: "https://polygon-rpc.com/" // Polygon Mainnet RPC
-                    },
-                    chainId: 137 // Polygon Mainnet chainId
-                }
-            }
-        };
+        window.onload = function() {
+            // Configure Wagmi with Polygon chain
+            const chains = [{
+                id: 137,
+                name: 'Polygon Mainnet',
+                network: 'polygon',
+                nativeCurrency: { name: 'MATIC', symbol: 'MATIC', decimals: 18 },
+                rpcUrls: { default: { http: ['https://polygon-rpc.com'] } }
+            }];
 
-        // Initialize Web3Modal
-        const web3Modal = new Web3Modal({
-            cacheProvider: true, // Remember user's last wallet choice
-            providerOptions
-        });
+            const wagmiConfig = WagmiCore.createConfig({
+                chains,
+                transports: { 137: WagmiCore.http() },
+                connectors: [
+                    Web3ModalEthereum.WalletConnectConnector({ chains, options: { projectId: 'YOUR_PROJECT_ID' } }), // Replace with your WalletConnect Project ID
+                    Web3ModalEthereum.InjectedConnector({ chains })
+                ]
+            });
 
-        // Connect wallet function
-        async function connectWallet() {
-            try {
-                // Open Web3Modal and connect to wallet
-                const provider = await web3Modal.connect();
-                const ethersProvider = new ethers.providers.Web3Provider(provider);
+            const { open, close } = Web3ModalEthereum.createWeb3Modal({
+                wagmiConfig,
+                projectId: 'YOUR_PROJECT_ID', // Replace with your WalletConnect Project ID from https://cloud.walletconnect.com
+                themeMode: 'dark'
+            });
 
-                // Check if user is on Polygon network
-                const network = await ethersProvider.getNetwork();
-                if (network.chainId !== 137) {
-                    alert("Please switch to the Polygon network in your wallet.");
+            async function connectWallet() {
+                const statusElement = document.getElementById('connectionStatus');
+                if (!statusElement) {
+                    console.error("Status element not found");
+                    alert("Error: Status element missing.");
                     return;
                 }
-
-                // Successfully connected
-                console.log("Connected to wallet on Polygon");
-                const signer = ethersProvider.getSigner();
-                const address = await signer.getAddress();
-                console.log("User address:", address);
-
-                // Next step: Add presale purchase logic here (e.g., interact with your smart contract)
-            } catch (error) {
-                console.error("Failed to connect wallet:", error);
+                statusElement.textContent = 'Connecting...';
+                try {
+                    if (typeof Web3ModalEthereum === 'undefined' || typeof WagmiCore === 'undefined') {
+                        throw new Error("Web3Modal or Wagmi libraries not loaded");
+                    }
+                    await open();
+                    const provider = await wagmiConfig.connectors[0].connect();
+                    const chainId = await WagmiCore.getChainId();
+                    if (chainId !== 137) {
+                        statusElement.textContent = 'Switching to Polygon...';
+                        await WagmiCore.switchChain({ chainId: 137 });
+                    }
+                    const address = provider.accounts[0];
+                    statusElement.textContent = `Wallet connected: ${address.substring(0, 6)}...`;
+                    console.log("Connected address:", address);
+                } catch (error) {
+                    statusElement.textContent = 'Failed to connect';
+                    console.error("Connection error:", error.message);
+                    if (error.message.includes("WalletConnect")) {
+                        statusElement.textContent += ' - Get a WalletConnect Project ID from walletconnect.com';
+                    }
+                }
             }
-        }
+
+            // Expose connectWallet globally
+            window.connectWallet = connectWallet;
+        };
     </script>
 
-    <!-- Existing Slider Script -->
+    <!-- Slider Script -->
     <script>
         const sliderTrack = document.getElementById('sliderTrack');
         const leftArrow = document.getElementById('leftArrow');
@@ -689,22 +713,16 @@
         let currentIndex = Array.from(boxes).findIndex(box => box.classList.contains('current')) || 0;
         const visibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
 
-        // Core slider update function
         function updateSlider() {
-            const boxWidth = boxes[0].offsetWidth + 20; // Width + margins
+            const boxWidth = boxes[0].offsetWidth + 20;
             const maxIndex = totalBoxes - visibleBoxes;
             currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
             const translateX = -currentIndex * boxWidth;
             sliderTrack.style.transform = `translateX(${translateX}px)`;
-
-            // Update arrow states
             leftArrow.classList.toggle('disabled', currentIndex === 0);
             rightArrow.classList.toggle('disabled', currentIndex >= maxIndex);
-
-            console.log(`Slider updated: currentIndex=${currentIndex}, translateX=${translateX}, visibleBoxes=${visibleBoxes}`);
         }
 
-        // Arrow controls
         function slideLeft() {
             if (currentIndex > 0) {
                 currentIndex--;
@@ -720,7 +738,6 @@
             }
         }
 
-        // Touch handling
         let touchStartX = 0;
         let touchCurrentX = 0;
         let isDragging = false;
@@ -728,8 +745,7 @@
         sliderTrack.addEventListener('touchstart', (e) => {
             touchStartX = e.touches[0].clientX;
             isDragging = true;
-            sliderTrack.style.transition = 'none'; // Disable transition during drag
-            console.log(`Touch started at X=${touchStartX}`);
+            sliderTrack.style.transition = 'none';
         });
 
         sliderTrack.addEventListener('touchmove', (e) => {
@@ -739,52 +755,40 @@
             const boxWidth = boxes[0].offsetWidth + 20;
             const currentTranslateX = -currentIndex * boxWidth;
             sliderTrack.style.transform = `translateX(${currentTranslateX + diffX}px)`;
-            e.preventDefault(); // Prevent scrolling
+            e.preventDefault();
         });
 
         sliderTrack.addEventListener('touchend', (e) => {
             if (!isDragging) return;
             isDragging = false;
-            sliderTrack.style.transition = 'transform 0.5s ease-in-out'; // Re-enable transition
+            sliderTrack.style.transition = 'transform 0.5s ease-in-out';
             const diffX = touchCurrentX - touchStartX;
             const boxWidth = boxes[0].offsetWidth + 20;
-            const threshold = boxWidth / 3; // Swipe threshold (1/3 of box width)
-
+            const threshold = boxWidth / 3;
             if (Math.abs(diffX) > threshold) {
-                if (diffX > 0 && currentIndex > 0) {
-                    currentIndex--; // Swipe right (move left)
-                } else if (diffX < 0 && currentIndex < totalBoxes - visibleBoxes) {
-                    currentIndex++; // Swipe left (move right)
-                }
+                if (diffX > 0 && currentIndex > 0) currentIndex--;
+                else if (diffX < 0 && currentIndex < totalBoxes - visibleBoxes) currentIndex++;
             }
             updateSlider();
-            console.log(`Touch ended: diffX=${diffX}, newIndex=${currentIndex}`);
         });
 
-        // Initialize slider
         window.addEventListener('load', () => {
             if (boxes.length === 0) {
                 console.error('No presale boxes found!');
                 return;
             }
             updateSlider();
-            console.log('Slider initialized');
         });
 
-        // Recalculate on resize with debounce
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
                 const newVisibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
-                if (newVisibleBoxes !== visibleBoxes) {
-                    console.log(`Visible boxes changed: ${visibleBoxes} -> ${newVisibleBoxes}`);
-                    updateSlider();
-                }
+                if (newVisibleBoxes !== visibleBoxes) updateSlider();
             }, 100);
         });
 
-        // Smooth scrolling for dropdown menu
         document.querySelectorAll('.dropdown-content a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
