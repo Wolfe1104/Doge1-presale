@@ -31,7 +31,7 @@
         a { color: #00BFFF; text-decoration: none; transition: color 0.3s; }
         a:hover { color: #FFD700; }
 
-        /* Header */
+        /* Header - Single Row */
         header {
             background: linear-gradient(90deg, #1E3A8A, #3B82F6);
             padding: 15px 30px;
@@ -42,38 +42,57 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            height: 60px; /* Fixed height for one row */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
         }
         header .logo { 
             font-family: 'Orbitron', sans-serif; 
-            font-size: 24px; 
+            font-size: 22px; 
             font-weight: 700; 
             color: #FFFFFF; 
             text-transform: uppercase; 
             letter-spacing: 2px; 
+            white-space: nowrap;
         }
-        .nav-container { display: flex; align-items: center; gap: 30px; }
+        .nav-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 20px; 
+            flex-wrap: nowrap; 
+        }
+        nav { 
+            display: flex; 
+            gap: 15px; 
+            flex-wrap: nowrap; 
+        }
         nav a { 
             font-family: 'Orbitron', sans-serif; 
-            font-size: 16px; 
+            font-size: 14px; 
             color: #FFFFFF; 
             font-weight: 700; 
-            padding: 8px 15px; 
+            padding: 6px 12px; 
             border-radius: 5px; 
             transition: background 0.3s, color 0.3s; 
+            white-space: nowrap;
         }
         nav a:hover { background: rgba(255, 255, 255, 0.1); color: #FFD700; }
-        .hamburger { display: none; font-size: 24px; cursor: pointer; color: #FFFFFF; }
+        .hamburger { 
+            display: none; 
+            font-size: 24px; 
+            cursor: pointer; 
+            color: #FFFFFF; 
+            padding: 0 10px; 
+        }
         .search-bar { 
-            padding: 8px 15px; 
+            padding: 6px 12px; 
             border-radius: 20px; 
             border: 1px solid #3B82F6; 
             background: #FFFFFF; 
             font-size: 14px; 
-            width: 200px; 
+            width: 180px; 
             transition: width 0.3s; 
         }
-        .search-bar:focus { width: 250px; outline: none; }
+        .search-bar:focus { width: 220px; outline: none; }
 
         /* Blockchain Links Heading */
         .blockchain-links {
@@ -86,7 +105,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-            margin-top: 60px;
+            margin-top: 80px;
             letter-spacing: 3px;
         }
 
@@ -95,9 +114,9 @@
             padding: 80px 40px; 
             max-width: 1400px; 
             margin: 40px auto; 
-            background: url('https://images.unsplash.com/photo-1620283085436-9c0fbba87a07?q=80&w=2070&auto=format&fit=crop') no-repeat center / cover; /* Unsplash blocks and chains */
-            background-blend-mode: overlay;
-            background-color: rgba(10, 10, 10, 0.8);
+            background: url('https://images.unsplash.com/photo-1620283085436-9c0fbba87a07?q=80&w=2070&auto=format&fit=crop') no-repeat center / cover; /* Blocks and chains */
+            background-blend-mode: soft-light;
+            background-color: rgba(20, 20, 20, 0.9); /* Dark overlay to ensure visibility */
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             position: relative;
@@ -231,7 +250,8 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .blockchain-links { font-size: 28px; }
+            header { padding: 10px 20px; height: 50px; }
+            .blockchain-links { font-size: 28px; margin-top: 60px; }
             .top10-list, .news-list { grid-template-columns: 1fr; }
             nav { display: none; }
             .hamburger { display: block; }
@@ -239,7 +259,7 @@
                 display: flex;
                 flex-direction: column;
                 position: absolute;
-                top: 60px;
+                top: 50px;
                 right: 20px;
                 background: linear-gradient(90deg, #1E3A8A, #3B82F6);
                 padding: 15px;
@@ -247,9 +267,10 @@
                 box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             }
             .nav-active a { margin: 10px 0; }
-            .search-bar { width: 150px; }
-            .search-bar:focus { width: 180px; }
+            .search-bar { width: 120px; }
+            .search-bar:focus { width: 150px; }
             section { padding: 40px 20px; }
+            .logo { font-size: 18px; }
         }
     </style>
 </head>
