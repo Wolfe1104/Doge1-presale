@@ -42,7 +42,7 @@
         </h1>
         <h2>Awaken the Jedi—Join the Force!</h2>
         <p>The Countdown Has Begun—This Offer Is Only Available for a Limited Time, Don’t Let It Pass, BUY!</p>
-        <button class="cta-button" onclick="testClick()">JOIN THE FORCE</button> <!-- Changed to testClick for verification -->
+        <button class="cta-button" onclick="testClick()">JOIN THE FORCE</button>
     </section>
 
     <section id="presale">
@@ -279,12 +279,11 @@
         </div>
     </section>
 
-    <!-- Scripts with WalletConnectModal and Ethereum Provider via jsDelivr -->
+    <!-- Scripts with WalletConnectModal -->
     <script type="module">
         console.log("Script running");
         import { WalletConnectModal } from 'https://cdn.jsdelivr.net/npm/@walletconnect/modal@2.6.2/dist/index.js';
-        import { EthereumProvider } from 'https://cdn.jsdelivr.net/npm/@walletconnect/ethereum-provider@2.10.0/dist/index.umd.min.js';
-        import Web3 from 'https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js';
+        import Web3 from 'https://cdn.jsdelivr.net/npm/web3@4.2.0/dist/web3.min.js';
 
         // Test function to verify button click
         window.testClick = function() {
@@ -294,11 +293,12 @@
         // Initialize WalletConnectModal
         const modal = new WalletConnectModal({
             projectId: '85b1567002ace3c37fb0b7603824e1a3',
-            chains: ['eip155:137'] // Polygon Mainnet
+            chains: ['eip155:137'], // Polygon Mainnet
+            themeMode: 'dark'
         });
         console.log("Modal initialized:", modal);
 
-        // Slider Logic (non-module, so kept separate)
+        // Slider Logic
         const sliderTrack = document.getElementById('sliderTrack'),
               leftArrow = document.getElementById('leftArrow'),
               rightArrow = document.getElementById('rightArrow'),
@@ -372,30 +372,18 @@
         window.connectWallet = async function() {
             console.log("connectWallet called");
             try {
-                // Initialize Ethereum Provider
-                const provider = await EthereumProvider.init({
-                    projectId: '85b1567002ace3c37fb0b7603824e1a3',
-                    chains: [137], // Polygon Mainnet
-                    showQrModal: false // We’ll use WalletConnectModal instead
+                // Open the modal and wait for connection
+                const provider = await modal.openModal({
+                    chainId: 'eip155:137' // Polygon Mainnet
                 });
-                console.log("Provider initialized");
+                console.log("Provider received:", provider);
 
-                // Listen for URI and open modal
-                provider.on('display_uri', async (uri) => {
-                    console.log("URI generated:", uri);
-                    await modal.openModal({ uri });
-                    console.log("Modal opened");
-                });
+                if (!provider) throw new Error("No provider returned from modal");
 
-                // Connect to wallet
-                await provider.connect();
-                console.log("Connected!");
-
-                // Initialize Web3
+                // Initialize Web3 with the provider
                 const web3 = new Web3(provider);
                 const accounts = await web3.eth.getAccounts();
                 const account = accounts[0];
-
                 console.log("Connected wallet:", account);
 
                 // Update UI
@@ -421,7 +409,6 @@
 
         // Debug on load
         console.log("WalletConnectModal loaded:", typeof WalletConnectModal);
-        console.log("EthereumProvider loaded:", typeof EthereumProvider);
         console.log("Web3 loaded:", typeof Web3);
     </script>
 </body>
