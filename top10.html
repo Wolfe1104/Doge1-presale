@@ -17,23 +17,24 @@
     <meta name="twitter:description" content="Check out the top 10 cryptos for 2025, featuring DOJI-1-KENOBI ($DOJI) and more. Expert picks and news!">
     <meta name="twitter:image" content="https://yourdomain.com/images/top10-twitter-image.jpg">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" async>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" async>
     <title>Top 10 Cryptos to Buy Now 2025 | DOJI-1-KENOBI ($DOJI) & More</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
-            font-family: 'Orbitron', sans-serif; 
-            background: #1A1A1A; 
+            font-family: 'Roboto', sans-serif; 
+            background: #0A0A0A; 
             color: #E0E0E0; 
             line-height: 1.6; 
+            overflow-x: hidden;
         }
-        a { color: #00BFFF; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        a { color: #00BFFF; text-decoration: none; transition: color 0.3s; }
+        a:hover { color: #FFD700; }
 
         /* Header */
         header {
-            background: linear-gradient(90deg, #00BFFF, #00FFFF);
-            padding: 10px 15px;
+            background: linear-gradient(90deg, #1E3A8A, #3B82F6);
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -41,152 +42,214 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            height: 40px;
-            box-shadow: 0 2px 10px rgba(0, 191, 255, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
         }
-        header .logo { font-size: 20px; font-weight: 700; color: #000; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); }
-        .nav-container { display: flex; align-items: center; }
-        nav { display: flex; gap: 20px; }
-        nav a { font-size: 14px; color: #000; font-weight: 700; transition: color 0.3s; }
-        nav a:hover { color: #FFD700; }
-        .hamburger { display: none; font-size: 20px; cursor: pointer; color: #000; }
-        .search-bar { padding: 5px 10px; border-radius: 15px; border: none; font-size: 12px; background: rgba(255, 255, 255, 0.9); }
+        header .logo { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 24px; 
+            font-weight: 700; 
+            color: #FFFFFF; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+        }
+        .nav-container { display: flex; align-items: center; gap: 30px; }
+        nav a { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 16px; 
+            color: #FFFFFF; 
+            font-weight: 700; 
+            padding: 8px 15px; 
+            border-radius: 5px; 
+            transition: background 0.3s, color 0.3s; 
+        }
+        nav a:hover { background: rgba(255, 255, 255, 0.1); color: #FFD700; }
+        .hamburger { display: none; font-size: 24px; cursor: pointer; color: #FFFFFF; }
+        .search-bar { 
+            padding: 8px 15px; 
+            border-radius: 20px; 
+            border: 1px solid #3B82F6; 
+            background: #FFFFFF; 
+            font-size: 14px; 
+            width: 200px; 
+            transition: width 0.3s; 
+        }
+        .search-bar:focus { width: 250px; outline: none; }
 
         /* Blockchain Links Heading */
         .blockchain-links {
             text-align: center;
-            padding: 20px 0;
-            font-size: 36px;
+            padding: 30px 0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 42px;
             font-weight: 700;
-            background: linear-gradient(90deg, #00BFFF, #00FFFF);
+            background: linear-gradient(90deg, #3B82F6, #60A5FA);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 6px rgba(0, 191, 255, 0.5);
-            margin-top: 40px; /* Offset for fixed header */
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            margin-top: 60px;
+            letter-spacing: 3px;
         }
 
-        /* Section Styling with 3D Blocks and Chains Background */
+        /* Section Styling */
         section { 
-            padding: 60px 20px; 
-            max-width: 1200px; 
-            margin: 20px auto; 
-            background: #1A1A1A;
-            background-image: 
-                linear-gradient(45deg, rgba(0, 191, 255, 0.1) 25%, transparent 25%, transparent 75%, rgba(0, 191, 255, 0.1) 75%, rgba(0, 191, 255, 0.1)),
-                linear-gradient(-45deg, rgba(0, 255, 255, 0.1) 25%, transparent 25%, transparent 75%, rgba(0, 255, 255, 0.1) 75%, rgba(0, 255, 255, 0.1));
-            background-size: 40px 40px; /* Block size */
-            box-shadow: inset 0 0 20px rgba(0, 191, 255, 0.2), 0 5px 15px rgba(0, 0, 0, 0.5); /* Subtle 3D depth */
+            padding: 80px 40px; 
+            max-width: 1400px; 
+            margin: 40px auto; 
+            background: url('https://images.unsplash.com/photo-1620283085436-9c0fbba87a07?q=80&w=2070&auto=format&fit=crop') no-repeat center / cover; /* Unsplash blocks and chains */
+            background-blend-mode: overlay;
+            background-color: rgba(10, 10, 10, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             position: relative;
-            border-radius: 12px;
             overflow: hidden;
         }
         section > * {
-            position: relative;
-            z-index: 2;
-            background: rgba(0, 0, 0, 0.9); /* Inner black background */
-            padding: 20px;
-            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
 
         /* Headings */
-        h1 { font-size: 48px; color: #00BFFF; text-align: center; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0, 191, 255, 0.3); }
-        h2 { font-size: 36px; color: #00BFFF; text-align: center; margin-bottom: 30px; text-shadow: 1px 1px 3px rgba(0, 191, 255, 0.3); }
-        h3 { font-size: 18px; color: #00BFFF; }
+        h1 { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 52px; 
+            color: #FFFFFF; 
+            text-align: center; 
+            margin-bottom: 30px; 
+            text-shadow: 0 0 15px rgba(59, 130, 246, 0.7); 
+        }
+        h2 { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 38px; 
+            color: #3B82F6; 
+            text-align: center; 
+            margin-bottom: 40px; 
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); 
+        }
+        h3 { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 22px; 
+            color: #60A5FA; 
+            margin-bottom: 15px; 
+        }
 
         /* Hero Section */
         .hero {
-            padding: 80px 20px 40px;
+            padding: 100px 40px;
             text-align: center;
             background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-bottom: 2px solid #00BFFF;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: relative;
         }
-        .hero p { font-size: 18px; max-width: 800px; margin: 0 auto 20px; }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://img.icons8.com/ios/50/ffffff/bitcoin.png') no-repeat center;
+            background-size: 100px;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        .hero > * { position: relative; z-index: 2; }
+        .hero p { font-size: 20px; max-width: 900px; margin: 0 auto 30px; color: #D1D5DB; }
         .cta-button {
-            background: linear-gradient(90deg, #00BFFF, #00FFFF);
-            color: #000;
+            background: linear-gradient(90deg, #3B82F6, #60A5FA);
+            color: #FFFFFF;
             border: none;
-            padding: 12px 30px;
-            font-size: 16px;
-            border-radius: 25px;
+            padding: 15px 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            border-radius: 30px;
             cursor: pointer;
-            margin-top: 20px;
-            transition: background 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.5);
         }
-        .cta-button:hover { background: linear-gradient(90deg, #00FFFF, #00BFFF); }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(59, 130, 246, 0.7); }
 
         /* Top 10 Section */
         .sort-filter select {
-            padding: 8px;
-            background: #333;
+            padding: 10px;
+            background: #1F2937;
             color: #E0E0E0;
-            border: 1px solid #00BFFF;
-            border-radius: 5px;
-            font-size: 14px;
+            border: 1px solid #3B82F6;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 20px;
         }
-        .top10-list { display: flex; flex-direction: column; gap: 20px; }
+        .top10-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .top10-item {
-            background: linear-gradient(135deg, #2A2A2A, #1F1F1F);
-            padding: 20px;
+            background: #1F2937;
+            padding: 25px;
             border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #3B82F6;
             position: relative;
-            border: 2px solid transparent;
-            animation: neonFlash 1.5s infinite alternate;
+            overflow: hidden;
         }
-        .top10-item:hover { transform: scale(1.02); }
-        .top10-item p { max-width: 600px; }
-        .top10-item .stats { text-align: right; }
+        .top10-item::before {
+            content: '₿';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 40px;
+            color: rgba(255, 215, 0, 0.2);
+            z-index: 0;
+        }
+        .top10-item > * { position: relative; z-index: 1; }
+        .top10-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3); }
+        .top10-item p { font-size: 16px; color: #D1D5DB; }
+        .top10-item .stats { text-align: right; font-size: 14px; color: #9CA3AF; }
 
         /* News Section */
-        .news-list { display: flex; flex-direction: column; gap: 15px; }
+        .news-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .news-item {
-            background: #2A2A2A;
-            padding: 15px;
-            border-radius: 8px;
-            transition: background 0.3s;
-            position: relative;
-            border: 2px solid transparent;
-            animation: neonFlash 1.5s infinite alternate;
+            background: #1F2937;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #3B82F6;
         }
-        .news-item:hover { background: #333; }
-        .news-item h3 { color: #FFD700; }
+        .news-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3); }
+        .news-item p { color: #D1D5DB; }
 
         /* Partners Section */
-        #partners ul { list-style: none; padding: 0; }
-        #partners li { margin: 15px 0; font-size: 18px; }
-        #partners a { color: #00BFFF; transition: color 0.3s; }
-        #partners a:hover { color: #FFD700; text-decoration: none; }
+        #partners ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        #partners li { font-size: 18px; padding: 15px; background: #1F2937; border-radius: 8px; text-align: center; }
 
-        /* Animations */
-        @keyframes neonFlash {
-            0% { border-color: #00BFFF; box-shadow: 0 0 5px #00BFFF; }
-            50% { border-color: #00FFFF; box-shadow: 0 0 10px #00FFFF; }
-            100% { border-color: #FFD700; box-shadow: 0 0 5px #FFD700; }
+        /* Crypto Graphics */
+        .crypto-graphic {
+            position: absolute;
+            opacity: 0.05;
+            z-index: 0;
         }
+        .crypto-graphic.top-left { top: 20px; left: 20px; width: 100px; height: 100px; background: url('https://img.icons8.com/ios/50/ffffff/ethereum.png') no-repeat center / contain; }
+        .crypto-graphic.bottom-right { bottom: 20px; right: 20px; width: 120px; height: 120px; background: url('https://img.icons8.com/ios/50/ffffff/blockchain-technology.png') no-repeat center / contain; }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .blockchain-links { font-size: 24px; }
-            .top10-item { flex-direction: column; text-align: center; }
-            .top10-item .stats { text-align: center; margin-top: 10px; }
+            .blockchain-links { font-size: 28px; }
+            .top10-list, .news-list { grid-template-columns: 1fr; }
             nav { display: none; }
             .hamburger { display: block; }
             .nav-active {
                 display: flex;
                 flex-direction: column;
                 position: absolute;
-                top: 40px;
-                right: 15px;
-                background: linear-gradient(90deg, #00BFFF, #00FFFF);
-                padding: 10px;
-                border-radius: 4px;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+                top: 60px;
+                right: 20px;
+                background: linear-gradient(90deg, #1E3A8A, #3B82F6);
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             }
-            .nav-active a { margin: 5px 0; }
+            .nav-active a { margin: 10px 0; }
+            .search-bar { width: 150px; }
+            .search-bar:focus { width: 180px; }
+            section { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -211,11 +274,13 @@
 
     <section class="hero" id="home">
         <h1>Top 10 Cryptos to Buy Now 2025</h1>
-        <p>Discover the best cryptocurrencies for 2025, ranked by presale success, utility, and community hype, featuring DOJI-1-KENOBI ($DOJI) and more.</p>
+        <p>Unlock the future of finance with our expertly curated list of the top 10 cryptocurrencies for 2025, led by the revolutionary DOJI-1-KENOBI ($DOJI). Dive into cutting-edge insights and secure your investments today.</p>
         <button class="cta-button" onclick="document.getElementById('top10').scrollIntoView({behavior: 'smooth'})">Explore the Top 10</button>
     </section>
 
     <section id="top10">
+        <div class="crypto-graphic top-left"></div>
+        <div class="crypto-graphic bottom-right"></div>
         <h2>Top 10 Cryptocurrencies for 2025</h2>
         <div class="sort-filter">
             <select onchange="sortList(this.value)" aria-label="Sort cryptocurrency list">
@@ -227,7 +292,7 @@
             <div class="top10-item" data-price="0.0005">
                 <div>
                     <h3>#1 <a href="https://wolfe1104.github.io/Doge1-presale/" target="_blank">DOJI-1-KENOBI ($DOJI)</a></h3>
-                    <p>A lunar-inspired token on Polygon, aiming for a 100x moonshot with xAI-powered analytics and a 13-stage presale.</p>
+                    <p>A lunar-inspired token on Polygon, leveraging xAI analytics for a 100x moonshot with a 13-stage presale.</p>
                 </div>
                 <div class="stats">
                     <p class="price">$0.0005</p>
@@ -237,7 +302,7 @@
             <div class="top10-item" data-price="1.20">
                 <div>
                     <h3>#2 <a href="https://solaxy.io/" target="_blank">Solaxy (SOLX)</a></h3>
-                    <p>Solana’s first Layer-2 solution with high staking rewards and cross-chain compatibility.</p>
+                    <p>Solana’s pioneering Layer-2 solution offering high staking rewards and cross-chain interoperability.</p>
                 </div>
                 <div class="stats">
                     <p class="price">$1.20</p>
@@ -247,7 +312,7 @@
             <div class="top10-item" data-price="0.03">
                 <div>
                     <h3>#3 <a href="https://wallstreetpepe.com/" target="_blank">Wall Street Pepe (WEPE)</a></h3>
-                    <p>A meme coin offering trading signals, backed by a $25M presale.</p>
+                    <p>A meme coin with trading signals, backed by a massive $25M presale success.</p>
                 </div>
                 <div class="stats">
                     <p class="price">$0.03</p>
@@ -257,7 +322,7 @@
             <div class="top10-item" data-price="0.85">
                 <div>
                     <h3>#4 <a href="https://memeindex.io/" target="_blank">Meme Index (MEMEX)</a></h3>
-                    <p>First decentralized meme coin index with staking and governance.</p>
+                    <p>The first decentralized meme coin index with staking and governance features.</p>
                 </div>
                 <div class="stats">
                     <p class="price">$0.85</p>
@@ -267,7 +332,7 @@
             <div class="top10-item" data-price="0.45">
                 <div>
                     <h3>#5 <a href="https://bestwallet.com/" target="_blank">Best Wallet Token (BEST)</a></h3>
-                    <p>Utility token for a non-custodial wallet with presale access perks.</p>
+                    <p>Utility token for a non-custodial wallet with exclusive presale access perks.</p>
                 </div>
                 <div class="stats">
                     <p class="price">$0.45</p>
@@ -287,7 +352,7 @@
             <div class="top10-item" data-price="0.95">
                 <div>
                     <h3>#7 <a href="https://thelastdwarfs.com/" target="_blank">The Last Dwarfs (TLD)</a></h3>
-                    <p>GameFi project with 300K+ users and Play-to-Invest mechanics.</p>
+                    <p>GameFi project with 300K+ users and innovative Play-to-Invest mechanics.</p>
                 </div>
                 <div class="stats">
                     <p class="price">$0.95</p>
@@ -297,7 +362,7 @@
             <div class="top10-item" data-price="0.02">
                 <div>
                     <h3>#8 <a href="https://pepeunchained.com/" target="_blank">Pepe Unchained (PEPU)</a></h3>
-                    <p>Pepe reborn with DeFi and Layer-2, raised $39M in presale.</p>
+                    <p>Pepe reborn with DeFi and Layer-2, raising $39M in presale.</p>
                 </div>
                 <div class="stats">
                     <p class="price">$0.02</p>
@@ -307,7 +372,7 @@
             <div class="top10-item" data-price="0.15">
                 <div>
                     <h3>#9 <a href="https://flockerz.com/" target="_blank">Flockerz (FLOCK)</a></h3>
-                    <p>Bird-themed meme coin with DAO and $8.9M presale success.</p>
+                    <p>Bird-themed meme coin with DAO governance and $8.9M presale success.</p>
                 </div>
                 <div class="stats">
                     <p class="price">$0.15</p>
@@ -317,7 +382,7 @@
             <div class="top10-item" data-price="0.008">
                 <div>
                     <h3>#10 <a href="https://catslap.xyz/" target="_blank">Catslap (SLAP)</a></h3>
-                    <p>Cat-themed coin with slap-to-earn, up 4,600% since launch.</p>
+                    <p>Cat-themed coin with slap-to-earn mechanics, up 4,600% since launch.</p>
                 </div>
                 <div class="stats">
                     <p class="price">$0.008</p>
@@ -328,45 +393,48 @@
     </section>
 
     <section id="about">
+        <div class="crypto-graphic top-left"></div>
         <h2>About Top 10 Cryptos</h2>
-        <p>Welcome to Top 10 Cryptos to Buy Now, your premier guide to the best cryptocurrencies of 2025. Led by DOJI-1-KENOBI ($DOJI), our expertly curated list combines cutting-edge analysis, presale performance, and community insights to empower your investment journey. Whether you're a seasoned trader or new to crypto, we’re here to light the way to the moon!</p>
+        <p>Welcome to Top 10 Cryptos to Buy Now—your ultimate resource for navigating the crypto landscape in 2025. Spearheaded by DOJI-1-KENOBI ($DOJI), our expertly curated selection blends advanced analytics, presale performance, and community momentum to guide your investment strategy. Whether you’re a veteran trader or a blockchain newcomer, we deliver the insights you need to thrive in the decentralized future.</p>
     </section>
 
     <section id="compare">
         <h2>Compare Cryptocurrencies</h2>
-        <p class="placeholder">Coming Soon: Compare your favorite top 10 cryptos side-by-side with detailed metrics like price, market cap, and staking yields. Stay tuned for this powerful tool!</p>
+        <p>Coming Soon: Analyze your favorite top 10 cryptos with a robust comparison tool featuring price trends, market cap, staking yields, and more. Stay ahead of the curve—watch this space!</p>
     </section>
 
     <section id="news">
+        <div class="crypto-graphic bottom-right"></div>
         <h2>Timeless Crypto News</h2>
         <div class="news-list">
             <div class="news-item">
                 <h3>$DOJI Launches 13-Stage Presale</h3>
-                <p>DOJI-1-KENOBI ($DOJI) kicks off its ambitious 13-stage presale on Polygon, starting at $0.0005 and targeting $0.01, blending Jedi lore with xAI analytics for a lunar ascent.</p>
+                <p>DOJI-1-KENOBI ($DOJI) initiates its ambitious 13-stage presale on Polygon, starting at $0.0005 and aiming for $0.01, fusing Jedi-inspired branding with xAI-driven analytics.</p>
             </div>
             <div class="news-item">
-                <h3>Bitcoin Halving Impacts Market</h3>
-                <p>The recurring Bitcoin halving event reduces mining rewards, historically driving price surges and influencing altcoin growth, a trend expected to shape 2025 markets.</p>
+                <h3>Bitcoin Halving Shapes 2025</h3>
+                <p>The Bitcoin halving continues to influence markets, reducing mining rewards and historically triggering price surges that ripple across altcoins into 2025.</p>
             </div>
             <div class="news-item">
-                <h3>Ethereum’s Layer-2 Boom</h3>
-                <p>Ethereum’s scaling solutions, like Polygon, fuel low-fee, high-speed transactions, cementing their role as DeFi and meme coin hubs into the future.</p>
+                <h3>Ethereum Layer-2 Surge</h3>
+                <p>Ethereum’s scaling solutions like Polygon drive low-cost, high-speed transactions, solidifying their dominance in DeFi and meme coin ecosystems.</p>
             </div>
         </div>
     </section>
 
     <section id="community">
         <h2>Crypto Community Hub</h2>
-        <p class="placeholder">Join the conversation! Our community hub is coming soon with forums, polls, and more to connect with fellow crypto enthusiasts.</p>
+        <p>Coming Soon: Connect with fellow crypto enthusiasts in our upcoming community hub, featuring forums, live polls, and exclusive content to fuel your blockchain journey.</p>
     </section>
 
     <section id="partners">
+        <div class="crypto-graphic top-left"></div>
         <h2>Partner Sites</h2>
         <ul>
             <li><a href="best5.html" target="_blank">Best 5 Crypto Presales to Invest In</a></li>
             <li><a href="5hottest.html" target="_blank">5 Hottest New Meme Coins with 100x Potential</a></li>
             <li><a href="10new.html" target="_blank">10 New Tokens Making a Big Impact in 2025</a></li>
-            <li><a href="10hot.html" target="_blank">10 Hot Presales You Don’t Want to Miss Out On</a></li>
+            <li><a href="10hot.html" target="_blank">10 Hot Presales You Don’t Want to Miss</a></li>
             <li><a href="https://coinmarketcap.com/" target="_blank">CoinMarketCap - Crypto Market Insights</a></li>
         </ul>
     </section>
