@@ -21,9 +21,16 @@
     <title>Top 10 Cryptos to Buy Now 2025 | DOJI-1-KENOBI ($DOJI) & More</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Orbitron', sans-serif; background: #1A1A1A; color: #E0E0E0; line-height: 1.6; }
+        body { 
+            font-family: 'Orbitron', sans-serif; 
+            background: #1A1A1A; 
+            color: #E0E0E0; 
+            line-height: 1.6; 
+        }
         a { color: #00BFFF; text-decoration: none; }
         a:hover { text-decoration: underline; }
+
+        /* Header */
         header {
             background: linear-gradient(90deg, #00BFFF, #00FFFF);
             padding: 10px 15px;
@@ -44,10 +51,57 @@
         nav a:hover { color: #FFD700; }
         .hamburger { display: none; font-size: 20px; cursor: pointer; color: #000; }
         .search-bar { padding: 5px 10px; border-radius: 15px; border: none; font-size: 12px; background: rgba(255, 255, 255, 0.9); }
-        section { padding: 60px 20px; max-width: 1200px; margin: 20px auto; }
+
+        /* Blockchain Links Heading */
+        .blockchain-links {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #00BFFF, #00FFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 6px rgba(0, 191, 255, 0.5);
+            margin-top: 40px; /* Offset for fixed header */
+        }
+
+        /* Section Styling */
+        section { 
+            padding: 60px 20px; 
+            max-width: 1200px; 
+            margin: 20px auto; 
+            background: url('https://images.unsplash.com/photo-1620283085436-9c0fbba87a07') no-repeat center / cover; /* Crypto-themed background */
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, #00BFFF, #00FFFF, #FFD700, #00FF00) border-box;
+            animation: chainSpin 4s linear infinite;
+            z-index: 1;
+            border-radius: 12px;
+        }
+        section > * {
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.9); /* Inner black background */
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        /* Headings */
         h1 { font-size: 48px; color: #00FF00; text-align: center; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0, 255, 0, 0.3); }
         h2 { font-size: 36px; color: #00BFFF; text-align: center; margin-bottom: 30px; text-shadow: 1px 1px 3px rgba(0, 191, 255, 0.3); }
         h3 { font-size: 18px; color: #00FF00; }
+
+        /* Hero Section */
         .hero {
             padding: 80px 20px 40px;
             text-align: center;
@@ -68,10 +122,15 @@
             transition: background 0.3s;
         }
         .cta-button:hover { background: linear-gradient(90deg, #00FFFF, #00BFFF); }
-        #top10 {
-            background: rgba(0, 0, 0, 0.9);
-            border: 2px solid #00BFFF;
-            border-radius: 12px;
+
+        /* Top 10 Section */
+        .sort-filter select {
+            padding: 8px;
+            background: #333;
+            color: #E0E0E0;
+            border: 1px solid #00BFFF;
+            border-radius: 5px;
+            font-size: 14px;
         }
         .top10-list { display: flex; flex-direction: column; gap: 20px; }
         .top10-item {
@@ -82,38 +141,48 @@
             justify-content: space-between;
             align-items: center;
             transition: transform 0.3s;
+            position: relative;
+            border: 2px solid transparent;
+            animation: neonFlash 1.5s infinite alternate;
         }
         .top10-item:hover { transform: scale(1.02); }
         .top10-item p { max-width: 600px; }
         .top10-item .stats { text-align: right; }
-        .sort-filter select {
-            padding: 8px;
-            background: #333;
-            color: #E0E0E0;
-            border: 1px solid #00BFFF;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-        #about, #compare, #news, #community, #partners {
-            background: rgba(0, 0, 0, 0.85);
-            border: 2px solid #00BFFF;
-            border-radius: 12px;
-        }
-        #about p, #compare p, #community p { font-size: 18px; max-width: 800px; margin: 0 auto; }
+
+        /* News Section */
         .news-list { display: flex; flex-direction: column; gap: 15px; }
         .news-item {
             background: #2A2A2A;
             padding: 15px;
             border-radius: 8px;
             transition: background 0.3s;
+            position: relative;
+            border: 2px solid transparent;
+            animation: neonFlash 1.5s infinite alternate;
         }
         .news-item:hover { background: #333; }
         .news-item h3 { color: #FFD700; }
+
+        /* Partners Section */
         #partners ul { list-style: none; padding: 0; }
         #partners li { margin: 15px 0; font-size: 18px; }
         #partners a { color: #00FF00; transition: color 0.3s; }
         #partners a:hover { color: #FFD700; text-decoration: none; }
+
+        /* Animations */
+        @keyframes chainSpin {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+        @keyframes neonFlash {
+            0% { border-color: #00BFFF; box-shadow: 0 0 5px #00BFFF; }
+            50% { border-color: #00FFFF; box-shadow: 0 0 10px #00FFFF; }
+            100% { border-color: #FFD700; box-shadow: 0 0 5px #FFD700; }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
+            .blockchain-links { font-size: 24px; }
             .top10-item { flex-direction: column; text-align: center; }
             .top10-item .stats { text-align: center; margin-top: 10px; }
             nav { display: none; }
@@ -149,6 +218,8 @@
             <input type="text" class="search-bar" placeholder="Search cryptos..." aria-label="Search cryptocurrencies">
         </div>
     </header>
+
+    <div class="blockchain-links">BLOCKCHAIN LINKS</div>
 
     <section class="hero" id="home">
         <h1>Top 10 Cryptos to Buy Now 2025</h1>
@@ -301,7 +372,6 @@
         <p class="placeholder">Join the conversation! Our community hub is coming soon with forums, polls, and more to connect with fellow crypto enthusiasts.</p>
     </section>
 
-    <!-- New Partners Section -->
     <section id="partners">
         <h2>Partner Sites</h2>
         <ul>
