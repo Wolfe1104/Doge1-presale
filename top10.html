@@ -65,15 +65,20 @@
             margin-top: 40px; /* Offset for fixed header */
         }
 
-        /* Section Styling */
+        /* Section Styling with 3D Blocks and Chains Background */
         section { 
             padding: 60px 20px; 
             max-width: 1200px; 
             margin: 20px auto; 
-            background: url('https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d') no-repeat center / cover; /* 3D blocks and chains vibe */
+            background: linear-gradient(45deg, #1A1A1A 0%, #2A2A2A 100%),
+                        repeating-linear-gradient(45deg, #00BFFF 0px, #00BFFF 10px, transparent 10px, transparent 20px),
+                        repeating-linear-gradient(-45deg, #00FFFF 0px, #00FFFF 10px, transparent 10px, transparent 20px);
+            background-blend-mode: overlay;
+            transform: perspective(500px) rotateX(10deg); /* 3D effect */
             position: relative;
             border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
         section::before {
             content: '';
@@ -94,6 +99,7 @@
             background: rgba(0, 0, 0, 0.9); /* Inner black background */
             padding: 20px;
             border-radius: 8px;
+            transform: perspective(500px) rotateX(-10deg); /* Counteract section tilt */
         }
 
         /* Headings */
@@ -199,6 +205,8 @@
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             }
             .nav-active a { margin: 5px 0; }
+            section { transform: perspective(500px) rotateX(5deg); } /* Less tilt on mobile */
+            section > * { transform: perspective(500px) rotateX(-5deg); }
         }
     </style>
 </head>
