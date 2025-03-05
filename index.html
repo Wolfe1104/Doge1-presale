@@ -279,11 +279,19 @@
         </div>
     </section>
 
-    <!-- Scripts with Latest WalletConnect v2.0 -->
-    <script src="https://unpkg.com/@walletconnect/web3-provider@2.0.0/dist/umd/index.min.js"></script>
-    <script src="https://unpkg.com/web3@1.10.0/dist/web3.min.js"></script>
-    <script defer>
-        // Slider Logic
+    <!-- Scripts with WalletConnectModal and Ethereum Provider via jsDelivr -->
+    <script type="module">
+        import { WalletConnectModal } from 'https://cdn.jsdelivr.net/npm/@walletconnect/modal@2.6.2/dist/index.js';
+        import { EthereumProvider } from 'https://cdn.jsdelivr.net/npm/@walletconnect/ethereum-provider@2.10.0/dist/index.umd.min.js';
+        import Web3 from 'https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js';
+
+        // Initialize WalletConnectModal
+        const modal = new WalletConnectModal({
+            projectId: 'YOUR_PROJECT_ID', // Replace with your WalletConnect Cloud project ID
+            chains: ['eip155:137'] // Polygon Mainnet
+        });
+
+        // Slider Logic (non-module, so kept separate)
         const sliderTrack = document.getElementById('sliderTrack'),
               leftArrow = document.getElementById('leftArrow'),
               rightArrow = document.getElementById('rightArrow'),
@@ -354,35 +362,25 @@
         });
 
         // WalletConnect Integration
-        async function connectWallet() {
+        window.connectWallet = async function() {
             try {
-                // Check if WalletConnectProvider is available
-                if (typeof window.WalletConnectProvider === 'undefined') {
-                    throw new Error("WalletConnectProvider not loaded. Check your internet or CDN.");
-                }
-
-                // Initialize WalletConnect provider for Polygon
-                const provider = new window.WalletConnectProvider({
-                    rpc: {
-                        137: "https://rpc-mainnet.maticvigil.com" // Polygon RPC
-                    },
-                    chainId: 137, // Polygon Mainnet
-                    qrcodeModalOptions: {
-                        mobileLinks: ["metamask", "trust"] // Preferred wallets
-                    }
+                // Initialize Ethereum Provider
+                const provider = await EthereumProvider.init({
+                    projectId: 'YOUR_PROJECT_ID', // Replace with your WalletConnect Cloud project ID
+                    chains: [137], // Polygon Mainnet
+                    showQrModal: false // We’ll use WalletConnectModal instead
                 });
 
-                console.log("Provider initialized:", provider);
+                // Listen for URI and open modal
+                provider.on('display_uri', async (uri) => {
+                    await modal.openModal({ uri });
+                });
 
-                // Enable the provider (triggers QR code modal)
-                await provider.enable();
+                // Connect to wallet
+                await provider.connect();
 
-                console.log("Provider enabled");
-
-                // Initialize Web3 with the provider
+                // Initialize Web3
                 const web3 = new Web3(provider);
-
-                // Get accounts
                 const accounts = await web3.eth.getAccounts();
                 const account = accounts[0];
 
@@ -399,17 +397,20 @@
                 window.connectedAccount = account;
 
                 alert(`Wallet connected: ${account}`);
+
+                // Close modal after connection
+                modal.closeModal();
             } catch (error) {
                 console.error("Wallet connection failed:", error);
                 alert(`Failed to connect wallet: ${error.message}`);
+                modal.closeModal();
             }
-        }
+        };
 
         // Debug on load
-        window.addEventListener('load', () => {
-            console.log("WalletConnectProvider available:", typeof window.WalletConnectProvider);
-            console.log("Web3 available:", typeof Web3);
-        });
+        console.log("WalletConnectModal loaded:", typeof WalletConnectModal);
+        console.log("EthereumProvider loaded:", typeof EthereumProvider);
+        console.log("Web3 loaded:", typeof Web3);
     </script>
 </body>
 </html>
