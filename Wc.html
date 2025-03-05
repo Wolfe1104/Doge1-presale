@@ -52,84 +52,85 @@
     </style>
 </head>
 <body>
-    <div class="wallet-button" id="walletButton" onclick="connectWallet()">
+    <div class="wallet-button" id="walletButton">
         <p id="buttonText">Connect Wallet</p>
     </div>
 
-    <!-- WalletConnect Dependency -->
-    <script src="https://unpkg.com/@walletconnect/web3-provider@1.8.0/dist/umd/index.min.js"></script>
-    <!-- Web3.js for blockchain interaction -->
-    <script src="https://unpkg.com/web3@1.7.4/dist/web3.min.js"></script>
+    <!-- Dependencies -->
+    <script src="https://unpkg.com/@wagmi/core@2.2.0/dist/umd/index.min.js"></script>
+    <script src="https://unpkg.com/@wagmi/connectors@2.2.0/dist/umd/index.min.js"></script>
+    <script src="https://unpkg.com/viem@1.21.4/dist/umd/index.min.js"></script>
+    <script src="https://unpkg.com/@web3modal/ethereum@2.7.1/dist/index.js"></script>
 
     <script>
-        // Initialize variables
-        let provider = null;
-        let web3 = null;
-        let accounts = null;
+        // Configure wagmi
+        const { createConfig, configureChains, mainnet } = wagmiCore;
+        const { publicClient } = configureChains([mainnet], [
+            wagmiCore.w3mProvider({ 
+                projectId: 'c07c01a9b7236f6f0de172d1b082fc5e' // Public WalletConnect Project ID
+            }),
+        ]);
+
+        const config = createConfig({
+            autoConnect: false,
+            publicClient,
+            connectors: [
+                new wagmiConnectors.WalletConnectConnector({
+                    options: {
+                        projectId: 'c07c01a9b7236f6f0de172d1b082fc5e',
+                        showQrModal: true,
+                    },
+                }),
+            ],
+        });
+
+        // Initialize Web3Modal
+        const modal = window.Web3Modal.createWeb3Modal({
+            wagmiConfig: config,
+            projectId: 'c07c01a9b7236f6f0de172d1b082fc5e',
+            themeMode: 'dark',
+        });
+
+        // Button elements
         const button = document.getElementById('walletButton');
         const buttonText = document.getElementById('buttonText');
+        let connectedAccount = null;
 
+        // Connect wallet function
         async function connectWallet() {
             if (button.classList.contains('disabled')) return;
 
             try {
-                // Disable button during connection
                 button.classList.add('disabled');
                 buttonText.textContent = 'Connecting...';
 
-                // Initialize WalletConnect Provider
-                provider = new WalletConnectProvider({
-                    rpc: {
-                        // Mainnet RPC URL (You can change to other networks)
-                        1: "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
-                        // Add more network RPCs if needed
-                        4: "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161" // Rinkeby testnet
-                    },
-                    qrcodeModalOptions: {
-                        mobileLinks: [
-                            "metamask",
-                            "trust",
-                            "rainbow",
-                            "argent"
-                        ]
-                    }
-                });
-
-                // Enable the provider (shows QR code for connection)
-                accounts = await provider.enable();
-
-                // Initialize Web3 with WalletConnect provider
-                web3 = new Web3(provider);
-
-                // Get connected account
-                const account = accounts[0];
+                // Open the modal and connect
+                const provider = await modal.connect();
+                const accounts = await provider.request({ method: 'eth_accounts' });
                 
-                // Update button text with shortened address
-                const shortAddress = `${account.slice(0, 6)}...${account.slice(-4)}`;
-                buttonText.textContent = shortAddress;
+                if (accounts && accounts.length > 0) {
+                    connectedAccount = accounts[0];
+                    const shortAddress = `${connectedAccount.slice(0, 6)}...${connectedAccount.slice(-4)}`;
+                    buttonText.textContent = shortAddress;
+                    
+                    console.log("Connected account:", connectedAccount);
+                    console.log("Chain ID:", await provider.request({ method: 'eth_chainId' }));
+                }
 
-                console.log("Connected account:", account);
-                console.log("Chain ID:", await web3.eth.getChainId());
-
-                // Add disconnect listener
-                provider.on("disconnect", () => {
-                    resetButton();
-                    console.log("Wallet disconnected");
-                });
-
-                // Add chain change listener
-                provider.on("chainChanged", (chainId) => {
-                    console.log("Chain changed to:", chainId);
-                });
-
-                // Add account change listener
-                provider.on("accountsChanged", (newAccounts) => {
-                    if (newAccounts.length === 0) {
+                // Listen for account changes
+                provider.on('accountsChanged', (accounts) => {
+                    if (accounts.length === 0) {
                         resetButton();
                     } else {
-                        const newShortAddress = `${newAccounts[0].slice(0, 6)}...${newAccounts[0].slice(-4)}`;
-                        buttonText.textContent = newShortAddress;
+                        connectedAccount = accounts[0];
+                        const shortAddress = `${connectedAccount.slice(0, 6)}...${connectedAccount.slice(-4)}`;
+                        buttonText.textContent = shortAddress;
                     }
+                });
+
+                // Listen for disconnect
+                provider.on('disconnect', () => {
+                    resetButton();
                 });
 
             } catch (error) {
@@ -139,20 +140,19 @@
             }
         }
 
+        // Reset button state
         function resetButton() {
             button.classList.remove('disabled');
             buttonText.textContent = 'Connect Wallet';
-            if (provider) {
-                provider.disconnect();
-                provider = null;
-            }
-            accounts = null;
-            web3 = null;
+            connectedAccount = null;
         }
 
-        // Add click-outside to disconnect (optional)
+        // Button click handler
+        button.addEventListener('click', connectWallet);
+
+        // Disconnect on click outside
         document.addEventListener('click', (event) => {
-            if (!button.contains(event.target) && accounts) {
+            if (!button.contains(event.target) && connectedAccount) {
                 if (confirm('Disconnect wallet?')) {
                     resetButton();
                 }
