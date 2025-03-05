@@ -8,16 +8,16 @@
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            padding: 0;
             font-family: 'Orbitron', sans-serif;
-            background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564') no-repeat center fixed;
-            background-size: cover;
+            background: #1a1a1a; /* Fallback color instead of large image */
             color: #E0E0E0;
             line-height: 1.6;
+            transition: none; /* Remove transitions for faster rendering */
         }
         a { color: #00BFFF; text-decoration: none; }
         a:hover { text-decoration: underline; }
@@ -27,7 +27,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 20px;
-            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47') no-repeat center / cover;
+            background: #000; /* Simplified background */
             position: fixed;
             width: 100%;
             top: 0;
@@ -86,8 +86,7 @@
         #hero {
             text-align: center;
             padding: 100px 20px 40px;
-            background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover;
-            background-color: rgba(0, 0, 0, 0.8);
+            background: #111; /* Simplified background */
             border: 2px solid #00BFFF;
             border-radius: 8px;
             margin: 20px auto;
@@ -116,7 +115,6 @@
             border-radius: 5px;
             cursor: pointer;
             text-transform: uppercase;
-            transition: background 0.3s ease;
         }
         .cta-button:hover {
             background: #00FFFF;
@@ -128,8 +126,7 @@
         }
 
         #presale {
-            background: url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05') no-repeat center / cover;
-            background-color: rgba(0, 0, 0, 0.85);
+            background: #222; /* Simplified background */
             padding: 60px 20px;
             max-width: 900px;
             margin: 20px auto;
@@ -215,7 +212,6 @@
             padding: 8px 12px;
             cursor: pointer;
             z-index: 10;
-            transition: opacity 0.3s;
         }
         .arrow.disabled {
             opacity: 0.5;
@@ -223,7 +219,7 @@
         }
         .arrow.left { left: 0; }
         .arrow.right { right: 0; color: #FF0000; }
-        .arrow:hover:not(.disabled) { opacity: 1; color: #FFFFFF; }
+        .arrow:hover:not(.disabled) { color: #FFFFFF; }
 
         @media (max-width: 768px) {
             .presale-box { min-width: 260px; width: 260px; }
@@ -245,6 +241,7 @@
             border: 2px solid #00BFFF;
             border-radius: 8px;
             position: relative;
+            background: #222; /* Simplified background */
         }
         h3 {
             font-size: 36px;
@@ -262,97 +259,31 @@
             color: #00FF00;
         }
 
-        #about {
-            background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover;
-            background-color: rgba(0, 0, 0, 0.8);
+        #about, #moonshot, #tokenomics, #roadmap, #how-to-buy, #faq {
+            background: #222; /* Consistent simplified background */
         }
-        #about p { font-size: 18px; line-height: 1.8; }
-
-        #moonshot {
-            text-align: center;
-            background: url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a') no-repeat center / cover;
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-        #moonshot h3 { color: #FFD700; }
-        #moonshot p { font-size: 18px; line-height: 1.8; max-width: 700px; margin: 20px auto; }
-
-        #tokenomics {
-            text-align: center;
-            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center / cover;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-        .pie-chart-container {
-            width: 300px;
-            height: 300px;
-            margin: 0 auto 20px;
-        }
-        .pie-chart {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: conic-gradient(
-                #4682B4 0% 25%,
-                #DAA520 25% 55%,
-                #2E8B57 55% 65%,
-                #483D8B 65% 85%,
-                #8B0000 85% 100%
-            );
-            border: 4px solid #333333;
-        }
-        .pie-chart-legend {
-            background: #000;
-            padding: 15px;
-            border: 1px solid #00BFFF;
-            border-radius: 8px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .legend-item {
-            display: flex;
-            align-items: center;
-            font-size: 16px;
-        }
-        .legend-color {
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-            border-radius: 50%;
-        }
-
-        #roadmap {
-            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa') no-repeat center / cover;
-            background-color: rgba(0, 0, 0, 0.85);
-        }
-        #roadmap h3 { color: #FFD700; }
-        .roadmap-item {
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid #00BFFF;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
-        }
-        .roadmap-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
-        .roadmap-item p { font-size: 14px; margin: 0; line-height: 1.5; }
-
-        #how-to-buy {
-            background: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d') no-repeat center / cover;
-            background-color: rgba(0, 0, 0, 0.85);
-        }
-        #how-to-buy h3 { color: #FFD700; }
+        #about p, #moonshot p { font-size: 18px; line-height: 1.8; }
+        #moonshot h3, #roadmap h3, #how-to-buy h3, #faq h3 { color: #FFD700; }
         #how-to-buy h4:not(.how-to-buy-item h4) { color: #E0E0E0; }
-        .how-to-buy-item {
+        .how-to-buy-item, .roadmap-item, .faq-item {
             background: rgba(0, 0, 0, 0.9);
             border: 1px solid #00BFFF;
             border-radius: 8px;
             padding: 15px;
             margin: 10px 0;
         }
-        .how-to-buy-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
-        .how-to-buy-item p { font-size: 14px; margin: 0; line-height: 1.5; }
+        .how-to-buy-item h4, .roadmap-item h4, .faq-item h4 {
+            color: #00BFFF;
+            font-size: 18px;
+            margin: 0 0 10px;
+            text-align: left;
+            font-style: normal;
+        }
+        .how-to-buy-item p, .roadmap-item p, .faq-item p {
+            font-size: 14px;
+            margin: 0;
+            line-height: 1.5;
+        }
         #how-to-buy .bonus-tip {
             font-size: 14px;
             font-style: italic;
@@ -367,24 +298,35 @@
             display: block;
             width: 200px;
         }
+        #faq h3 { font-size: 36px; }
 
-        #faq {
-            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center / cover;
-            background-color: rgba(0, 0, 0, 0.85);
+        /* Loading Indicator */
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            transition: opacity 0.5s;
         }
-        #faq h3 { color: #FFD700; font-size: 36px; }
-        .faq-item {
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid #00BFFF;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
+        #loading.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
-        .faq-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
-        .faq-item p { font-size: 14px; margin: 0; line-height: 1.5; }
+        #loading span {
+            color: #00BFFF;
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
+    <div id="loading"><span>Loading...</span></div>
+
     <header>
         <div class="logo-container">
             <div class="logo"></div>
@@ -635,90 +577,91 @@
         </div>
     </section>
 
-    <!-- Web3Modal v2 Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@wagmi/core@2.12.7/dist/index.umd.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/viem@2.21.7/dist/index.umd.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@web3modal/ethereum@2.7.1/dist/index.umd.js" defer></script>
+    <!-- Web3Modal v2 Libraries (Async for Faster Initial Load) -->
+    <script src="https://cdn.jsdelivr.net/npm/@wagmi/core@2.12.7/dist/index.umd.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/viem@2.21.7/dist/index.umd.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/@web3modal/ethereum@2.7.1/dist/index.umd.js" async></script>
 
-    <!-- Wallet Connection Script -->
+    <!-- Optimized Scripts -->
     <script>
-        window.onload = function() {
-            // Configure Wagmi with Polygon chain
-            const chains = [{
-                id: 137,
-                name: 'Polygon Mainnet',
-                network: 'polygon',
-                nativeCurrency: { name: 'MATIC', symbol: 'MATIC', decimals: 18 },
-                rpcUrls: { default: { http: ['https://polygon-rpc.com'] } }
-            }];
+        // Hide loading indicator once critical content is ready
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 500); // Adjust delay based on testing
+        });
 
-            const wagmiConfig = WagmiCore.createConfig({
-                chains,
-                transports: { 137: WagmiCore.http() },
-                connectors: [
-                    Web3ModalEthereum.WalletConnectConnector({ chains, options: { projectId: 'YOUR_PROJECT_ID' } }), // Replace with your WalletConnect Project ID
-                    Web3ModalEthereum.InjectedConnector({ chains })
-                ]
-            });
+        // Wallet Connection (Initialized After Scripts Load)
+        let wagmiConfig, openModal;
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkLibs = setInterval(() => {
+                if (typeof WagmiCore !== 'undefined' && typeof Web3ModalEthereum !== 'undefined') {
+                    clearInterval(checkLibs);
+                    const chains = [{
+                        id: 137,
+                        name: 'Polygon Mainnet',
+                        network: 'polygon',
+                        nativeCurrency: { name: 'MATIC', symbol: 'MATIC', decimals: 18 },
+                        rpcUrls: { default: { http: ['https://polygon-rpc.com'] } }
+                    }];
 
-            const { open, close } = Web3ModalEthereum.createWeb3Modal({
-                wagmiConfig,
-                projectId: 'YOUR_PROJECT_ID', // Replace with your WalletConnect Project ID from https://cloud.walletconnect.com
-                themeMode: 'dark'
-            });
+                    wagmiConfig = WagmiCore.createConfig({
+                        chains,
+                        transports: { 137: WagmiCore.http() },
+                        connectors: [
+                            Web3ModalEthereum.WalletConnectConnector({ chains, options: { projectId: 'YOUR_PROJECT_ID' } }),
+                            Web3ModalEthereum.InjectedConnector({ chains })
+                        ]
+                    });
 
-            async function connectWallet() {
-                const statusElement = document.getElementById('connectionStatus');
-                if (!statusElement) {
-                    console.error("Status element not found");
-                    alert("Error: Status element missing.");
-                    return;
+                    const { open, close } = Web3ModalEthereum.createWeb3Modal({
+                        wagmiConfig,
+                        projectId: 'YOUR_PROJECT_ID', // Replace with your WalletConnect Project ID
+                        themeMode: 'dark'
+                    });
+                    openModal = open;
                 }
-                statusElement.textContent = 'Connecting...';
-                try {
-                    if (typeof Web3ModalEthereum === 'undefined' || typeof WagmiCore === 'undefined') {
-                        throw new Error("Web3Modal or Wagmi libraries not loaded");
-                    }
-                    await open();
-                    const provider = await wagmiConfig.connectors[0].connect();
-                    const chainId = await WagmiCore.getChainId();
-                    if (chainId !== 137) {
-                        statusElement.textContent = 'Switching to Polygon...';
-                        await WagmiCore.switchChain({ chainId: 137 });
-                    }
-                    const address = provider.accounts[0];
-                    statusElement.textContent = `Wallet connected: ${address.substring(0, 6)}...`;
-                    console.log("Connected address:", address);
-                } catch (error) {
-                    statusElement.textContent = 'Failed to connect';
-                    console.error("Connection error:", error.message);
-                    if (error.message.includes("WalletConnect")) {
-                        statusElement.textContent += ' - Get a WalletConnect Project ID from walletconnect.com';
-                    }
+            }, 100);
+        });
+
+        async function connectWallet() {
+            const statusElement = document.getElementById('connectionStatus');
+            if (!statusElement) return console.error("Status element missing");
+            statusElement.textContent = 'Connecting...';
+            try {
+                if (!wagmiConfig || !openModal) throw new Error("Wallet libraries not loaded yet");
+                await openModal();
+                const provider = await wagmiConfig.connectors[0].connect();
+                const chainId = await WagmiCore.getChainId();
+                if (chainId !== 137) {
+                    statusElement.textContent = 'Switching to Polygon...';
+                    await WagmiCore.switchChain({ chainId: 137 });
+                }
+                const address = provider.accounts[0];
+                statusElement.textContent = `Wallet connected: ${address.substring(0, 6)}...`;
+                console.log("Connected address:", address);
+            } catch (error) {
+                statusElement.textContent = 'Failed to connect';
+                console.error("Connection error:", error.message);
+                if (error.message.includes("WalletConnect")) {
+                    statusElement.textContent += ' - Get a Project ID from walletconnect.com';
                 }
             }
+        }
 
-            // Expose connectWallet globally
-            window.connectWallet = connectWallet;
-        };
-    </script>
-
-    <!-- Slider Script -->
-    <script>
+        // Optimized Slider
         const sliderTrack = document.getElementById('sliderTrack');
         const leftArrow = document.getElementById('leftArrow');
         const rightArrow = document.getElementById('rightArrow');
         const boxes = document.querySelectorAll('.presale-box');
-        const totalBoxes = boxes.length;
         let currentIndex = Array.from(boxes).findIndex(box => box.classList.contains('current')) || 0;
-        const visibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
+        let visibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
 
         function updateSlider() {
-            const boxWidth = boxes[0].offsetWidth + 20;
-            const maxIndex = totalBoxes - visibleBoxes;
+            const boxWidth = 300; // Fixed width for consistency, adjust if needed
+            const maxIndex = boxes.length - visibleBoxes;
             currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
-            const translateX = -currentIndex * boxWidth;
-            sliderTrack.style.transform = `translateX(${translateX}px)`;
+            sliderTrack.style.transform = `translateX(${-currentIndex * boxWidth}px)`;
             leftArrow.classList.toggle('disabled', currentIndex === 0);
             rightArrow.classList.toggle('disabled', currentIndex >= maxIndex);
         }
@@ -731,17 +674,13 @@
         }
 
         function slideRight() {
-            const maxIndex = totalBoxes - visibleBoxes;
-            if (currentIndex < maxIndex) {
+            if (currentIndex < boxes.length - visibleBoxes) {
                 currentIndex++;
                 updateSlider();
             }
         }
 
-        let touchStartX = 0;
-        let touchCurrentX = 0;
-        let isDragging = false;
-
+        let touchStartX = 0, touchCurrentX = 0, isDragging = false;
         sliderTrack.addEventListener('touchstart', (e) => {
             touchStartX = e.touches[0].clientX;
             isDragging = true;
@@ -752,53 +691,44 @@
             if (!isDragging) return;
             touchCurrentX = e.touches[0].clientX;
             const diffX = touchCurrentX - touchStartX;
-            const boxWidth = boxes[0].offsetWidth + 20;
-            const currentTranslateX = -currentIndex * boxWidth;
-            sliderTrack.style.transform = `translateX(${currentTranslateX + diffX}px)`;
+            const boxWidth = 300;
+            sliderTrack.style.transform = `translateX(${-currentIndex * boxWidth + diffX}px)`;
             e.preventDefault();
         });
 
-        sliderTrack.addEventListener('touchend', (e) => {
+        sliderTrack.addEventListener('touchend', () => {
             if (!isDragging) return;
             isDragging = false;
             sliderTrack.style.transition = 'transform 0.5s ease-in-out';
             const diffX = touchCurrentX - touchStartX;
-            const boxWidth = boxes[0].offsetWidth + 20;
-            const threshold = boxWidth / 3;
-            if (Math.abs(diffX) > threshold) {
+            const boxWidth = 300;
+            if (Math.abs(diffX) > boxWidth / 3) {
                 if (diffX > 0 && currentIndex > 0) currentIndex--;
-                else if (diffX < 0 && currentIndex < totalBoxes - visibleBoxes) currentIndex++;
+                else if (diffX < 0 && currentIndex < boxes.length - visibleBoxes) currentIndex++;
             }
             updateSlider();
         });
 
         window.addEventListener('load', () => {
-            if (boxes.length === 0) {
-                console.error('No presale boxes found!');
-                return;
-            }
-            updateSlider();
+            if (boxes.length) updateSlider();
         });
 
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
-                const newVisibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
-                if (newVisibleBoxes !== visibleBoxes) updateSlider();
-            }, 100);
+                visibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
+                updateSlider();
+            }, 200); // Increased debounce for smoother resize
         });
 
         document.querySelectorAll('.dropdown-content a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', (e) => {
                 e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
+                const targetId = anchor.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
                 if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo({ top: targetElement.offsetTop - 70, behavior: 'smooth' });
                 }
             });
         });
