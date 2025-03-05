@@ -279,8 +279,8 @@
         </div>
     </section>
 
-    <!-- Scripts with WalletConnect v2.11.0 -->
-    <script src="https://unpkg.com/@walletconnect/web3-provider@2.11.0/dist/umd/index.min.js"></script>
+    <!-- Scripts with Local WalletConnect -->
+    <script src="walletconnect.js"></script>
     <script src="https://unpkg.com/web3@1.10.0/dist/web3.min.js"></script>
     <script defer>
         // Slider Logic
@@ -353,7 +353,7 @@
             });
         });
 
-        // WalletConnect v2 Integration
+        // WalletConnect Integration
         window.addEventListener('load', () => {
             console.log("WalletConnectProvider:", typeof window.WalletConnectProvider);
             console.log("Web3:", typeof Web3);
