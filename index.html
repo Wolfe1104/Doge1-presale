@@ -8,16 +8,17 @@
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            padding: 0;
             font-family: 'Orbitron', sans-serif;
             background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564') no-repeat center fixed;
             background-size: cover;
             color: #E0E0E0;
             line-height: 1.6;
+            overscroll-behavior: none;
         }
         a { color: #00BFFF; text-decoration: none; }
         a:hover { text-decoration: underline; }
@@ -123,14 +124,15 @@
         }
 
         #presale {
-            background: url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05') no-repeat center / cover;
-            background-color: rgba(0, 0, 0, 0.85);
+            background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 60px 20px;
             max-width: 900px;
             margin: 20px auto;
             border: 2px solid #00BFFF;
             border-radius: 8px;
             position: relative;
+            will-change: transform;
         }
         #presale h3 {
             color: #FFD700;
@@ -148,6 +150,7 @@
         .slider-track {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            will-change: transform;
             touch-action: pan-y;
         }
         .presale-box {
@@ -334,7 +337,7 @@
         .roadmap-item p { font-size: 14px; margin: 0; line-height: 1.5; }
 
         #how-to-buy {
-            background: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d') no-repeat center / cover;
+            background: url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05') no-repeat center / cover;
             background-color: rgba(0, 0, 0, 0.85);
         }
         #how-to-buy h3 { color: #FFD700; }
@@ -431,7 +434,7 @@
     <section id="presale">
         <h3>Presale: The Jedi Uprising</h3>
         <div class="slider-container">
-            <button class="arrow left" id="leftArrow" onclick="slideLeft()">⟵</button>
+            <button class="arrow left" id="leftArrow">⟵</button>
             <div class="slider-track" id="sliderTrack">
                 <div class="presale-box current stage-1">
                     <h4>The Force Awakens</h4>
@@ -525,7 +528,7 @@
                     <span class="stage-badge">Stage 13</span>
                 </div>
             </div>
-            <button class="arrow right" id="rightArrow" onclick="slideRight()">⟶</button>
+            <button class="arrow right" id="rightArrow">⟶</button>
         </div>
     </section>
 
@@ -665,116 +668,145 @@
     </section>
 
     <script>
-        const sliderTrack = document.getElementById('sliderTrack');
-        const leftArrow = document.getElementById('leftArrow');
-        const rightArrow = document.getElementById('rightArrow');
-        const boxes = document.querySelectorAll('.presale-box');
-        const totalBoxes = boxes.length;
-        let currentIndex = Array.from(boxes).findIndex(box => box.classList.contains('current')) || 0;
-        const visibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
+        (function() {
+            const sliderTrack = document.getElementById('sliderTrack');
+            const leftArrow = document.getElementById('leftArrow');
+            const rightArrow = document.getElementById('rightArrow');
+            const boxes = document.querySelectorAll('.presale-box');
+            const totalBoxes = boxes.length;
+            let currentIndex = Array.from(boxes).findIndex(box => box.classList.contains('current')) || 0;
+            let visibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
+            let isAnimating = false;
+            let rafId = null;
 
-        function updateSlider() {
-            const boxWidth = boxes[0].offsetWidth + 20;
-            const maxIndex = totalBoxes - visibleBoxes;
-            currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
-            const translateX = -currentIndex * boxWidth;
-            sliderTrack.style.transform = `translateX(${translateX}px)`;
+            function updateSlider() {
+                if (isAnimating) return;
+                isAnimating = true;
 
-            leftArrow.classList.toggle('disabled', currentIndex === 0);
-            rightArrow.classList.toggle('disabled', currentIndex >= maxIndex);
+                const boxWidth = boxes[0].offsetWidth + 20;
+                const maxIndex = totalBoxes - visibleBoxes;
+                currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+                const translateX = -currentIndex * boxWidth;
 
-            console.log(`Slider updated: currentIndex=${currentIndex}, translateX=${translateX}, visibleBoxes=${visibleBoxes}`);
-        }
+                sliderTrack.style.transition = 'transform 0.5s ease-in-out';
+                sliderTrack.style.transform = `translateX(${translateX}px)`;
 
-        function slideLeft() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateSlider();
+                leftArrow.classList.toggle('disabled', currentIndex === 0);
+                rightArrow.classList.toggle('disabled', currentIndex >= maxIndex);
+
+                setTimeout(() => { isAnimating = false; }, 500);
             }
-        }
 
-        function slideRight() {
-            const maxIndex = totalBoxes - visibleBoxes;
-            if (currentIndex < maxIndex) {
-                currentIndex++;
-                updateSlider();
-            }
-        }
-
-        let touchStartX = 0;
-        let touchCurrentX = 0;
-        let isDragging = false;
-
-        sliderTrack.addEventListener('touchstart', (e) => {
-            touchStartX = e.touches[0].clientX;
-            isDragging = true;
-            sliderTrack.style.transition = 'none';
-            console.log(`Touch started at X=${touchStartX}`);
-        });
-
-        sliderTrack.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            touchCurrentX = e.touches[0].clientX;
-            const diffX = touchCurrentX - touchStartX;
-            const boxWidth = boxes[0].offsetWidth + 20;
-            const currentTranslateX = -currentIndex * boxWidth;
-            sliderTrack.style.transform = `translateX(${currentTranslateX + diffX}px)`;
-            e.preventDefault();
-        });
-
-        sliderTrack.addEventListener('touchend', (e) => {
-            if (!isDragging) return;
-            isDragging = false;
-            sliderTrack.style.transition = 'transform 0.5s ease-in-out';
-            const diffX = touchCurrentX - touchStartX;
-            const boxWidth = boxes[0].offsetWidth + 20;
-            const threshold = boxWidth / 3;
-
-            if (Math.abs(diffX) > threshold) {
-                if (diffX > 0 && currentIndex > 0) {
+            function slideLeft() {
+                if (currentIndex > 0 && !isAnimating) {
                     currentIndex--;
-                } else if (diffX < 0 && currentIndex < totalBoxes - visibleBoxes) {
-                    currentIndex++;
+                    updateSlider();
                 }
             }
-            updateSlider();
-            console.log(`Touch ended: diffX=${diffX}, newIndex=${currentIndex}`);
-        });
 
-        window.addEventListener('load', () => {
-            if (boxes.length === 0) {
-                console.error('No presale boxes found!');
-                return;
+            function slideRight() {
+                const maxIndex = totalBoxes - visibleBoxes;
+                if (currentIndex < maxIndex && !isAnimating) {
+                    currentIndex++;
+                    updateSlider();
+                }
             }
-            updateSlider();
-            console.log('Slider initialized');
-        });
 
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
+            let touchStartX = 0;
+            let touchCurrentX = 0;
+            let isDragging = false;
+
+            function handleTouchStart(e) {
+                touchStartX = e.touches[0].clientX;
+                isDragging = true;
+                sliderTrack.style.transition = 'none';
+                cancelAnimationFrame(rafId);
+            }
+
+            function handleTouchMove(e) {
+                if (!isDragging) return;
+                touchCurrentX = e.touches[0].clientX;
+                const diffX = touchCurrentX - touchStartX;
+                const boxWidth = boxes[0].offsetWidth + 20;
+                const currentTranslateX = -currentIndex * boxWidth;
+
+                rafId = requestAnimationFrame(() => {
+                    sliderTrack.style.transform = `translateX(${currentTranslateX + diffX}px)`;
+                });
+                e.preventDefault();
+            }
+
+            function handleTouchEnd() {
+                if (!isDragging) return;
+                isDragging = false;
+                cancelAnimationFrame(rafId);
+                sliderTrack.style.transition = 'transform 0.5s ease-in-out';
+                
+                const diffX = touchCurrentX - touchStartX;
+                const boxWidth = boxes[0].offsetWidth + 20;
+                const threshold = boxWidth / 3;
+
+                if (Math.abs(diffX) > threshold) {
+                    if (diffX > 0 && currentIndex > 0) {
+                        currentIndex--;
+                    } else if (diffX < 0 && currentIndex < totalBoxes - visibleBoxes) {
+                        currentIndex++;
+                    }
+                }
+                updateSlider();
+            }
+
+            function initSlider() {
+                if (boxes.length === 0) return;
+                updateSlider();
+            }
+
+            function debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+
+            const handleResize = debounce(() => {
                 const newVisibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
                 if (newVisibleBoxes !== visibleBoxes) {
-                    console.log(`Visible boxes changed: ${visibleBoxes} -> ${newVisibleBoxes}`);
+                    visibleBoxes = newVisibleBoxes;
                     updateSlider();
                 }
             }, 100);
-        });
 
-        document.querySelectorAll('.dropdown-content a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
+            function initEventListeners() {
+                leftArrow.addEventListener('click', slideLeft);
+                rightArrow.addEventListener('click', slideRight);
+                sliderTrack.addEventListener('touchstart', handleTouchStart, { passive: true });
+                sliderTrack.addEventListener('touchmove', handleTouchMove, { passive: false });
+                sliderTrack.addEventListener('touchend', handleTouchEnd, { passive: true });
+                window.addEventListener('resize', handleResize);
+                window.addEventListener('load', initSlider);
+
+                document.querySelectorAll('.dropdown-content a').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 70,
+                                behavior: 'smooth'
+                            });
+                        }
                     });
-                }
-            });
-        });
+                });
+            }
+
+            initEventListeners();
+        })();
     </script>
 </body>
 </html>
