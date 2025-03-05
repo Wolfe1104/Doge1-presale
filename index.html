@@ -279,8 +279,8 @@
         </div>
     </section>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/@walletconnect/web3-provider@1.8.0/dist/umd/index.min.js"></script>
+    <!-- Scripts with WalletConnect v2.11.0 -->
+    <script src="https://unpkg.com/@walletconnect/web3-provider@2.11.0/dist/umd/index.min.js"></script>
     <script src="https://unpkg.com/web3@1.10.0/dist/web3.min.js"></script>
     <script defer>
         // Slider Logic
@@ -353,22 +353,23 @@
             });
         });
 
-        // WalletConnect Integration
+        // WalletConnect v2 Integration
         window.addEventListener('load', () => {
-            console.log("WalletConnectProvider:", WalletConnectProvider);
-            console.log("typeof WalletConnectProvider:", typeof WalletConnectProvider);
+            console.log("WalletConnectProvider:", typeof window.WalletConnectProvider);
             console.log("Web3:", typeof Web3);
         });
 
         async function connectWallet() {
             try {
-                if (!WalletConnectProvider || !WalletConnectProvider.default) {
-                    throw new Error("WalletConnectProvider.default not available");
+                if (!window.WalletConnectProvider) {
+                    throw new Error("WalletConnectProvider not loaded");
                 }
-                const provider = new WalletConnectProvider.default({
+                const provider = new window.WalletConnectProvider({
                     rpc: { 137: "https://rpc-mainnet.maticvigil.com" },
                     chainId: 137,
-                    qrcode: true
+                    qrcodeModalOptions: {
+                        mobileLinks: ["metamask", "trust"]
+                    }
                 });
                 console.log("Provider initialized:", provider);
                 await provider.enable();
