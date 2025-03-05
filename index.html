@@ -4,12 +4,379 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOJI-1-KENOBI Presale</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" crossorigin>
-    <link rel="preload" href="logo.webp" as="image">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        *{box-sizing:border-box}body{margin:0;padding:0;font-family:'Orbitron',sans-serif;background:url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800') no-repeat center fixed;background-size:cover;color:#E0E0E0;line-height:1.6}a{color:#00BFFF;text-decoration:none}a:hover{text-decoration:underline}header{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?w=800') no-repeat center / cover;position:fixed;width:100%;top:0;left:0;z-index:1000;border-bottom:2px solid #00BFFF;height:60px}.logo-container{display:flex;align-items:center}.logo{width:40px;height:40px;background:url('logo.webp') no-repeat;background-size:cover}.logo-text{font-size:18px;font-weight:bold;color:#00BFFF;margin-left:10px}.dropdown{position:relative}.hamburger{font-size:24px;color:#00BFFF;cursor:pointer}.dropdown-content{display:none;position:absolute;right:0;background:rgba(0,0,0,0.9);min-width:160px;border:1px solid #00BFFF;border-radius:4px}.dropdown:hover .dropdown-content{display:block}.dropdown-content a{color:#E0E0E0;padding:10px 15px;display:block;font-size:14px}.dropdown-content a:hover{color:#00BFFF;background:rgba(0,191,255,0.2)}#hero{text-align:center;padding:100px 20px 40px;background:url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.8);border:2px solid #00BFFF;border-radius:8px;margin:20px auto;max-width:900px;position:relative;z-index:1}#hero h1{font-size:48px;margin:0 0 15px;line-height:1.1}#hero .breaking{color:#00BFFF;display:block;font-size:32px}#hero .doji{color:#00FF00;display:inline;font-size:48px}#hero .bites{color:#00BFFF;display:block;font-size:48px}#hero h2{font-size:24px;margin:0 0 15px;font-style:italic}#hero p{font-size:18px;margin:0 0 20px}.cta-button{background:#00BFFF;color:#000;border:none;padding:12px 25px;font-size:16px;font-family:'Orbitron',sans-serif;border-radius:5px;cursor:pointer;text-transform:uppercase;transition:background-color .3s ease}.cta-button:hover{background:#00FFFF}
-        #presale{background:url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.85);padding:60px 20px;max-width:900px;margin:20px auto;border:2px solid #00BFFF;border-radius:8px;position:relative}#presale h3{color:#FFD700;font-size:36px;margin-bottom:30px;text-align:center}.slider-container{position:relative;width:740px;max-width:100%;margin:0 auto;overflow:hidden}.slider-track{will-change:transform;display:flex;transition:transform .5s ease-in-out;touch-action:pan-y}.presale-box{min-width:360px;width:360px;height:200px;margin:0 10px;background:rgba(0,0,0,0.9);border:1px solid #00BFFF;border-radius:8px;padding:15px;flex-shrink:0;position:relative;overflow:hidden}.presale-box.current{border:2px solid #FFD700}.presale-box.past{opacity:0.7}.presale-box.future{opacity:0.8}.presale-box h4{color:#00BFFF;font-size:18px;margin:0 0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.presale-box p{font-size:16px;color:#E0E0E0;margin:5px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.stage-badge{position:absolute;top:10px;right:10px;background:#FFD700;color:#000;font-size:12px;padding:5px 8px;border-radius:50%;z-index:1}.progress-bar{width:100%;height:8px;background:#333;border-radius:4px;overflow:hidden;margin-top:10px;position:absolute;bottom:15px;left:15px;right:15px}.progress-fill{height:100%;background:#00BFFF;transition:width .3s ease}.arrow{position:absolute;top:50%;transform:translateY(-50%);font-size:24px;color:#00BFFF;background:rgba(0,0,0,0.7);border:none;padding:8px 12px;cursor:pointer;z-index:10;transition:opacity .3s}.arrow.disabled{opacity:0.5;cursor:not-allowed}.arrow.left{left:0}.arrow.right{right:0;color:#FF0000}.arrow:hover:not(.disabled){opacity:1;color:#FFF}@media (max-width:760px){.slider-container{width:100%}.presale-box{min-width:calc((100% - 20px) / 2);width:calc((100% - 20px) / 2)}.arrow{font-size:20px;padding:6px 10px}#presale h3{font-size:28px}}@media (max-width:480px){.arrow{font-size:18px;padding:5px 8px}#presale h3{font-size:24px}}section:not(#presale){padding:60px 20px;max-width:900px;margin:20px auto;border:2px solid #00BFFF;border-radius:8px;position:relative}h3{font-size:36px;color:#00BFFF;text-align:center;margin-bottom:20px}h4{font-size:20px;font-style:italic;text-align:center;margin:0 0 30px}.token-doji{color:#00FF00}#about{background:url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.8)}#about p{font-size:18px;line-height:1.8}#moonshot{text-align:center;background:url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.9)}#moonshot h3{color:#FFD700}#moonshot p{font-size:18px;line-height:1.8;max-width:700px;margin:20px auto}#tokenomics{text-align:center;background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.8)}.pie-chart-container{width:300px;height:300px;margin:0 auto 20px}.pie-chart{width:100%;height:100%;border-radius:50%;background:conic-gradient(#4682B4 0% 25%,#DAA520 25% 55%,#2E8B57 55% 65%,#483D8B 65% 85%,#8B0000 85% 100%);border:4px solid #333}.pie-chart-legend{background:#000;padding:15px;border:1px solid #00BFFF;border-radius:8px;display:flex;flex-wrap:wrap;justify-content:center;gap:15px;max-width:600px;margin:0 auto}.legend-item{display:flex;align-items:center;font-size:16px}.legend-color{width:16px;height:16px;margin-right:8px;border-radius:50%}#roadmap{background:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.85)}#roadmap h3{color:#FFD700}.roadmap-item{background:rgba(0,0,0,0.9);border:1px solid #00BFFF;border-radius:8px;padding:15px;margin:10px 0}.roadmap-item h4{color:#00BFFF;font-size:18px;margin:0 0 10px;text-align:left;font-style:normal}.roadmap-item p{font-size:14px;margin:0;line-height:1.5}#how-to-buy{background:url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.85)}#how-to-buy h3{color:#FFD700}#how-to-buy h4:not(.how-to-buy-item h4){color:#E0E0E0}.how-to-buy-item{background:rgba(0,0,0,0.9);border:1px solid #00BFFF;border-radius:8px;padding:15px;margin:10px 0}.how-to-buy-item h4{color:#00BFFF;font-size:18px;margin:0 0 10px;text-align:left;font-style:normal}.how-to-buy-item p{font-size:14px;margin:0;line-height:1.5}#how-to-buy .bonus-tip{font-size:14px;font-style:italic;margin-top:20px;border:1px dashed #8247E5;padding:10px;background:rgba(130,71,229,0.1);border-radius:8px}#how-to-buy .cta-button{margin:30px auto 0;display:block;width:200px}#rewards{background:url('https://images.unsplash.com/photo-1530053969600-caed625f524f?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.85);padding:60px 20px;max-width:900px;margin:20px auto;border:2px solid #00BFFF;border-radius:8px;position:relative;text-align:center}#rewards h3{color:#FFD700;font-size:36px;margin-bottom:20px}#rewards p{font-size:18px;line-height:1.8;max-width:700px;margin:0 auto 30px}.rewards-item{background:rgba(0,0,0,0.9);border:1px solid #00BFFF;border-radius:8px;padding:15px;margin:10px 0}.rewards-item h4{color:#00BFFF;font-size:18px;margin:0 0 10px;text-align:left;font-style:normal}.rewards-item p{font-size:14px;margin:0;line-height:1.5}#rewards .cta-button{margin:30px auto 0;display:block;width:200px}#faq{background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.85)}#faq h3{color:#FFD700;font-size:36px}.faq-item{background:rgba(0,0,0,0.9);border:1px solid #00BFFF;border-radius:8px;padding:15px;margin:10px 0}.faq-item h4{color:#00BFFF;font-size:18px;margin:0 0 10px;text-align:left;font-style:normal}.faq-item p{font-size:14px;margin:0;line-height:1.5}
-        #qr-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:none;justify-content:center;align-items:center;z-index:2000}#qr-modal img{max-width:300px;max-height:300px}
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564') no-repeat center fixed;
+            background-size: cover;
+            color: #E0E0E0;
+            line-height: 1.6;
+        }
+        a { color: #00BFFF; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47') no-repeat center / cover;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #00BFFF;
+            height: 60px;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: url('logo.webp') no-repeat;
+            background-size: cover;
+        }
+        .logo-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00BFFF;
+            margin-left: 10px;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .hamburger {
+            font-size: 24px;
+            color: #00BFFF;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            min-width: 160px;
+            border: 1px solid #00BFFF;
+            border-radius: 4px;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            color: #E0E0E0;
+            padding: 10px 15px;
+            display: block;
+            font-size: 14px;
+        }
+        .dropdown-content a:hover {
+            color: #00BFFF;
+            background: rgba(0, 191, 255, 0.2);
+        }
+
+        #hero {
+            text-align: center;
+            padding: 100px 20px 40px;
+            background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00BFFF;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+        #hero h1 {
+            font-size: 48px;
+            margin: 0 0 15px;
+            line-height: 1.1;
+        }
+        #hero .breaking { color: #00BFFF; display: block; font-size: 32px; }
+        #hero .doji { color: #00FF00; display: inline; font-size: 48px; }
+        #hero .bites { color: #00BFFF; display: block; font-size: 48px; }
+        #hero h2 { font-size: 24px; margin: 0 0 15px; font-style: italic; }
+        #hero p { font-size: 18px; margin: 0 0 20px; }
+
+        .cta-button {
+            background: #00BFFF;
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-family: 'Orbitron', sans-serif;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #00FFFF;
+        }
+
+        #presale {
+            background: url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 20px auto;
+            border: 2px solid #00BFFF;
+            border-radius: 8px;
+            position: relative;
+        }
+        #presale h3 {
+            color: #FFD700;
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 860px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            touch-action: pan-y; /* Prevents vertical scrolling while swiping horizontally */
+        }
+        .presale-box {
+            min-width: 280px;
+            width: 280px;
+            height: 180px;
+            margin: 0 10px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00BFFF;
+            border-radius: 8px;
+            padding: 15px;
+            flex-shrink: 0;
+        }
+        .presale-box.current {
+            border: 2px solid #FFD700;
+        }
+        .presale-box.past { opacity: 0.7; }
+        .presale-box.future { opacity: 0.8; }
+        .presale-box h4 {
+            color: #00BFFF;
+            font-size: 16px;
+            margin: 0 0 10px;
+        }
+        .presale-box p {
+            font-size: 14px;
+            color: #E0E0E0;
+            margin: 5px 0;
+        }
+        .stage-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #FFD700;
+            color: #000;
+            font-size: 12px;
+            padding: 5px 8px;
+            border-radius: 50%;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #00BFFF;
+            transition: width 0.3s ease;
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #00BFFF;
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            z-index: 10;
+            transition: opacity 0.3s;
+        }
+        .arrow.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .arrow.left { left: 0; }
+        .arrow.right { right: 0; color: #FF0000; }
+        .arrow:hover:not(.disabled) { opacity: 1; color: #FFFFFF; }
+
+        @media (max-width: 768px) {
+            .presale-box { min-width: 260px; width: 260px; }
+            .slider-container { max-width: 540px; }
+            .arrow { font-size: 20px; padding: 6px 10px; }
+            #presale h3 { font-size: 28px; }
+        }
+        @media (max-width: 480px) {
+            .presale-box { min-width: 240px; width: 240px; }
+            .slider-container { max-width: 260px; }
+            .arrow { font-size: 18px; padding: 5px 8px; }
+            #presale h3 { font-size: 24px; }
+        }
+
+        section:not(#presale) {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 20px auto;
+            border: 2px solid #00BFFF;
+            border-radius: 8px;
+            position: relative;
+        }
+        h3 {
+            font-size: 36px;
+            color: #00BFFF;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h4 {
+            font-size: 20px;
+            font-style: italic;
+            text-align: center;
+            margin: 0 0 30px;
+        }
+        .token-doji {
+            color: #00FF00;
+        }
+
+        #about {
+            background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        #about p { font-size: 18px; line-height: 1.8; }
+
+        #moonshot {
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        #moonshot h3 { color: #FFD700; }
+        #moonshot p { font-size: 18px; line-height: 1.8; max-width: 700px; margin: 20px auto; }
+
+        #tokenomics {
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .pie-chart-container {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 20px;
+        }
+        .pie-chart {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                #4682B4 0% 25%,
+                #DAA520 25% 55%,
+                #2E8B57 55% 65%,
+                #483D8B 65% 85%,
+                #8B0000 85% 100%
+            );
+            border: 4px solid #333333;
+        }
+        .pie-chart-legend {
+            background: #000;
+            padding: 15px;
+            border: 1px solid #00BFFF;
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            border-radius: 50%;
+        }
+
+        #roadmap {
+            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.85);
+        }
+        #roadmap h3 { color: #FFD700; }
+        .roadmap-item {
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00BFFF;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .roadmap-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
+        .roadmap-item p { font-size: 14px; margin: 0; line-height: 1.5; }
+
+        #how-to-buy {
+            background: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.85);
+        }
+        #how-to-buy h3 { color: #FFD700; }
+        #how-to-buy h4:not(.how-to-buy-item h4) { color: #E0E0E0; }
+        .how-to-buy-item {
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00BFFF;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .how-to-buy-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
+        .how-to-buy-item p { font-size: 14px; margin: 0; line-height: 1.5; }
+        #how-to-buy .bonus-tip {
+            font-size: 14px;
+            font-style: italic;
+            margin-top: 20px;
+            border: 1px dashed #8247E5;
+            padding: 10px;
+            background: rgba(130, 71, 229, 0.1);
+            border-radius: 8px;
+        }
+        #how-to-buy .cta-button {
+            margin: 30px auto 0;
+            display: block;
+            width: 200px;
+        }
+
+        #faq {
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.85);
+        }
+        #faq h3 { color: #FFD700; font-size: 36px; }
+        .faq-item {
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00BFFF;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .faq-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
+        .faq-item p { font-size: 14px; margin: 0; line-height: 1.5; }
     </style>
 </head>
 <body>
@@ -28,7 +395,6 @@
                 <a href="#tokenomics">Tokenomics</a>
                 <a href="#roadmap">Roadmap</a>
                 <a href="#how-to-buy">How to Buy</a>
-                <a href="#rewards">Rewards</a>
                 <a href="#faq">FAQ</a>
                 <a href="whitepaper.pdf">Whitepaper</a>
             </div>
@@ -43,107 +409,107 @@
         </h1>
         <h2>Awaken the Jedi—Join the Force!</h2>
         <p>The Countdown Has Begun—This Offer Is Only Available for a Limited Time, Don’t Let It Pass, BUY!</p>
-        <button class="cta-button" onclick="connectWallet()">JOIN THE FORCE</button>
+        <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
     </section>
 
     <section id="presale">
         <h3>Presale: The Jedi Uprising</h3>
         <div class="slider-container">
-            <button class="arrow left" id="leftArrow">⟵</button>
+            <button class="arrow left" id="leftArrow" onclick="slideLeft()">⟵</button>
             <div class="slider-track" id="sliderTrack">
                 <div class="presale-box current stage-1">
                     <h4>The Force Awakens</h4>
                     <p>Price: <span class="token-doji">$0.00050</span></p>
                     <p>Goal: $12,500</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 50%;"></div></div>
                     <span class="stage-badge">Stage 1</span>
                 </div>
                 <div class="presale-box future stage-2">
                     <h4>Rebels Assemble</h4>
                     <p>Price: <span class="token-doji">$0.00062</span></p>
                     <p>Goal: $14,880</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 2</span>
                 </div>
                 <div class="presale-box future stage-3">
                     <h4>Lightsaber Ignition</h4>
                     <p>Price: <span class="token-doji">$0.00077</span></p>
                     <p>Goal: $17,710</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 3</span>
                 </div>
                 <div class="presale-box future stage-4">
                     <h4>Hyperspace Preparation</h4>
                     <p>Price: <span class="token-doji">$0.00095</span></p>
                     <p>Goal: $20,900</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 4</span>
                 </div>
                 <div class="presale-box future stage-5">
                     <h4>Jedi Training Complete</h4>
                     <p>Price: <span class="token-doji">$0.00118</span></p>
                     <p>Goal: $24,780</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 5</span>
                 </div>
                 <div class="presale-box future stage-6">
                     <h4>The Rebellion Grows</h4>
                     <p>Price: <span class="token-doji">$0.00146</span></p>
                     <p>Goal: $29,200</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 6</span>
                 </div>
                 <div class="presale-box future stage-7">
                     <h4>Force Momentum Builds</h4>
                     <p>Price: <span class="token-doji">$0.00181</span></p>
                     <p>Goal: $34,390</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 7</span>
                 </div>
                 <div class="presale-box future stage-8">
                     <h4>Galactic Resistance Rises</h4>
                     <p>Price: <span class="token-doji">$0.00224</span></p>
                     <p>Goal: $40,320</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 8</span>
                 </div>
                 <div class="presale-box future stage-9">
                     <h4>Warp Speed Engaged</h4>
                     <p>Price: <span class="token-doji">$0.00278</span></p>
                     <p>Goal: $47,260</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 9</span>
                 </div>
                 <div class="presale-box future stage-10">
                     <h4>Jedi Strike Force</h4>
                     <p>Price: <span class="token-doji">$0.00344</span></p>
                     <p>Goal: $55,040</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 10</span>
                 </div>
                 <div class="presale-box future stage-11">
                     <h4>Hyperspace Breakthrough</h4>
                     <p>Price: <span class="token-doji">$0.00426</span></p>
                     <p>Goal: $63,900</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 11</span>
                 </div>
                 <div class="presale-box future stage-12">
                     <h4>The Final Countdown</h4>
                     <p>Price: <span class="token-doji">$0.00527</span></p>
                     <p>Goal: $73,780</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 12</span>
                 </div>
                 <div class="presale-box future stage-13">
                     <h4>Moonshot Ignition</h4>
                     <p>Price: <span class="token-doji">$0.01000</span></p>
                     <p>Goal: $130,000</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                     <span class="stage-badge">Stage 13</span>
                 </div>
             </div>
-            <button class="arrow right" id="rightArrow">⟶</button>
+            <button class="arrow right" id="rightArrow" onclick="slideRight()">⟶</button>
         </div>
     </section>
 
@@ -154,294 +520,4 @@
 
     <section id="moonshot">
         <h3>100X MOONSHOT</h3>
-        <p><span class="token-doji">$DOJI</span> is engineered for a hyperspace leap to the moons of fortune! Powered by xAI’s cutting-edge analytics, this memecoin is preprogrammed for a 100x surge post-launch. With token burns slashing supply, a 13-stage presale igniting demand, and strategic liquidity drops on DEXs and CEXs, <span class="token-doji">$DOJI</span>’s trajectory is set to blast past the stars. The Force is strong with this one—join early to ride the galactic wave to a $0.05 valuation and beyond!</p>
-    </section>
-
-    <section id="tokenomics">
-        <h3>Tokenomics</h3>
-        <div class="pie-chart-container">
-            <div class="pie-chart"></div>
-        </div>
-        <div class="pie-chart-legend">
-            <div class="legend-item"><div class="legend-color" style="background:#4682B4"></div>Presale: 25%</div>
-            <div class="legend-item"><div class="legend-color" style="background:#DAA520"></div>Liquidity: 30%</div>
-            <div class="legend-item"><div class="legend-color" style="background:#2E8B57"></div>Community Rewards: 10%</div>
-            <div class="legend-item"><div class="legend-color" style="background:#483D8B"></div>Roadmap/Development: 20%</div>
-            <div class="legend-item"><div class="legend-color" style="background:#8B0000"></div>Team: 15%</div>
-        </div>
-    </section>
-
-    <section id="roadmap">
-        <h3>Hyperspace Roadmap to the Stars</h3>
-        <div class="roadmap-item">
-            <h4>The Jedi Uprising Begins</h4>
-            <p>The Force awakens—<span class="token-doji">$DOJI</span>’s presale ignites across 13 stages, shattering meme coin chains. From $0.0005, prices warp to $0.01 as conditions trigger—xAI’s masterful analytics fuel the rise, unleashing 250M tokens into the galaxy. Join early, or miss the hyperspace jump!</p>
-        </div>
-        <div class="roadmap-item">
-            <h4>Token Burn Ignition</h4>
-            <p>Lightsabers slash—<span class="token-doji">$DOJI</span> burns unsold or reserved tokens, tightening supply. xAI’s analytics lock in the perfect burn, propelling value toward 100x warp speed.</p>
-        </div>
-        <div class="roadmap-item">
-            <h4>Hyperspace Launch</h4>
-            <p><span class="token-doji">$DOJI</span> hits lightspeed—DEX listings (e.g., QuickSwap) drop with 300M liquidity tokens. Ruff rebels trade, xAI’s fund allocation ignites the warp.</p>
-        </div>
-        <div class="roadmap-item">
-            <h4>Galactic Conquest</h4>
-            <p>Jedi strike—CEX listings (e.g., Binance) and 100M community rewards rain down. <span class="token-doji">$DOJI</span>’s 100x warp ($0.05) hits, fueled by xAI’s strategic plays.</p>
-        </div>
-        <div class="roadmap-item">
-            <h4>Beyond the Stars</h4>
-            <p><span class="token-doji">$DOJI</span> rules—ongoing burns and xAI-driven upgrades (e.g., NFT drops) push past 100x to uncharted moons!</p>
-        </div>
-    </section>
-
-    <section id="how-to-buy">
-        <h3>Unleash the Force—How to Buy <span class="token-doji">$DOJI</span></h3>
-        <h4>Grab Your <span class="token-doji">$DOJI</span> Before the Galaxy Runs Out!</h4>
-        <div class="how-to-buy-item">
-            <h4>Prepare Your Arsenal</h4>
-            <p>Get a lightsaber-ready wallet like MetaMask or Trust Wallet. No weak centralized junk—<span class="token-doji">$DOJI</span>’s all about freedom on the Polygon network. Install it, secure your seed phrase, and load it with MATIC—Polygon’s fuel for the fight!</p>
-        </div>
-        <div class="how-to-buy-item">
-            <h4>Link to the Force</h4>
-            <p>Hit the ‘JOIN THE FORCE’ button and connect your wallet like you’re linking hyperspace coordinates. Approve the link, and you’re in the <span class="token-doji">$DOJI</span> cockpit.</p>
-        </div>
-        <div class="how-to-buy-item">
-            <h4>Choose Your Power</h4>
-            <p>Pick how much <span class="token-doji">$DOJI</span> you’re snagging—starts at $0.0005, warps to $0.01 across 13 stages on Polygon. Enter your MATIC amount (e.g., 10 MATIC scores a stash at launch price). Double-check—no Jedi mind trick reverses this!</p>
-        </div>
-        <div class="how-to-buy-item">
-            <h4>Unleash Your Destiny</h4>
-            <p>Confirm the buy in your wallet—Polygon’s gas fees are dirt cheap, no excuses. Sign it, send it, and your <span class="token-doji">$DOJI</span> tokens hit your wallet when the presale wraps. HODL tight, rebel!</p>
-        </div>
-        <p class="bonus-tip">Lost? Jump into the <span class="token-doji">$DOJI</span> Discord or Telegram—our Jedi masters have your back. Don’t sleep—250M tokens won’t last on Polygon’s hyperspace lanes!</p>
-        <button class="cta-button" onclick="connectWallet()">JOIN THE FORCE</button>
-    </section>
-
-    <section id="rewards">
-        <h3>Jedi Rewards Await</h3>
-        <p>The Force honors its rebels—100M <span class="token-doji">$DOJI</span> (10% of supply) fuels your galactic gains. From presale power-ups to hyperspace riches, claim your place in the stars!</p>
-        <div class="rewards-item">
-            <h4>Lightsaber Tier Multipliers</h4>
-            <p>Ascend to Jedi Master in Stage 1—multiply your <span class="token-doji">$DOJI</span> by 1.2x. Knights of Stages 2-5 wield a 1.1x boost. Join early to wield the strongest blade!</p>
-        </div>
-        <div class="rewards-item">
-            <h4>Hyperspace Staking Rewards</h4>
-            <p>Stake your <span class="token-doji">$DOJI</span> in hyperspace—lock for 90 days and earn 10% extra tokens. Power up your stash while fueling the moonshot!</p>
-        </div>
-        <div class="rewards-item">
-            <h4>NFT Jedi Holocrons</h4>
-            <p>Top 50 presale buyers unlock a Jedi Holocron NFT—ancient relics with 5% staking boosts. Random HODLers might snag one post-launch!</p>
-        </div>
-        <button class="cta-button" onclick="connectWallet()">CLAIM YOUR REWARDS</button>
-    </section>
-
-    <section id="faq">
-        <h3>Frequently Asked Questions</h3>
-        <div class="faq-item">
-            <h4>What is <span class="token-doji">$DOJI</span>?</h4>
-            <p><span class="token-doji">$DOJI</span> is a memecoin on the Polygon network, designed with xAI’s analytics for a 100x moonshot, blending low fees with high-speed transactions.</p>
-        </div>
-        <div class="faq-item">
-            <h4>How does the 100x moonshot work?</h4>
-            <p>xAI’s preprogrammed strategy includes token burns, a 13-stage presale, and strategic listings to drive <span class="token-doji">$DOJI</span>’s value from $0.0005 to $0.05 or higher.</p>
-        </div>
-        <div class="faq-item">
-            <h4>Why choose Polygon network?</h4>
-            <p>Polygon offers lightning-fast transactions and minimal fees, making <span class="token-doji">$DOJI</span> accessible and efficient for all galactic investors.</p>
-        </div>
-        <div class="faq-item">
-            <h4>When can I purchase <span class="token-doji">$DOJI</span>?</h4>
-            <p>The presale is live now in 13 stages—join early to secure the lowest price before the hyperspace launch!</p>
-        </div>
-        <div class="faq-item">
-            <h4>Which wallets are compatible?</h4>
-            <p>Use MetaMask, Trust Wallet, or any wallet compatible with Polygon to join the <span class="token-doji">$DOJI</span> rebellion.</p>
-        </div>
-        <div class="faq-item">
-            <h4>What happens to unsold tokens?</h4>
-            <p>Unsold tokens are burned post-presale, tightening supply and boosting value, per xAI’s strategy.</p>
-        </div>
-        <div class="faq-item">
-            <h4>Are there community incentives?</h4>
-            <p>Yes, 10% of tokens fuel rewards—100M <span class="token-doji">$DOJI</span> will be distributed to the community after launch.</p>
-        </div>
-        <div class="faq-item">
-            <h4>How secure is <span class="token-doji">$DOJI</span>?</h4>
-            <p>Built on Polygon’s robust network and backed by xAI’s analytics, <span class="token-doji">$DOJI</span> offers strong security in the memecoin galaxy.</p>
-        </div>
-        <div class="faq-item">
-            <h4>Can I trade <span class="token-doji">$DOJI</span> after presale?</h4>
-            <p>Yes, <span class="token-doji">$DOJI</span> will be listed on DEXs like QuickSwap post-launch, followed by CEXs like Binance.</p>
-        </div>
-        <div class="faq-item">
-            <h4>What’s the total token supply?</h4>
-            <p>Total supply starts at 1 billion <span class="token-doji">$DOJI</span>, with burns reducing it over time to fuel the moonshot.</p>
-        </div>
-    </section>
-
-    <div id="qr-modal" onclick="this.style.display='none'">
-        <img id="qr-code" src="" alt="Scan to connect wallet">
-    </div>
-
-    <!-- Scripts with WalletKit -->
-    <script type="module">
-        console.log("Script running");
-        import { Core } from 'https://cdn.jsdelivr.net/npm/@walletconnect/core@2.13.0/dist/index.es.js';
-        import { buildApprovedNamespaces } from 'https://cdn.jsdelivr.net/npm/@walletconnect/utils@2.13.0/dist/index.es.js';
-        import Web3 from 'https://cdn.jsdelivr.net/npm/web3@4.2.0/dist/web3.min.js';
-
-        // Initialize WalletConnect Core
-        const core = new Core({
-            projectId: '273115d9e56ba83a4406dffd1f8e514e'
-        });
-
-        // Metadata for your dApp
-        const metadata = {
-            name: 'DOJI-1-KENOBI Presale',
-            description: 'Join the DOJI presale on Polygon!',
-            url: 'https://wolfe1104.github.io/Doge1-presale/',
-            icons: ['https://wolfe1104.github.io/Doge1-presale/logo.webp']
-        };
-
-        // Slider Logic
-        const sliderTrack = document.getElementById('sliderTrack'),
-              leftArrow = document.getElementById('leftArrow'),
-              rightArrow = document.getElementById('rightArrow'),
-              boxes = document.querySelectorAll('.presale-box'),
-              totalBoxes = boxes.length,
-              visibleBoxes = 2,
-              boxWidth = boxes[0].offsetWidth + 20;
-        let currentIndex = 0;
-
-        function updateSlider() {
-            const maxIndex = totalBoxes - visibleBoxes;
-            currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
-            sliderTrack.style.transform = `translateX(${-currentIndex * boxWidth}px)`;
-            leftArrow.classList.toggle('disabled', currentIndex === 0);
-            rightArrow.classList.toggle('disabled', currentIndex >= maxIndex);
-        }
-
-        function throttle(func, limit) {
-            let inThrottle;
-            return function() {
-                if (!inThrottle) {
-                    func.apply(this, arguments);
-                    inThrottle = true;
-                    setTimeout(() => inThrottle = false, limit);
-                }
-            };
-        }
-
-        leftArrow.onclick = () => currentIndex > 0 && (currentIndex--, updateSlider());
-        rightArrow.onclick = () => currentIndex < totalBoxes - visibleBoxes && (currentIndex++, updateSlider());
-
-        let touchStartX = 0, touchCurrentX = 0, isDragging = false;
-        sliderTrack.addEventListener('touchstart', e => {
-            touchStartX = e.touches[0].clientX;
-            isDragging = true;
-            sliderTrack.style.transition = 'none';
-        });
-        sliderTrack.addEventListener('touchmove', e => {
-            if (!isDragging) return;
-            touchCurrentX = e.touches[0].clientX;
-            const diffX = touchCurrentX - touchStartX, currentTranslateX = -currentIndex * boxWidth;
-            sliderTrack.style.transform = `translateX(${currentTranslateX + diffX}px)`;
-            e.preventDefault();
-        });
-        sliderTrack.addEventListener('touchend', () => {
-            if (!isDragging) return;
-            isDragging = false;
-            sliderTrack.style.transition = 'transform 0.5s ease-in-out';
-            const diffX = touchCurrentX - touchStartX, threshold = boxWidth / 3;
-            if (Math.abs(diffX) > threshold) {
-                if (diffX > 0 && currentIndex > 0) currentIndex--;
-                else if (diffX < 0 && currentIndex < totalBoxes - visibleBoxes) currentIndex++;
-            }
-            updateSlider();
-        });
-
-        window.addEventListener('load', updateSlider);
-        window.addEventListener('resize', throttle(updateSlider, 100));
-
-        // Dropdown Smooth Scroll
-        document.querySelectorAll('.dropdown-content a').forEach(anchor => {
-            anchor.addEventListener('click', e => {
-                e.preventDefault();
-                const targetId = anchor.getAttribute('href').substring(1),
-                      targetElement = document.getElementById(targetId);
-                if (targetElement) window.scrollTo({ top: targetElement.offsetTop - 70, behavior: 'smooth' });
-            });
-        });
-
-        // WalletConnect Integration
-        window.connectWallet = async function() {
-            console.log("connectWallet called");
-            try {
-                // Create a pairing
-                const { uri, approval } = await core.pairing.create();
-                console.log("Pairing URI:", uri);
-
-                // Generate QR code (simple base64 encoding via external API for demo)
-                const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(uri)}`;
-                const qrModal = document.getElementById('qr-modal');
-                const qrImage = document.getElementById('qr-code');
-                qrImage.src = qrCodeUrl;
-                qrModal.style.display = 'flex';
-
-                // Wait for wallet approval
-                const session = await approval();
-                console.log("Session established:", session);
-
-                // Define supported namespaces
-                const approvedNamespaces = buildApprovedNamespaces({
-                    proposal: session.proposal,
-                    supportedNamespaces: {
-                        eip155: {
-                            chains: ['eip155:137'], // Polygon Mainnet
-                            methods: ['eth_sendTransaction', 'personal_sign'],
-                            events: ['accountsChanged', 'chainChanged'],
-                            accounts: session.namespaces.eip155.accounts // Will be populated by wallet
-                        }
-                    }
-                });
-
-                // Approve the session
-                await core.pairing.approve({
-                    proposal: session.proposal,
-                    namespaces: approvedNamespaces
-                });
-                console.log("Session approved with namespaces:", approvedNamespaces);
-
-                // Initialize Web3 with the provider
-                const provider = core.web3Provider;
-                const web3 = new Web3(provider);
-                const accounts = await web3.eth.getAccounts();
-                const account = accounts[0];
-                console.log("Connected wallet:", account);
-
-                // Update UI
-                document.querySelectorAll('.cta-button').forEach(btn => {
-                    btn.textContent = `Connected: ${account.slice(0, 6)}...${account.slice(-4)}`;
-                    btn.disabled = true;
-                });
-
-                // Store globally
-                window.web3Provider = provider;
-                window.connectedAccount = account;
-
-                alert(`Wallet connected: ${account}`);
-                qrModal.style.display = 'none';
-            } catch (error) {
-                console.error("Wallet connection failed:", error);
-                alert(`Failed to connect wallet: ${error.message}`);
-                document.getElementById('qr-modal').style.display = 'none';
-            }
-        };
-
-        // Debug on load
-        console.log("WalletConnect Core loaded:", typeof Core);
-        console.log("Web3 loaded:", typeof Web3);
-    </script>
-</body>
-</html>
+        <p><span class=
