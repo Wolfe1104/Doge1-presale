@@ -185,7 +185,7 @@
         </div>
         <div class="roadmap-item">
             <h4>Hyperspace Launch</h4>
-            <p><span class="token-doji">$DOJI</span> hits lightspeed—DEX listings (e.g., PancakeSwap) drop with 300M liquidity tokens. Ruff rebels trade, xAI’s fund allocation ignites the warp.</p>
+            <p><span class="token-doji">$DOJI</span> hits lightspeed—DEX listings (e.g., QuickSwap) drop with 300M liquidity tokens. Ruff rebels trade, xAI’s fund allocation ignites the warp.</p>
         </div>
         <div class="roadmap-item">
             <h4>Galactic Conquest</h4>
@@ -274,7 +274,7 @@
         </div>
         <div class="faq-item">
             <h4>Can I trade <span class="token-doji">$DOJI</span> after presale?</h4>
-            <p>Yes, <span class="token-doji">$DOJI</span> will be listed on DEXs like PancakeSwap post-launch, followed by CEXs like Binance.</p>
+            <p>Yes, <span class="token-doji">$DOJI</span> will be listed on DEXs like QuickSwap post-launch, followed by CEXs like Binance.</p>
         </div>
         <div class="faq-item">
             <h4>What’s the total token supply?</h4>
@@ -282,8 +282,8 @@
         </div>
     </section>
 
-    <!-- Add WalletConnect and Web3.js CDNs -->
-    <script src="https://unpkg.com/@walletconnect/web3-provider@2.10.2/dist/umd/index.min.js"></script>
+    <!-- Scripts with WalletConnect v1.8.0 -->
+    <script src="https://unpkg.com/@walletconnect/web3-provider@1.8.0/dist/umd/index.min.js"></script>
     <script src="https://unpkg.com/web3@1.10.0/dist/web3.min.js"></script>
     <script defer>
         // Slider Logic
@@ -356,49 +356,39 @@
             });
         });
 
-        // WalletConnect Integration
+        // WalletConnect Integration (v1.8.0)
+        window.addEventListener('load', () => {
+            console.log("WalletConnectProvider:", typeof WalletConnectProvider);
+            console.log("Web3:", typeof Web3);
+        });
+
         async function connectWallet() {
             try {
-                const provider = new WalletConnectProvider.default({
-                    rpc: {
-                        137: "https://polygon-rpc.com" // Polygon Mainnet
-                    },
-                    chainId: 137, // Polygon Mainnet Chain ID
-                    qrcodeModalOptions: {
-                        mobileLinks: ["metamask", "trust"] // Suggest MetaMask and Trust Wallet
-                    }
+                if (typeof WalletConnectProvider === "undefined") {
+                    throw new Error("WalletConnectProvider not loaded");
+                }
+                const provider = new WalletConnectProvider({
+                    rpc: { 137: "https://rpc-mainnet.maticvigil.com" },
+                    chainId: 137,
+                    qrcode: true
                 });
-
-                // Enable the provider (triggers QR code or wallet app)
+                console.log("Provider initialized:", provider);
                 await provider.enable();
-
-                // Create Web3 instance with WalletConnect provider
+                console.log("Provider enabled");
                 const web3 = new Web3(provider);
-
-                // Get the connected account
                 const accounts = await web3.eth.getAccounts();
                 const account = accounts[0];
                 console.log("Connected wallet:", account);
-
-                // Update button text or UI
                 document.querySelectorAll('.cta-button').forEach(btn => {
                     btn.textContent = `Connected: ${account.slice(0, 6)}...${account.slice(-4)}`;
-                    btn.disabled = true; // Disable after connection
+                    btn.disabled = true;
                 });
-
-                // Store provider and account for later use
                 window.web3Provider = provider;
                 window.connectedAccount = account;
-
-                // Optional: Alert user
                 alert(`Wallet connected: ${account}`);
-
-                // TODO: Add presale interaction here once contract is deployed
-                // e.g., call buyTokens() with contract ABI and address
-
             } catch (error) {
-                console.error("Wallet connection failed:", error);
-                alert("Failed to connect wallet. Please try again.");
+                console.error("Wallet connection failed:", error.message);
+                alert(`Failed to connect wallet: ${error.message}`);
             }
         }
     </script>
