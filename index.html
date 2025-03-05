@@ -279,8 +279,8 @@
         </div>
     </section>
 
-    <!-- Scripts with Local WalletConnect -->
-    <script src="walletconnect.js"></script>
+    <!-- Scripts with Latest WalletConnect v2 -->
+    <script src="https://unpkg.com/@walletconnect/web3-provider/dist/umd/index.min.js"></script>
     <script src="https://unpkg.com/web3@1.10.0/dist/web3.min.js"></script>
     <script defer>
         // Slider Logic
@@ -353,43 +353,63 @@
             });
         });
 
-        // WalletConnect Integration
-        window.addEventListener('load', () => {
-            console.log("WalletConnectProvider:", typeof window.WalletConnectProvider);
-            console.log("Web3:", typeof Web3);
-        });
-
+        // WalletConnect v2 Integration
         async function connectWallet() {
             try {
-                if (!window.WalletConnectProvider) {
-                    throw new Error("WalletConnectProvider not loaded");
+                // Check if WalletConnectProvider is available
+                if (typeof window.WalletConnectProvider === 'undefined') {
+                    throw new Error("WalletConnectProvider not loaded. Please ensure the script is loaded correctly.");
                 }
+
+                // Initialize WalletConnect provider
                 const provider = new window.WalletConnectProvider({
-                    rpc: { 137: "https://rpc-mainnet.maticvigil.com" },
-                    chainId: 137,
+                    rpc: {
+                        137: "https://rpc-mainnet.maticvigil.com" // Polygon Mainnet
+                    },
+                    chainId: 137, // Polygon chain ID
                     qrcodeModalOptions: {
-                        mobileLinks: ["metamask", "trust"]
+                        mobileLinks: ["metamask", "trust"] // Preferred wallets
                     }
                 });
-                console.log("Provider initialized:", provider);
+
+                console.log("WalletConnect provider initialized:", provider);
+
+                // Enable the provider (triggers QR code modal)
                 await provider.enable();
-                console.log("Provider enabled");
+
+                console.log("Provider enabled successfully");
+
+                // Initialize Web3 with the provider
                 const web3 = new Web3(provider);
+
+                // Get accounts
                 const accounts = await web3.eth.getAccounts();
                 const account = accounts[0];
-                console.log("Connected wallet:", account);
+
+                console.log("Connected wallet address:", account);
+
+                // Update UI
                 document.querySelectorAll('.cta-button').forEach(btn => {
                     btn.textContent = `Connected: ${account.slice(0, 6)}...${account.slice(-4)}`;
                     btn.disabled = true;
                 });
+
+                // Store provider and account globally for later use
                 window.web3Provider = provider;
                 window.connectedAccount = account;
+
                 alert(`Wallet connected: ${account}`);
             } catch (error) {
-                console.error("Wallet connection failed:", error.message);
+                console.error("Wallet connection failed:", error);
                 alert(`Failed to connect wallet: ${error.message}`);
             }
         }
+
+        // Debug on load
+        window.addEventListener('load', () => {
+            console.log("WalletConnectProvider available:", typeof window.WalletConnectProvider);
+            console.log("Web3 available:", typeof Web3);
+        });
     </script>
 </body>
 </html>
