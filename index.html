@@ -9,6 +9,7 @@
     <style>
         *{box-sizing:border-box}body{margin:0;padding:0;font-family:'Orbitron',sans-serif;background:url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800') no-repeat center fixed;background-size:cover;color:#E0E0E0;line-height:1.6}a{color:#00BFFF;text-decoration:none}a:hover{text-decoration:underline}header{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?w=800') no-repeat center / cover;position:fixed;width:100%;top:0;left:0;z-index:1000;border-bottom:2px solid #00BFFF;height:60px}.logo-container{display:flex;align-items:center}.logo{width:40px;height:40px;background:url('logo.webp') no-repeat;background-size:cover}.logo-text{font-size:18px;font-weight:bold;color:#00BFFF;margin-left:10px}.dropdown{position:relative}.hamburger{font-size:24px;color:#00BFFF;cursor:pointer}.dropdown-content{display:none;position:absolute;right:0;background:rgba(0,0,0,0.9);min-width:160px;border:1px solid #00BFFF;border-radius:4px}.dropdown:hover .dropdown-content{display:block}.dropdown-content a{color:#E0E0E0;padding:10px 15px;display:block;font-size:14px}.dropdown-content a:hover{color:#00BFFF;background:rgba(0,191,255,0.2)}#hero{text-align:center;padding:100px 20px 40px;background:url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.8);border:2px solid #00BFFF;border-radius:8px;margin:20px auto;max-width:900px;position:relative;z-index:1}#hero h1{font-size:48px;margin:0 0 15px;line-height:1.1}#hero .breaking{color:#00BFFF;display:block;font-size:32px}#hero .doji{color:#00FF00;display:inline;font-size:48px}#hero .bites{color:#00BFFF;display:block;font-size:48px}#hero h2{font-size:24px;margin:0 0 15px;font-style:italic}#hero p{font-size:18px;margin:0 0 20px}.cta-button{background:#00BFFF;color:#000;border:none;padding:12px 25px;font-size:16px;font-family:'Orbitron',sans-serif;border-radius:5px;cursor:pointer;text-transform:uppercase;transition:background-color .3s ease}.cta-button:hover{background:#00FFFF}
         #presale{background:url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.85);padding:60px 20px;max-width:900px;margin:20px auto;border:2px solid #00BFFF;border-radius:8px;position:relative}#presale h3{color:#FFD700;font-size:36px;margin-bottom:30px;text-align:center}.slider-container{position:relative;width:740px;max-width:100%;margin:0 auto;overflow:hidden}.slider-track{will-change:transform;display:flex;transition:transform .5s ease-in-out;touch-action:pan-y}.presale-box{min-width:360px;width:360px;height:200px;margin:0 10px;background:rgba(0,0,0,0.9);border:1px solid #00BFFF;border-radius:8px;padding:15px;flex-shrink:0;position:relative;overflow:hidden}.presale-box.current{border:2px solid #FFD700}.presale-box.past{opacity:0.7}.presale-box.future{opacity:0.8}.presale-box h4{color:#00BFFF;font-size:18px;margin:0 0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.presale-box p{font-size:16px;color:#E0E0E0;margin:5px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.stage-badge{position:absolute;top:10px;right:10px;background:#FFD700;color:#000;font-size:12px;padding:5px 8px;border-radius:50%;z-index:1}.progress-bar{width:100%;height:8px;background:#333;border-radius:4px;overflow:hidden;margin-top:10px;position:absolute;bottom:15px;left:15px;right:15px}.progress-fill{height:100%;background:#00BFFF;transition:width .3s ease}.arrow{position:absolute;top:50%;transform:translateY(-50%);font-size:24px;color:#00BFFF;background:rgba(0,0,0,0.7);border:none;padding:8px 12px;cursor:pointer;z-index:10;transition:opacity .3s}.arrow.disabled{opacity:0.5;cursor:not-allowed}.arrow.left{left:0}.arrow.right{right:0;color:#FF0000}.arrow:hover:not(.disabled){opacity:1;color:#FFF}@media (max-width:760px){.slider-container{width:100%}.presale-box{min-width:calc((100% - 20px) / 2);width:calc((100% - 20px) / 2)}.arrow{font-size:20px;padding:6px 10px}#presale h3{font-size:28px}}@media (max-width:480px){.arrow{font-size:18px;padding:5px 8px}#presale h3{font-size:24px}}section:not(#presale){padding:60px 20px;max-width:900px;margin:20px auto;border:2px solid #00BFFF;border-radius:8px;position:relative}h3{font-size:36px;color:#00BFFF;text-align:center;margin-bottom:20px}h4{font-size:20px;font-style:italic;text-align:center;margin:0 0 30px}.token-doji{color:#00FF00}#about{background:url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.8)}#about p{font-size:18px;line-height:1.8}#moonshot{text-align:center;background:url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.9)}#moonshot h3{color:#FFD700}#moonshot p{font-size:18px;line-height:1.8;max-width:700px;margin:20px auto}#tokenomics{text-align:center;background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.8)}.pie-chart-container{width:300px;height:300px;margin:0 auto 20px}.pie-chart{width:100%;height:100%;border-radius:50%;background:conic-gradient(#4682B4 0% 25%,#DAA520 25% 55%,#2E8B57 55% 65%,#483D8B 65% 85%,#8B0000 85% 100%);border:4px solid #333}.pie-chart-legend{background:#000;padding:15px;border:1px solid #00BFFF;border-radius:8px;display:flex;flex-wrap:wrap;justify-content:center;gap:15px;max-width:600px;margin:0 auto}.legend-item{display:flex;align-items:center;font-size:16px}.legend-color{width:16px;height:16px;margin-right:8px;border-radius:50%}#roadmap{background:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.85)}#roadmap h3{color:#FFD700}.roadmap-item{background:rgba(0,0,0,0.9);border:1px solid #00BFFF;border-radius:8px;padding:15px;margin:10px 0}.roadmap-item h4{color:#00BFFF;font-size:18px;margin:0 0 10px;text-align:left;font-style:normal}.roadmap-item p{font-size:14px;margin:0;line-height:1.5}#how-to-buy{background:url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.85)}#how-to-buy h3{color:#FFD700}#how-to-buy h4:not(.how-to-buy-item h4){color:#E0E0E0}.how-to-buy-item{background:rgba(0,0,0,0.9);border:1px solid #00BFFF;border-radius:8px;padding:15px;margin:10px 0}.how-to-buy-item h4{color:#00BFFF;font-size:18px;margin:0 0 10px;text-align:left;font-style:normal}.how-to-buy-item p{font-size:14px;margin:0;line-height:1.5}#how-to-buy .bonus-tip{font-size:14px;font-style:italic;margin-top:20px;border:1px dashed #8247E5;padding:10px;background:rgba(130,71,229,0.1);border-radius:8px}#how-to-buy .cta-button{margin:30px auto 0;display:block;width:200px}#rewards{background:url('https://images.unsplash.com/photo-1530053969600-caed625f524f?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.85);padding:60px 20px;max-width:900px;margin:20px auto;border:2px solid #00BFFF;border-radius:8px;position:relative;text-align:center}#rewards h3{color:#FFD700;font-size:36px;margin-bottom:20px}#rewards p{font-size:18px;line-height:1.8;max-width:700px;margin:0 auto 30px}.rewards-item{background:rgba(0,0,0,0.9);border:1px solid #00BFFF;border-radius:8px;padding:15px;margin:10px 0}.rewards-item h4{color:#00BFFF;font-size:18px;margin:0 0 10px;text-align:left;font-style:normal}.rewards-item p{font-size:14px;margin:0;line-height:1.5}#rewards .cta-button{margin:30px auto 0;display:block;width:200px}#faq{background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800') no-repeat center / cover;background-color:rgba(0,0,0,0.85)}#faq h3{color:#FFD700;font-size:36px}.faq-item{background:rgba(0,0,0,0.9);border:1px solid #00BFFF;border-radius:8px;padding:15px;margin:10px 0}.faq-item h4{color:#00BFFF;font-size:18px;margin:0 0 10px;text-align:left;font-style:normal}.faq-item p{font-size:14px;margin:0;line-height:1.5}
+        #qr-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:none;justify-content:center;align-items:center;z-index:2000}#qr-modal img{max-width:300px;max-height:300px}
     </style>
 </head>
 <body>
@@ -42,7 +43,7 @@
         </h1>
         <h2>Awaken the Jedi—Join the Force!</h2>
         <p>The Countdown Has Begun—This Offer Is Only Available for a Limited Time, Don’t Let It Pass, BUY!</p>
-        <button class="cta-button" onclick="testClick()">JOIN THE FORCE</button>
+        <button class="cta-button" onclick="connectWallet()">JOIN THE FORCE</button>
     </section>
 
     <section id="presale">
@@ -279,24 +280,29 @@
         </div>
     </section>
 
-    <!-- Scripts with WalletConnectModal -->
+    <div id="qr-modal" onclick="this.style.display='none'">
+        <img id="qr-code" src="" alt="Scan to connect wallet">
+    </div>
+
+    <!-- Scripts with WalletKit -->
     <script type="module">
         console.log("Script running");
-        import { WalletConnectModal } from 'https://cdn.jsdelivr.net/npm/@walletconnect/modal@2.6.2/dist/index.js';
+        import { Core } from 'https://cdn.jsdelivr.net/npm/@walletconnect/core@2.13.0/dist/index.es.js';
+        import { buildApprovedNamespaces } from 'https://cdn.jsdelivr.net/npm/@walletconnect/utils@2.13.0/dist/index.es.js';
         import Web3 from 'https://cdn.jsdelivr.net/npm/web3@4.2.0/dist/web3.min.js';
 
-        // Test function to verify button click
-        window.testClick = function() {
-            console.log("Button clicked! Test successful.");
-        };
-
-        // Initialize WalletConnectModal with new projectId
-        const modal = new WalletConnectModal({
-            projectId: 'd8b5b529cc9ca6090349d63b69522743', // New projectId inserted here
-            chains: ['eip155:137'], // Polygon Mainnet
-            themeMode: 'dark'
+        // Initialize WalletConnect Core
+        const core = new Core({
+            projectId: '273115d9e56ba83a4406dffd1f8e514e'
         });
-        console.log("Modal initialized:", modal);
+
+        // Metadata for your dApp
+        const metadata = {
+            name: 'DOJI-1-KENOBI Presale',
+            description: 'Join the DOJI presale on Polygon!',
+            url: 'https://wolfe1104.github.io/Doge1-presale/',
+            icons: ['https://wolfe1104.github.io/Doge1-presale/logo.webp']
+        };
 
         // Slider Logic
         const sliderTrack = document.getElementById('sliderTrack'),
@@ -372,15 +378,43 @@
         window.connectWallet = async function() {
             console.log("connectWallet called");
             try {
-                // Open the modal and wait for connection
-                const provider = await modal.openModal({
-                    chainId: 'eip155:137' // Polygon Mainnet
-                });
-                console.log("Provider received:", provider);
+                // Create a pairing
+                const { uri, approval } = await core.pairing.create();
+                console.log("Pairing URI:", uri);
 
-                if (!provider) throw new Error("No provider returned from modal");
+                // Generate QR code (simple base64 encoding via external API for demo)
+                const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(uri)}`;
+                const qrModal = document.getElementById('qr-modal');
+                const qrImage = document.getElementById('qr-code');
+                qrImage.src = qrCodeUrl;
+                qrModal.style.display = 'flex';
+
+                // Wait for wallet approval
+                const session = await approval();
+                console.log("Session established:", session);
+
+                // Define supported namespaces
+                const approvedNamespaces = buildApprovedNamespaces({
+                    proposal: session.proposal,
+                    supportedNamespaces: {
+                        eip155: {
+                            chains: ['eip155:137'], // Polygon Mainnet
+                            methods: ['eth_sendTransaction', 'personal_sign'],
+                            events: ['accountsChanged', 'chainChanged'],
+                            accounts: session.namespaces.eip155.accounts // Will be populated by wallet
+                        }
+                    }
+                });
+
+                // Approve the session
+                await core.pairing.approve({
+                    proposal: session.proposal,
+                    namespaces: approvedNamespaces
+                });
+                console.log("Session approved with namespaces:", approvedNamespaces);
 
                 // Initialize Web3 with the provider
+                const provider = core.web3Provider;
                 const web3 = new Web3(provider);
                 const accounts = await web3.eth.getAccounts();
                 const account = accounts[0];
@@ -392,23 +426,21 @@
                     btn.disabled = true;
                 });
 
-                // Store provider and account globally
+                // Store globally
                 window.web3Provider = provider;
                 window.connectedAccount = account;
 
                 alert(`Wallet connected: ${account}`);
-
-                // Close modal after connection
-                modal.closeModal();
+                qrModal.style.display = 'none';
             } catch (error) {
                 console.error("Wallet connection failed:", error);
                 alert(`Failed to connect wallet: ${error.message}`);
-                modal.closeModal();
+                document.getElementById('qr-modal').style.display = 'none';
             }
         };
 
         // Debug on load
-        console.log("WalletConnectModal loaded:", typeof WalletConnectModal);
+        console.log("WalletConnect Core loaded:", typeof Core);
         console.log("Web3 loaded:", typeof Web3);
     </script>
 </body>
