@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet Connect</title>
+    <style>
+        body {
+            background-color: #0a0911;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .wallet-button {
+            /* Extracted styling from the source */
+            border-radius: 12px;
+            height: 44px;
+            width: 205px;
+            text-align: center;
+            border: 2px solid black;
+            box-shadow: 3px 4px 0 #000;
+            padding: 9px 20px;
+            display: flex;
+            gap: 10px;
+            background-color: white;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .wallet-button:hover {
+            filter: brightness(110%);
+        }
+
+        .wallet-button p {
+            /* Text styling from source */
+            white-space: nowrap;
+            color: black;
+            margin: 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Wallet Connect button from the source -->
+    <div class="wallet-button" onclick="connectWallet()">
+        <p>Connect Wallet</p>
+    </div>
+
+    <script>
+        // Basic wallet connect functionality placeholder
+        // In the original source, this would connect to a larger wallet system
+        function connectWallet() {
+            // This is a placeholder - in a real implementation, you'd integrate
+            // with WalletConnect or another wallet provider SDK
+            console.log("Wallet connect initiated...");
+            alert("Wallet Connect clicked! This is a demo - add your wallet integration code here.");
+            
+            // Example of what actual integration might look like:
+            /*
+            const provider = new WalletConnectProvider({
+                rpc: {
+                    1: "https://mainnet.infura.io/v3/YOUR_PROJECT_ID"
+                }
+            });
+            await provider.enable();
+            */
+        }
+    </script>
+</body>
+</html>
