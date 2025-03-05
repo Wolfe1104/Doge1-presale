@@ -148,7 +148,7 @@
         .slider-track {
             display: flex;
             transition: transform 0.5s ease-in-out;
-            touch-action: pan-y; /* Prevents vertical scrolling while swiping horizontally */
+            touch-action: pan-y;
         }
         .presale-box {
             min-width: 280px;
@@ -273,8 +273,8 @@
 
         #tokenomics {
             text-align: center;
-            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center / cover;
-            background-color: rgba(0, 0, 0, 0.8);
+            background: url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.85);
         }
         .pie-chart-container {
             width: 300px;
@@ -319,7 +319,7 @@
         }
 
         #roadmap {
-            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa') no-repeat center / cover;
+            background: url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05') no-repeat center / cover;
             background-color: rgba(0, 0, 0, 0.85);
         }
         #roadmap h3 { color: #FFD700; }
@@ -363,8 +363,23 @@
             width: 200px;
         }
 
+        #rewards {
+            background: url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05') no-repeat center / cover;
+            background-color: rgba(0, 0, 0, 0.85);
+        }
+        #rewards h3 { color: #FFD700; font-size: 36px; }
+        .reward-item {
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00BFFF;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .reward-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
+        .reward-item p { font-size: 14px; margin: 0; line-height: 1.5; }
+
         #faq {
-            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center / cover;
+            background: url('https://images.unsplash.com/photo-1447433589675-4aaa569f3e05') no-repeat center / cover;
             background-color: rgba(0, 0, 0, 0.85);
         }
         #faq h3 { color: #FFD700; font-size: 36px; }
@@ -395,6 +410,7 @@
                 <a href="#tokenomics">Tokenomics</a>
                 <a href="#roadmap">Roadmap</a>
                 <a href="#how-to-buy">How to Buy</a>
+                <a href="#rewards">Rewards</a>
                 <a href="#faq">FAQ</a>
                 <a href="whitepaper.pdf">Whitepaper</a>
             </div>
@@ -584,6 +600,26 @@
         <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
     </section>
 
+    <section id="rewards">
+        <h3>Galactic Rewards Program</h3>
+        <div class="reward-item">
+            <h4>HODL Force Bonus</h4>
+            <p>HODL <span class="token-doji">$DOJI</span> for 30+ days and receive a 5% bonus from the 100M community rewards pool.</p>
+        </div>
+        <div class="reward-item">
+            <h4>Referral Rebellion</h4>
+            <p>Bring new Jedi to the cause—earn 2% of their <span class="token-doji">$DOJI</span> purchase as a reward.</p>
+        </div>
+        <div class="reward-item">
+            <h4>Staking Lightsaber</h4>
+            <p>Stake your <span class="token-doji">$DOJI</span> and earn up to 10% APY from the community rewards allocation.</p>
+        </div>
+        <div class="reward-item">
+            <h4>Mission Milestones</h4>
+            <p>Complete community missions (social engagement, memes) to earn bonus <span class="token-doji">$DOJI</span> drops.</p>
+        </div>
+    </section>
+
     <section id="faq">
         <h3>Frequently Asked Questions</h3>
         <div class="faq-item">
@@ -637,22 +673,19 @@
         let currentIndex = Array.from(boxes).findIndex(box => box.classList.contains('current')) || 0;
         const visibleBoxes = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
 
-        // Core slider update function
         function updateSlider() {
-            const boxWidth = boxes[0].offsetWidth + 20; // Width + margins
+            const boxWidth = boxes[0].offsetWidth + 20;
             const maxIndex = totalBoxes - visibleBoxes;
             currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
             const translateX = -currentIndex * boxWidth;
             sliderTrack.style.transform = `translateX(${translateX}px)`;
 
-            // Update arrow states
             leftArrow.classList.toggle('disabled', currentIndex === 0);
             rightArrow.classList.toggle('disabled', currentIndex >= maxIndex);
 
             console.log(`Slider updated: currentIndex=${currentIndex}, translateX=${translateX}, visibleBoxes=${visibleBoxes}`);
         }
 
-        // Arrow controls
         function slideLeft() {
             if (currentIndex > 0) {
                 currentIndex--;
@@ -668,7 +701,6 @@
             }
         }
 
-        // Touch handling
         let touchStartX = 0;
         let touchCurrentX = 0;
         let isDragging = false;
@@ -676,7 +708,7 @@
         sliderTrack.addEventListener('touchstart', (e) => {
             touchStartX = e.touches[0].clientX;
             isDragging = true;
-            sliderTrack.style.transition = 'none'; // Disable transition during drag
+            sliderTrack.style.transition = 'none';
             console.log(`Touch started at X=${touchStartX}`);
         });
 
@@ -687,29 +719,28 @@
             const boxWidth = boxes[0].offsetWidth + 20;
             const currentTranslateX = -currentIndex * boxWidth;
             sliderTrack.style.transform = `translateX(${currentTranslateX + diffX}px)`;
-            e.preventDefault(); // Prevent scrolling
+            e.preventDefault();
         });
 
         sliderTrack.addEventListener('touchend', (e) => {
             if (!isDragging) return;
             isDragging = false;
-            sliderTrack.style.transition = 'transform 0.5s ease-in-out'; // Re-enable transition
+            sliderTrack.style.transition = 'transform 0.5s ease-in-out';
             const diffX = touchCurrentX - touchStartX;
             const boxWidth = boxes[0].offsetWidth + 20;
-            const threshold = boxWidth / 3; // Swipe threshold (1/3 of box width)
+            const threshold = boxWidth / 3;
 
             if (Math.abs(diffX) > threshold) {
                 if (diffX > 0 && currentIndex > 0) {
-                    currentIndex--; // Swipe right (move left)
+                    currentIndex--;
                 } else if (diffX < 0 && currentIndex < totalBoxes - visibleBoxes) {
-                    currentIndex++; // Swipe left (move right)
+                    currentIndex++;
                 }
             }
             updateSlider();
             console.log(`Touch ended: diffX=${diffX}, newIndex=${currentIndex}`);
         });
 
-        // Initialize slider
         window.addEventListener('load', () => {
             if (boxes.length === 0) {
                 console.error('No presale boxes found!');
@@ -719,7 +750,6 @@
             console.log('Slider initialized');
         });
 
-        // Recalculate on resize with debounce
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
@@ -732,7 +762,6 @@
             }, 100);
         });
 
-        // Smooth scrolling for dropdown menu
         document.querySelectorAll('.dropdown-content a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
