@@ -287,7 +287,7 @@
 
         // Initialize WalletConnectModal
         const modal = new WalletConnectModal({
-            projectId: 'YOUR_PROJECT_ID', // Replace with your WalletConnect Cloud project ID
+            projectId: '85b1567002ace3c37fb0b7603824e1a3',
             chains: ['eip155:137'] // Polygon Mainnet
         });
 
@@ -366,7 +366,7 @@
             try {
                 // Initialize Ethereum Provider
                 const provider = await EthereumProvider.init({
-                    projectId: 'YOUR_PROJECT_ID', // Replace with your WalletConnect Cloud project ID
+                    projectId: '85b1567002ace3c37fb0b7603824e1a3',
                     chains: [137], // Polygon Mainnet
                     showQrModal: false // We’ll use WalletConnectModal instead
                 });
