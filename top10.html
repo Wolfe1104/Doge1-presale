@@ -27,7 +27,7 @@
             background-blend-mode: overlay;
             background-color: rgba(0, 0, 0, 0.9);
             color: #E0E0E0; 
-            line-height: 1.6; 
+            line-height: 1.4; 
             overflow-x: hidden;
         }
         a { color: #00BFFF; text-decoration: none; transition: color 0.3s; }
@@ -49,14 +49,14 @@
         }
         header.page-header .logo { 
             font-family: 'Orbitron', sans-serif; 
-            font-size: 14px; /* Smaller font size */
+            font-size: 14px; 
             font-weight: 700; 
             color: #FFFFFF; 
             text-transform: uppercase; 
             letter-spacing: 1px; 
             text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
             white-space: nowrap;
-            max-width: 30%; /* Reduced to ensure full display */
+            max-width: 30%;
             overflow: hidden;
             text-overflow: ellipsis;
         }
@@ -141,13 +141,13 @@
         /* Inner Boxes (Content Items) */
         .content-list { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Smaller boxes */
-            gap: 12px; 
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* About a third of page width or less */
+            gap: 10px; 
         }
         .content-item {
             background: #000000;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8), 0 0 8px rgba(255, 215, 0, 0.3); /* Gold glow */
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8), 0 0 6px rgba(255, 215, 0, 0.4); /* Gold glow */
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid #FFD700; /* Gold border */
@@ -156,10 +156,10 @@
         }
         .content-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.9), 0 0 12px rgba(255, 215, 0, 0.5);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.9), 0 0 10px rgba(255, 215, 0, 0.6);
         }
         .content-header {
-            padding: 8px 12px;
+            padding: 6px 10px;
             background: linear-gradient(135deg, #FFD700, #3B82F6); /* Gold-to-blue gradient */
             border-bottom: 1px solid #00BFFF;
             position: relative;
@@ -177,7 +177,7 @@
         }
         .content-header h3 { 
             font-family: 'Orbitron', sans-serif; 
-            font-size: 14px; 
+            font-size: 16px; /* Larger text */
             font-weight: 700; 
             color: #FFFFFF; 
             text-shadow: 0 0 6px rgba(0, 191, 255, 0.8); 
@@ -185,13 +185,14 @@
             text-align: center;
             position: relative;
             z-index: 1;
+            margin: 0;
         }
         .content-body {
-            padding: 10px;
-            font-size: 12px;
+            padding: 8px;
+            font-size: 14px; /* Larger text */
             color: #D1D5DB;
             background: rgba(0, 0, 0, 0.97);
-            height: calc(100% - 37px); /* Adjust for header height */
+            height: calc(100% - 33px); /* Adjust for header height */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -240,7 +241,7 @@
             text-align: center; 
         }
         #top10 .content-item .stats { 
-            font-size: 11px; 
+            font-size: 13px; /* Larger text */
             color: #9CA3AF; 
             margin-top: 6px; 
         }
@@ -270,12 +271,13 @@
             .section-header { padding: 10px 15px; }
             .section-header h2 { font-size: 24px; }
             .section-body { padding: 15px; }
-            .content-list { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
+            .content-list { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; }
             .content-header { padding: 6px 8px; }
-            .content-header h3 { font-size: 13px; }
-            .content-body { padding: 8px; font-size: 11px; }
+            .content-header h3 { font-size: 14px; }
+            .content-body { padding: 6px; font-size: 12px; }
             .cta-button { padding: 8px 18px; font-size: 13px; }
             #top10 .sort-filter select { width: 140px; font-size: 12px; }
+            #top10 .content-item .stats { font-size: 11px; }
         }
         @media (max-width: 480px) {
             .logo { font-size: 11px; max-width: 25%; letter-spacing: 0.5px; }
@@ -283,7 +285,7 @@
             .search-bar:focus { width: 80px; }
             .section-header h2 { font-size: 20px; }
             .content-list { grid-template-columns: 1fr; }
-            .content-header h3 { font-size: 12px; }
+            .content-header h3 { font-size: 13px; }
         }
     </style>
 </head>
