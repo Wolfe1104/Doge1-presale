@@ -152,7 +152,7 @@
             max-width: 320px;
             margin: 0 auto;
             aspect-ratio: 1 / 1;
-            text-decoration: none; /* Remove underline from link */
+            text-decoration: none;
         }
         .content-item:hover {
             transform: scale(1.05);
@@ -179,9 +179,9 @@
         }
         .content-header h3 { 
             font-family: 'Orbitron', sans-serif; 
-            font-size: 54px; /* 3x original 18px */
+            font-size: 24px; /* Reduced from 54px */
             font-weight: 700; 
-            color: #FFFFFF; 
+            color: #FFD700; /* Changed to yellow */
             text-shadow: 0 0 6px rgba(0, 191, 255, 0.8); 
             letter-spacing: 0.8px; 
             text-align: center;
@@ -190,8 +190,8 @@
             margin: 0;
         }
         .content-body {
-            padding: 10px;
-            font-size: 32px; /* 2x original 16px */
+            padding: 15px; /* Increased for better fit */
+            font-size: 16px; /* Reduced from 32px to fit box */
             color: #D1D5DB;
             background: rgba(0, 0, 0, 0.97);
             height: calc(100% - 33px);
@@ -200,6 +200,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            line-height: 1.2; /* Adjusted for readability */
         }
         .content-body p { margin: 0; }
 
@@ -244,9 +245,36 @@
             text-align: center; 
         }
         #top10 .content-item .stats { 
-            font-size: 28px; /* 2x original 14px */
+            font-size: 14px; /* Reduced from 28px to fit box */
             color: #9CA3AF; 
             margin-top: 4px;
+        }
+
+        /* Partner Links Styling */
+        .partner-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .partner-links a {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #00BFFF;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: background 0.3s, color 0.3s, transform 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(0, 191, 255, 0.3);
+        }
+        .partner-links a:hover {
+            background: rgba(255, 215, 0, 0.3);
+            color: #FFD700;
+            transform: translateY(-3px);
         }
 
         /* Responsive Design */
@@ -277,11 +305,13 @@
             .content-list { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; }
             .content-item { max-width: 280px; }
             .content-header { padding: 5px 8px; }
-            .content-header h3 { font-size: 48px; }
-            .content-body { padding: 8px; font-size: 28px; }
+            .content-header h3 { font-size: 20px; }
+            .content-body { padding: 12px; font-size: 14px; }
             .cta-button { padding: 8px 18px; font-size: 13px; }
             #top10 .sort-filter select { width: 140px; font-size: 12px; }
-            #top10 .content-item .stats { font-size: 24px; }
+            #top10 .content-item .stats { font-size: 12px; }
+            .partner-links { gap: 15px; }
+            .partner-links a { font-size: 16px; padding: 8px 15px; }
         }
         @media (max-width: 480px) {
             .logo { font-size: 12px; letter-spacing: 0.5px; }
@@ -290,9 +320,11 @@
             .section-header h2 { font-size: 20px; }
             .content-list { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
             .content-item { max-width: 280px; }
-            .content-header h3 { font-size: 42px; }
-            .content-body { font-size: 24px; }
-            #top10 .content-item .stats { font-size: 20px; }
+            .content-header h3 { font-size: 18px; }
+            .content-body { font-size: 12px; }
+            #top10 .content-item .stats { font-size: 10px; }
+            .partner-links { flex-direction: column; align-items: center; }
+            .partner-links a { font-size: 14px; padding: 6px 12px; }
         }
     </style>
 </head>
@@ -553,47 +585,12 @@
                 <h2>Partner Sites</h2>
             </div>
             <div class="section-body">
-                <div class="content-list">
-                    <a href="https://yourdomain.com/best5.html" target="_blank" class="content-item">
-                        <div class="content-header">
-                            <h3>Best 5 Presales</h3>
-                        </div>
-                        <div class="content-body">
-                            <p>Top 5 crypto presales to invest in for 2025.</p>
-                        </div>
-                    </a>
-                    <a href="https://yourdomain.com/5hottest.html" target="_blank" class="content-item">
-                        <div class="content-header">
-                            <h3>5 Hottest Meme Coins</h3>
-                        </div>
-                        <div class="content-body">
-                            <p>Explore 5 trending meme coins with 100x potential.</p>
-                        </div>
-                    </a>
-                    <a href="https://yourdomain.com/10new.html" target="_blank" class="content-item">
-                        <div class="content-header">
-                            <h3>10 New Tokens</h3>
-                        </div>
-                        <div class="content-body">
-                            <p>10 emerging tokens impacting 2025 markets.</p>
-                        </div>
-                    </a>
-                    <a href="https://yourdomain.com/10hot.html" target="_blank" class="content-item">
-                        <div class="content-header">
-                            <h3>10 Hot Presales</h3>
-                        </div>
-                        <div class="content-body">
-                            <p>10 must-watch presales for 2025 gains.</p>
-                        </div>
-                    </a>
-                    <a href="https://coinmarketcap.com/" target="_blank" class="content-item">
-                        <div class="content-header">
-                            <h3>CoinMarketCap</h3>
-                        </div>
-                        <div class="content-body">
-                            <p>Leading source for crypto market data and insights.</p>
-                        </div>
-                    </a>
+                <div class="partner-links">
+                    <a href="https://yourdomain.com/best5.html" target="_blank">Best 5 Presales</a>
+                    <a href="https://yourdomain.com/5hottest.html" target="_blank">5 Hottest Meme Coins</a>
+                    <a href="https://yourdomain.com/10new.html" target="_blank">10 New Tokens</a>
+                    <a href="https://yourdomain.com/10hot.html" target="_blank">10 Hot Presales</a>
+                    <a href="https://coinmarketcap.com/" target="_blank">CoinMarketCap</a>
                 </div>
             </div>
         </section>
