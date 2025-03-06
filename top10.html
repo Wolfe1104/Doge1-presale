@@ -13,7 +13,7 @@
     <meta property="og:url" content="https://yourdomain.com/top10.html">
     <meta property="og:image" content="https://yourdomain.com/images/top10-og-image.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="HIDDEN GEMS | $DOJI Leads">
+    <meta name="twitter:title" content="HIDDEN GEMS">
     <meta name="twitter:description" content="Check out the top 10 cryptos for 2025, featuring DOJI-1-KENOBI ($DOJI) and more. Expert picks and news!">
     <meta name="twitter:image" content="https://yourdomain.com/images/top10-twitter-image.jpg">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -49,16 +49,14 @@
         }
         header.page-header .logo { 
             font-family: 'Orbitron', sans-serif; 
-            font-size: 14px; 
+            font-size: 18px; /* Increased from 14px */
             font-weight: 700; 
             color: #FFFFFF; 
             text-transform: uppercase; 
             letter-spacing: 1px; 
             text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
             white-space: nowrap;
-            max-width: 30%;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            overflow: visible; /* Ensure text isn’t cut off */
         }
         .nav-container { 
             display: flex; 
@@ -141,18 +139,18 @@
         /* Inner Boxes (Content Items) */
         .content-list { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* About a third of page width or less */
-            gap: 10px; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted from 120px */
+            gap: 15px; /* Increased from 10px */
         }
         .content-item {
             background: #000000;
             border-radius: 6px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8), 0 0 6px rgba(255, 215, 0, 0.4); /* Gold glow */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8), 0 0 6px rgba(255, 215, 0, 0.4);
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #FFD700; /* Gold border */
-            aspect-ratio: 1 / 1; /* Square shape */
-            position: relative;
+            border: 1px solid #FFD700;
+            max-width: 300px; /* Cap width */
+            margin: 0 auto; /* Center items */
         }
         .content-item:hover {
             transform: scale(1.05);
@@ -160,7 +158,7 @@
         }
         .content-header {
             padding: 6px 10px;
-            background: linear-gradient(135deg, #FFD700, #3B82F6); /* Gold-to-blue gradient */
+            background: linear-gradient(135deg, #FFD700, #3B82F6);
             border-bottom: 1px solid #00BFFF;
             position: relative;
             overflow: hidden;
@@ -177,7 +175,7 @@
         }
         .content-header h3 { 
             font-family: 'Orbitron', sans-serif; 
-            font-size: 16px; /* Larger text */
+            font-size: 20px; /* Increased from 16px */
             font-weight: 700; 
             color: #FFFFFF; 
             text-shadow: 0 0 6px rgba(0, 191, 255, 0.8); 
@@ -188,11 +186,11 @@
             margin: 0;
         }
         .content-body {
-            padding: 8px;
-            font-size: 14px; /* Larger text */
+            padding: 10px; /* Increased from 8px */
+            font-size: 16px; /* Increased from 14px */
             color: #D1D5DB;
             background: rgba(0, 0, 0, 0.97);
-            height: calc(100% - 33px); /* Adjust for header height */
+            height: auto; /* Adjusted from calc */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -241,7 +239,7 @@
             text-align: center; 
         }
         #top10 .content-item .stats { 
-            font-size: 13px; /* Larger text */
+            font-size: 15px; /* Increased from 13px */
             color: #9CA3AF; 
             margin-top: 6px; 
         }
@@ -249,7 +247,7 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             header.page-header { padding: 8px 10px; height: 50px; }
-            .logo { font-size: 12px; letter-spacing: 0.8px; }
+            .logo { font-size: 14px; letter-spacing: 0.8px; }
             nav { display: none; }
             .hamburger { display: block; }
             .nav-active {
@@ -271,21 +269,24 @@
             .section-header { padding: 10px 15px; }
             .section-header h2 { font-size: 24px; }
             .section-body { padding: 15px; }
-            .content-list { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; }
+            .content-list { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+            .content-item { max-width: 250px; }
             .content-header { padding: 6px 8px; }
-            .content-header h3 { font-size: 14px; }
-            .content-body { padding: 6px; font-size: 12px; }
+            .content-header h3 { font-size: 18px; }
+            .content-body { padding: 8px; font-size: 14px; }
             .cta-button { padding: 8px 18px; font-size: 13px; }
             #top10 .sort-filter select { width: 140px; font-size: 12px; }
-            #top10 .content-item .stats { font-size: 11px; }
+            #top10 .content-item .stats { font-size: 13px; }
         }
         @media (max-width: 480px) {
-            .logo { font-size: 11px; max-width: 25%; letter-spacing: 0.5px; }
+            .logo { font-size: 12px; letter-spacing: 0.5px; }
             .search-bar { width: 60px; }
             .search-bar:focus { width: 80px; }
             .section-header h2 { font-size: 20px; }
             .content-list { grid-template-columns: 1fr; }
-            .content-header h3 { font-size: 13px; }
+            .content-item { max-width: 100%; }
+            .content-header h3 { font-size: 16px; }
+            .content-body { font-size: 13px; }
         }
     </style>
 </head>
@@ -309,7 +310,7 @@
     <div class="page-body">
         <section class="hero" id="home">
             <div class="section-header">
-                <h2>THE BOOK KEEPERS OF CRYPTO NEWS STATION</h2>
+                <h2>FROM THE BOOK KEEPERS OF CRYPTO</h2>
             </div>
             <div class="section-body">
                 <p>Unlock the future of finance with our expertly curated list of the top 10 cryptocurrencies for 2025, led by the revolutionary DOJI-1-KENOBI ($DOJI). Dive into cutting-edge insights and secure your investments today.</p>
