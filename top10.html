@@ -36,7 +36,7 @@
         /* Page Header */
         header.page-header {
             background: linear-gradient(90deg, #1E3A8A, #3B82F6);
-            padding: 10px 20px;
+            padding: 10px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -49,34 +49,34 @@
         }
         header.page-header .logo { 
             font-family: 'Orbitron', sans-serif; 
-            font-size: 16px; /* Even smaller font size */
+            font-size: 14px; /* Smaller font size */
             font-weight: 700; 
             color: #FFFFFF; 
             text-transform: uppercase; 
-            letter-spacing: 1.5px; 
+            letter-spacing: 1px; 
             text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
             white-space: nowrap;
-            max-width: 35%;
+            max-width: 30%; /* Reduced to ensure full display */
             overflow: hidden;
             text-overflow: ellipsis;
         }
         .nav-container { 
             display: flex; 
             align-items: center; 
-            gap: 10px; 
+            gap: 8px; 
             flex-wrap: nowrap; 
         }
         nav { 
             display: flex; 
-            gap: 10px; 
+            gap: 8px; 
             flex-wrap: nowrap; 
         }
         nav a { 
             font-family: 'Orbitron', sans-serif; 
-            font-size: 14px; 
+            font-size: 13px; 
             color: #FFFFFF; 
             font-weight: 700; 
-            padding: 6px 10px; 
+            padding: 5px 8px; 
             border-radius: 5px; 
             transition: background 0.3s, color 0.3s; 
             white-space: nowrap;
@@ -84,22 +84,22 @@
         nav a:hover { background: rgba(255, 255, 255, 0.1); color: #FFD700; }
         .hamburger { 
             display: none; 
-            font-size: 24px; 
+            font-size: 22px; 
             cursor: pointer; 
             color: #FFFFFF; 
-            padding: 0 10px; 
+            padding: 0 8px; 
         }
         .search-bar { 
-            padding: 6px 10px; 
+            padding: 5px 8px; 
             border-radius: 20px; 
             border: 1px solid #3B82F6; 
             background: #FFFFFF; 
-            font-size: 12px; 
-            width: 120px; 
+            font-size: 11px; 
+            width: 100px; 
             max-width: 100%; 
             transition: width 0.3s; 
         }
-        .search-bar:focus { width: 150px; outline: none; }
+        .search-bar:focus { width: 130px; outline: none; }
 
         /* Page Body */
         .page-body {
@@ -141,43 +141,70 @@
         /* Inner Boxes (Content Items) */
         .content-list { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Smaller, more square boxes */
-            gap: 15px; 
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Smaller boxes */
+            gap: 12px; 
         }
         .content-item {
             background: #000000;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7), 0 0 10px rgba(59, 130, 246, 0.3); /* Professional glow */
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8), 0 0 8px rgba(255, 215, 0, 0.3); /* Gold glow */
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #3B82F6; /* Subtle border */
+            border: 1px solid #FFD700; /* Gold border */
             aspect-ratio: 1 / 1; /* Square shape */
+            position: relative;
         }
         .content-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(59, 130, 246, 0.5);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.9), 0 0 12px rgba(255, 215, 0, 0.5);
         }
         .content-header {
-            padding: 10px 15px;
-            background: linear-gradient(135deg, #1E3A8A, #3B82F6); /* Spiced-up gradient */
-            border-bottom: 1px solid #FFD700;
+            padding: 8px 12px;
+            background: linear-gradient(135deg, #FFD700, #3B82F6); /* Gold-to-blue gradient */
+            border-bottom: 1px solid #00BFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        .content-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.2), transparent);
+            animation: pulse 4s infinite;
         }
         .content-header h3 { 
             font-family: 'Orbitron', sans-serif; 
-            font-size: 16px; 
+            font-size: 14px; 
             font-weight: 700; 
-            color: #FFD700; 
-            text-shadow: 0 0 8px rgba(255, 215, 0, 0.7); 
-            letter-spacing: 1px; 
+            color: #FFFFFF; 
+            text-shadow: 0 0 6px rgba(0, 191, 255, 0.8); 
+            letter-spacing: 0.8px; 
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
         .content-body {
-            padding: 12px;
-            font-size: 13px;
+            padding: 10px;
+            font-size: 12px;
             color: #D1D5DB;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(0, 0, 0, 0.97);
+            height: calc(100% - 37px); /* Adjust for header height */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
         }
         .content-body p { margin: 0; }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
 
         /* Specific Section Adjustments */
         .hero .section-body { text-align: center; }
@@ -186,47 +213,42 @@
             background: linear-gradient(90deg, #3B82F6, #60A5FA);
             color: #FFFFFF;
             border: none;
-            padding: 12px 30px;
+            padding: 10px 25px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 16px;
-            border-radius: 25px;
+            font-size: 14px;
+            border-radius: 20px;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.5);
-            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+            margin-top: 12px;
         }
-        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(59, 130, 246, 0.7); }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(59, 130, 246, 0.7); }
         #top10 .sort-filter select {
-            padding: 8px;
+            padding: 6px;
             background: #1F2937;
             color: #E0E0E0;
             border: 1px solid #3B82F6;
-            border-radius: 8px;
-            font-size: 14px;
-            margin-bottom: 15px;
-            width: 180px;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-bottom: 12px;
+            width: 160px;
             display: block;
             margin-left: auto;
             margin-right: auto;
         }
         #top10 .content-item .content-body { 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            align-items: center; 
-            height: calc(100% - 41px); /* Adjust for header height */
+            text-align: center; 
         }
         #top10 .content-item .stats { 
-            text-align: center; 
-            font-size: 12px; 
+            font-size: 11px; 
             color: #9CA3AF; 
-            margin-top: 8px; 
+            margin-top: 6px; 
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             header.page-header { padding: 8px 10px; height: 50px; }
-            .logo { font-size: 14px; letter-spacing: 1px; }
+            .logo { font-size: 12px; letter-spacing: 0.8px; }
             nav { display: none; }
             .hamburger { display: block; }
             .nav-active {
@@ -236,32 +258,32 @@
                 top: 50px;
                 right: 10px;
                 background: linear-gradient(90deg, #1E3A8A, #3B82F6);
-                padding: 10px;
-                border-radius: 8px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+                padding: 8px;
+                border-radius: 6px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
             }
-            .nav-active a { margin: 8px 0; font-size: 12px; padding: 5px 8px; }
-            .search-bar { width: 80px; font-size: 10px; padding: 4px 8px; }
-            .search-bar:focus { width: 100px; }
+            .nav-active a { margin: 6px 0; font-size: 11px; padding: 4px 6px; }
+            .search-bar { width: 70px; font-size: 10px; padding: 4px 6px; }
+            .search-bar:focus { width: 90px; }
             .page-body { margin-top: 60px; padding: 0 5px; }
             section { margin: 10px auto; }
             .section-header { padding: 10px 15px; }
             .section-header h2 { font-size: 24px; }
             .section-body { padding: 15px; }
-            .content-list { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-            .content-header { padding: 8px 10px; }
-            .content-header h3 { font-size: 14px; }
-            .content-body { padding: 10px; font-size: 12px; }
-            .cta-button { padding: 10px 20px; font-size: 14px; }
-            #top10 .sort-filter select { width: 150px; font-size: 12px; }
+            .content-list { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
+            .content-header { padding: 6px 8px; }
+            .content-header h3 { font-size: 13px; }
+            .content-body { padding: 8px; font-size: 11px; }
+            .cta-button { padding: 8px 18px; font-size: 13px; }
+            #top10 .sort-filter select { width: 140px; font-size: 12px; }
         }
         @media (max-width: 480px) {
-            .logo { font-size: 12px; max-width: 30%; letter-spacing: 1px; }
+            .logo { font-size: 11px; max-width: 25%; letter-spacing: 0.5px; }
             .search-bar { width: 60px; }
             .search-bar:focus { width: 80px; }
             .section-header h2 { font-size: 20px; }
             .content-list { grid-template-columns: 1fr; }
-            .content-header h3 { font-size: 13px; }
+            .content-header h3 { font-size: 12px; }
         }
     </style>
 </head>
