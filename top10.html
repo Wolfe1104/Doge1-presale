@@ -13,7 +13,7 @@
     <meta property="og:url" content="https://yourdomain.com/top10.html">
     <meta property="og:image" content="https://yourdomain.com/images/top10-og-image.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="HIDDEN GEMS">
+    <meta name="twitter:title" content="HIDDEN GEMS | $DOJI Leads">
     <meta name="twitter:description" content="Check out the top 10 cryptos for 2025, featuring DOJI-1-KENOBI ($DOJI) and more. Expert picks and news!">
     <meta name="twitter:image" content="https://yourdomain.com/images/top10-twitter-image.jpg">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -23,7 +23,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             font-family: 'Roboto', sans-serif; 
-            background: #0A0A0A url('https://images.pexels.com/photos/1089438/pexels-photo-1089438.jpeg?auto=compress&cs=tinysrgb&w=2070&h=750&dpr=1') no-repeat center / cover; /* Spider-webbed background */
+            background: #0A0A0A url('https://images.pexels.com/photos/1089438/pexels-photo-1089438.jpeg?auto=compress&cs=tinysrgb&w=2070&h=750&dpr=1') no-repeat center / cover;
             background-blend-mode: overlay;
             background-color: rgba(0, 0, 0, 0.9);
             color: #E0E0E0; 
@@ -49,14 +49,14 @@
         }
         header.page-header .logo { 
             font-family: 'Orbitron', sans-serif; 
-            font-size: 18px; /* Increased from 14px */
+            font-size: 18px;
             font-weight: 700; 
             color: #FFFFFF; 
             text-transform: uppercase; 
             letter-spacing: 1px; 
             text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
             white-space: nowrap;
-            overflow: visible; /* Ensure text isn’t cut off */
+            overflow: visible;
         }
         .nav-container { 
             display: flex; 
@@ -109,7 +109,7 @@
         section { 
             max-width: 1200px; 
             margin: 20px auto; 
-            background: url('https://images.pexels.com/photos/1671325/pexels-photo-1671325.jpeg?auto=compress&cs=tinysrgb&w=2070&h=750&dpr=1') no-repeat center / cover; /* Vibrant chains and cubes */
+            background: url('https://images.pexels.com/photos/1671325/pexels-photo-1671325.jpeg?auto=compress&cs=tinysrgb&w=2070&h=750&dpr=1') no-repeat center / cover;
             background-blend-mode: screen;
             background-color: rgba(30, 30, 30, 0.8); 
             border-radius: 15px;
@@ -139,8 +139,8 @@
         /* Inner Boxes (Content Items) */
         .content-list { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted from 120px */
-            gap: 15px; /* Increased from 10px */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
         }
         .content-item {
             background: #000000;
@@ -149,8 +149,9 @@
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid #FFD700;
-            max-width: 300px; /* Cap width */
-            margin: 0 auto; /* Center items */
+            max-width: 300px;
+            margin: 0 auto;
+            aspect-ratio: 1 / 1; /* Square shape reinstated */
         }
         .content-item:hover {
             transform: scale(1.05);
@@ -158,7 +159,9 @@
         }
         .content-header {
             padding: 6px 10px;
-            background: linear-gradient(135deg, #FFD700, #3B82F6);
+            background: url('https://images.pexels.com/photos/957024/milky-way-starry-sky-night-sky-957024.jpeg?auto=compress&cs=tinysrgb&w=2070&h=750&dpr=1') no-repeat center / cover; /* Starry night background */
+            background-blend-mode: overlay;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay for readability */
             border-bottom: 1px solid #00BFFF;
             position: relative;
             overflow: hidden;
@@ -170,12 +173,12 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.2), transparent);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent); /* Subtle starry glow */
             animation: pulse 4s infinite;
         }
         .content-header h3 { 
             font-family: 'Orbitron', sans-serif; 
-            font-size: 20px; /* Increased from 16px */
+            font-size: 20px;
             font-weight: 700; 
             color: #FFFFFF; 
             text-shadow: 0 0 6px rgba(0, 191, 255, 0.8); 
@@ -186,15 +189,23 @@
             margin: 0;
         }
         .content-body {
-            padding: 10px; /* Increased from 8px */
-            font-size: 16px; /* Increased from 14px */
+            padding: 10px;
+            font-size: 16px;
             color: #D1D5DB;
             background: rgba(0, 0, 0, 0.97);
-            height: auto; /* Adjusted from calc */
+            height: calc(100% - 33px); /* Adjusted for header height */
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            text-align: center;
+        }
+        .content-body img { /* Style for crypto logos */
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+            border-radius: 50%; /* Circular logos */
+            border: 2px solid #FFD700; /* Gold border */
         }
         .content-body p { margin: 0; }
 
@@ -239,7 +250,7 @@
             text-align: center; 
         }
         #top10 .content-item .stats { 
-            font-size: 15px; /* Increased from 13px */
+            font-size: 15px;
             color: #9CA3AF; 
             margin-top: 6px; 
         }
@@ -274,6 +285,7 @@
             .content-header { padding: 6px 8px; }
             .content-header h3 { font-size: 18px; }
             .content-body { padding: 8px; font-size: 14px; }
+            .content-body img { width: 40px; height: 40px; }
             .cta-button { padding: 8px 18px; font-size: 13px; }
             #top10 .sort-filter select { width: 140px; font-size: 12px; }
             #top10 .content-item .stats { font-size: 13px; }
@@ -287,6 +299,7 @@
             .content-item { max-width: 100%; }
             .content-header h3 { font-size: 16px; }
             .content-body { font-size: 13px; }
+            .content-body img { width: 35px; height: 35px; }
         }
     </style>
 </head>
@@ -310,7 +323,7 @@
     <div class="page-body">
         <section class="hero" id="home">
             <div class="section-header">
-                <h2>FROM THE BOOK KEEPERS OF CRYPTO</h2>
+                <h2>THE BOOK KEEPERS OF CRYPTO NEWS STATION</h2>
             </div>
             <div class="section-body">
                 <p>Unlock the future of finance with our expertly curated list of the top 10 cryptocurrencies for 2025, led by the revolutionary DOJI-1-KENOBI ($DOJI). Dive into cutting-edge insights and secure your investments today.</p>
@@ -335,6 +348,7 @@
                             <h3>#1 DOJI-1-KENOBI ($DOJI)</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=DOJI" alt="DOJI-1-KENOBI Logo">
                             <p>A lunar-inspired token on Polygon, leveraging xAI analytics for a 100x moonshot with a 13-stage presale.</p>
                             <div class="stats">
                                 <p class="price">$0.0005</p>
@@ -347,6 +361,7 @@
                             <h3>#2 Solaxy (SOLX)</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=SOLX" alt="Solaxy Logo">
                             <p>Solana’s pioneering Layer-2 solution offering high staking rewards and cross-chain interoperability.</p>
                             <div class="stats">
                                 <p class="price">$1.20</p>
@@ -359,6 +374,7 @@
                             <h3>#3 Wall Street Pepe (WEPE)</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=WEPE" alt="Wall Street Pepe Logo">
                             <p>A meme coin with trading signals, backed by a massive $25M presale success.</p>
                             <div class="stats">
                                 <p class="price">$0.03</p>
@@ -371,6 +387,7 @@
                             <h3>#4 Meme Index (MEMEX)</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=MEMEX" alt="Meme Index Logo">
                             <p>The first decentralized meme coin index with staking and governance features.</p>
                             <div class="stats">
                                 <p class="price">$0.85</p>
@@ -383,6 +400,7 @@
                             <h3>#5 Best Wallet Token (BEST)</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=BEST" alt="Best Wallet Token Logo">
                             <p>Utility token for a non-custodial wallet with exclusive presale access perks.</p>
                             <div class="stats">
                                 <p class="price">$0.45</p>
@@ -395,6 +413,7 @@
                             <h3>#6 BTCBULL</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=BTCBULL" alt="BTCBULL Logo">
                             <p>Ethereum-based token rewarding holders with Bitcoin airdrops.</p>
                             <div class="stats">
                                 <p class="price">$2.10</p>
@@ -407,6 +426,7 @@
                             <h3>#7 The Last Dwarfs (TLD)</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=TLD" alt="The Last Dwarfs Logo">
                             <p>GameFi project with 300K+ users and innovative Play-to-Invest mechanics.</p>
                             <div class="stats">
                                 <p class="price">$0.95</p>
@@ -419,6 +439,7 @@
                             <h3>#8 Pepe Unchained (PEPU)</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=PEPU" alt="Pepe Unchained Logo">
                             <p>Pepe reborn with DeFi and Layer-2, raising $39M in presale.</p>
                             <div class="stats">
                                 <p class="price">$0.02</p>
@@ -431,6 +452,7 @@
                             <h3>#9 Flockerz (FLOCK)</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=FLOCK" alt="Flockerz Logo">
                             <p>Bird-themed meme coin with DAO governance and $8.9M presale success.</p>
                             <div class="stats">
                                 <p class="price">$0.15</p>
@@ -443,6 +465,7 @@
                             <h3>#10 Catslap (SLAP)</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=SLAP" alt="Catslap Logo">
                             <p>Cat-themed coin with slap-to-earn mechanics, up 4,600% since launch.</p>
                             <div class="stats">
                                 <p class="price">$0.008</p>
@@ -465,6 +488,7 @@
                             <h3>About Us</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=Top10" alt="Top 10 Cryptos Logo">
                             <p>Welcome to Top 10 Cryptos to Buy Now—your ultimate resource for navigating the crypto landscape in 2025. Spearheaded by DOJI-1-KENOBI ($DOJI), our expertly curated selection blends advanced analytics, presale performance, and community momentum to guide your investment strategy.</p>
                         </div>
                     </div>
@@ -483,6 +507,7 @@
                             <h3>Coming Soon</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=Compare" alt="Compare Placeholder Logo">
                             <p>Analyze your favorite top 10 cryptos with a robust comparison tool featuring price trends, market cap, staking yields, and more. Stay ahead of the curve—watch this space!</p>
                         </div>
                     </div>
@@ -501,6 +526,7 @@
                             <h3>$DOJI Launches 13-Stage Presale</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=DOJI" alt="DOJI-1-KENOBI Logo">
                             <p>DOJI-1-KENOBI ($DOJI) initiates its ambitious 13-stage presale on Polygon, starting at $0.0005 and aiming for $0.01, fusing Jedi-inspired branding with xAI-driven analytics.</p>
                         </div>
                     </div>
@@ -509,6 +535,7 @@
                             <h3>Bitcoin Halving Shapes 2025</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=BTC" alt="Bitcoin Logo">
                             <p>The Bitcoin halving continues to influence markets, reducing mining rewards and historically triggering price surges that ripple across altcoins into 2025.</p>
                         </div>
                     </div>
@@ -517,6 +544,7 @@
                             <h3>Ethereum Layer-2 Surge</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=ETH" alt="Ethereum Logo">
                             <p>Ethereum’s scaling solutions like Polygon drive low-cost, high-speed transactions, solidifying their dominance in DeFi and meme coin ecosystems.</p>
                         </div>
                     </div>
@@ -535,6 +563,7 @@
                             <h3>Coming Soon</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=Community" alt="Community Placeholder Logo">
                             <p>Connect with fellow crypto enthusiasts in our upcoming community hub, featuring forums, live polls, and exclusive content to fuel your blockchain journey.</p>
                         </div>
                     </div>
@@ -553,6 +582,7 @@
                             <h3>Best 5 Crypto Presales</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=Presales" alt="Presales Logo">
                             <p><a href="best5.html" target="_blank">Best 5 Crypto Presales to Invest In</a></p>
                         </div>
                     </div>
@@ -561,6 +591,7 @@
                             <h3>5 Hottest Meme Coins</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=Meme" alt="Meme Coins Logo">
                             <p><a href="5hottest.html" target="_blank">5 Hottest New Meme Coins with 100x Potential</a></p>
                         </div>
                     </div>
@@ -569,6 +600,7 @@
                             <h3>10 New Tokens</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=Tokens" alt="Tokens Logo">
                             <p><a href="10new.html" target="_blank">10 New Tokens Making a Big Impact in 2025</a></p>
                         </div>
                     </div>
@@ -577,6 +609,7 @@
                             <h3>10 Hot Presales</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=Hot" alt="Hot Presales Logo">
                             <p><a href="10hot.html" target="_blank">10 Hot Presales You Don’t Want to Miss</a></p>
                         </div>
                     </div>
@@ -585,6 +618,7 @@
                             <h3>CoinMarketCap</h3>
                         </div>
                         <div class="content-body">
+                            <img src="https://via.placeholder.com/50?text=CMC" alt="CoinMarketCap Logo">
                             <p><a href="https://coinmarketcap.com/" target="_blank">CoinMarketCap - Crypto Market Insights</a></p>
                         </div>
                     </div>
