@@ -250,7 +250,8 @@
             width: 100%;
             text-align: center;
             transform-origin: bottom;
-            transform: rotateX(20deg);
+            transform: rotateX(20deg) translateY(500px);
+            opacity: 0;
             animation: crawl 30s linear infinite;
             color: #FFFFFF;
             font-size: 18px;
@@ -258,7 +259,7 @@
         }
         #about .crawl-container p:nth-child(2),
         #moonshot .crawl-container p:nth-child(2) {
-            animation-delay: 15s;
+            animation-delay: 26s;
         }
         @keyframes crawl {
             0% { transform: rotateX(20deg) translateY(500px); opacity: 0; }
