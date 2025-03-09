@@ -95,44 +95,43 @@
             background-color: rgba(0, 0, 0, 0.8);
         }
 
-        /* Dashboard Styles */
+        /* Updated Dashboard Styles */
         #dashboard {
             text-align: center;
             padding: 80px 20px 20px;
-            margin-top: 130px; /* Increased for space below header */
-            max-width: 340px; /* Slightly smaller than a typical phone screen */
-            background-color: #000; /* Solid black background */
+            margin-top: 130px;
+            max-width: 400px; /* Wider dashboard */
+            background-color: #000;
             border: 2px solid #00BFFF;
-            border-radius: 8px; /* Rounded edges for the section */
+            border-radius: 8px;
+            position: relative; /* For positioning how-to-buy-link */
         }
         #dashboard h1 {
-            font-size: 36px;
+            font-size: 24px; /* Smaller text */
             margin: 0 0 15px;
             line-height: 1;
             color: #FFFFFF;
             text-shadow: 0 0 10px #FFFFFF, 0 0 20px #00BFFF, 0 0 30px #00BFFF;
             animation: glow 2s ease-in-out infinite alternate;
-            white-space: nowrap; /* Ensures single line */
+            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            font-weight: 900; /* Thicker font */
+            font-weight: 900;
+            position: absolute;
+            top: 20px; /* At the very top */
+            left: 0;
+            right: 0;
         }
         @keyframes glow {
-            0% {
-                text-shadow: 0 0 10px #FFFFFF, 0 0 20px #00BFFF, 0 0 30px #00BFFF;
-            }
-            50% {
-                text-shadow: 0 0 15px #FFFFFF, 0 0 25px #00BFFF, 0 0 40px #00BFFF;
-            }
-            100% {
-                text-shadow: 0 0 10px #FFFFFF, 0 0 20px #00BFFF, 0 0 30px #00BFFF;
-            }
+            0% { text-shadow: 0 0 10px #FFFFFF, 0 0 20px #00BFFF, 0 0 30px #00BFFF; }
+            50% { text-shadow: 0 0 15px #FFFFFF, 0 0 25px #00BFFF, 0 0 40px #00BFFF; }
+            100% { text-shadow: 0 0 10px #FFFFFF, 0 0 20px #00BFFF, 0 0 30px #00BFFF; }
         }
         #dashboard .raised {
             font-size: 16px;
-            margin: 10px 0;
+            margin: 40px 0 10px; /* Adjusted for spacing after h1 */
             color: #FFFFFF;
-            font-weight: 700; /* Thicker font */
+            font-weight: 700;
         }
         #dashboard .progress-bar {
             width: 100%;
@@ -141,7 +140,7 @@
             border-radius: 4px;
             overflow: hidden;
             margin: 10px auto;
-            max-width: 300px;
+            max-width: 360px; /* Slightly wider */
         }
         #dashboard .progress-fill {
             height: 100%;
@@ -152,7 +151,7 @@
             font-size: 16px;
             margin: 10px 0;
             color: #FFFFFF;
-            font-weight: 700; /* Thicker font */
+            font-weight: 700;
         }
         #dashboard .crypto-options {
             display: flex;
@@ -172,7 +171,7 @@
             font-size: 14px;
             color: #E0E0E0;
             border: 2px solid transparent;
-            font-weight: 700; /* Thicker font */
+            font-weight: 700;
         }
         #dashboard .crypto-option.selected {
             border: 2px solid #FFD700;
@@ -181,34 +180,34 @@
             background: #00BFFF;
             color: #000;
             border: none;
-            padding: 8px 25px;
-            font-size: 16px;
+            padding: 6px 20px; /* Smaller padding */
+            font-size: 12px; /* Smaller text */
             font-family: 'Orbitron', sans-serif;
             border-radius: 8px;
             cursor: pointer;
             text-transform: uppercase;
             transition: background 0.3s ease;
-            margin: 20px 0;
+            margin: 10px 0; /* Moved up */
             width: 100%;
-            max-width: 300px;
-            font-weight: 700; /* Thicker font */
+            max-width: 360px; /* Matches address box */
+            font-weight: 700;
+            white-space: nowrap; /* Ensures one row */
         }
         #dashboard .purchase-button:hover {
             background: #00FFFF;
         }
         #dashboard .send-crypto {
             font-size: 14px;
-            margin: 0 0 5px 0; /* Adjusted margin to align with top-left of address box */
+            margin: 20px 0 5px; /* Added gap above */
             color: #FFFFFF;
-            text-align: left; /* Align to left */
-            font-weight: 700; /* Thicker font */
+            text-align: left;
+            font-weight: 700;
             position: relative;
-            top: -5px; /* Fine-tune alignment with address box */
-            left: 20px; /* Offset to match address box's padding */
+            left: 20px;
         }
         #dashboard .wallet-address {
             width: 100%;
-            max-width: 300px;
+            max-width: 360px; /* Wider to match dashboard */
             margin: 10px auto;
             padding: 8px;
             background: #333;
@@ -220,7 +219,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            font-weight: 700; /* Thicker font */
+            font-weight: 700;
         }
         #dashboard .copy-address {
             background: #00BFFF;
@@ -231,16 +230,18 @@
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
             font-size: 14px;
-            margin: 10px 0;
+            margin: 0 auto 10px; /* Right below address */
             transition: background 0.3s ease;
-            font-weight: 700; /* Thicker font */
+            width: 100%;
+            max-width: 360px; /* Same width as address box */
+            font-weight: 700;
         }
         #dashboard .copy-address:hover {
             background: #00FFFF;
         }
         #dashboard .referral-code {
             width: 100%;
-            max-width: 300px;
+            max-width: 360px;
             margin: 10px auto;
             padding: 8px;
             background: #333;
@@ -249,13 +250,17 @@
             color: #E0E0E0;
             font-family: 'Orbitron', sans-serif;
             font-size: 14px;
-            font-weight: 700; /* Thicker font */
+            font-weight: 700;
         }
         #dashboard .how-to-buy-link {
-            font-size: 14px;
-            margin-top: 10px;
+            font-size: 12px; /* Smaller text */
+            margin: 10px 20px 0 0; /* Positioned bottom right */
             color: #00BFFF;
-            font-weight: 700; /* Thicker font */
+            font-weight: 700;
+            text-align: right;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
         }
         #dashboard .how-to-buy-link a {
             color: #00BFFF;
@@ -269,7 +274,7 @@
             font-size: 48px;
             margin: 0 0 15px;
             line-height: 1.1;
-            font-weight: 900; /* Thicker font */
+            font-weight: 900;
         }
         #hero .breaking { color: #00BFFF; display: block; font-size: 32px; }
         #hero .doji { color: #00BFFF; display: inline; font-size: 48px; }
@@ -288,7 +293,7 @@
             cursor: pointer;
             text-transform: uppercase;
             transition: background 0.3s ease;
-            font-weight: 700; /* Thicker font */
+            font-weight: 700;
         }
         .cta-button:hover {
             background: #00FFFF;
@@ -319,7 +324,7 @@
             font-size: 24px;
             color: #00BFFF;
             margin-bottom: 20px;
-            font-weight: 700; /* Thicker font */
+            font-weight: 700;
         }
         .popup-content input {
             width: 100%;
@@ -330,7 +335,7 @@
             border-radius: 4px;
             color: #E0E0E0;
             font-family: 'Orbitron', sans-serif;
-            font-weight: 700; /* Thicker font */
+            font-weight: 700;
         }
         .popup-content .buttons {
             display: flex;
@@ -345,7 +350,7 @@
             border-radius: 4px;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
-            font-weight: 700; /* Thicker font */
+            font-weight: 700;
         }
         .popup-content button:hover {
             background: #00FFFF;
@@ -353,7 +358,7 @@
         .popup-content .links {
             margin-top: 10px;
             font-size: 14px;
-            font-weight: 700; /* Thicker font */
+            font-weight: 700;
         }
         .popup-content .links a {
             color: #00BFFF;
@@ -363,7 +368,7 @@
             color: #FF0000;
             font-size: 14px;
             margin-top: 10px;
-            font-weight: 700; /* Thicker font */
+            font-weight: 700;
         }
         .password-container {
             position: relative;
@@ -541,7 +546,7 @@
         </div>
     </div>
 
-    <!-- Dashboard Section -->
+    <!-- Updated Dashboard Section -->
     <section id="dashboard">
         <h1>$DOJI PRESALE BUY</h1>
         <div class="raised">$12,500 USD RAISED</div>
