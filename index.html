@@ -14,7 +14,7 @@
         }
         body {
             font-family: 'Orbitron', sans-serif;
-            background: url('https://images.unsplash.com/photo-1543722530-d9c3201373e9') no-repeat center center fixed;
+            background: url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3') no-repeat center center fixed;
             background-size: cover;
             color: #E0E0E0;
             line-height: 1.6;
@@ -91,12 +91,7 @@
             border: 2px solid #00BFFF;
             border-radius: 8px;
             padding: 45px 20px;
-            background: url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45') no-repeat center / cover;
             background-color: rgba(0, 0, 0, 0.8);
-        }
-        #moonshot {
-            background: url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a') no-repeat center / cover;
-            background-color: rgba(0, 0, 0, 0.9);
         }
 
         #hero {
@@ -385,17 +380,13 @@
         .link-category li {
             margin: 5px 0;
         }
-        .media-button {
-            background: #00BFFF;
-            color: #000;
-            padding: 8px 15px;
-            border-radius: 5px;
+        .link-category a {
+            color: #00BFFF;
             text-decoration: none;
-            display: inline-block;
-            transition: background 0.3s ease;
+            font-size: 16px;
         }
-        .media-button:hover {
-            background: #00FFFF;
+        .link-category a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -666,29 +657,29 @@
             <div class="link-category">
                 <h4>Social Media</h4>
                 <ul>
-                    <li><a class="media-button" href="https://example.com/discord" target="_blank">Discord</a></li>
-                    <li><a class="media-button" href="https://example.com/telegram" target="_blank">Telegram</a></li>
-                    <li><a class="media-button" href="https://example.com/reddit" target="_blank">Reddit</a></li>
-                    <li><a class="media-button" href="https://example.com/x" target="_blank">X</a></li>
-                    <li><a class="media-button" href="https://example.com/instagram" target="_blank">Instagram</a></li>
-                    <li><a class="media-button" href="https://example.com/facebook" target="_blank">Facebook</a></li>
-                    <li><a class="media-button" href="https://example.com/linkedin" target="_blank">LinkedIn</a></li>
-                    <li><a class="media-button" href="https://example.com/whatsapp" target="_blank">WhatsApp</a></li>
+                    <li><a href="https://example.com/discord" target="_blank">Discord</a></li>
+                    <li><a href="https://example.com/telegram" target="_blank">Telegram</a></li>
+                    <li><a href="https://example.com/reddit" target="_blank">Reddit</a></li>
+                    <li><a href="https://example.com/x" target="_blank">X</a></li>
+                    <li><a href="https://example.com/instagram" target="_blank">Instagram</a></li>
+                    <li><a href="https://example.com/facebook" target="_blank">Facebook</a></li>
+                    <li><a href="https://example.com/linkedin" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://example.com/whatsapp" target="_blank">WhatsApp</a></li>
                 </ul>
             </div>
             <div class="link-category">
                 <h4>Exchanges</h4>
                 <ul>
-                    <li><a class="media-button" href="https://example.com/coinbase" target="_blank">Coinbase</a></li>
-                    <li><a class="media-button" href="https://example.com/kraken" target="_blank">Kraken</a></li>
-                    <li><a class="media-button" href="https://example.com/binance" target="_blank">Binance</a></li>
+                    <li><a href="https://example.com/coinbase" target="_blank">Coinbase</a></li>
+                    <li><a href="https://example.com/kraken" target="_blank">Kraken</a></li>
+                    <li><a href="https://example.com/binance" target="_blank">Binance</a></li>
                 </ul>
             </div>
             <div class="link-category">
                 <h4>Affiliate Programs</h4>
                 <ul>
-                    <li><a class="media-button" href="https://example.com/coinzilla" target="_blank">Coinzilla</a></li>
-                    <li><a class="media-button" href="https://example.com/awin" target="_blank">Awin</a></li>
+                    <li><a href="https://example.com/coinzilla" target="_blank">Coinzilla</a></li>
+                    <li><a href="https://example.com/awin" target="_blank">Awin</a></li>
                 </ul>
             </div>
         </div>
@@ -700,13 +691,15 @@
         const rightArrow = document.getElementById('rightArrow');
         const boxes = document.querySelectorAll('.presale-box');
         let currentIndex = 0;
-        const boxWidth = boxes[0].offsetWidth + 20;
 
         function updateSlider() {
+            const boxWidth = boxes[0].offsetWidth + 20; // Recalculate dynamically
             sliderTrack.style.transform = `translateX(${-currentIndex * boxWidth}px)`;
             leftArrow.classList.toggle('disabled', currentIndex === 0);
             rightArrow.classList.toggle('disabled', currentIndex === boxes.length - 1);
-            const currentStage = boxes[currentIndex].classList[1].split('-')[1];
+
+            const stageClass = Array.from(boxes[currentIndex].classList).find(cls => cls.startsWith('stage-'));
+            const currentStage = stageClass ? stageClass.split('-')[1] : '1';
             document.querySelector('.presale-subtitle').textContent = `STAGE ${currentStage.padStart(2, '0')}`;
         }
 
@@ -724,6 +717,7 @@
             }
         });
 
+        // Initial call to set up the slider
         updateSlider();
 
         document.querySelectorAll('.dropdown-content a').forEach(anchor => {
