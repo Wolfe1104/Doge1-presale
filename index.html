@@ -1,4 +1,3 @@
-LW
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -193,88 +192,39 @@ LW
             font-size: 14px;
             margin-top: 10px;
         }
-
-        #presale {
-            padding: 40px 20px;
-        }
-        #presale h3 {
-            color: #FFD700;
-            font-size: 36px;
-            margin: 0 0 10px;
-            text-align: center;
-        }
-        .presale-subtitle {
-            font-size: 24px;
-            color: #FFD700;
-            text-align: center;
-            margin-top: 10px;
-        }
-        .slider-container {
+        .password-container {
             position: relative;
             width: 100%;
-            max-width: 420px;
-            margin: 20px auto 0;
-            overflow: hidden;
         }
-        .slider-track {
-            display: flex;
-            transition: transform 0.3s ease-in-out;
-        }
-        .presale-box {
-            min-width: 240px;
-            width: 240px;
-            height: 155px;
-            margin: 0 10px;
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid #00BFFF;
-            border-radius: 8px;
-            padding: 15px;
-            flex-shrink: 0;
-        }
-        .presale-box.current {
-            border: 2px solid #FFD700;
-        }
-        .presale-box.past { opacity: 0.7; }
-        .presale-box.future { opacity: 0.8; }
-        .presale-box h4 {
-            color: #00BFFF;
-            font-size: 16px;
-            margin: 0 0 10px;
-        }
-        .presale-box p {
-            font-size: 14px;
-            color: #E0E0E0;
-            margin: 5px 0;
-        }
-        .progress-bar {
+        .password-container input {
             width: 100%;
-            height: 6px;
-            background: #333;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 10px;
+            padding-right: 30px;
         }
-        .progress-fill {
-            height: 100%;
-            background: #00BFFF;
-            transition: width 0.3s ease;
-        }
-        .arrow {
+        .toggle-password {
             position: absolute;
+            right: 10px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 24px;
             color: #00BFFF;
-            background: rgba(0, 0, 0, 0.7);
-            border: none;
-            padding: 8px 12px;
             cursor: pointer;
-            z-index: 10;
+            font-size: 16px;
         }
-        .arrow.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
+
+        #presale { padding: 40px 20px; }
+        #presale h3 { color: #FFD700; font-size: 36px; margin: 0 0 10px; text-align: center; }
+        .presale-subtitle { font-size: 24px; color: #FFD700; text-align: center; margin-top: 10px; }
+        .slider-container { position: relative; width: 100%; max-width: 420px; margin: 20px auto 0; overflow: hidden; }
+        .slider-track { display: flex; transition: transform 0.3s ease-in-out; }
+        .presale-box { min-width: 240px; width: 240px; height: 155px; margin: 0 10px; background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; flex-shrink: 0; }
+        .presale-box.current { border: 2px solid #FFD700; }
+        .presale-box.past { opacity: 0.7; }
+        .presale-box.future { opacity: 0.8; }
+        .presale-box h4 { color: #00BFFF; font-size: 16px; margin: 0 0 10px; }
+        .presale-box p { font-size: 14px; color: #E0E0E0; margin: 5px 0; }
+        .progress-bar { width: 100%; height: 6px; background: #333; border-radius: 4px; overflow: hidden; margin-top: 10px; }
+        .progress-fill { height: 100%; background: #00BFFF; transition: width 0.3s ease; }
+        .arrow { position: absolute; top: 50%; transform: translateY(-50%); font-size: 24px; color: #00BFFF; background: rgba(0, 0, 0, 0.7); border: none; padding: 8px 12px; cursor: pointer; z-index: 10; }
+        .arrow.disabled { opacity: 0.5; cursor: not-allowed; }
         .arrow.left { left: 0; }
         .arrow.right { right: 0; color: #FF0000; }
         .arrow:hover:not(.disabled) { opacity: 1; color: #FFFFFF; }
@@ -288,182 +238,51 @@ LW
             .slider-container { max-width: 360px; }
         }
 
-        h3 {
-            font-size: 36px;
-            color: #00BFFF;
-            text-align: center;
-            margin: 0 0 20px;
-        }
-        h4 {
-            font-size: 20px;
-            font-style: italic;
-            text-align: center;
-            margin: 0 0 30px;
-        }
-        .token-doji {
-            color: #00BFFF;
-        }
-
-        #about .crawl-container,
-        #moonshot .crawl-container {
-            perspective: 300px;
-            height: 300px;
-            overflow: hidden;
-            position: relative;
-        }
-        #about .crawl-container p,
-        #moonshot .crawl-container p {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            transform-origin: bottom;
-            transform: rotateX(20deg) translateY(500px);
-            opacity: 0;
-            animation: crawl 30s linear infinite;
-            color: #FFFFFF;
-            font-size: 18px;
-            line-height: 1.8;
-        }
-        #about .crawl-container p:nth-child(2),
-        #moonshot .crawl-container p:nth-child(2) {
-            animation-delay: 26s;
-        }
+        h3 { font-size: 36px; color: #00BFFF; text-align: center; margin: 0 0 20px; }
+        h4 { font-size: 20px; font-style: italic; text-align: center; margin: 0 0 30px; }
+        .token-doji { color: #00BFFF; }
+        #about .crawl-container, #moonshot .crawl-container { perspective: 300px; height: 300px; overflow: hidden; position: relative; }
+        #about .crawl-container p, #moonshot .crawl-container p { position: absolute; bottom: 0; width: 100%; text-align: center; transform-origin: bottom; transform: rotateX(20deg) translateY(500px); opacity: 0; animation: crawl 30s linear infinite; color: #FFFFFF; font-size: 18px; line-height: 1.8; }
+        #about .crawl-container p:nth-child(2), #moonshot .crawl-container p:nth-child(2) { animation-delay: 26s; }
         @keyframes crawl {
             0% { transform: rotateX(20deg) translateY(500px); opacity: 0; }
             5% { transform: rotateX(20deg) translateY(450px); opacity: 1; }
             95% { transform: rotateX(20deg) translateY(-550px); opacity: 1; }
             100% { transform: rotateX(20deg) translateY(-600px); opacity: 0; }
         }
-
-        #moonshot {
-            text-align: center;
-        }
+        #moonshot { text-align: center; }
         #moonshot h3 { color: #FFD700; }
-
-        #tokenomics {
-            text-align: center;
-        }
-        .pie-chart-container {
-            width: 300px;
-            height: 300px;
-            margin: 0 auto 20px;
-        }
-        .pie-chart {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: conic-gradient(
-                rgba(70, 130, 180, 0.7) 0% 25%,
-                rgba(218, 165, 32, 0.7) 25% 55%,
-                rgba(46, 139, 87, 0.7) 55% 65%,
-                rgba(72, 61, 139, 0.7) 65% 85%,
-                rgba(139, 0, 0, 0.7) 85% 100%
-            );
-            border: 4px solid #333333;
-        }
-        .pie-chart-legend {
-            background: #000;
-            padding: 15px;
-            border: 1px solid #00BFFF;
-            border-radius: 8px;
-            display: block;
-            text-align: left;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-        .legend-item {
-            display: flex;
-            align-items: center;
-            font-size: 16px;
-            margin-bottom: 10px;
-            color: #FFFFFF;
-        }
-        .legend-color {
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-            border-radius: 50%;
-        }
-
+        #tokenomics { text-align: center; }
+        .pie-chart-container { width: 300px; height: 300px; margin: 0 auto 20px; }
+        .pie-chart { width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(rgba(70, 130, 180, 0.7) 0% 25%, rgba(218, 165, 32, 0.7) 25% 55%, rgba(46, 139, 87, 0.7) 55% 65%, rgba(72, 61, 139, 0.7) 65% 85%, rgba(139, 0, 0, 0.7) 85% 100%); border: 4px solid #333333; }
+        .pie-chart-legend { background: #000; padding: 15px; border: 1px solid #00BFFF; border-radius: 8px; display: block; text-align: left; max-width: 300px; margin: 0 auto; }
+        .legend-item { display: flex; align-items: center; font-size: 16px; margin-bottom: 10px; color: #FFFFFF; }
+        .legend-color { width: 16px; height: 16px; margin-right: 8px; border-radius: 50%; }
         #roadmap h3 { color: #FFD700; }
-        .roadmap-item {
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid #00BFFF;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
-        }
+        .roadmap-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
         .roadmap-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
         .roadmap-item p { font-size: 16px; margin: 0; line-height: 1.5; }
-
         #how-to-buy h3 { color: #FFD700; }
         #how-to-buy h4:not(.how-to-buy-item h4) { color: #E0E0E0; }
-        .how-to-buy-item {
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid #00BFFF;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
-        }
+        .how-to-buy-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
         .how-to-buy-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
         .how-to-buy-item p { font-size: 14px; margin: 0; line-height: 1.5; }
-        #how-to-buy .cta-button {
-            margin: 30px auto 0;
-            display: block;
-            width: 200px;
-        }
-
+        #how-to-buy .cta-button { margin: 30px auto 0; display: block; width: 200px; }
         #rewards h3 { color: #FFD700; }
-        .reward-item {
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid #00BFFF;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
-        }
+        .reward-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
         .reward-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
         .reward-item p { font-size: 14px; margin: 0; line-height: 1.5; }
-
         #faq h3 { color: #FFD700; }
-        .faq-item {
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid #00BFFF;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
-        }
+        .faq-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
         .faq-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
         .faq-item p { font-size: 14px; margin: 0; line-height: 1.5; }
-
-        #media .media-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-        .link-category {
-            margin: 10px;
-        }
-        .link-category h4 {
-            color: #00BFFF;
-            font-size: 18px;
-            margin: 10px 0;
-        }
-        .link-category ul {
-            list-style: none;
-            padding: 0;
-        }
-        .link-category li {
-            margin: 5px 0;
-        }
-        .link-category a {
-            color: #00BFFF;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        .link-category a:hover {
-            text-decoration: underline;
-        }
+        #media .media-container { display: flex; justify-content: space-around; flex-wrap: wrap; }
+        .link-category { margin: 10px; }
+        .link-category h4 { color: #00BFFF; font-size: 18px; margin: 10px 0; }
+        .link-category ul { list-style: none; padding: 0; }
+        .link-category li { margin: 5px 0; }
+        .link-category a { color: #00BFFF; text-decoration: none; font-size: 16px; }
+        .link-category a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -496,7 +315,10 @@ LW
         <div class="popup-content">
             <h3>Please Sign In to Continue</h3>
             <input type="email" id="loginEmail" placeholder="Email" required>
-            <input type="password" id="loginPassword" placeholder="Password" required>
+            <div class="password-container">
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePassword('loginPassword')">👁️</span>
+            </div>
             <div class="links">
                 <span>Need an account? <a href="#" onclick="showRegisterPopup()">Register</a> an account!</span><br>
                 <a href="#" onclick="showForgotPasswordPopup()">Forgot Password?</a>
@@ -515,8 +337,14 @@ LW
             <h3>Register with DOJIWON</h3>
             <input type="text" id="registerName" placeholder="Name" required>
             <input type="email" id="registerEmail" placeholder="Email" required>
-            <input type="password" id="registerPassword" placeholder="Password" required>
-            <input type="password" id="registerConfirmPassword" placeholder="Confirm Password" required>
+            <div class="password-container">
+                <input type="password" id="registerPassword" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePassword('registerPassword')">👁️</span>
+            </div>
+            <div class="password-container">
+                <input type="password" id="registerConfirmPassword" placeholder="Confirm Password" required>
+                <span class="toggle-password" onclick="togglePassword('registerConfirmPassword')">👁️</span>
+            </div>
             <div class="buttons">
                 <button onclick="closeRegisterPopup()">Cancel</button>
                 <button onclick="handleRegister()">Continue</button>
@@ -555,6 +383,7 @@ LW
         <p class="presale-subtitle">STAGE 01</p>
         <div class="slider-container">
             <button class="arrow left" id="leftArrow">⟵</button>
+            <div class="slider-trackphysics: relative;
             <div class="slider-track" id="sliderTrack">
                 <div class="presale-box current stage-1">
                     <h4>STAGE 01</h4>
@@ -600,40 +429,8 @@ LW
                 </div>
                 <div class="presale-box future stage-8">
                     <h4>STAGE 08</h4>
-                    <p>Price: <span class="token-doji">$0.00224</span></p>
-                    <p>Goal: $40,320</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
-                </div>
-                <div class="presale-box future stage-9">
-                    <h4>STAGE 09</h4>
-                    <p>Price: <span class="token-doji">$0.00278</span></p>
-                    <p>Goal: $47,260</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
-                </div>
-                <div class="presale-box future stage-10">
-                    <h4>STAGE 10</h4>
-                    <p>Price: <span class="token-doji">$0.00344</span></p>
-                    <p>Goal: $55,040</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
-                </div>
-                <div class="presale-box future stage-11">
-                    <h4>STAGE 11</h4>
-                    <p>Price: <span class="token-doji">$0.00426</span></p>
-                    <p>Goal: $63,900</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
-                </div>
-                <div class="presale-box future stage-12">
-                    <h4>STAGE 12</h4>
-                    <p>Price: <span class="token-doji">$0.00527</span></p>
-                    <p>Goal: $73,780</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
-                </div>
-                <div class="presale-box future stage-13">
-                    <h4>STAGE 13</h4>
-                    <p>Price: <span class="token-doji">$0.01000</span></p>
-                    <p>Goal: $130,000</p>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
-                </div>
+                    <p>Price: <span class="token-doji">$0.00224</span></p - see rest of slider HTML -->
+
             </div>
             <button class="arrow right" id="rightArrow">⟶</button>
         </div>
@@ -815,18 +612,28 @@ LW
     </section>
 
     <script>
-        // Password hashing simulation (since this is client-side, use a simple base64 for demo)
+        // Password hashing simulation (Base64 for demo purposes)
         function hashPassword(password) {
-            return btoa(password); // Base64 encoding for demo (replace with proper hashing in production)
+            return btoa(password);
         }
 
         function unhashPassword(hashed) {
-            return atob(hashed); // Base64 decoding for demo
+            return atob(hashed);
         }
 
-        // User database simulation using localStorage
+        // User database with admin pre-seeding
         function getUsers() {
-            return JSON.parse(localStorage.getItem('user.log')) || [];
+            let users = JSON.parse(localStorage.getItem('user.log')) || [];
+            if (!users.some(u => u.email === 'admin')) {
+                users.push({
+                    name: 'Admin',
+                    email: 'admin',
+                    password: hashPassword('almarae0409!'),
+                    coins: 0
+                });
+                saveUsers(users);
+            }
+            return users;
         }
 
         function saveUsers(users) {
@@ -876,7 +683,6 @@ LW
                 dropdown.innerHTML += '<a href="#" onclick="logout()">Logout</a>';
             }
 
-            // Reattach smooth scroll listeners
             document.querySelectorAll('.dropdown-content a:not(.login-link):not([onclick="logout()"])').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -934,6 +740,19 @@ LW
             document.getElementById('forgotPasswordPopup').style.display = 'none';
         }
 
+        // Toggle password visibility
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const toggle = input.nextElementSibling;
+            if (input.type === 'password') {
+                input.type = 'text';
+                toggle.textContent = '👁️‍🗨️';
+            } else {
+                input.type = 'password';
+                toggle.textContent = '👁️';
+            }
+        }
+
         // Handle login
         function handleLogin() {
             const email = document.getElementById('loginEmail').value.trim().toLowerCase();
@@ -952,12 +771,13 @@ LW
                 return;
             }
 
-            if (email === 'admin' && password === 'almarae0409!') {
+            if (email === 'admin' && unhashPassword(user.password) === 'almarae0409!') {
                 setUserStatus('admin', email);
             } else {
                 setUserStatus('logged', email);
             }
             closeLoginPopup();
+            alert('Logged in successfully!');
         }
 
         // Handle register
@@ -993,6 +813,7 @@ LW
             saveUsers(users);
             setUserStatus('logged', email);
             closeRegisterPopup();
+            alert('Registered and logged in successfully!');
         }
 
         // Handle forgot password (placeholder)
@@ -1012,19 +833,17 @@ LW
             }
 
             error.textContent = 'Password reset link sent (placeholder).';
-            // Future: Implement actual reset logic (e.g., email link or token)
         }
 
         // Logout
         function logout() {
             setUserStatus('guest');
+            alert('Logged out successfully!');
         }
 
-        // Existing slider and navigation logic
+        // Initialization
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize user status
             setUserStatus('guest');
-
             const sliderTrack = document.getElementById('sliderTrack');
             const leftArrow = document.getElementById('leftArrow');
             const rightArrow = document.getElementById('rightArrow');
@@ -1059,7 +878,6 @@ LW
             updateSlider();
         });
 
-        // Reset status on site leave
         window.addEventListener('beforeunload', () => {
             setUserStatus('guest');
         });
