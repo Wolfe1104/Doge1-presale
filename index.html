@@ -126,6 +126,73 @@
             background: #00FFFF;
         }
 
+        /* Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00BFFF;
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        .popup-content h3 {
+            font-size: 24px;
+            color: #00BFFF;
+            margin-bottom: 20px;
+        }
+        .popup-content input {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            background: #333;
+            border: 1px solid #00BFFF;
+            border-radius: 4px;
+            color: #E0E0E0;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .popup-content .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .popup-content button {
+            background: #00BFFF;
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .popup-content button:hover {
+            background: #00FFFF;
+        }
+        .popup-content .links {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .popup-content .links a {
+            color: #00BFFF;
+            margin: 0 5px;
+        }
+        .popup-content .error {
+            color: #FF0000;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
         #presale {
             padding: 40px 20px;
         }
@@ -406,7 +473,8 @@
         </div>
         <div class="dropdown">
             <div class="hamburger">☰</div>
-            <div class="dropdown-content">
+            <div class="dropdown-content" id="dropdownMenu">
+                <a href="#" class="login-link" onclick="showLoginPopup()">Login</a>
                 <a href="#hero">Hero</a>
                 <a href="#presale">Presale</a>
                 <a href="#about">Origins & Evolution</a>
@@ -422,6 +490,54 @@
         </div>
     </header>
 
+    <!-- Login Popup -->
+    <div class="popup" id="loginPopup">
+        <div class="popup-content">
+            <h3>Please Sign In to Continue</h3>
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <div class="links">
+                <span>Need an account? <a href="#" onclick="showRegisterPopup()">Register</a> an account!</span><br>
+                <a href="#" onclick="showForgotPasswordPopup()">Forgot Password?</a>
+            </div>
+            <div class="buttons">
+                <button onclick="closeLoginPopup()">Cancel</button>
+                <button onclick="handleLogin()">Continue</button>
+            </div>
+            <div class="error" id="loginError"></div>
+        </div>
+    </div>
+
+    <!-- Register Popup -->
+    <div class="popup" id="registerPopup">
+        <div class="popup-content">
+            <h3>Register with DOJIWON</h3>
+            <input type="text" id="registerName" placeholder="Name" required>
+            <input type="email" id="registerEmail" placeholder="Email" required>
+            <input type="password" id="registerPassword" placeholder="Password" required>
+            <input type="password" id="registerConfirmPassword" placeholder="Confirm Password" required>
+            <div class="buttons">
+                <button onclick="closeRegisterPopup()">Cancel</button>
+                <button onclick="handleRegister()">Continue</button>
+            </div>
+            <div class="error" id="registerError"></div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Popup -->
+    <div class="popup" id="forgotPasswordPopup">
+        <div class="popup-content">
+            <h3>Forgot Password</h3>
+            <p>Enter your email to receive a password reset link.</p>
+            <input type="email" id="forgotPasswordEmail" placeholder="Email" required>
+            <div class="buttons">
+                <button onclick="closeForgotPasswordPopup()">Cancel</button>
+                <button onclick="handleForgotPassword()">Submit</button>
+            </div>
+            <div class="error" id="forgotPasswordError"></div>
+        </div>
+    </div>
+
     <section id="hero">
         <h1>
             <span class="breaking">BREAKING THE CHAINS</span>
@@ -430,7 +546,7 @@
         </h1>
         <h2>Awaken the Jedi—Join the Force!</h2>
         <p>The Countdown Has Begun—This Offer Is Only Available for a Limited Time, Don’t Let It Pass, BUY!</p>
-        <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
+        <button class="cta-button" onclick="showLoginPopup()">JOIN THE FORCE</button>
     </section>
 
     <section id="presale">
@@ -596,7 +712,7 @@
             <h4>Unleash Your Destiny</h4>
             <p>Confirm the buy in your wallet—Polygon’s gas fees are dirt cheap, no excuses. Sign it, send it, and your <span class="token-doji">$DOJI</span> tokens hit your wallet when the presale wraps. HODL tight, rebel!</p>
         </div>
-        <button class="cta-button" onclick="alert('Connect wallet placeholder')">JOIN THE FORCE</button>
+        <button class="cta-button" onclick="showLoginPopup()">JOIN THE FORCE</button>
     </section>
 
     <section id="rewards">
@@ -698,7 +814,216 @@
     </section>
 
     <script>
+        // Password hashing simulation (since this is client-side, use a simple base64 for demo)
+        function hashPassword(password) {
+            return btoa(password); // Base64 encoding for demo (replace with proper hashing in production)
+        }
+
+        function unhashPassword(hashed) {
+            return atob(hashed); // Base64 decoding for demo
+        }
+
+        // User database simulation using localStorage
+        function getUsers() {
+            return JSON.parse(localStorage.getItem('user.log')) || [];
+        }
+
+        function saveUsers(users) {
+            localStorage.setItem('user.log', JSON.stringify(users));
+        }
+
+        // Session management
+        function getUserStatus() {
+            return localStorage.getItem('userStatus') || 'guest';
+        }
+
+        function setUserStatus(status, email = '') {
+            localStorage.setItem('userStatus', status);
+            if (status === 'guest') {
+                localStorage.removeItem('loggedInEmail');
+            } else {
+                localStorage.setItem('loggedInEmail', email);
+            }
+            updateDropdown();
+        }
+
+        // Update dropdown menu based on user status
+        function updateDropdown() {
+            const dropdown = document.getElementById('dropdownMenu');
+            const status = getUserStatus();
+            dropdown.innerHTML = '';
+
+            if (status === 'guest') {
+                dropdown.innerHTML += '<a href="#" class="login-link" onclick="showLoginPopup()">Login</a>';
+            }
+
+            dropdown.innerHTML += `
+                <a href="#hero">Hero</a>
+                <a href="#presale">Presale</a>
+                <a href="#about">Origins & Evolution</a>
+                <a href="#moonshot">Moonshot</a>
+                <a href="#tokenomics">Tokenomics</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#how-to-buy">How to Buy</a>
+                <a href="#rewards">Rewards</a>
+                <a href="#faq">FAQ</a>
+                <a href="#media">Media & Exchanges</a>
+                <a href="whitepaper.pdf">Whitepaper</a>
+            `;
+
+            if (status !== 'guest') {
+                dropdown.innerHTML += '<a href="#" onclick="logout()">Logout</a>';
+            }
+
+            // Reattach smooth scroll listeners
+            document.querySelectorAll('.dropdown-content a:not(.login-link):not([onclick="logout()"])').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Popup functions
+        function showLoginPopup() {
+            const status = getUserStatus();
+            if (status !== 'guest') {
+                alert('You are already logged in!');
+                return;
+            }
+            document.getElementById('loginPopup').style.display = 'flex';
+            document.getElementById('loginError').textContent = '';
+            document.getElementById('loginEmail').value = '';
+            document.getElementById('loginPassword').value = '';
+        }
+
+        function closeLoginPopup() {
+            document.getElementById('loginPopup').style.display = 'none';
+        }
+
+        function showRegisterPopup() {
+            closeLoginPopup();
+            document.getElementById('registerPopup').style.display = 'flex';
+            document.getElementById('registerError').textContent = '';
+            document.getElementById('registerName').value = '';
+            document.getElementById('registerEmail').value = '';
+            document.getElementById('registerPassword').value = '';
+            document.getElementById('registerConfirmPassword').value = '';
+        }
+
+        function closeRegisterPopup() {
+            document.getElementById('registerPopup').style.display = 'none';
+        }
+
+        function showForgotPasswordPopup() {
+            closeLoginPopup();
+            document.getElementById('forgotPasswordPopup').style.display = 'flex';
+            document.getElementById('forgotPasswordError').textContent = '';
+            document.getElementById('forgotPasswordEmail').value = '';
+        }
+
+        function closeForgotPasswordPopup() {
+            document.getElementById('forgotPasswordPopup').style.display = 'none';
+        }
+
+        // Handle login
+        function handleLogin() {
+            const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+            const password = document.getElementById('loginPassword').value;
+            const error = document.getElementById('loginError');
+            const users = getUsers();
+
+            if (!email || !password) {
+                error.textContent = 'Please fill in all fields.';
+                return;
+            }
+
+            const user = users.find(u => u.email.toLowerCase() === email);
+            if (!user || unhashPassword(user.password) !== password) {
+                error.textContent = 'Invalid email or password.';
+                return;
+            }
+
+            if (email === 'admin' && password === 'almarae0409!') {
+                setUserStatus('admin', email);
+            } else {
+                setUserStatus('logged', email);
+            }
+            closeLoginPopup();
+        }
+
+        // Handle register
+        function handleRegister() {
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value.trim().toLowerCase();
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            const error = document.getElementById('registerError');
+            const users = getUsers();
+
+            if (!name || !email || !password || !confirmPassword) {
+                error.textContent = 'Please fill in all fields.';
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                error.textContent = 'Passwords do not match.';
+                return;
+            }
+
+            if (users.some(u => u.email.toLowerCase() === email)) {
+                error.textContent = 'Account with that email already exists, please login.';
+                return;
+            }
+
+            users.push({
+                name,
+                email,
+                password: hashPassword(password),
+                coins: 0
+            });
+            saveUsers(users);
+            setUserStatus('logged', email);
+            closeRegisterPopup();
+        }
+
+        // Handle forgot password (placeholder)
+        function handleForgotPassword() {
+            const email = document.getElementById('forgotPasswordEmail').value.trim().toLowerCase();
+            const error = document.getElementById('forgotPasswordError');
+            const users = getUsers();
+
+            if (!email) {
+                error.textContent = 'Please enter your email.';
+                return;
+            }
+
+            if (!users.some(u => u.email.toLowerCase() === email)) {
+                error.textContent = 'Email not found.';
+                return;
+            }
+
+            error.textContent = 'Password reset link sent (placeholder).';
+            // Future: Implement actual reset logic (e.g., email link or token)
+        }
+
+        // Logout
+        function logout() {
+            setUserStatus('guest');
+        }
+
+        // Existing slider and navigation logic
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize user status
+            setUserStatus('guest');
+
             const sliderTrack = document.getElementById('sliderTrack');
             const leftArrow = document.getElementById('leftArrow');
             const rightArrow = document.getElementById('rightArrow');
@@ -731,20 +1056,11 @@
             });
 
             updateSlider();
+        });
 
-            document.querySelectorAll('.dropdown-content a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 70,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+        // Reset status on site leave
+        window.addEventListener('beforeunload', () => {
+            setUserStatus('guest');
         });
     </script>
 </body>
