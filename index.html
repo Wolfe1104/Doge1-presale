@@ -251,19 +251,19 @@
             text-align: center;
             transform-origin: bottom;
             transform: rotateX(20deg);
-            animation: crawl 15s linear infinite;
+            animation: crawl 30s linear infinite;
             color: #FFFFFF;
             font-size: 18px;
             line-height: 1.8;
         }
         #about .crawl-container p:nth-child(2),
         #moonshot .crawl-container p:nth-child(2) {
-            animation-delay: 7.5s;
+            animation-delay: 15s;
         }
         @keyframes crawl {
-            0% { transform: rotateX(20deg) translateY(300px); opacity: 0; }
-            10% { transform: rotateX(20deg) translateY(200px); opacity: 1; }
-            90% { transform: rotateX(20deg) translateY(-500px); opacity: 1; }
+            0% { transform: rotateX(20deg) translateY(500px); opacity: 0; }
+            5% { transform: rotateX(20deg) translateY(450px); opacity: 1; }
+            95% { transform: rotateX(20deg) translateY(-550px); opacity: 1; }
             100% { transform: rotateX(20deg) translateY(-600px); opacity: 0; }
         }
 
@@ -705,7 +705,7 @@
             let currentIndex = 0;
 
             function updateSlider() {
-                const boxWidth = boxes[0].offsetWidth + 20; // Recalculate dynamically
+                const boxWidth = boxes[0].offsetWidth + 20;
                 sliderTrack.style.transform = `translateX(${-currentIndex * boxWidth}px)`;
                 leftArrow.classList.toggle('disabled', currentIndex === 0);
                 rightArrow.classList.toggle('disabled', currentIndex === boxes.length - 1);
@@ -729,7 +729,6 @@
                 }
             });
 
-            // Initial call after DOM is loaded
             updateSlider();
 
             document.querySelectorAll('.dropdown-content a').forEach(anchor => {
