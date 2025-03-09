@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOJIWON Presale</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -49,7 +49,7 @@
         }
         .logo-text {
             font-size: 18px;
-            font-weight: bold;
+            font-weight: 700;
             color: #00BFFF;
             margin-left: 10px;
         }
@@ -78,6 +78,7 @@
             padding: 10px 15px;
             display: block;
             font-size: 14px;
+            font-weight: 700;
         }
         .dropdown-content a:hover {
             color: #00BFFF;
@@ -98,18 +99,40 @@
         #dashboard {
             text-align: center;
             padding: 80px 20px 20px;
-            margin-top: 80px;
+            margin-top: 130px; /* Increased for space below header */
+            max-width: 340px; /* Slightly smaller than a typical phone screen */
+            background-color: #000; /* Solid black background */
+            border: 2px solid #00BFFF;
+            border-radius: 8px; /* Rounded edges for the section */
         }
         #dashboard h1 {
-            font-size: 48px;
+            font-size: 36px;
             margin: 0 0 15px;
-            line-height: 1.1;
-            color: #00BFFF;
-            text-shadow: 0 0 10px #00BFFF;
+            line-height: 1;
+            color: #FFFFFF;
+            text-shadow: 0 0 10px #FFFFFF, 0 0 20px #00BFFF, 0 0 30px #00BFFF;
+            animation: glow 2s ease-in-out infinite alternate;
+            white-space: nowrap; /* Ensures single line */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 900; /* Thicker font */
+        }
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px #FFFFFF, 0 0 20px #00BFFF, 0 0 30px #00BFFF;
+            }
+            50% {
+                text-shadow: 0 0 15px #FFFFFF, 0 0 25px #00BFFF, 0 0 40px #00BFFF;
+            }
+            100% {
+                text-shadow: 0 0 10px #FFFFFF, 0 0 20px #00BFFF, 0 0 30px #00BFFF;
+            }
         }
         #dashboard .raised {
-            font-size: 24px;
+            font-size: 16px;
             margin: 10px 0;
+            color: #FFFFFF;
+            font-weight: 700; /* Thicker font */
         }
         #dashboard .progress-bar {
             width: 100%;
@@ -118,7 +141,7 @@
             border-radius: 4px;
             overflow: hidden;
             margin: 10px auto;
-            max-width: 420px;
+            max-width: 300px;
         }
         #dashboard .progress-fill {
             height: 100%;
@@ -126,8 +149,10 @@
             transition: width 0.3s ease;
         }
         #dashboard .token-price {
-            font-size: 18px;
+            font-size: 16px;
             margin: 10px 0;
+            color: #FFFFFF;
+            font-weight: 700; /* Thicker font */
         }
         #dashboard .crypto-options {
             display: flex;
@@ -147,74 +172,93 @@
             font-size: 14px;
             color: #E0E0E0;
             border: 2px solid transparent;
+            font-weight: 700; /* Thicker font */
         }
         #dashboard .crypto-option.selected {
             border: 2px solid #FFD700;
         }
-        #dashboard .send-crypto {
+        #dashboard .purchase-button {
+            background: #00BFFF;
+            color: #000;
+            border: none;
+            padding: 8px 25px;
             font-size: 16px;
-            margin: 10px 0;
+            font-family: 'Orbitron', sans-serif;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+            margin: 20px 0;
+            width: 100%;
+            max-width: 300px;
+            font-weight: 700; /* Thicker font */
+        }
+        #dashboard .purchase-button:hover {
+            background: #00FFFF;
+        }
+        #dashboard .send-crypto {
+            font-size: 14px;
+            margin: 0 0 5px 0; /* Adjusted margin to align with top-left of address box */
+            color: #FFFFFF;
+            text-align: left; /* Align to left */
+            font-weight: 700; /* Thicker font */
+            position: relative;
+            top: -5px; /* Fine-tune alignment with address box */
+            left: 20px; /* Offset to match address box's padding */
         }
         #dashboard .wallet-address {
             width: 100%;
-            max-width: 420px;
+            max-width: 300px;
             margin: 10px auto;
             padding: 8px;
             background: #333;
             border: 1px solid #00BFFF;
-            border-radius: 4px;
+            border-radius: 8px;
             color: #E0E0E0;
             font-family: 'Orbitron', sans-serif;
             font-size: 14px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            font-weight: 700; /* Thicker font */
         }
         #dashboard .copy-address {
             background: #00BFFF;
             color: #000;
             border: none;
             padding: 8px 15px;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
             margin: 10px 0;
             transition: background 0.3s ease;
+            font-weight: 700; /* Thicker font */
         }
         #dashboard .copy-address:hover {
             background: #00FFFF;
         }
-        #dashboard .purchase-button {
-            background: #00BFFF;
-            color: #000;
-            border: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            font-family: 'Orbitron', sans-serif;
-            border-radius: 5px;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: background 0.3s ease;
-            margin: 20px 0;
-        }
-        #dashboard .purchase-button:hover {
-            background: #00FFFF;
-        }
         #dashboard .referral-code {
             width: 100%;
-            max-width: 420px;
+            max-width: 300px;
             margin: 10px auto;
             padding: 8px;
             background: #333;
             border: 1px solid #00BFFF;
-            border-radius: 4px;
+            border-radius: 8px;
             color: #E0E0E0;
             font-family: 'Orbitron', sans-serif;
             font-size: 14px;
+            font-weight: 700; /* Thicker font */
         }
         #dashboard .how-to-buy-link {
             font-size: 14px;
             margin-top: 10px;
+            color: #00BFFF;
+            font-weight: 700; /* Thicker font */
+        }
+        #dashboard .how-to-buy-link a {
+            color: #00BFFF;
         }
 
         #hero {
@@ -225,12 +269,13 @@
             font-size: 48px;
             margin: 0 0 15px;
             line-height: 1.1;
+            font-weight: 900; /* Thicker font */
         }
         #hero .breaking { color: #00BFFF; display: block; font-size: 32px; }
         #hero .doji { color: #00BFFF; display: inline; font-size: 48px; }
         #hero .bites { color: #00BFFF; display: block; font-size: 48px; }
-        #hero h2 { font-size: 24px; margin: 0 0 15px; font-style: italic; }
-        #hero p { font-size: 18px; margin: 0 0 20px; }
+        #hero h2 { font-size: 24px; margin: 0 0 15px; font-style: italic; font-weight: 700; }
+        #hero p { font-size: 18px; margin: 0 0 20px; font-weight: 700; }
 
         .cta-button {
             background: #00BFFF;
@@ -243,6 +288,7 @@
             cursor: pointer;
             text-transform: uppercase;
             transition: background 0.3s ease;
+            font-weight: 700; /* Thicker font */
         }
         .cta-button:hover {
             background: #00FFFF;
@@ -273,6 +319,7 @@
             font-size: 24px;
             color: #00BFFF;
             margin-bottom: 20px;
+            font-weight: 700; /* Thicker font */
         }
         .popup-content input {
             width: 100%;
@@ -283,6 +330,7 @@
             border-radius: 4px;
             color: #E0E0E0;
             font-family: 'Orbitron', sans-serif;
+            font-weight: 700; /* Thicker font */
         }
         .popup-content .buttons {
             display: flex;
@@ -297,6 +345,7 @@
             border-radius: 4px;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
+            font-weight: 700; /* Thicker font */
         }
         .popup-content button:hover {
             background: #00FFFF;
@@ -304,6 +353,7 @@
         .popup-content .links {
             margin-top: 10px;
             font-size: 14px;
+            font-weight: 700; /* Thicker font */
         }
         .popup-content .links a {
             color: #00BFFF;
@@ -313,6 +363,7 @@
             color: #FF0000;
             font-size: 14px;
             margin-top: 10px;
+            font-weight: 700; /* Thicker font */
         }
         .password-container {
             position: relative;
@@ -333,16 +384,16 @@
         }
 
         #presale { padding: 40px 20px; }
-        #presale h3 { color: #FFD700; font-size: 36px; margin: 0 0 10px; text-align: center; }
-        .presale-subtitle { font-size: 24px; color: #FFD700; text-align: center; margin-top: 10px; }
+        #presale h3 { color: #FFD700; font-size: 36px; margin: 0 0 10px; text-align: center; font-weight: 900; }
+        .presale-subtitle { font-size: 24px; color: #FFD700; text-align: center; margin-top: 10px; font-weight: 700; }
         .slider-container { position: relative; width: 100%; max-width: 420px; margin: 20px auto 0; overflow: hidden; }
         .slider-track { display: flex; transition: transform 0.3s ease-in-out; }
         .presale-box { min-width: 240px; width: 240px; height: 155px; margin: 0 10px; background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; flex-shrink: 0; }
         .presale-box.current { border: 2px solid #FFD700; }
         .presale-box.past { opacity: 0.7; }
         .presale-box.future { opacity: 0.8; }
-        .presale-box h4 { color: #00BFFF; font-size: 16px; margin: 0 0 10px; }
-        .presale-box p { font-size: 14px; color: #E0E0E0; margin: 5px 0; }
+        .presale-box h4 { color: #00BFFF; font-size: 16px; margin: 0 0 10px; font-weight: 700; }
+        .presale-box p { font-size: 14px; color: #E0E0E0; margin: 5px 0; font-weight: 700; }
         .progress-bar { width: 100%; height: 6px; background: #333; border-radius: 4px; overflow: hidden; margin-top: 10px; }
         .progress-fill { height: 100%; background: #00BFFF; transition: width 0.3s ease; }
         .arrow { position: absolute; top: 50%; transform: translateY(-50%); font-size: 24px; color: #00BFFF; background: rgba(0, 0, 0, 0.7); border: none; padding: 8px 12px; cursor: pointer; z-index: 10; }
@@ -360,11 +411,11 @@
             .slider-container { max-width: 360px; }
         }
 
-        h3 { font-size: 36px; color: #00BFFF; text-align: center; margin: 0 0 20px; }
-        h4 { font-size: 20px; font-style: italic; text-align: center; margin: 0 0 30px; }
+        h3 { font-size: 36px; color: #00BFFF; text-align: center; margin: 0 0 20px; font-weight: 900; }
+        h4 { font-size: 20px; font-style: italic; text-align: center; margin: 0 0 30px; font-weight: 700; }
         .token-doji { color: #00BFFF; }
         #about .crawl-container, #moonshot .crawl-container { perspective: 300px; height: 300px; overflow: hidden; position: relative; }
-        #about .crawl-container p, #moonshot .crawl-container p { position: absolute; bottom: 0; width: 100%; text-align: center; transform-origin: bottom; transform: rotateX(20deg) translateY(500px); opacity: 0; animation: crawl 30s linear infinite; color: #FFFFFF; font-size: 18px; line-height: 1.8; }
+        #about .crawl-container p, #moonshot .crawl-container p { position: absolute; bottom: 0; width: 100%; text-align: center; transform-origin: bottom; transform: rotateX(20deg) translateY(500px); opacity: 0; animation: crawl 30s linear infinite; color: #FFFFFF; font-size: 18px; line-height: 1.8; font-weight: 700; }
         #about .crawl-container p:nth-child(2), #moonshot .crawl-container p:nth-child(2) { animation-delay: 26s; }
         @keyframes crawl {
             0% { transform: rotateX(20deg) translateY(500px); opacity: 0; }
@@ -378,31 +429,31 @@
         .pie-chart-container { width: 300px; height: 300px; margin: 0 auto 20px; }
         .pie-chart { width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(rgba(70, 130, 180, 0.7) 0% 25%, rgba(218, 165, 32, 0.7) 25% 55%, rgba(46, 139, 87, 0.7) 55% 65%, rgba(72, 61, 139, 0.7) 65% 85%, rgba(139, 0, 0, 0.7) 85% 100%); border: 4px solid #333333; }
         .pie-chart-legend { background: #000; padding: 15px; border: 1px solid #00BFFF; border-radius: 8px; display: block; text-align: left; max-width: 300px; margin: 0 auto; }
-        .legend-item { display: flex; align-items: center; font-size: 16px; margin-bottom: 10px; color: #FFFFFF; }
+        .legend-item { display: flex; align-items: center; font-size: 16px; margin-bottom: 10px; color: #FFFFFF; font-weight: 700; }
         .legend-color { width: 16px; height: 16px; margin-right: 8px; border-radius: 50%; }
         #roadmap h3 { color: #FFD700; }
         .roadmap-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
-        .roadmap-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
-        .roadmap-item p { font-size: 16px; margin: 0; line-height: 1.5; }
+        .roadmap-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; font-weight: 700; }
+        .roadmap-item p { font-size: 16px; margin: 0; line-height: 1.5; font-weight: 700; }
         #how-to-buy h3 { color: #FFD700; }
         #how-to-buy h4:not(.how-to-buy-item h4) { color: #E0E0E0; }
         .how-to-buy-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
-        .how-to-buy-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
-        .how-to-buy-item p { font-size: 14px; margin: 0; line-height: 1.5; }
+        .how-to-buy-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; font-weight: 700; }
+        .how-to-buy-item p { font-size: 14px; margin: 0; line-height: 1.5; font-weight: 700; }
         #how-to-buy .cta-button { margin: 30px auto 0; display: block; width: 200px; }
         #rewards h3 { color: #FFD700; }
         .reward-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
-        .reward-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
-        .reward-item p { font-size: 14px; margin: 0; line-height: 1.5; }
+        .reward-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; font-weight: 700; }
+        .reward-item p { font-size: 14px; margin: 0; line-height: 1.5; font-weight: 700; }
         #faq h3 { color: #FFD700; }
         .faq-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
-        .faq-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; }
-        .faq-item p { font-size: 14px; margin: 0; line-height: 1.5; }
+        .faq-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; font-weight: 700; }
+        .faq-item p { font-size: 14px; margin: 0; line-height: 1.5; font-weight: 700; }
         #media .media-container { display: flex; justify-content: space-around; flex-wrap: wrap; }
         .link-category { margin: 10px; }
-        .link-category h4 { color: #00BFFF; font-size: 18px; margin: 10px 0; }
+        .link-category h4 { color: #00BFFF; font-size: 18px; margin: 10px 0; font-weight: 700; }
         .link-category ul { list-style: none; padding: 0; }
-        .link-category li { margin: 5px 0; }
+        .link-category li { margin: 5px 0; font-weight: 700; }
         .link-category a { color: #00BFFF; text-decoration: none; font-size: 16px; }
         .link-category a:hover { text-decoration: underline; }
     </style>
@@ -506,10 +557,10 @@
             <div class="crypto-option" data-crypto="POL">POL</div>
             <div class="crypto-option" data-crypto="CARD">CARD</div>
         </div>
+        <button class="purchase-button" onclick="purchaseWithCoinbase()">Purchase With Coinbase</button>
         <div class="send-crypto" id="sendCryptoText">Or Send ETH Here:</div>
         <div class="wallet-address" id="walletAddress">0xEthAddress1234567890...</div>
         <button class="copy-address" onclick="copyAddress()">COPY ADDRESS</button>
-        <button class="purchase-button" onclick="purchaseWithCoinbase()">Purchase With Coinbase</button>
         <input type="text" class="referral-code" placeholder="Enter referral code...">
         <div class="how-to-buy-link">
             <a href="#how-to-buy">How do I buy?</a>
