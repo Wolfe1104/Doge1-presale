@@ -249,21 +249,44 @@
             text-align: center;
             transform-origin: bottom;
             transform: rotateX(20deg);
-            animation: crawl 30s linear infinite;
+            animation: crawl 15s linear infinite;
             color: #FFFFFF;
             font-size: 18px;
             line-height: 1.8;
         }
+        #about .crawl-container p:nth-child(2) {
+            animation-delay: 7.5s;
+        }
         @keyframes crawl {
             0% { transform: rotateX(20deg) translateY(0); opacity: 1; }
-            100% { transform: rotateX(20deg) translateY(-1000px); opacity: 0; }
+            100% { transform: rotateX(20deg) translateY(-600px); opacity: 0; }
         }
 
         #moonshot {
             text-align: center;
         }
         #moonshot h3 { color: #FFD700; }
-        #moonshot p { font-size: 18px; line-height: 1.8; max-width: 700px; margin: 20px auto; color: #FFFFFF; }
+        #moonshot .crawl-container {
+            perspective: 300px;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        #moonshot .crawl-container p {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            transform-origin: bottom;
+            transform: rotateX(20deg);
+            animation: crawl 15s linear infinite;
+            color: #FFFFFF;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        #moonshot .crawl-container p:nth-child(2) {
+            animation-delay: 7.5s;
+        }
 
         #tokenomics {
             text-align: center;
@@ -518,12 +541,16 @@
         <h3>ORIGINS & EVOLUTION</h3>
         <div class="crawl-container">
             <p><span class="token-doji">$DOJI</span> is a little ruff around the edges—the Jedi of justice in a memecoin galaxy. Forged with cutting-edge tech on the Polygon network, <span class="token-doji">$DOJI</span> blasts light years ahead of rival meme coins with low fees and warp-speed transactions. Powered by xAI’s latest analytical breakthroughs, it’s preprogrammed for a warp-speed 40x post-launch—token burns, a masterful presale, and strategic fund allocation fuel its pure force-driven propulsion, paving a hyperspace road to the stars!</p>
+            <p><span class="token-doji">$DOJI</span> is a little ruff around the edges—the Jedi of justice in a memecoin galaxy. Forged with cutting-edge tech on the Polygon network, <span class="token-doji">$DOJI</span> blasts light years ahead of rival meme coins with low fees and warp-speed transactions. Powered by xAI’s latest analytical breakthroughs, it’s preprogrammed for a warp-speed 40x post-launch—token burns, a masterful presale, and strategic fund allocation fuel its pure force-driven propulsion, paving a hyperspace road to the stars!</p>
         </div>
     </section>
 
     <section id="moonshot">
         <h3>MOONSHOT</h3>
-        <p><span class="token-doji">$DOJI</span> is engineered for a hyperspace leap to the moons of fortune! Powered by xAI’s cutting-edge analytics, this memecoin is preprogrammed for a 40x surge post-launch. With token burns slashing supply, a 13-stage presale igniting demand, and strategic liquidity drops on DEXs and CEXs, <span class="token-doji">$DOJI</span>’s trajectory is set to blast past the stars. The Force is strong with this one—join early to ride the galactic wave to a $0.02 valuation and beyond!</p>
+        <div class="crawl-container">
+            <p><span class="token-doji">$DOJI</span> is engineered for a hyperspace leap to the moons of fortune! Powered by xAI’s cutting-edge analytics, this memecoin is preprogrammed for a 40x surge post-launch. With token burns slashing supply, a 13-stage presale igniting demand, and strategic liquidity drops on DEXs and CEXs, <span class="token-doji">$DOJI</span>’s trajectory is set to blast past the stars. The Force is strong with this one—join early to ride the galactic wave to a $0.02 valuation and beyond!</p>
+            <p><span class="token-doji">$DOJI</span> is engineered for a hyperspace leap to the moons of fortune! Powered by xAI’s cutting-edge analytics, this memecoin is preprogrammed for a 40x surge post-launch. With token burns slashing supply, a 13-stage presale igniting demand, and strategic liquidity drops on DEXs and CEXs, <span class="token-doji">$DOJI</span>’s trajectory is set to blast past the stars. The Force is strong with this one—join early to ride the galactic wave to a $0.02 valuation and beyond!</p>
+        </div>
     </section>
 
     <section id="tokenomics">
@@ -686,51 +713,53 @@
     </section>
 
     <script>
-        const sliderTrack = document.getElementById('sliderTrack');
-        const leftArrow = document.getElementById('leftArrow');
-        const rightArrow = document.getElementById('rightArrow');
-        const boxes = document.querySelectorAll('.presale-box');
-        let currentIndex = 0;
+        document.addEventListener('DOMContentLoaded', () => {
+            const sliderTrack = document.getElementById('sliderTrack');
+            const leftArrow = document.getElementById('leftArrow');
+            const rightArrow = document.getElementById('rightArrow');
+            const boxes = document.querySelectorAll('.presale-box');
+            let currentIndex = 0;
 
-        function updateSlider() {
-            const boxWidth = boxes[0].offsetWidth + 20; // Recalculate dynamically
-            sliderTrack.style.transform = `translateX(${-currentIndex * boxWidth}px)`;
-            leftArrow.classList.toggle('disabled', currentIndex === 0);
-            rightArrow.classList.toggle('disabled', currentIndex === boxes.length - 1);
+            function updateSlider() {
+                const boxWidth = boxes[0].offsetWidth + 20; // Recalculate dynamically
+                sliderTrack.style.transform = `translateX(${-currentIndex * boxWidth}px)`;
+                leftArrow.classList.toggle('disabled', currentIndex === 0);
+                rightArrow.classList.toggle('disabled', currentIndex === boxes.length - 1);
 
-            const stageClass = Array.from(boxes[currentIndex].classList).find(cls => cls.startsWith('stage-'));
-            const currentStage = stageClass ? stageClass.split('-')[1] : '1';
-            document.querySelector('.presale-subtitle').textContent = `STAGE ${currentStage.padStart(2, '0')}`;
-        }
-
-        leftArrow.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateSlider();
+                const stageClass = Array.from(boxes[currentIndex].classList).find(cls => cls.startsWith('stage-'));
+                const currentStage = stageClass ? stageClass.split('-')[1] : '1';
+                document.querySelector('.presale-subtitle').textContent = `STAGE ${currentStage.padStart(2, '0')}`;
             }
-        });
 
-        rightArrow.addEventListener('click', () => {
-            if (currentIndex < boxes.length - 1) {
-                currentIndex++;
-                updateSlider();
-            }
-        });
-
-        // Initial call to set up the slider
-        updateSlider();
-
-        document.querySelectorAll('.dropdown-content a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
+            leftArrow.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
                 }
+            });
+
+            rightArrow.addEventListener('click', () => {
+                if (currentIndex < boxes.length - 1) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+
+            // Initial call after DOM is loaded
+            updateSlider();
+
+            document.querySelectorAll('.dropdown-content a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
         });
     </script>
