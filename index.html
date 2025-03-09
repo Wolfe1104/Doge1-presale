@@ -236,42 +236,14 @@
             color: #00BFFF;
         }
 
-        #about .crawl-container {
-            perspective: 300px;
-            height: 300px;
-            overflow: hidden;
-            position: relative;
-        }
-        #about .crawl-container p {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            transform-origin: bottom;
-            transform: rotateX(20deg);
-            animation: crawl 15s linear infinite;
-            color: #FFFFFF;
-            font-size: 18px;
-            line-height: 1.8;
-        }
-        #about .crawl-container p:nth-child(2) {
-            animation-delay: 7.5s;
-        }
-        @keyframes crawl {
-            0% { transform: rotateX(20deg) translateY(0); opacity: 1; }
-            100% { transform: rotateX(20deg) translateY(-600px); opacity: 0; }
-        }
-
-        #moonshot {
-            text-align: center;
-        }
-        #moonshot h3 { color: #FFD700; }
+        #about .crawl-container,
         #moonshot .crawl-container {
             perspective: 300px;
             height: 300px;
             overflow: hidden;
             position: relative;
         }
+        #about .crawl-container p,
         #moonshot .crawl-container p {
             position: absolute;
             bottom: 0;
@@ -284,9 +256,21 @@
             font-size: 18px;
             line-height: 1.8;
         }
+        #about .crawl-container p:nth-child(2),
         #moonshot .crawl-container p:nth-child(2) {
             animation-delay: 7.5s;
         }
+        @keyframes crawl {
+            0% { transform: rotateX(20deg) translateY(300px); opacity: 0; }
+            10% { transform: rotateX(20deg) translateY(200px); opacity: 1; }
+            90% { transform: rotateX(20deg) translateY(-500px); opacity: 1; }
+            100% { transform: rotateX(20deg) translateY(-600px); opacity: 0; }
+        }
+
+        #moonshot {
+            text-align: center;
+        }
+        #moonshot h3 { color: #FFD700; }
 
         #tokenomics {
             text-align: center;
