@@ -94,10 +94,132 @@
             background-color: rgba(0, 0, 0, 0.8);
         }
 
+        /* Dashboard Styles */
+        #dashboard {
+            text-align: center;
+            padding: 80px 20px 20px;
+            margin-top: 80px;
+        }
+        #dashboard h1 {
+            font-size: 48px;
+            margin: 0 0 15px;
+            line-height: 1.1;
+            color: #00BFFF;
+            text-shadow: 0 0 10px #00BFFF;
+        }
+        #dashboard .raised {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        #dashboard .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px auto;
+            max-width: 420px;
+        }
+        #dashboard .progress-fill {
+            height: 100%;
+            background: #00BFFF;
+            transition: width 0.3s ease;
+        }
+        #dashboard .token-price {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        #dashboard .crypto-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        #dashboard .crypto-option {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            color: #E0E0E0;
+            border: 2px solid transparent;
+        }
+        #dashboard .crypto-option.selected {
+            border: 2px solid #FFD700;
+        }
+        #dashboard .send-crypto {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        #dashboard .wallet-address {
+            width: 100%;
+            max-width: 420px;
+            margin: 10px auto;
+            padding: 8px;
+            background: #333;
+            border: 1px solid #00BFFF;
+            border-radius: 4px;
+            color: #E0E0E0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        #dashboard .copy-address {
+            background: #00BFFF;
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            margin: 10px 0;
+            transition: background 0.3s ease;
+        }
+        #dashboard .copy-address:hover {
+            background: #00FFFF;
+        }
+        #dashboard .purchase-button {
+            background: #00BFFF;
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-family: 'Orbitron', sans-serif;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+            margin: 20px 0;
+        }
+        #dashboard .purchase-button:hover {
+            background: #00FFFF;
+        }
+        #dashboard .referral-code {
+            width: 100%;
+            max-width: 420px;
+            margin: 10px auto;
+            padding: 8px;
+            background: #333;
+            border: 1px solid #00BFFF;
+            border-radius: 4px;
+            color: #E0E0E0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+        }
+        #dashboard .how-to-buy-link {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
         #hero {
             text-align: center;
             padding: 80px 20px 20px;
-            margin-top: 100px;
         }
         #hero h1 {
             font-size: 48px;
@@ -295,6 +417,7 @@
             <div class="hamburger">☰</div>
             <div class="dropdown-content" id="dropdownMenu">
                 <a href="#" class="login-link" onclick="showLoginPopup()">Login</a>
+                <a href="#dashboard">Dashboard</a>
                 <a href="#hero">Hero</a>
                 <a href="#presale">Presale</a>
                 <a href="#about">Origins & Evolution</a>
@@ -367,6 +490,32 @@
         </div>
     </div>
 
+    <!-- Dashboard Section -->
+    <section id="dashboard">
+        <h1>$DOJI PRESALE BUY</h1>
+        <div class="raised">$12,500 USD RAISED</div>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 50%;"></div>
+        </div>
+        <div class="token-price">1 $DOJI = $0.00050 USD</div>
+        <div class="crypto-options">
+            <div class="crypto-option" data-crypto="ETH">ETH</div>
+            <div class="crypto-option" data-crypto="BSC">BSC</div>
+            <div class="crypto-option" data-crypto="ARB">ARB</div>
+            <div class="crypto-option" data-crypto="BASE">BASE</div>
+            <div class="crypto-option" data-crypto="POL">POL</div>
+            <div class="crypto-option" data-crypto="CARD">CARD</div>
+        </div>
+        <div class="send-crypto" id="sendCryptoText">Or Send ETH Here:</div>
+        <div class="wallet-address" id="walletAddress">0xEthAddress1234567890...</div>
+        <button class="copy-address" onclick="copyAddress()">COPY ADDRESS</button>
+        <button class="purchase-button" onclick="purchaseWithCoinbase()">Purchase With Coinbase</button>
+        <input type="text" class="referral-code" placeholder="Enter referral code...">
+        <div class="how-to-buy-link">
+            <a href="#how-to-buy">How do I buy?</a>
+        </div>
+    </section>
+
     <section id="hero">
         <h1>
             <span class="breaking">BREAKING THE CHAINS</span>
@@ -383,7 +532,6 @@
         <p class="presale-subtitle">STAGE 01</p>
         <div class="slider-container">
             <button class="arrow left" id="leftArrow">⟵</button>
-            <div class="slider-trackphysics: relative;
             <div class="slider-track" id="sliderTrack">
                 <div class="presale-box current stage-1">
                     <h4>STAGE 01</h4>
@@ -429,8 +577,10 @@
                 </div>
                 <div class="presale-box future stage-8">
                     <h4>STAGE 08</h4>
-                    <p>Price: <span class="token-doji">$0.00224</span></p - see rest of slider HTML -->
-
+                    <p>Price: <span class="token-doji">$0.00224</span></p>
+                    <p>Goal: $40,570</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                </div>
             </div>
             <button class="arrow right" id="rightArrow">⟶</button>
         </div>
@@ -666,6 +816,7 @@
             }
 
             dropdown.innerHTML += `
+                <a href="#dashboard">Dashboard</a>
                 <a href="#hero">Hero</a>
                 <a href="#presale">Presale</a>
                 <a href="#about">Origins & Evolution</a>
@@ -841,6 +992,49 @@
             alert('Logged out successfully!');
         }
 
+        // Dashboard Functions
+        const cryptoAddresses = {
+            ETH: '0xEthAddress1234567890...',
+            BSC: '0xBscAddress1234567890...',
+            ARB: '0xArbAddress1234567890...',
+            BASE: '0xBaseAddress1234567890...',
+            POL: '0xPolAddress1234567890...',
+            CARD: '0xCardAddress1234567890...'
+        };
+
+        function selectCrypto(crypto) {
+            const options = document.querySelectorAll('.crypto-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            const selectedOption = document.querySelector(`.crypto-option[data-crypto="${crypto}"]`);
+            selectedOption.classList.add('selected');
+
+            const sendCryptoText = document.getElementById('sendCryptoText');
+            sendCryptoText.textContent = `Or Send ${crypto} Here:`;
+
+            const walletAddress = document.getElementById('walletAddress');
+            walletAddress.textContent = cryptoAddresses[crypto];
+
+            localStorage.setItem('selectedCrypto', crypto);
+        }
+
+        function copyAddress() {
+            const walletAddress = document.getElementById('walletAddress').textContent;
+            navigator.clipboard.writeText(walletAddress).then(() => {
+                const copyButton = document.querySelector('.copy-address');
+                copyButton.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyButton.textContent = 'COPY ADDRESS';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy address:', err);
+                alert('Failed to copy address. Please copy manually.');
+            });
+        }
+
+        function purchaseWithCoinbase() {
+            alert('Coinbase integration coming soon!');
+        }
+
         // Initialization
         document.addEventListener('DOMContentLoaded', () => {
             setUserStatus('guest');
@@ -874,6 +1068,18 @@
                     updateSlider();
                 }
             });
+
+            // Dashboard Initialization
+            const cryptoOptions = document.querySelectorAll('.crypto-option');
+            cryptoOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const crypto = option.getAttribute('data-crypto');
+                    selectCrypto(crypto);
+                });
+            });
+
+            const savedCrypto = localStorage.getItem('selectedCrypto') || 'ETH';
+            selectCrypto(savedCrypto);
 
             updateSlider();
         });
