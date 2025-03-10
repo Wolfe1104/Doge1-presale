@@ -1,4 +1,4 @@
-you<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta name="google-site-verification" content="3NKNYoJ2E98d91SAHoyXe7fcsbj4cO2X4rT5HM1XDMY" />
@@ -100,7 +100,7 @@ you<!DOCTYPE html>
             text-align: center;
             padding: 80px 20px 20px;
             margin-top: 130px;
-            max-width: 450px; /* Wider dashboard */
+            max-width: 500px; /* Increased width */
             background-color: #000;
             border: 2px solid #00BFFF;
             border-radius: 8px;
@@ -111,8 +111,8 @@ you<!DOCTYPE html>
             margin: 0 0 30px;
             line-height: 1;
             color: #FFFFFF;
-            text-shadow: 0 0 10px #FFFFFF, 0 0 20px #00BFFF, 0 0 30px #00BFFF;
-            animation: glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 10px #FFFFFF;
+            animation: glowTransition 3s ease-in-out infinite;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -122,14 +122,15 @@ you<!DOCTYPE html>
             left: 0;
             right: 0;
         }
-        @keyframes glow {
-            0% { text-shadow: 0 0 10px #FFFFFF, 0 0 20px #00BFFF, 0 0 30px #00BFFF; }
-            50% { text-shadow: 0 0 15px #FFFFFF, 0 0 25px #00BFFF, 0 0 40px #00BFFF; }
-            100% { text-shadow: 0 0 10px #FFFFFF, 0 0 20px #00BFFF, 0 0 30px #00BFFF; }
+        @keyframes glowTransition {
+            0% { text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 30px #FFFFFF; color: #FFFFFF; }
+            33% { text-shadow: 0 0 10px #00BFFF, 0 0 20px #00BFFF, 0 0 30px #00BFFF; color: #00BFFF; }
+            66% { text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00; color: #00FF00; }
+            100% { text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 30px #FFFFFF; color: #FFFFFF; }
         }
         #dashboard .raised {
             font-size: 16px;
-            margin: 20px 0 10px; /* Reduced to one row below h1 */
+            margin: 20px 0 10px;
             color: #FFFFFF;
             font-weight: 700;
         }
@@ -140,7 +141,7 @@ you<!DOCTYPE html>
             border-radius: 4px;
             overflow: hidden;
             margin: 10px auto;
-            max-width: 410px; /* Wider to match dashboard */
+            max-width: 460px; /* Adjusted for wider dashboard */
         }
         #dashboard .progress-fill {
             height: 100%;
@@ -148,6 +149,12 @@ you<!DOCTYPE html>
             transition: width 0.3s ease;
         }
         #dashboard .token-price {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+        #dashboard .price-info {
             font-size: 16px;
             margin: 10px 0;
             color: #FFFFFF;
@@ -177,27 +184,28 @@ you<!DOCTYPE html>
             border: 2px solid #FFD700;
         }
         #dashboard .purchase-button {
-            background: #00BFFF;
-            color: #000;
+            background: #333; /* Dark grey background */
+            color: #FFFFFF; /* Bright white text */
             border: none;
             padding: 10px 20px;
-            font-size: 14px;
+            font-size: 19px; /* Increased by 5px from 14px */
             font-family: 'Orbitron', sans-serif;
             border-radius: 8px;
             cursor: pointer;
             text-transform: uppercase;
             transition: background 0.3s ease;
-            margin: 10px 0;
+            margin: 10px auto;
             width: 100%;
-            max-width: 410px; /* Wider to match dashboard */
+            max-width: 460px; /* Adjusted for wider dashboard */
             font-weight: 700;
             white-space: nowrap;
+            display: block;
         }
         #dashboard .purchase-button:hover {
-            background: #00FFFF;
+            background: #555; /* Slightly lighter grey on hover */
         }
         #dashboard .send-crypto {
-            font-size: 12px; /* Smaller text */
+            font-size: 12px;
             margin: 20px 0 5px;
             color: #FFFFFF;
             text-align: left;
@@ -207,8 +215,8 @@ you<!DOCTYPE html>
         }
         #dashboard .wallet-address {
             width: 100%;
-            max-width: 410px; /* Wider to match dashboard */
-            margin:  0;
+            max-width: 460px; /* Adjusted for wider dashboard */
+            margin: 0 auto;
             padding: 6px;
             background: #333;
             border: 1px solid #00BFFF;
@@ -220,6 +228,7 @@ you<!DOCTYPE html>
             text-overflow: ellipsis;
             white-space: nowrap;
             font-weight: 700;
+            display: block;
         }
         #dashboard .copy-address {
             background: #00BFFF;
@@ -230,19 +239,26 @@ you<!DOCTYPE html>
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
             font-size: 12px;
-            margin:  5px;
+            margin: 5px auto;
             transition: background 0.3s ease;
             width: 100%;
-            max-width: 410px; /* Wider to match dashboard */
+            max-width: 460px; /* Adjusted for wider dashboard */
             font-weight: 700;
+            display: block;
         }
         #dashboard .copy-address:hover {
             background: #00FFFF;
         }
+        #dashboard .promo-text {
+            font-size: 12px;
+            margin: 35px 0 5px;
+            color: #FFFFFF;
+            font-weight: 700;
+        }
         #dashboard .referral-code {
             width: 100%;
-            max-width: 410px; /* Wider to match dashboard */
-            margin: 40px 10px;
+            max-width: 460px; /* Adjusted for wider dashboard */
+            margin: 0 auto 10px;
             padding: 8px;
             background: #333;
             border: 1px solid #00BFFF;
@@ -251,10 +267,10 @@ you<!DOCTYPE html>
             font-family: 'Orbitron', sans-serif;
             font-size: 14px;
             font-weight: 700;
+            display: block;
         }
         #dashboard .how-to-buy-link {
             font-size: 12px;
-            margin: 10px 20px 0 0;
             color: #00BFFF;
             font-weight: 450;
             text-align: right;
@@ -263,7 +279,6 @@ you<!DOCTYPE html>
             right: 20px;
         }
         #dashboard .how-to-buy-link a {
-          
             color: #00BFFF;
         }
 
@@ -555,6 +570,7 @@ you<!DOCTYPE html>
             <div class="progress-fill" style="width: 50%;"></div>
         </div>
         <div class="token-price">1 $DOJI = $0.00050 USD</div>
+        <div class="price-info">Starting Price x &nbsp;&nbsp;&nbsp;&nbsp; Listing Price x</div>
         <div class="crypto-options">
             <div class="crypto-option" data-crypto="ETH">ETH</div>
             <div class="crypto-option" data-crypto="BSC">BSC</div>
@@ -567,6 +583,7 @@ you<!DOCTYPE html>
         <div class="send-crypto" id="sendCryptoText">Or Send ETH Here:</div>
         <div class="wallet-address" id="walletAddress">0xEthAddress1234567890...</div>
         <button class="copy-address" onclick="copyAddress()">COPY ADDRESS</button>
+        <div class="promo-text">Enter promo code for huge bonuses!!!</div>
         <input type="text" class="referral-code" placeholder="Enter referral code...">
         <div class="how-to-buy-link">
             <a href="#how-to-buy">How do I buy?</a>
