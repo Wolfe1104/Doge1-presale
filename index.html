@@ -19,19 +19,18 @@
     <meta property="og:video" content="https://wolfe1104.github.io/Doge1-presale/doji.mp4">
     <meta property="og:video:secure_url" content="https://wolfe1104.github.io/Doge1-presale/doji.mp4">
     <meta property="og:video:type" content="video/mp4">
-    <meta property="og:video:width" content="940"> <!-- Replace with actual video width -->
-    <meta property="og:video:height" content="788"> <!-- Replace with actual video height -->
+    <meta property="og:video:width" content="940">
+    <meta property="og:video:height" content="788">
     <meta property="og:url" content="https://wolfe1104.github.io/Doge1-presale/">
     <meta property="og:site_name" content="Dojiwon D O G E">
 
-    
     <!-- Twitter Card Meta Tags for Video Preview -->
     <meta name="twitter:card" content="player">
     <meta name="twitter:title" content="Dojiwon Doge Presale - The Jedi of Justice Memecoin">
     <meta name="twitter:description" content="Join the presale of Dojiwon Doge, the justice-driven memecoin on Polygon. Powered by xAI for a 40x surge.">
     <meta name="twitter:player" content="https://wolfe1104.github.io/Doge1-presale/doji.mp4">
-    <meta name="twitter:player:width" content="940"> <!-- Replace with actual video width -->
-    <meta name="twitter:player:height" content="788"> <!-- Replace with actual video height -->
+    <meta name="twitter:player:width" content="940">
+    <meta name="twitter:player:height" content="788">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://wolfe1104.github.io/Doge1-presale/">
@@ -390,7 +389,7 @@
             margin-bottom: 20px;
             font-weight: 700;
         }
-        .popup-content input {
+        .popup-content input, .popup-content select {
             width: 100%;
             padding: 8px;
             margin: 10px 0;
@@ -400,6 +399,10 @@
             color: #E0E0E0;
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
+        }
+        .popup-content input[readonly] {
+            background: #444;
+            cursor: not-allowed;
         }
         .popup-content .buttons {
             display: flex;
@@ -612,7 +615,24 @@
         </div>
     </div>
 
-    <!-- Updated Dashboard Section with <h2> -->
+    <!-- Purchase Modal -->
+    <div class="popup" id="purchaseModal">
+        <div class="popup-content">
+            <h3>How much would you like to purchase?</h3>
+            <select id="amountSelect">
+                <option value="10">$10.00</option>
+                <option value="25">$25.00</option>
+                <option value="50">$50.00</option>
+            </select>
+            <input type="text" id="dojiAmount" readonly placeholder="$DOJI Amount">
+            <div class="buttons">
+                <button onclick="closePurchaseModal()">Cancel</button>
+                <button onclick="handlePurchase()">Purchase</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Updated Dashboard Section -->
     <section id="dashboard">
         <h2>$DOJI PRESALE BUY</h2>
         <div class="raised">$12,500 USD RAISED</div>
@@ -629,7 +649,7 @@
             <div class="crypto-option" data-crypto="POL">POL</div>
             <div class="crypto-option" data-crypto="CARD">CARD</div>
         </div>
-        <button class="purchase-button" onclick="window.location.href='https://commerce.coinbase.com/checkout/70529196-90d2-4dff-a046-fd78f75abfd6'">Purchase With Coinbase</button>
+        <button class="purchase-button" onclick="showPurchaseOptions()">Purchase With Coinbase</button>
         <div class="send-crypto" id="sendCryptoText">Or Send ETH Here:</div>
         <div class="wallet-address" id="walletAddress">0xEthAddress1234567890...</div>
         <button class="copy-address" onclick="copyAddress()">COPY ADDRESS</button>
@@ -775,7 +795,7 @@
                 <li>Go to the <strong>Dashboard</strong> from the dropdown menu.</li>
                 <li>
                     <strong>Option 1:</strong> Purchase with Coinbase by clicking the button below and choosing your amount.<br>
-                    <button class="cta-button coinbase-btn" onclick="window.location.href='https://commerce.coinbase.com/checkout/70529196-90d2-4dff-a046-fd78f75abfd6'">Purchase With Coinbase</button>
+                    <button class="cta-button coinbase-btn" onclick="showPurchaseOptions()">Purchase With Coinbase</button>
                 </li>
                 <li>
                     <strong>Option 2:</strong> Choose a crypto on the Dashboard (e.g., ETH, BSC), copy the wallet address, and send any amount to that address along with the email you registered with. Your Dashboard should reflect your purchase within 24 hours.
@@ -1014,6 +1034,48 @@
             document.getElementById('forgotPasswordPopup').style.display = 'none';
         }
 
+        // Purchase Modal functions
+        function showPurchaseOptions() {
+            const status = getUserStatus();
+            if (status === 'guest') {
+                showLoginPopup();
+            } else {
+                document.getElementById('purchaseModal').style.display = 'flex';
+                updateDojiAmount();
+            }
+        }
+
+        function closePurchaseModal() {
+            document.getElementById('purchaseModal').style.display = 'none';
+        }
+
+        function updateDojiAmount() {
+            const amountSelect = document.getElementById('amountSelect');
+            const dojiAmount = document.getElementById('dojiAmount');
+            const stageOnePrice = 0.00050; // Current stage 1 price from dashboard
+            const amount = amountSelect.value;
+
+            if (amount === "10") {
+                dojiAmount.value = (1600 / stageOnePrice).toFixed(2);
+            } else if (amount === "25") {
+                dojiAmount.value = (4000 / stageOnePrice).toFixed(2);
+            } else if (amount === "50") {
+                dojiAmount.value = (8000 / stageOnePrice).toFixed(2);
+            }
+        }
+
+        function handlePurchase() {
+            const amount = document.getElementById('amountSelect').value;
+            if (amount === "10") {
+                window.location.href = "https://commerce.coinbase.com/checkout/3e438303-cd73-430e-ab54-34db5be7af88";
+            } else if (amount === "25") {
+                window.location.href = "https://commerce.coinbase.com/checkout/975c09bf-bbe8-4997-8b9d-74d8dcfd8365";
+            } else if (amount === "50") {
+                window.location.href = "https://commerce.coinbase.com/checkout/975c09bf-bbe8-4997-8b9d-74d8dcfd8365";
+            }
+            closePurchaseModal();
+        }
+
         // Toggle password visibility
         function togglePassword(inputId) {
             const input = document.getElementById(inputId);
@@ -1133,7 +1195,6 @@
             BTC: 'bc1q84y0dcmfvfueyysug3u7w0hj3asl8dqlxql5sq',
             DOGE: 'DNgCHoNxAjH63nf2L7893qiqbu2TYp5CoX',
             POL: '0xD780c0B3a47c3FCA0090FC2153a80d15A4F286E3',
-            
         };
 
         function selectCrypto(crypto) {
@@ -1210,6 +1271,9 @@
 
             const savedCrypto = localStorage.getItem('selectedCrypto') || 'ETH';
             selectCrypto(savedCrypto);
+
+            // Purchase modal event listener
+            document.getElementById('amountSelect').addEventListener('change', updateDojiAmount);
 
             updateSlider();
         });
