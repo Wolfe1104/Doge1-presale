@@ -1,20 +1,1183 @@
-<section id="how-to-buy">
-    <h3>UNLEASH THE FORCE—HOW TO BUY <span class="token-doji">$DOJI</span></h3>
-    <h4>Grab Your <span class="token-doji">$DOJI</span> Before the Galaxy Runs Out!</h4>
-    <div class="how-to-buy-item">
-        <h4>Join the Presale</h4>
-        <p>Follow these steps to secure your <span class="token-doji">$DOJI</span>:</p>
-        <ol>
-            <li>Go to the <strong>Dashboard</strong> from the dropdown menu.</li>
-            <li>
-                <strong>Option 1:</strong> Purchase with Coinbase by clicking the button below and choosing your amount.<br>
-                <button class="cta-button coinbase-btn" onclick="window.location.href='https://commerce.coinbase.com/checkout/70529196-90d2-4dff-a046-fd78f75abfd6'">Purchase With Coinbase</button>
-            </li>
-            <li>
-                <strong>Option 2:</strong> Choose a crypto on the Dashboard (e.g., ETH, BSC), copy the wallet address, and send any amount to that address along with the email you registered with. Your Dashboard should reflect your purchase within 24 hours.
-            </li>
-        </ol>
-        <p>All purchased tokens will be distributed as soon as the presale ends.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="3NKNYoJ2E98d91SAHoyXe7fcsbj4cO2X4rT5HM1XDMY" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOJIWON Presale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background: url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3') no-repeat center center fixed;
+            background-size: cover;
+            color: #E0E0E0;
+            line-height: 1.6;
+            overscroll-behavior: none;
+        }
+        a { color: #00BFFF; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47') no-repeat center / cover;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #00BFFF;
+            height: 60px;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: url('logo.webp') no-repeat;
+            background-size: cover;
+        }
+        .logo-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: #00BFFF;
+            margin-left: 10px;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .hamburger {
+            font-size: 24px;
+            color: #00BFFF;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            min-width: 160px;
+            border: 1px solid #00BFFF;
+            border-radius: 4px;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            color: #E0E0E0;
+            padding: 10px 15px;
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .dropdown-content a:hover {
+            color: #00BFFF;
+            background: rgba(0, 191, 255, 0.2);
+        }
+
+        section {
+            margin: 40px auto;
+            width: 98%;
+            max-width: 900px;
+            border: 2px solid #00BFFF;
+            border-radius: 8px;
+            padding: 45px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Updated Dashboard Styles */
+        #dashboard {
+            text-align: center;
+            padding: 80px 20px 20px;
+            margin-top: 130px;
+            max-width: 500px;
+            background-color: #000;
+            border: 2px solid #00BFFF;
+            border-radius: 8px;
+            position: relative;
+        }
+        #dashboard h1 {
+            font-size: 31px;
+            margin: 30 0 30px;
+            line-height: 1;
+            color: #FFFFFF;
+            text-shadow: 0 0 10px #FFFFFF;
+            animation: glowTransition 3s ease-in-out infinite;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+        }
+        @keyframes glowTransition {
+            0% { text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 30px #FFFFFF; color: #FFFFFF; }
+            33% { text-shadow: 0 0 10px #00BFFF, 0 0 20px #00BFFF, 0 0 30px #00BFFF; color: #00BFFF; }
+            66% { text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00; color: #00FF00; }
+            100% { text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 30px #FFFFFF; color: #FFFFFF; }
+        }
+        #dashboard .raised {
+            font-size: 16px;
+            margin: 30px 0 10px;
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+        #dashboard .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 15px auto;
+            max-width: 460px;
+        }
+        #dashboard .progress-fill {
+            height: 100%;
+            background: #00BFFF;
+            transition: width 0.3s ease;
+        }
+        #dashboard .token-price {
+            font-size: 16px;
+            margin: 20px 0;
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+        #dashboard .price-info {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+        #dashboard .crypto-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        #dashboard .crypto-option {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            color: #E0E0E0;
+            border: 2px solid transparent;
+            font-weight: 700;
+        }
+        #dashboard .crypto-option.selected {
+            border: 2px solid #FFD700;
+        }
+        #dashboard .purchase-button {
+            background: #333;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            font-size: 19px;
+            font-family: 'Orbitron', sans-serif;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+            margin: 20px auto;
+            width: 100%;
+            max-width: 460px;
+            font-weight: 700;
+            white-space: nowrap;
+            display: block;
+        }
+        #dashboard .purchase-button:hover {
+            background: #555;
+        }
+        #dashboard .send-crypto {
+            font-size: 12px;
+            margin: 40px 0 5px;
+            color: #FFFFFF;
+            text-align: left;
+            font-weight: 700;
+            position: relative;
+            left: 20px;
+        }
+        #dashboard .wallet-address {
+            width: 100%;
+            max-width: 460px;
+            margin: 10 auto;
+            padding: 15px;
+            background: #333;
+            border: 1px solid #00BFFF;
+            border-radius: 8px;
+            color: #E0E0E0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-weight: 700;
+            display: block;
+        }
+        #dashboard .copy-address {
+            background: #00BFFF;
+            color: #000;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            margin: 5px auto;
+            transition: background 0.3s ease;
+            width: 100%;
+            max-width: 460px;
+            font-weight: 700;
+            display: block;
+        }
+        #dashboard .copy-address:hover {
+            background: #00FFFF;
+        }
+        #dashboard .promo-text {
+            font-size: 12px;
+            margin: 35px 0 5px;
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+        #dashboard .referral-code {
+            width: 100%;
+            max-width: 460px;
+            margin: 15 auto 15px;
+            padding: 15px;
+            background: #333;
+            border: 1px solid #00BFFF;
+            border-radius: 8px;
+            color: #E0E0E0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            display: block;
+        }
+        #dashboard .how-to-buy-link {
+            font-size: 12px;
+            margin: 10px;
+            color: #00BFFF;
+            font-weight: 450;
+            text-align: right;
+            position: absolute;
+            bottom: 5px;
+            right: 20px;
+        }
+        #dashboard .how-to-buy-link a {
+            color: #00BFFF;
+        }
+
+        #hero {
+            text-align: center;
+            padding: 80px 20px 20px;
+        }
+        #hero h1 {
+            font-size: 48px;
+            margin: 0 0 15px;
+            line-height: 1.1;
+            font-weight: 900;
+        }
+        #hero .breaking { color: #00BFFF; display: block; font-size: 32px; }
+        #hero .doji { color: #00BFFF; display: inline; font-size: 48px; }
+        #hero .bites { color: #00BFFF; display: block; font-size: 48px; }
+        #hero h2 { font-size: 24px; margin: 0 0 15px; font-style: italic; font-weight: 700; }
+        #hero p { font-size: 18px; margin: 0 0 20px; font-weight: 700; }
+
+        .cta-button {
+            background: #00BFFF;
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-family: 'Orbitron', sans-serif;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+            font-weight: 700;
+        }
+        .cta-button:hover {
+            background: #00FFFF;
+        }
+        .coinbase-btn {
+            margin-top: 10px;
+            background: #FFD700;
+            color: #000;
+        }
+        .coinbase-btn:hover {
+            background: #FFFF00;
+        }
+
+        /* Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00BFFF;
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        .popup-content h3 {
+            font-size: 24px;
+            color: #00BFFF;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .popup-content input {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            background: #333;
+            border: 1px solid #00BFFF;
+            border-radius: 4px;
+            color: #E0E0E0;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+        .popup-content .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .popup-content button {
+            background: #00BFFF;
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+        .popup-content button:hover {
+            background: #00FFFF;
+        }
+        .popup-content .links {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .popup-content .links a {
+            color: #00BFFF;
+            margin: 0 5px;
+        }
+        .popup-content .error {
+            color: #FF0000;
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: 700;
+        }
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+        .password-container input {
+            width: 100%;
+            padding-right: 30px;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00BFFF;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #presale { padding: 40px 20px; }
+        #presale h3 { color: #FFD700; font-size: 36px; margin: 0 0 10px; text-align: center; font-weight: 900; }
+        .presale-subtitle { font-size: 24px; color: #FFD700; text-align: center; margin-top: 10px; font-weight: 700; }
+        .slider-container { position: relative; width: 100%; max-width: 420px; margin: 20px auto 0; overflow: hidden; }
+        .slider-track { display: flex; transition: transform 0.3s ease-in-out; }
+        .presale-box { min-width: 240px; width: 240px; height: 155px; margin: 0 10px; background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; flex-shrink: 0; }
+        .presale-box.current { border: 2px solid #FFD700; }
+        .presale-box.past { opacity: 0.7; }
+        .presale-box.future { opacity: 0.8; }
+        .presale-box h4 { color: #00BFFF; font-size: 16px; margin: 0 0 10px; font-weight: 700; }
+        .presale-box p { font-size: 14px; color: #E0E0E0; margin: 5px 0; font-weight: 700; }
+        .progress-bar { width: 100%; height: 6px; background: #333; border-radius: 4px; overflow: hidden; margin-top: 10px; }
+        .progress-fill { height: 100%; background: #00BFFF; transition: width 0.3s ease; }
+        .arrow { position: absolute; top: 50%; transform: translateY(-50%); font-size: 24px; color: #00BFFF; background: rgba(0, 0, 0, 0.7); border: none; padding: 8px 12px; cursor: pointer; z-index: 10; }
+        .arrow.disabled { opacity: 0.5; cursor: not-allowed; }
+        .arrow.left { left: 0; }
+        .arrow.right { right: 0; color: #FF0000; }
+        .arrow:hover:not(.disabled) { opacity: 1; color: #FFFFFF; }
+
+        @media (max-width: 768px) {
+            .presale-box { min-width: 220px; width: 220px; }
+            .slider-container { max-width: 400px; }
+        }
+        @media (max-width: 480px) {
+            .presale-box { min-width: 200px; width: 200px; }
+            .slider-container { max-width: 360px; }
+        }
+
+        h3 { font-size: 36px; color: #00BFFF; text-align: center; margin: 0 0 20px; font-weight: 900; }
+        h4 { font-size: 20px; font-style: italic; text-align: center; margin: 0 0 30px; font-weight: 700; }
+        .token-doji { color: #00BFFF; }
+        #about .crawl-container, #moonshot .crawl-container { perspective: 300px; height: 300px; overflow: hidden; position: relative; }
+        #about .crawl-container p, #moonshot .crawl-container p { position: absolute; bottom: 0; width: 100%; text-align: center; transform-origin: bottom; transform: rotateX(20deg) translateY(500px); opacity: 0; animation: crawl 30s linear infinite; color: #FFFFFF; font-size: 18px; line-height: 1.8; font-weight: 700; }
+        #about .crawl-container p:nth-child(2), #moonshot .crawl-container p:nth-child(2) { animation-delay: 26s; }
+        @keyframes crawl {
+            0% { transform: rotateX(20deg) translateY(500px); opacity: 0; }
+            5% { transform: rotateX(20deg) translateY(450px); opacity: 1; }
+            95% { transform: rotateX(20deg) translateY(-550px); opacity: 1; }
+            100% { transform: rotateX(20deg) translateY(-600px); opacity: 0; }
+        }
+        #moonshot { text-align: center; }
+        #moonshot h3 { color: #FFD700; }
+        #tokenomics { text-align: center; }
+        .pie-chart-container { width: 300px; height: 300px; margin: 0 auto 20px; }
+        .pie-chart { width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(rgba(70, 130, 180, 0.7) 0% 25%, rgba(218, 165, 32, 0.7) 25% 55%, rgba(46, 139, 87, 0.7) 55% 65%, rgba(72, 61, 139, 0.7) 65% 85%, rgba(139, 0, 0, 0.7) 85% 100%); border: 4px solid #333333; }
+        .pie-chart-legend { background: #000; padding: 15px; border: 1px solid #00BFFF; border-radius: 8px; display: block; text-align: left; max-width: 300px; margin: 0 auto; }
+        .legend-item { display: flex; align-items: center; font-size: 16px; margin-bottom: 10px; color: #FFFFFF; font-weight: 700; }
+        .legend-color { width: 16px; height: 16px; margin-right: 8px; border-radius: 50%; }
+        #roadmap h3 { color: #FFD700; }
+        .roadmap-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
+        .roadmap-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; font-weight: 700; }
+        .roadmap-item p { font-size: 16px; margin: 0; line-height: 1.5; font-weight: 700; }
+        #how-to-buy h3 { color: #FFD700; }
+        #how-to-buy h4:not(.how-to-buy-item h4) { color: #E0E0E0; }
+        .how-to-buy-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
+        .how-to-buy-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; font-weight: 700; }
+        .how-to-buy-item p { font-size: 14px; margin: 0; line-height: 1.5; font-weight: 700; }
+        #how-to-buy ol { text-align: left; padding-left: 20px; font-size: 14px; }
+        #how-to-buy ol li { margin-bottom: 10px; }
+        #how-to-buy .cta-button { margin: 30px auto 0; display: block; width: 200px; }
+        #rewards h3 { color: #FFD700; }
+        .reward-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
+        .reward-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; font-weight: 700; }
+        .reward-item p { font-size: 14px; margin: 0; line-height: 1.5; font-weight: 700; }
+        #faq h3 { color: #FFD700; }
+        .faq-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
+        .faq-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; font-weight: 700; }
+        .faq-item p { font-size: 14px; margin: 0; line-height: 1.5; font-weight: 700; }
+        #media .media-container { display: flex; justify-content: space-around; flex-wrap: wrap; }
+        .link-category { margin: 10px; }
+        .link-category h4 { color: #00BFFF; font-size: 18px; margin: 10px 0; font-weight: 700; }
+        .link-category ul { list-style: none; padding: 0; }
+        .link-category li { margin: 5px 0; font-weight: 700; }
+        .link-category a { color: #00BFFF; text-decoration: none; font-size: 16px; }
+        .link-category a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo"></div>
+            <div class="logo-text">DOJIWON</div>
+        </div>
+        <div class="dropdown">
+            <div class="hamburger">☰</div>
+            <div class="dropdown-content" id="dropdownMenu">
+                <a href="#" class="login-link" onclick="showLoginPopup()">Login</a>
+                <a href="#dashboard">Dashboard</a>
+                <a href="#hero">Hero</a>
+                <a href="#presale">Presale</a>
+                <a href="#about">Origins & Evolution</a>
+                <a href="#moonshot">Moonshot</a>
+                <a href="#tokenomics">Tokenomics</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#how-to-buy">How to Buy</a>
+                <a href="#rewards">Rewards</a>
+                <a href="#faq">FAQ</a>
+                <a href="#media">Media & Exchanges</a>
+                <a href="whitepaper.pdf">Whitepaper</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Popup -->
+    <div class="popup" id="loginPopup">
+        <div class="popup-content">
+            <h3>Please Sign In to Continue</h3>
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <div class="password-container">
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePassword('loginPassword')">👁️</span>
+            </div>
+            <div class="links">
+                <span>Need an account? <a href="#" onclick="showRegisterPopup()">Register</a> an account!</span><br>
+                <a href="#" onclick="showForgotPasswordPopup()">Forgot Password?</a>
+            </div>
+            <div class="buttons">
+                <button onclick="closeLoginPopup()">Cancel</button>
+                <button onclick="handleLogin()">Continue</button>
+            </div>
+            <div class="error" id="loginError"></div>
+        </div>
     </div>
-    <button class="cta-button" onclick="scrollToDashboard()">JOIN THE FORCE</button>
-</section>
+
+    <!-- Register Popup -->
+    <div class="popup" id="registerPopup">
+        <div class="popup-content">
+            <h3>Register with DOJIWON</h3>
+            <input type="text" id="registerName" placeholder="Name" required>
+            <input type="email" id="registerEmail" placeholder="Email" required>
+            <div class="password-container">
+                <input type="password" id="registerPassword" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePassword('registerPassword')">👁️</span>
+            </div>
+            <div class="password-container">
+                <input type="password" id="registerConfirmPassword" placeholder="Confirm Password" required>
+                <span class="toggle-password" onclick="togglePassword('registerConfirmPassword')">👁️</span>
+            </div>
+            <div class="buttons">
+                <button onclick="closeRegisterPopup()">Cancel</button>
+                <button onclick="handleRegister()">Continue</button>
+            </div>
+            <div class="error" id="registerError"></div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Popup -->
+    <div class="popup" id="forgotPasswordPopup">
+        <div class="popup-content">
+            <h3>Forgot Password</h3>
+            <p>Enter your email to receive a password reset link.</p>
+            <input type="email" id="forgotPasswordEmail" placeholder="Email" required>
+            <div class="buttons">
+                <button onclick="closeForgotPasswordPopup()">Cancel</button>
+                <button onclick="handleForgotPassword()">Submit</button>
+            </div>
+            <div class="error" id="forgotPasswordError"></div>
+        </div>
+    </div>
+
+    <!-- Updated Dashboard Section -->
+    <section id="dashboard">
+        <h1>$DOJI PRESALE BUY</h1>
+        <div class="raised">$12,500 USD RAISED</div>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 50%;"></div>
+        </div>
+        <div class="token-price">1 $DOJI = $0.00050 USD</div>
+        <div class="price-info">Starting Price x      Listing Price x</div>
+        <div class="crypto-options">
+            <div class="crypto-option" data-crypto="ETH">ETH</div>
+            <div class="crypto-option" data-crypto="BSC">BSC</div>
+            <div class="crypto-option" data-crypto="ARB">ARB</div>
+            <div class="crypto-option" data-crypto="BASE">BASE</div>
+            <div class="crypto-option" data-crypto="POL">POL</div>
+            <div class="crypto-option" data-crypto="CARD">CARD</div>
+        </div>
+        <button class="purchase-button" onclick="window.location.href='https://commerce.coinbase.com/checkout/70529196-90d2-4dff-a046-fd78f75abfd6'">Purchase With Coinbase</button>
+        <div class="send-crypto" id="sendCryptoText">Or Send ETH Here:</div>
+        <div class="wallet-address" id="walletAddress">0xEthAddress1234567890...</div>
+        <button class="copy-address" onclick="copyAddress()">COPY ADDRESS</button>
+        <div class="promo-text">Enter promo code for huge bonuses!!!</div>
+        <input type="text" class="referral-code" placeholder="Enter referral code...">
+        <div class="how-to-buy-link">
+            <a href="#how-to-buy">How do I buy?</a>
+        </div>
+    </section>
+
+    <section id="hero">
+        <h1>
+            <span class="breaking">BREAKING THE CHAINS</span>
+            <span class="doji"><span class="token-doji">$DOJI</span></span>
+            <span class="bites">BITES BACK!</span>
+        </h1>
+        <h2>Awaken the Jedi—Join the Force!</h2>
+        <p>The Countdown Has Begun—This Offer Is Only Available for a Limited Time, Don’t Let It Pass, BUY!</p>
+        <button class="cta-button" onclick="showLoginPopup()">JOIN THE FORCE</button>
+    </section>
+
+    <section id="presale">
+        <h3>PRESALE</h3>
+        <p class="presale-subtitle">STAGE 01</p>
+        <div class="slider-container">
+            <button class="arrow left" id="leftArrow">⟵</button>
+            <div class="slider-track" id="sliderTrack">
+                <div class="presale-box current stage-1">
+                    <h4>STAGE 01</h4>
+                    <p>Price: <span class="token-doji">$0.00050</span></p>
+                    <p>Goal: $12,500</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 50%;"></div></div>
+                </div>
+                <div class="presale-box future stage-2">
+                    <h4>STAGE 02</h4>
+                    <p>Price: <span class="token-doji">$0.00062</span></p>
+                    <p>Goal: $14,880</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="presale-box future stage-3">
+                    <h4>STAGE 03</h4>
+                    <p>Price: <span class="token-doji">$0.00077</span></p>
+                    <p>Goal: $17,710</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="presale-box future stage-4">
+                    <h4>STAGE 04</h4>
+                    <p>Price: <span class="token-doji">$0.00095</span></p>
+                    <p>Goal: $20,900</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="presale-box future stage-5">
+                    <h4>STAGE 05</h4>
+                    <p>Price: <span class="token-doji">$0.00118</span></p>
+                    <p>Goal: $24,780</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="presale-box future stage-6">
+                    <h4>STAGE 06</h4>
+                    <p>Price: <span class="token-doji">$0.00146</span></p>
+                    <p>Goal: $29,200</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="presale-box future stage-7">
+                    <h4>STAGE 07</h4>
+                    <p>Price: <span class="token-doji">$0.00181</span></p>
+                    <p>Goal: $34,390</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="presale-box future stage-8">
+                    <h4>STAGE 08</h4>
+                    <p>Price: <span class="token-doji">$0.00224</span></p>
+                    <p>Goal: $40,570</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <button class="arrow right" id="rightArrow">⟶</button>
+        </div>
+    </section>
+
+    <section id="about">
+        <h3>ORIGINS & EVOLUTION</h3>
+        <div class="crawl-container">
+            <p><span class="token-doji">$DOJI</span> is a little ruff around the edges—the Jedi of justice in a memecoin galaxy. Forged with cutting-edge tech on the Polygon network, <span class="token-doji">$DOJI</span> blasts light years ahead of rival meme coins with low fees and warp-speed transactions. Powered by xAI’s latest analytical breakthroughs, it’s preprogrammed for a warp-speed 40x post-launch—token burns, a masterful presale, and strategic fund allocation fuel its pure force-driven propulsion, paving a hyperspace road to the stars!</p>
+            <p><span class="token-doji">$DOJI</span> is a little ruff around the edges—the Jedi of justice in a memecoin galaxy. Forged with cutting-edge tech on the Polygon network, <span class="token-doji">$DOJI</span> blasts light years ahead of rival meme coins with low fees and warp-speed transactions. Powered by xAI’s latest analytical breakthroughs, it’s preprogrammed for a warp-speed 40x post-launch—token burns, a masterful presale, and strategic fund allocation fuel its pure force-driven propulsion, paving a hyperspace road to the stars!</p>
+        </div>
+    </section>
+
+    <section id="moonshot">
+        <h3>MOONSHOT</h3>
+        <div class="crawl-container">
+            <p><span class="token-doji">$DOJI</span> is engineered for a hyperspace leap to the moons of fortune! Powered by xAI’s cutting-edge analytics, this memecoin is preprogrammed for a 40x surge post-launch. With token burns slashing supply, a 13-stage presale igniting demand, and strategic liquidity drops on DEXs and CEXs, <span class="token-doji">$DOJI</span>’s trajectory is set to blast past the stars. The Force is strong with this one—join early to ride the galactic wave to a $0.02 valuation and beyond!</p>
+            <p><span class="token-doji">$DOJI</span> is engineered for a hyperspace leap to the moons of fortune! Powered by xAI’s cutting-edge analytics, this memecoin is preprogrammed for a 40x surge post-launch. With token burns slashing supply, a 13-stage presale igniting demand, and strategic liquidity drops on DEXs and CEXs, <span class="token-doji">$DOJI</span>’s trajectory is set to blast past the stars. The Force is strong with this one—join early to ride the galactic wave to a $0.02 valuation and beyond!</p>
+        </div>
+    </section>
+
+    <section id="tokenomics">
+        <h3>TOKENOMICS</h3>
+        <div class="pie-chart-container">
+            <div class="pie-chart"></div>
+        </div>
+        <div class="pie-chart-legend">
+            <div class="legend-item"><span class="legend-color" style="background: rgba(70, 130, 180, 0.7);"></span>Presale: 25%</div>
+            <div class="legend-item"><span class="legend-color" style="background: rgba(218, 165, 32, 0.7);"></span>Liquidity: 30%</div>
+            <div class="legend-item"><span class="legend-color" style="background: rgba(46, 139, 87, 0.7);"></span>Community Rewards: 10%</div>
+            <div class="legend-item"><span class="legend-color" style="background: rgba(72, 61, 139, 0.7);"></span>Roadmap/Development: 20%</div>
+            <div class="legend-item"><span class="legend-color" style="background: rgba(139, 0, 0, 0.7);"></span>Team: 15%</div>
+        </div>
+    </section>
+
+    <section id="roadmap">
+        <h3>PLOTTED COURSE</h3>
+        <h4>ROADMAP</h4>
+        <div class="roadmap-item">
+            <h4>The Jedi Uprising Begins</h4>
+            <p>The Force awakens—<span class="token-doji">$DOJI</span>’s presale ignites across 13 stages, shattering meme coin chains. From $0.0005, prices warp to $0.01 as conditions trigger—xAI’s masterful analytics fuel the rise, unleashing 250M tokens into the galaxy. Join early, or miss the hyperspace jump!</p>
+        </div>
+        <div class="roadmap-item">
+            <h4>Token Burn Ignition</h4>
+            <p>Lightsabers slash—<span class="token-doji">$DOJI</span> burns unsold or reserved tokens, tightening supply. xAI’s analytics lock in the perfect burn, propelling value toward 40x warp speed.</p>
+        </div>
+        <div class="roadmap-item">
+            <h4>Hyperspace Launch</h4>
+            <p><span class="token-doji">$DOJI</span> hits lightspeed—DEX listings (e.g., QuickSwap) drop with 300M liquidity tokens. Ruff rebels trade, xAI’s fund allocation ignites the warp.</p>
+        </div>
+        <div class="roadmap-item">
+            <h4>Galactic Conquest</h4>
+            <p>Jedi strike—CEX listings (e.g., Binance, Coinbase) and 100M community rewards rain down. <span class="token-doji">$DOJI</span>’s 40x warp ($0.02) hits, fueled by xAI’s strategic plays.</p>
+        </div>
+        <div class="roadmap-item">
+            <h4>Beyond the Stars</h4>
+            <p><span class="token-doji">$DOJI</span> rules—ongoing burns and xAI-driven upgrades (e.g., NFT drops) push past 40x to uncharted moons!</p>
+        </div>
+    </section>
+
+    <section id="how-to-buy">
+        <h3>UNLEASH THE FORCE—HOW TO BUY <span class="token-doji">$DOJI</span></h3>
+        <h4>Grab Your <span class="token-doji">$DOJI</span> Before the Galaxy Runs Out!</h4>
+        <div class="how-to-buy-item">
+            <h4>Join the Presale</h4>
+            <p>Follow these steps to secure your <span class="token-doji">$DOJI</span>:</p>
+            <ol>
+                <li>Go to the <strong>Dashboard</strong> from the dropdown menu.</li>
+                <li>
+                    <strong>Option 1:</strong> Purchase with Coinbase by clicking the button below and choosing your amount.<br>
+                    <button class="cta-button coinbase-btn" onclick="window.location.href='https://commerce.coinbase.com/checkout/70529196-90d2-4dff-a046-fd78f75abfd6'">Purchase With Coinbase</button>
+                </li>
+                <li>
+                    <strong>Option 2:</strong> Choose a crypto on the Dashboard (e.g., ETH, BSC), copy the wallet address, and send any amount to that address along with the email you registered with. Your Dashboard should reflect your purchase within 24 hours.
+                </li>
+            </ol>
+            <p>All purchased tokens will be distributed as soon as the presale ends.</p>
+        </div>
+        <button class="cta-button" onclick="scrollToDashboard()">JOIN THE FORCE</button>
+    </section>
+
+    <section id="rewards">
+        <h3>GALACTIC REWARDS PROGRAM</h3>
+        <div class="reward-item">
+            <h4>HODL Force Bonus</h4>
+            <p>HODL <span class="token-doji">$DOJI</span> for 30+ days and receive a 5% bonus from the 100M community rewards pool.</p>
+        </div>
+        <div class="reward-item">
+            <h4>Referral Rebellion</h4>
+            <p>Bring new Jedi to the cause—earn 2% of their <span class="token-doji">$DOJI</span> purchase as a reward.</p>
+        </div>
+        <div class="reward-item">
+            <h4>Staking Lightsaber</h4>
+            <p>Stake your <span class="token-doji">$DOJI</span> and earn up to 10% APY from the community rewards allocation.</p>
+        </div>
+        <div class="reward-item">
+            <h4>Mission Milestones</h4>
+            <p>Complete community missions (social engagement, memes) to earn bonus <span class="token-doji">$DOJI</span> drops.</p>
+        </div>
+    </section>
+
+    <section id="faq">
+        <h3>FREQUENTLY ASKED QUESTIONS</h3>
+        <div class="faq-item">
+            <h4>What is <span class="token-doji">$DOJI</span>?</h4>
+            <p><span class="token-doji">$DOJI</span> is a memecoin on the Polygon network, designed with xAI’s analytics for a 40x moonshot, blending low fees with high-speed transactions.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How does the 40x moonshot work?</h4>
+            <p>xAI’s preprogrammed strategy includes token burns, a 13-stage presale, and strategic listings to drive <span class="token-doji">$DOJI</span>’s value from $0.0005 to $0.02 or higher.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Why choose Polygon network?</h4>
+            <p>Polygon offers lightning-fast transactions and minimal fees, making <span class="token-doji">$DOJI</span> accessible and efficient for all galactic investors.</p>
+        </div>
+        <div class="faq-item">
+            <h4>When can I purchase <span class="token-doji">$DOJI</span>?</h4>
+            <p>The presale is live now in 13 stages—join early to secure the lowest price before the hyperspace launch!</p>
+        </div>
+        <div class="faq-item">
+            <h4>Which wallets are compatible?</h4>
+            <p>Use MetaMask, Trust Wallet, or any wallet compatible with Polygon to join the <span class="token-doji">$DOJI</span> rebellion.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What happens to unsold tokens?</h4>
+            <p>Unsold tokens are burned post-presale, tightening supply and boosting value, per xAI’s strategy.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Are there community incentives?</h4>
+            <p>Yes, 10% of tokens fuel rewards—100M <span class="token-doji">$DOJI</span> will be distributed to the community after launch.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How secure is <span class="token-doji">$DOJI</span>?</h4>
+            <p>Built on Polygon’s robust network and backed by xAI’s analytics, <span class="token-doji">$DOJI</span> offers strong security in the memecoin galaxy.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I trade <span class="token-doji">$DOJI</span> after presale?</h4>
+            <p>Yes, <span class="token-doji">$DOJI</span> will be listed on DEXs like QuickSwap post-launch, followed by CEXs like Binance and Coinbase.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What’s the total token supply?</h4>
+            <p>Total supply starts at 1 billion <span class="token-doji">$DOJI</span>, with burns reducing it over time to fuel the moonshot.</p>
+        </div>
+    </section>
+
+    <section id="media">
+        <h3>MEDIA & EXCHANGES</h3>
+        <div class="media-container">
+            <div class="link-category">
+                <h4>Social Media</h4>
+                <ul>
+                    <li><a href="https://example.com/discord" target="_blank">Discord</a></li>
+                    <li><a href="https://example.com/telegram" target="_blank">Telegram</a></li>
+                    <li><a href="https://example.com/reddit" target="_blank">Reddit</a></li>
+                    <li><a href="https://example.com/x" target="_blank">X</a></li>
+                    <li><a href="https://example.com/instagram" target="_blank">Instagram</a></li>
+                    <li><a href="https://example.com/facebook" target="_blank">Facebook</a></li>
+                    <li><a href="https://example.com/linkedin" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://example.com/whatsapp" target="_blank">WhatsApp</a></li>
+                </ul>
+            </div>
+            <div class="link-category">
+                <h4>Exchanges</h4>
+                <ul>
+                    <li><a href="https://example.com/coinbase" target="_blank">Coinbase</a></li>
+                    <li><a href="https://example.com/kraken" target="_blank">Kraken</a></li>
+                    <li><a href="https://example.com/binance" target="_blank">Binance</a></li>
+                </ul>
+            </div>
+            <div class="link-category">
+                <h4>Affiliate Programs</h4>
+                <ul>
+                    <li><a href="https://example.com/coinzilla" target="_blank">Coinzilla</a></li>
+                    <li><a href="https://example.com/awin" target="_blank">Awin</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Password hashing simulation (Base64 for demo purposes)
+        function hashPassword(password) {
+            return btoa(password);
+        }
+
+        function unhashPassword(hashed) {
+            return atob(hashed);
+        }
+
+        // User database with admin pre-seeding
+        function getUsers() {
+            let users = JSON.parse(localStorage.getItem('user.log')) || [];
+            if (!users.some(u => u.email === 'admin')) {
+                users.push({
+                    name: 'Admin',
+                    email: 'admin',
+                    password: hashPassword('almarae0409!'),
+                    coins: 0
+                });
+                saveUsers(users);
+            }
+            return users;
+        }
+
+        function saveUsers(users) {
+            localStorage.setItem('user.log', JSON.stringify(users));
+        }
+
+        // Session management
+        function getUserStatus() {
+            return localStorage.getItem('userStatus') || 'guest';
+        }
+
+        function setUserStatus(status, email = '') {
+            localStorage.setItem('userStatus', status);
+            if (status === 'guest') {
+                localStorage.removeItem('loggedInEmail');
+            } else {
+                localStorage.setItem('loggedInEmail', email);
+            }
+            updateDropdown();
+        }
+
+        // Update dropdown menu based on user status
+        function updateDropdown() {
+            const dropdown = document.getElementById('dropdownMenu');
+            const status = getUserStatus();
+            dropdown.innerHTML = '';
+
+            if (status === 'guest') {
+                dropdown.innerHTML += '<a href="#" class="login-link" onclick="showLoginPopup()">Login</a>';
+            }
+
+            dropdown.innerHTML += `
+                <a href="#dashboard">Dashboard</a>
+                <a href="#hero">Hero</a>
+                <a href="#presale">Presale</a>
+                <a href="#about">Origins & Evolution</a>
+                <a href="#moonshot">Moonshot</a>
+                <a href="#tokenomics">Tokenomics</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#how-to-buy">How to Buy</a>
+                <a href="#rewards">Rewards</a>
+                <a href="#faq">FAQ</a>
+                <a href="#media">Media & Exchanges</a>
+                <a href="whitepaper.pdf">Whitepaper</a>
+            `;
+
+            if (status !== 'guest') {
+                dropdown.innerHTML += '<a href="#" onclick="logout()">Logout</a>';
+            }
+
+            document.querySelectorAll('.dropdown-content a:not(.login-link):not([onclick="logout()"])').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Popup functions
+        function showLoginPopup() {
+            const status = getUserStatus();
+            if (status !== 'guest') {
+                alert('You are already logged in!');
+                return;
+            }
+            document.getElementById('loginPopup').style.display = 'flex';
+            document.getElementById('loginError').textContent = '';
+            document.getElementById('loginEmail').value = '';
+            document.getElementById('loginPassword').value = '';
+        }
+
+        function closeLoginPopup() {
+            document.getElementById('loginPopup').style.display = 'none';
+        }
+
+        function showRegisterPopup() {
+            closeLoginPopup();
+            document.getElementById('registerPopup').style.display = 'flex';
+            document.getElementById('registerError').textContent = '';
+            document.getElementById('registerName').value = '';
+            document.getElementById('registerEmail').value = '';
+            document.getElementById('registerPassword').value = '';
+            document.getElementById('registerConfirmPassword').value = '';
+        }
+
+        function closeRegisterPopup() {
+            document.getElementById('registerPopup').style.display = 'none';
+        }
+
+        function showForgotPasswordPopup() {
+            closeLoginPopup();
+            document.getElementById('forgotPasswordPopup').style.display = 'flex';
+            document.getElementById('forgotPasswordError').textContent = '';
+            document.getElementById('forgotPasswordEmail').value = '';
+        }
+
+        function closeForgotPasswordPopup() {
+            document.getElementById('forgotPasswordPopup').style.display = 'none';
+        }
+
+        // Toggle password visibility
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const toggle = input.nextElementSibling;
+            if (input.type === 'password') {
+                input.type = 'text';
+                toggle.textContent = '👁️‍🗨️';
+            } else {
+                input.type = 'password';
+                toggle.textContent = '👁️';
+            }
+        }
+
+        // Handle login
+        function handleLogin() {
+            const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+            const password = document.getElementById('loginPassword').value;
+            const error = document.getElementById('loginError');
+            const users = getUsers();
+
+            if (!email || !password) {
+                error.textContent = 'Please fill in all fields.';
+                return;
+            }
+
+            const user = users.find(u => u.email.toLowerCase() === email);
+            if (!user || unhashPassword(user.password) !== password) {
+                error.textContent = 'Invalid email or password.';
+                return;
+            }
+
+            if (email === 'admin' && unhashPassword(user.password) === 'almarae0409!') {
+                setUserStatus('admin', email);
+            } else {
+                setUserStatus('logged', email);
+            }
+            closeLoginPopup();
+            alert('Logged in successfully!');
+        }
+
+        // Handle register
+        function handleRegister() {
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value.trim().toLowerCase();
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            const error = document.getElementById('registerError');
+            const users = getUsers();
+
+            if (!name || !email || !password || !confirmPassword) {
+                error.textContent = 'Please fill in all fields.';
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                error.textContent = 'Passwords do not match.';
+                return;
+            }
+
+            if (users.some(u => u.email.toLowerCase() === email)) {
+                error.textContent = 'Account with that email already exists, please login.';
+                return;
+            }
+
+            users.push({
+                name,
+                email,
+                password: hashPassword(password),
+                coins: 0
+            });
+            saveUsers(users);
+            setUserStatus('logged', email);
+            closeRegisterPopup();
+            alert('Registered and logged in successfully!');
+        }
+
+        // Handle forgot password (placeholder)
+        function handleForgotPassword() {
+            const email = document.getElementById('forgotPasswordEmail').value.trim().toLowerCase();
+            const error = document.getElementById('forgotPasswordError');
+            const users = getUsers();
+
+            if (!email) {
+                error.textContent = 'Please enter your email.';
+                return;
+            }
+
+            if (!users.some(u => u.email.toLowerCase() === email)) {
+                error.textContent = 'Email not found.';
+                return;
+            }
+
+            error.textContent = 'Password reset link sent (placeholder).';
+        }
+
+        // Logout
+        function logout() {
+            setUserStatus('guest');
+            alert('Logged out successfully!');
+        }
+
+        // Scroll to Dashboard
+        function scrollToDashboard() {
+            const dashboard = document.getElementById('dashboard');
+            if (dashboard) {
+                window.scrollTo({
+                    top: dashboard.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Dashboard Functions
+        const cryptoAddresses = {
+            ETH: '0xEthAddress1234567890...',
+            BSC: '0xBscAddress1234567890...',
+            ARB: '0xArbAddress1234567890...',
+            BASE: '0xBaseAddress1234567890...',
+            POL: '0xPolAddress1234567890...',
+            CARD: '0xCardAddress1234567890...'
+        };
+
+        function selectCrypto(crypto) {
+            const options = document.querySelectorAll('.crypto-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            const selectedOption = document.querySelector(`.crypto-option[data-crypto="${crypto}"]`);
+            selectedOption.classList.add('selected');
+
+            const sendCryptoText = document.getElementById('sendCryptoText');
+            sendCryptoText.textContent = `Or Send ${crypto} Here:`;
+
+            const walletAddress = document.getElementById('walletAddress');
+            walletAddress.textContent = cryptoAddresses[crypto];
+
+            localStorage.setItem('selectedCrypto', crypto);
+        }
+
+        function copyAddress() {
+            const walletAddress = document.getElementById('walletAddress').textContent;
+            navigator.clipboard.writeText(walletAddress).then(() => {
+                const copyButton = document.querySelector('.copy-address');
+                copyButton.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyButton.textContent = 'COPY ADDRESS';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy address:', err);
+                alert('Failed to copy address. Please copy manually.');
+            });
+        }
+
+        // Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            setUserStatus('guest');
+            const sliderTrack = document.getElementById('sliderTrack');
+            const leftArrow = document.getElementById('leftArrow');
+            const rightArrow = document.getElementById('rightArrow');
+            const boxes = document.querySelectorAll('.presale-box');
+            let currentIndex = 0;
+
+            function updateSlider() {
+                const boxWidth = boxes[0].offsetWidth + 20;
+                sliderTrack.style.transform = `translateX(${-currentIndex * boxWidth}px)`;
+                leftArrow.classList.toggle('disabled', currentIndex === 0);
+                rightArrow.classList.toggle('disabled', currentIndex === boxes.length - 1);
+
+                const stageClass = Array.from(boxes[currentIndex].classList).find(cls => cls.startsWith('stage-'));
+                const currentStage = stageClass ? stageClass.split('-')[1] : '1';
+                document.querySelector('.presale-subtitle').textContent = `STAGE ${currentStage.padStart(2, '0')}`;
+            }
+
+            leftArrow.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            });
+
+            rightArrow.addEventListener('click', () => {
+                if (currentIndex < boxes.length - 1) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+
+            // Dashboard Initialization
+            const cryptoOptions = document.querySelectorAll('.crypto-option');
+            cryptoOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const crypto = option.getAttribute('data-crypto');
+                    selectCrypto(crypto);
+                });
+            });
+
+            const savedCrypto = localStorage.getItem('selectedCrypto') || 'ETH';
+            selectCrypto(savedCrypto);
+
+            updateSlider();
+        });
+
+        window.addEventListener('beforeunload', () => {
+            setUserStatus('guest');
+        });
+    </script>
+</body>
+</html>
