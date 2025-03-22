@@ -1,8 +1,10 @@
 const express = require('express');
 const { Pool } = require('pg');
-const app = express();
+const cors = require('cors');
+coonst app = express();
 const port = process.env.PORT || 3000;
 
+app.use(cors({ origin: 'https://dojiwan.com' }));
 app.use(express.json());
 
 // PostgreSQL connection (we'll configure this later)
