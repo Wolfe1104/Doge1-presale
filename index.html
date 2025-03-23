@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
+  
+
 
 <!-- Default Statcounter code for Dojiwan http://Http://www.dojiwan.com -->
 <script type="text/javascript">
@@ -11,10 +12,9 @@ var sc_security="2fac17fc";
 </script>
 <script type="text/javascript"
 src="https://www.statcounter.com/counter/counter.js" async></script>
-<noscript><div class="statcounter"><a title="Web Analytics Made Easy -
-Statcounter" href="https://statcounter.com/" target="_blank"><img
-class="statcounter" src="https://c.statcounter.com/13107790/0/2fac17fc/1/"
-alt="Web Analytics Made Easy - Statcounter"
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/13107790/0/2fac17fc/1/" alt="Web Analytics"
 referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 <!-- End of Statcounter Code -->
 
@@ -23,7 +23,7 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 
 
 
- <meta name="google-site-verification" content="3NKNYoJ2E98d91SAHoyXe7fcsbj4cO2X4rT5HM1XDMY" />
+  <meta name="google-site-verification" content="3NKNYoJ2E98d91SAHoyXe7fcsbj4cO2X4rT5HM1XDMY" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dojiwan Doge Presale - Jedi of Justice Memecoin on Polygon</title>
@@ -1092,8 +1092,18 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
             });
         }
 
-        // Handle login with Heroku backend
-        async function handleLogin() {
+        // Local storage helper functions
+        function getUsers() {
+            const users = localStorage.getItem('dojiUsers');
+            return users ? JSON.parse(users) : [];
+        }
+
+        function saveUsers(users) {
+            localStorage.setItem('dojiUsers', JSON.stringify(users));
+        }
+
+        // Handle login with local storage
+        function handleLogin() {
             const email = document.getElementById('loginEmail').value.trim().toLowerCase();
             const password = document.getElementById('loginPassword').value;
             const error = document.getElementById('loginError');
@@ -1103,32 +1113,25 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
                 return;
             }
 
-            try {
-                const response = await fetch('https://dojiwan-6447b9c1d569.herokuapp.com/users');
-                if (!response.ok) throw new Error('Failed to fetch users');
-                const users = await response.json();
-                const user = users.find(u => u.email.toLowerCase() === email && u.password === password);
+            const users = getUsers();
+            const user = users.find(u => u.email.toLowerCase() === email && u.password === password);
 
-                if (!user) {
-                    error.textContent = 'Invalid email or password.';
-                    return;
-                }
-
-                if (email === 'admin' && password === 'almarae0409!') {
-                    setUserStatus('admin', email);
-                } else {
-                    setUserStatus('logged', email);
-                }
-                closeLoginPopup();
-                alert('Logged in successfully!');
-            } catch (err) {
-                console.error(err);
-                error.textContent = 'Error connecting to server. Try again later.';
+            if (!user) {
+                error.textContent = 'Invalid email or password.';
+                return;
             }
+
+            if (email === 'admin' && password === 'almarae0409!') {
+                setUserStatus('admin', email);
+            } else {
+                setUserStatus('logged', email);
+            }
+            closeLoginPopup();
+            alert('Logged in successfully!');
         }
 
-        // Handle register with Heroku backend
-        async function handleRegister() {
+        // Handle register with local storage
+        function handleRegister() {
             const name = document.getElementById('registerName').value.trim();
             const email = document.getElementById('registerEmail').value.trim().toLowerCase();
             const password = document.getElementById('registerPassword').value;
@@ -1145,38 +1148,26 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
                 return;
             }
 
-            try {
-                // Check if email exists
-                const checkResponse = await fetch('https://dojiwan-6447b9c1d569.herokuapp.com/users');
-                if (!checkResponse.ok) throw new Error('Failed to fetch users');
-                const users = await checkResponse.json();
-                if (users.some(u => u.email.toLowerCase() === email)) {
-                    error.textContent = 'Account with that email already exists, please login.';
-                    return;
-                }
-
-                // Register user
-                const response = await fetch('https://dojiwan-6447b9c1d569.herokuapp.com/users', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        username: name,
-                        email: email,
-                        phone: null,
-                        address: null,
-                        password: password,
-                        doji: null
-                    })
-                });
-
-                if (!response.ok) throw new Error('Failed to register');
-                setUserStatus('logged', email);
-                closeRegisterPopup();
-                alert('Registered and logged in successfully!');
-            } catch (err) {
-                console.error(err);
-                error.textContent = 'Error registering. Try again later.';
+            const users = getUsers();
+            if (users.some(u => u.email.toLowerCase() === email)) {
+                error.textContent = 'Account with that email already exists, please login.';
+                return;
             }
+
+            const newUser = {
+                username: name,
+                email: email,
+                phone: null,
+                address: null,
+                password: password,
+                doji: null
+            };
+            users.push(newUser);
+            saveUsers(users);
+
+            setUserStatus('logged', email);
+            closeRegisterPopup();
+            alert('Registered and logged in successfully!');
         }
 
         // Handle forgot password (placeholder)
@@ -1190,7 +1181,7 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
             }
 
             error.textContent = 'Password reset link sent (placeholder).';
-            // TODO: Implement server-side password reset logic
+            // TODO: Implement server-side password reset logic when backend is ready
         }
 
         // Logout
