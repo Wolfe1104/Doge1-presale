@@ -1082,7 +1082,7 @@
             }
 
             try {
-                const response = await fetch('https://dojiwan.herokuapp.com/users');
+                const response = await fetch('https://dojiwan-6447b9c1d569.herokuapp.com/users');
                 if (!response.ok) throw new Error('Failed to fetch users');
                 const users = await response.json();
                 const user = users.find(u => u.email.toLowerCase() === email && u.password === password);
@@ -1125,7 +1125,7 @@
 
             try {
                 // Check if email exists
-                const checkResponse = await fetch('https://dojiwan.herokuapp.com/users');
+                const checkResponse = await fetch('https://dojiwan-6447b9c1d569.herokuapp.com/users');
                 if (!checkResponse.ok) throw new Error('Failed to fetch users');
                 const users = await checkResponse.json();
                 if (users.some(u => u.email.toLowerCase() === email)) {
@@ -1134,7 +1134,7 @@
                 }
 
                 // Register user
-                const response = await fetch('https://dojiwan.herokuapp.com/users', {
+                const response = await fetch('https://dojiwan-6447b9c1d569.herokuapp.com/users', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
