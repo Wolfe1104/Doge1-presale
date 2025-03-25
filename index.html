@@ -67,6 +67,10 @@
     }
     </script>
 
+    <!-- WalletConnect Library -->
+    <script src="https://unpkg.com/@walletconnect/web3-provider@2.10.0/dist/umd/index.min.js"></script>
+    <script src="https://unpkg.com/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -263,14 +267,8 @@
         #dashboard .purchase-button:hover {
             background: #555;
         }
-        #dashboard .send-crypto {
-            font-size: 12px;
-            margin: 40px 0 5px;
-            color: #FFFFFF;
-            text-align: left;
-            font-weight: 700;
-            position: relative;
-            left: 20px;
+        #dashboard .wallet-connect-section {
+            margin: 20px 0;
         }
         #dashboard .wallet-address {
             width: 100%;
@@ -382,176 +380,10 @@
         .coinbase-btn:hover {
             background: #FFFF00;
         }
-
-        .popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-        .popup-content {
-            background: rgba(0, 0, 0, 0.9);
-            border: 2px solid #00BFFF;
-            border-radius: 8px;
-            padding: 20px;
-            width: 300px;
-            text-align: center;
-        }
-        .popup-content h3 {
-            font-size: 24px;
-            color: #00BFFF;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        .popup-content input, .popup-content select {
-            width: 100%;
-            padding: 8px;
-            margin: 10px 0;
-            background: #333;
-            border: 1px solid #00BFFF;
-            border-radius: 4px;
-            color: #E0E0E0;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-        }
-        .popup-content input[readonly] {
-            background: #444;
-            cursor: not-allowed;
-        }
-        .popup-content .buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        .popup-content button {
-            background: #00BFFF;
-            color: #000;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-        }
-        .popup-content button:hover {
-            background: #00FFFF;
-        }
-        .popup-content .links {
-            margin-top: 10px;
-            font-size: 14px;
-            font-weight: 700;
-        }
-        .popup-content .links a {
-            color: #00BFFF;
-            margin: 0 5px;
-        }
-        .popup-content .error {
-            color: #FF0000;
-            font-size: 14px;
-            margin-top: 10px;
-            font-weight: 700;
-        }
-        .password-container {
-            position: relative;
-            width: 100%;
-        }
-        .password-container input {
-            width: 100%;
-            padding-right: 30px;
-        }
-        .toggle-password {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #00BFFF;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        #presale { padding: 40px 20px; }
-        #presale h3 { color: #FFD700; font-size: 36px; margin: 0 0 10px; text-align: center; font-weight: 900; }
-        .presale-subtitle { font-size: 24px; color: #FFD700; text-align: center; margin-top: 10px; font-weight: 700; }
-        .slider-container { position: relative; width: 100%; max-width: 420px; margin: 20px auto 0; overflow: hidden; }
-        .slider-track { display: flex; transition: transform 0.3s ease-in-out; }
-        .presale-box { min-width: 240px; width: 240px; height: 155px; margin: 0 10px; background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; flex-shrink: 0; }
-        .presale-box.current { border: 2px solid #FFD700; }
-        .presale-box.past { opacity: 0.7; }
-        .presale-box.future { opacity: 0.8; }
-        .presale-box h4 { color: #00BFFF; font-size: 16px; margin: 0 0 10px; font-weight: 700; }
-        .presale-box p { font-size: 14px; color: #E0E0E0; margin: 5px 0; font-weight: 700; }
-        .progress-bar { width: 100%; height: 6px; background: #333; border-radius: 4px; overflow: hidden; margin-top: 10px; }
-        .progress-fill { height: 100%; background: #00BFFF; transition: width 0.3s ease; }
-        .arrow { position: absolute; top: 50%; transform: translateY(-50%); font-size: 24px; color: #00BFFF; background: rgba(0, 0, 0, 0.7); border: none; padding: 8px 12px; cursor: pointer; z-index: 10; }
-        .arrow.disabled { opacity: 0.5; cursor: not-allowed; }
-        .arrow.left { left: 0; }
-        .arrow.right { right: 0; color: #FF0000; }
-        .arrow:hover:not(.disabled) { opacity: 1; color: #FFFFFF; }
-
-        @media (max-width: 768px) {
-            .presale-box { min-width: 220px; width: 220px; }
-            .slider-container { max-width: 400px; }
-        }
-        @media (max-width: 480px) {
-            .presale-box { min-width: 200px; width: 200px; }
-            .slider-container { max-width: 360px; }
-        }
-
-        h3 { font-size: 36px; color: #00BFFF; text-align: center; margin: 0 0 20px; font-weight: 900; }
-        h4 { font-size: 20px; font-style: italic; text-align: center; margin: 0 0 30px; font-weight: 700; }
-        .token-doji { color: #00BFFF; }
-        #about .crawl-container, #moonshot .crawl-container { perspective: 300px; height: 300px; overflow: hidden; position: relative; }
-        #about .crawl-container p, #moonshot .crawl-container p { position: absolute; bottom: 0; width: 100%; text-align: center; transform-origin: bottom; transform: rotateX(20deg) translateY(500px); opacity: 0; animation: crawl 30s linear infinite; color: #FFFFFF; font-size: 23px; line-height: 1.8; font-weight: 700; }
-        #about .crawl-container p:nth-child(2), #moonshot .crawl-container p:nth-child(2) { animation-delay: 26s; }
-        @keyframes crawl {
-            0% { transform: rotateX(20deg) translateY(500px); opacity: 0; }
-            5% { transform: rotateX(20deg) translateY(450px); opacity: 1; }
-            95% { transform: rotateX(20deg) translateY(-550px); opacity: 1; }
-            100% { transform: rotateX(20deg) translateY(-600px); opacity: 0; }
-        }
-        #moonshot { text-align: center; }
-        #moonshot h3 { color: #FFD700; }
-        #tokenomics { text-align: center; }
-        .pie-chart-container { width: 300px; height: 300px; margin: 0 auto 20px; }
-        .pie-chart { width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(rgba(70, 130, 180, 0.7) 0% 25%, rgba(218, 165, 32, 0.7) 25% 55%, rgba(46, 139, 87, 0.7) 55% 65%, rgba(72, 61, 139, 0.7) 65% 85%, rgba(139, 0, 0, 0.7) 85% 100%); border: 4px solid #333333; }
-        .pie-chart-legend { background: #000; padding: 15px; border: 1px solid #00BFFF; border-radius: 8px; display: block; text-align: left; max-width: 300px; margin: 0 auto; }
-        .legend-item { display: flex; align-items: center; font-size: 16px; margin-bottom: 10px; color: #FFFFFF; font-weight: 700; }
-        .legend-color { width: 16px; height: 16px; margin-right: 8px; border-radius: 50%; }
-        #roadmap h3 { color: #FFD700; }
-        .roadmap-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
-        .roadmap-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; font-weight: 700; }
-        .roadmap-item p { font-size: 16px; margin: 0; line-height: 1.5; font-weight: 700; }
-        #how-to-buy h3 { color: #FFD700; }
-        #how-to-buy h4:not(.how-to-buy-item h4) { color: #E0E0E0; }
-        .how-to-buy-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
-        .how-to-buy-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; font-weight: 700; }
-        .how-to-buy-item p { font-size: 14px; margin: 0; line-height: 1.5; font-weight: 700; }
-        #how-to-buy ol { text-align: left; padding-left: 20px; font-size: 14px; }
-        #how-to-buy ol li { margin-bottom: 10px; }
-        #how-to-buy .cta-button { margin: 30px auto 0; display: block; width: 200px; }
-        #rewards h3 { color: #FFD700; }
-        .reward-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
-        .reward-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; font-weight: 700; }
-        .reward-item p { font-size: 14px; margin: 0; line-height: 1.5; font-weight: 700; }
-        #faq h3 { color: #FFD700; }
-        .faq-item { background: rgba(0, 0, 0, 0.9); border: 1px solid #00BFFF; border-radius: 8px; padding: 15px; margin: 10px 0; }
-        .faq-item h4 { color: #00BFFF; font-size: 18px; margin: 0 0 10px; text-align: left; font-style: normal; font-weight: 700; }
-        .faq-item p { font-size: 14px; margin: 0; line-height: 1.5; font-weight: 700; }
-        #media .media-container { display: flex; justify-content: space-around; flex-wrap: wrap; }
-        .link-category { margin: 10px; }
-        .link-category h4 { color: #00BFFF; font-size: 18px; margin: 10px 0; font-weight: 700; }
-        .link-category ul { list-style: none; padding: 0; }
-        .link-category li { margin: 5px 0; font-weight: 700; }
-        .link-category a { color: #00BFFF; text-decoration: none; font-size: 16px; }
-        .link-category a:hover { text-decoration: underline; }
     </style>
 </head>
+
+
 <body>
     <header>
         <div class="logo-container">
@@ -652,7 +484,7 @@
         </div>
     </div>
 
-    <!-- Updated Dashboard Section -->
+    <!-- Updated Dashboard Section with WalletConnect -->
     <section id="dashboard">
         <h2>$DOJI PRESALE</h2>
         <div class="raised">$12,500 USD RAISED</div>
@@ -670,6 +502,14 @@
             <div class="crypto-option" data-crypto="CARD">CARD</div>
         </div>
         <button class="purchase-button" onclick="showPurchaseOptions()">Purchase With Coinbase</button>
+        
+        <!-- WalletConnect Integration -->
+        <div class="wallet-connect-section">
+            <button class="purchase-button" id="connectWalletBtn" onclick="connectWallet()">Connect Wallet</button>
+            <div class="wallet-address" id="connectedAddress" style="display: none;"></div>
+            <button class="copy-address" id="disconnectWalletBtn" onclick="disconnectWallet()" style="display: none;">Disconnect Wallet</button>
+        </div>
+
         <div class="send-crypto" id="sendCryptoText">Or Send ETH Here:</div>
         <div class="wallet-address" id="walletAddress">0xEthAddress1234567890...</div>
         <button class="copy-address" onclick="copyAddress()">COPY ADDRESS</button>
@@ -724,7 +564,7 @@
                 <div class="presale-box future stage-5">
                     <h4>STAGE 05</h4>
                     <p>Price: <span class="token-doji">$0.00118</span></p>
-                    <p>Goal: $24,780</p>
+                    <p>Goal: $24,780lay: none;"></div>
                     <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
                 </div>
                 <div class="presale-box future stage-6">
@@ -929,6 +769,19 @@
         const SUPABASE_URL = 'https://kkmstcsnhhszqxlifndk.supabase.co';
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtrbXN0Y3NuaGhzenF4bGlmbmRrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI4NzI5NzQsImV4cCI6MjA1ODQ0ODk3NH0.cOEiyFggpVz4MGxy8PDv_rhnZe1WVKvOPHJPhWyA9o0';
 
+        // WalletConnect Setup
+        const provider = new WalletConnectProvider({
+            rpc: {
+                137: "https://polygon-rpc.com" // Polygon Mainnet RPC
+            },
+            chainId: 137, // Polygon Network
+            qrcodeModalOptions: {
+                mobileLinks: ["metamask", "trust", "rainbow"]
+            }
+        });
+
+        let connectedAccount = null;
+
         // Popup functions
         function showLoginPopup() {
             const status = getUserStatus();
@@ -971,7 +824,6 @@
             document.getElementById('forgotPasswordPopup').style.display = 'none';
         }
 
-        // Purchase Modal functions
         function showPurchaseOptions() {
             const status = getUserStatus();
             if (status === 'guest') {
@@ -1013,7 +865,6 @@
             closePurchaseModal();
         }
 
-        // Toggle password visibility
         function togglePassword(inputId) {
             const input = document.getElementById(inputId);
             const toggle = input.nextElementSibling;
@@ -1084,7 +935,6 @@
             });
         }
 
-        // Handle login with Supabase
         async function handleLogin() {
             const email = document.getElementById('loginEmail').value.trim().toLowerCase();
             const password = document.getElementById('loginPassword').value;
@@ -1096,7 +946,6 @@
             }
 
             try {
-                // Fetch user from Supabase 'users' table
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/users?email=eq.${encodeURIComponent(email)}`, {
                     method: 'GET',
                     headers: {
@@ -1118,14 +967,11 @@
                 }
 
                 const user = data[0];
-                // Note: In production, passwords should be hashed and compared securely server-side
-                // For this example, assuming plain text passwords (not secure!)
                 if (user.password !== password) {
                     error.textContent = 'Invalid email or password.';
                     return;
                 }
 
-                // Check for admin credentials
                 if (email === 'admin' && password === 'almarae0409!') {
                     setUserStatus('admin', email);
                 } else {
@@ -1139,7 +985,6 @@
             }
         }
 
-        // Handle register with Supabase
         async function handleRegister() {
             const name = document.getElementById('registerName').value.trim();
             const email = document.getElementById('registerEmail').value.trim().toLowerCase();
@@ -1158,7 +1003,6 @@
             }
 
             try {
-                // Check if email already exists
                 const checkResponse = await fetch(`${SUPABASE_URL}/rest/v1/users?email=eq.${encodeURIComponent(email)}`, {
                     method: 'GET',
                     headers: {
@@ -1179,7 +1023,6 @@
                     return;
                 }
 
-                // Register new user
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/users`, {
                     method: 'POST',
                     headers: {
@@ -1205,7 +1048,6 @@
             }
         }
 
-        // Handle forgot password (placeholder)
         function handleForgotPassword() {
             const email = document.getElementById('forgotPasswordEmail').value.trim().toLowerCase();
             const error = document.getElementById('forgotPasswordError');
@@ -1216,16 +1058,13 @@
             }
 
             error.textContent = 'Password reset link sent (placeholder).';
-            // TODO: Implement server-side password reset logic with Supabase when ready
         }
 
-        // Logout
         function logout() {
             setUserStatus('guest');
             alert('Logged out successfully!');
         }
 
-        // Scroll to Dashboard
         function scrollToDashboard() {
             const dashboard = document.getElementById('dashboard');
             if (dashboard) {
@@ -1233,6 +1072,65 @@
                     top: dashboard.offsetTop - 70,
                     behavior: 'smooth'
                 });
+            }
+        }
+
+        // WalletConnect Functions
+        async function connectWallet() {
+            try {
+                await provider.enable();
+                const accounts = await provider.request({ method: 'eth_accounts' });
+                if (accounts.length > 0) {
+                    connectedAccount = accounts[0];
+                    const connectBtn = document.getElementById('connectWalletBtn');
+                    const disconnectBtn = document.getElementById('disconnectWalletBtn');
+                    const addressDisplay = document.getElementById('connectedAddress');
+
+                    connectBtn.style.display = 'none';
+                    disconnectBtn.style.display = 'block';
+                    addressDisplay.style.display = 'block';
+                    addressDisplay.textContent = `Connected: ${connectedAccount.substring(0, 6)}...${connectedAccount.substring(38)}`;
+
+                    localStorage.setItem('connectedWallet', connectedAccount);
+                }
+            } catch (error) {
+                console.error('Wallet connection failed:', error);
+                alert('Failed to connect wallet. Please try again.');
+            }
+        }
+
+        async function disconnectWallet() {
+            try {
+                await provider.disconnect();
+                connectedAccount = null;
+                const connectBtn = document.getElementById('connectWalletBtn');
+                const disconnectBtn = document.getElementById('disconnectWalletBtn');
+                const addressDisplay = document.getElementById('connectedAddress');
+
+                connectBtn.style.display = 'block';
+                disconnectBtn.style.display = 'none';
+                addressDisplay.style.display = 'none';
+                addressDisplay.textContent = '';
+
+                localStorage.removeItem('connectedWallet');
+            } catch (error) {
+                console.error('Wallet disconnection failed:', error);
+                alert('Failed to disconnect wallet.');
+            }
+        }
+
+        function checkWalletConnection() {
+            const savedWallet = localStorage.getItem('connectedWallet');
+            if (savedWallet && provider.connector.connected) {
+                connectedAccount = savedWallet;
+                const connectBtn = document.getElementById('connectWalletBtn');
+                const disconnectBtn = document.getElementById('disconnectWalletBtn');
+                const addressDisplay = document.getElementById('connectedAddress');
+
+                connectBtn.style.display = 'none';
+                disconnectBtn.style.display = 'block';
+                addressDisplay.style.display = 'block';
+                addressDisplay.textContent = `Connected: ${connectedAccount.substring(0, 6)}...${connectedAccount.substring(38)}`;
             }
         }
 
@@ -1276,7 +1174,9 @@
 
         // Initialization
         document.addEventListener('DOMContentLoaded', () => {
-            setUserStatus(getUserStatus()); // Preserve session on reload
+            setUserStatus(getUserStatus());
+            checkWalletConnection();
+
             const sliderTrack = document.getElementById('sliderTrack');
             const leftArrow = document.getElementById('leftArrow');
             const rightArrow = document.getElementById('rightArrow');
@@ -1308,7 +1208,6 @@
                 }
             });
 
-            // Dashboard Initialization
             const cryptoOptions = document.querySelectorAll('.crypto-option');
             cryptoOptions.forEach(option => {
                 option.addEventListener('click', () => {
@@ -1320,14 +1219,13 @@
             const savedCrypto = localStorage.getItem('selectedCrypto') || 'ETH';
             selectCrypto(savedCrypto);
 
-            // Purchase modal event listener
             document.getElementById('amountSelect').addEventListener('change', updateDojiAmount);
 
             updateSlider();
         });
 
         window.addEventListener('beforeunload', () => {
-            // Session persists across reloads, no need to reset
+            // Session persists across reloads
         });
     </script>
 </body>
